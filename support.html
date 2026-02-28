@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitwise - Support</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e1a; color: #c8ccd4; line-height: 1.7; padding: 40px 20px; }
+        .container { max-width: 720px; margin: 0 auto; }
+        h1 { color: #00ff80; font-size: 28px; margin-bottom: 8px; font-family: monospace; }
+        h2 { color: #00ff80; font-size: 18px; margin-top: 32px; margin-bottom: 12px; font-family: monospace; }
+        h3 { color: #a0f0c0; font-size: 15px; margin-top: 20px; margin-bottom: 8px; font-family: monospace; }
+        p, li { font-size: 15px; margin-bottom: 10px; }
+        ul { padding-left: 24px; }
+        .date { color: #666; font-size: 13px; margin-bottom: 32px; font-family: monospace; }
+        a { color: #6ba3ff; }
+        .lang-switch { text-align: right; margin-bottom: 24px; }
+        .lang-switch a { cursor: pointer; padding: 6px 16px; border: 1px solid #333; border-radius: 8px; text-decoration: none; font-size: 13px; font-family: monospace; }
+        .lang-switch a.active { background: #00ff80; color: #0a0e1a; border-color: #00ff80; }
+        .section { margin-bottom: 24px; }
+        hr { border: none; border-top: 1px solid #1a1f2e; margin: 32px 0; }
+        #tr { display: none; }
+        .contact-card { background: #111827; border: 1px solid #1f2937; border-radius: 12px; padding: 24px; margin: 20px 0; }
+        .contact-card a { display: inline-block; background: #00ff80; color: #0a0e1a; text-decoration: none; padding: 10px 24px; border-radius: 8px; font-weight: 600; font-family: monospace; font-size: 14px; margin-top: 12px; }
+        .faq-item { background: #111827; border: 1px solid #1f2937; border-radius: 10px; padding: 16px 20px; margin-bottom: 12px; }
+        .faq-item strong { color: #e0e0e0; font-size: 14px; }
+        .faq-item p { color: #9ca3af; font-size: 13px; margin-top: 6px; margin-bottom: 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="lang-switch">
+            <a id="btn-en" class="active" onclick="showLang('en')">English</a>
+            <a id="btn-tr" onclick="showLang('tr')">Türkçe</a>
+        </div>
+
+        <!-- ENGLISH -->
+        <div id="en">
+            <h1>// SUPPORT</h1>
+            <p class="date">Bitwise — Binary Logic Puzzle</p>
+
+            <div class="section">
+                <h2>Contact Us</h2>
+                <p>Have a question, found a bug, or want to share feedback? We'd love to hear from you.</p>
+                <div class="contact-card">
+                    <p>📧 Email us at:</p>
+                    <a href="mailto:aytuncsevren@gmail.com?subject=Bitwise%20Support">aytuncsevren@gmail.com</a>
+                </div>
+                <p>We typically respond within 24–48 hours.</p>
+            </div>
+
+            <hr>
+
+            <div class="section">
+                <h2>Frequently Asked Questions</h2>
+
+                <div class="faq-item">
+                    <strong>How do I get more hints?</strong>
+                    <p>You start each day with 3 free hints (if your balance is below 3). You can also purchase hint packs or unlimited hints from the in-app store.</p>
+                </div>
+
+                <div class="faq-item">
+                    <strong>How do I restore my purchases?</strong>
+                    <p>Go to Store and tap "Restore Purchases" at the bottom. Make sure you're signed in with the same Apple ID used for the original purchase.</p>
+                </div>
+
+                <div class="faq-item">
+                    <strong>What is the Daily Puzzle?</strong>
+                    <p>A new puzzle is available every day. Complete it to build your daily streak! Everyone gets the same puzzle each day.</p>
+                </div>
+
+                <div class="faq-item">
+                    <strong>Can I play offline?</strong>
+                    <p>Yes! Bitwise works fully offline. An internet connection is only needed for purchases and restoring purchases.</p>
+                </div>
+
+                <div class="faq-item">
+                    <strong>How do I remove ads?</strong>
+                    <p>You can purchase the "Remove Ads" option from the in-app store for a one-time payment.</p>
+                </div>
+
+                <div class="faq-item">
+                    <strong>My progress was lost. What should I do?</strong>
+                    <p>Game data is stored locally on your device. Unfortunately, if the app is deleted, local data cannot be recovered. Purchases can always be restored via the Store.</p>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="section">
+                <h2>System Requirements</h2>
+                <p>iOS 17.0 or later. Compatible with iPhone and iPad.</p>
+            </div>
+        </div>
+
+        <!-- TURKISH -->
+        <div id="tr">
+            <h1>// DESTEK</h1>
+            <p class="date">Bitwise — İkili Mantık Bulmacası</p>
+
+            <div class="section">
+                <h2>Bize Ulaşın</h2>
+                <p>Sorunuz mu var, bir hata mı buldunuz veya geri bildirim mi paylaşmak istiyorsunuz? Sizden haber almaktan memnuniyet duyarız.</p>
+                <div class="contact-card">
+                    <p>📧 E-posta:</p>
+                    <a href="mailto:aytuncsevren@gmail.com?subject=Bitwise%20Destek">aytuncsevren@gmail.com</a>
+                </div>
+                <p>Genellikle 24–48 saat içinde yanıt veriyoruz.</p>
+            </div>
+
+            <hr>
+
+            <div class="section">
+                <h2>Sıkça Sorulan Sorular</h2>
+
+                <div class="faq-item">
+                    <strong>Daha fazla ipucu nasıl alabilirim?</strong>
+                    <p>Her gün ipucu bakiyeniz 3'ün altındaysa otomatik olarak 3'e tamamlanır. Ayrıca uygulama içi mağazadan ipucu paketleri veya sınırsız ipucu satın alabilirsiniz.</p>
+                </div>
+
+                <div class="faq-item">
+                    <strong>Satın alımlarımı nasıl geri yüklerim?</strong>
+                    <p>Mağaza sayfasına gidin ve alttaki "Satın Alımları Geri Yükle" seçeneğine dokunun. Orijinal satın alma işleminde kullanılan Apple ID ile giriş yaptığınızdan emin olun.</p>
+                </div>
+
+                <div class="faq-item">
+                    <strong>Günlük Bulmaca nedir?</strong>
+                    <p>Her gün yeni bir bulmaca sunulur. Günlük serinizi oluşturmak için tamamlayın! Herkes her gün aynı bulmacayı alır.</p>
+                </div>
+
+                <div class="faq-item">
+                    <strong>Çevrimdışı oynayabilir miyim?</strong>
+                    <p>Evet! Bitwise tamamen çevrimdışı çalışır. İnternet bağlantısı yalnızca satın alma ve geri yükleme işlemleri için gereklidir.</p>
+                </div>
+
+                <div class="faq-item">
+                    <strong>Reklamları nasıl kaldırabilirim?</strong>
+                    <p>Uygulama içi mağazadan tek seferlik bir ödemeyle "Reklamları Kaldır" seçeneğini satın alabilirsiniz.</p>
+                </div>
+
+                <div class="faq-item">
+                    <strong>İlerleme verilerim kayboldu. Ne yapmalıyım?</strong>
+                    <p>Oyun verileri cihazınızda yerel olarak saklanır. Uygulama silinirse yerel veriler kurtarılamaz. Satın alımlarınız mağaza üzerinden her zaman geri yüklenebilir.</p>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="section">
+                <h2>Sistem Gereksinimleri</h2>
+                <p>iOS 17.0 veya sonrası. iPhone ve iPad ile uyumludur.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showLang(lang) {
+            document.getElementById('en').style.display = lang === 'en' ? 'block' : 'none';
+            document.getElementById('tr').style.display = lang === 'tr' ? 'block' : 'none';
+            document.getElementById('btn-en').className = lang === 'en' ? 'active' : '';
+            document.getElementById('btn-tr').className = lang === 'tr' ? 'active' : '';
+        }
+    </script>
+</body>
+</html>
