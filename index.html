@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitwise — Binary Logic Puzzle</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e1a; color: #c8ccd4; line-height: 1.7; }
+        .hero { text-align: center; padding: 80px 20px 60px; }
+        .hero img { width: 120px; height: 120px; border-radius: 28px; margin-bottom: 24px; box-shadow: 0 0 40px rgba(0,255,128,0.2); }
+        h1 { color: #00ff80; font-size: 42px; font-family: monospace; margin-bottom: 8px; }
+        .tagline { color: #9ca3af; font-size: 18px; font-family: monospace; margin-bottom: 32px; }
+        .app-store-badge { display: inline-block; margin-top: 8px; }
+        .app-store-badge img { height: 54px; }
+        .binary-strip { color: #00ff80; opacity: 0.15; font-size: 11px; font-family: monospace; text-align: center; padding: 12px; overflow: hidden; white-space: nowrap; }
+        .features { max-width: 800px; margin: 0 auto; padding: 60px 20px; }
+        .features h2 { color: #00ff80; font-size: 22px; font-family: monospace; text-align: center; margin-bottom: 40px; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .feature-card { background: #111827; border: 1px solid #1f2937; border-radius: 16px; padding: 24px; text-align: center; }
+        .feature-card .icon { font-size: 36px; margin-bottom: 12px; }
+        .feature-card h3 { color: #e0e0e0; font-size: 16px; font-family: monospace; margin-bottom: 8px; }
+        .feature-card p { color: #9ca3af; font-size: 13px; }
+        .rules { max-width: 600px; margin: 0 auto; padding: 60px 20px; text-align: center; }
+        .rules h2 { color: #00ff80; font-size: 22px; font-family: monospace; margin-bottom: 24px; }
+        .rule-list { list-style: none; padding: 0; }
+        .rule-list li { background: #111827; border: 1px solid #1f2937; border-radius: 10px; padding: 14px 20px; margin-bottom: 10px; font-size: 14px; font-family: monospace; color: #c8ccd4; }
+        .rule-list li span { color: #00ff80; margin-right: 8px; }
+        .cta { text-align: center; padding: 60px 20px 40px; }
+        .cta h2 { color: #e0e0e0; font-size: 24px; font-family: monospace; margin-bottom: 16px; }
+        .cta p { color: #9ca3af; font-size: 15px; margin-bottom: 24px; }
+        footer { text-align: center; padding: 40px 20px; border-top: 1px solid #1a1f2e; }
+        footer a { color: #6ba3ff; text-decoration: none; font-size: 13px; font-family: monospace; margin: 0 12px; }
+        footer p { color: #4b5563; font-size: 12px; font-family: monospace; margin-top: 16px; }
+        .lang-switch { text-align: right; padding: 16px 20px 0; max-width: 840px; margin: 0 auto; }
+        .lang-switch a { cursor: pointer; padding: 6px 16px; border: 1px solid #333; border-radius: 8px; text-decoration: none; font-size: 13px; font-family: monospace; color: #c8ccd4; }
+        .lang-switch a.active { background: #00ff80; color: #0a0e1a; border-color: #00ff80; }
+        #tr { display: none; }
+    </style>
+</head>
+<body>
+    <div class="lang-switch">
+        <a id="btn-en" class="active" onclick="showLang('en')">English</a>
+        <a id="btn-tr" onclick="showLang('tr')">Türkçe</a>
+    </div>
+
+    <!-- ENGLISH -->
+    <div id="en">
+        <div class="hero">
+            <img src="app-icon.png" alt="Bitwise App Icon" onerror="this.style.display='none'">
+            <h1>BITWISE</h1>
+            <p class="tagline">Think in binary. Solve in logic.</p>
+            <!-- <div class="app-store-badge"><a href="#"><img src="appstore-badge.svg" alt="Download on the App Store"></a></div> -->
+        </div>
+
+        <div class="binary-strip">01000010 01001001 01010100 01010111 01001001 01010011 01000101 01000010 01001001 01010100 01010111 01001001 01010011 01000101</div>
+
+        <div class="features">
+            <h2>// FEATURES</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="icon">🧩</div>
+                    <h3>3 Difficulty Levels</h3>
+                    <p>Easy, Medium, Hard — challenge yourself at your own pace.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📅</div>
+                    <h3>Daily Puzzle</h3>
+                    <p>A fresh challenge every day. Build your streak!</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">💡</div>
+                    <h3>Smart Hints</h3>
+                    <p>3 free hints daily. Need more? Grab packs or go unlimited.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🏆</div>
+                    <h3>Achievements</h3>
+                    <p>Unlock achievements and track your statistics.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🎨</div>
+                    <h3>Themes</h3>
+                    <p>Personalize your experience with premium themes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">✈️</div>
+                    <h3>Offline Play</h3>
+                    <p>No internet needed. Play anywhere, anytime.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="rules">
+            <h2>// RULES</h2>
+            <ul class="rule-list">
+                <li><span>01</span> Each cell must be 0 or 1</li>
+                <li><span>02</span> No more than two consecutive same digits</li>
+                <li><span>03</span> Equal number of 0s and 1s in each row/column</li>
+                <li><span>04</span> No two rows or columns can be identical</li>
+            </ul>
+        </div>
+
+        <div class="cta">
+            <h2>Sharpen your logic.</h2>
+            <p>One bit at a time.</p>
+        </div>
+
+        <footer>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="support.html">Support</a>
+            <p>© 2025 Aytunc Sevren. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- TURKISH -->
+    <div id="tr">
+        <div class="hero">
+            <img src="app-icon.png" alt="Bitwise App Icon" onerror="this.style.display='none'">
+            <h1>BITWISE</h1>
+            <p class="tagline">İkilik düşün. Mantıkla çöz.</p>
+        </div>
+
+        <div class="binary-strip">01000010 01001001 01010100 01010111 01001001 01010011 01000101 01000010 01001001 01010100 01010111 01001001 01010011 01000101</div>
+
+        <div class="features">
+            <h2>// ÖZELLİKLER</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="icon">🧩</div>
+                    <h3>3 Zorluk Seviyesi</h3>
+                    <p>Kolay, Orta, Zor — kendi hızında kendine meydan oku.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📅</div>
+                    <h3>Günlük Bulmaca</h3>
+                    <p>Her gün yeni bir meydan okuma. Serini oluştur!</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">💡</div>
+                    <h3>Akıllı İpuçları</h3>
+                    <p>Her gün 3 ücretsiz ipucu. Daha fazlası için mağazayı ziyaret et.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🏆</div>
+                    <h3>Başarımlar</h3>
+                    <p>Başarımların kilidini aç ve istatistiklerini takip et.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🎨</div>
+                    <h3>Temalar</h3>
+                    <p>Premium temalarla deneyimini kişiselleştir.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">✈️</div>
+                    <h3>Çevrimdışı Oyun</h3>
+                    <p>İnternet gerekmez. Her yerde, her zaman oyna.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="rules">
+            <h2>// KURALLAR</h2>
+            <ul class="rule-list">
+                <li><span>01</span> Her hücre 0 veya 1 olmalı</li>
+                <li><span>02</span> İkiden fazla ardışık aynı rakam olamaz</li>
+                <li><span>03</span> Her satır ve sütunda eşit sayıda 0 ve 1</li>
+                <li><span>04</span> Hiçbir iki satır veya sütun aynı olamaz</li>
+            </ul>
+        </div>
+
+        <div class="cta">
+            <h2>Mantığını keskinleştir.</h2>
+            <p>Her seferinde bir bit.</p>
+        </div>
+
+        <footer>
+            <a href="privacy-policy.html">Gizlilik Politikası</a>
+            <a href="support.html">Destek</a>
+            <p>© 2025 Aytunc Sevren. Tüm hakları saklıdır.</p>
+        </footer>
+    </div>
+
+    <script>
+        function showLang(lang) {
+            document.getElementById('en').style.display = lang === 'en' ? 'block' : 'none';
+            document.getElementById('tr').style.display = lang === 'tr' ? 'block' : 'none';
+            document.getElementById('btn-en').className = lang === 'en' ? 'active' : '';
+            document.getElementById('btn-tr').className = lang === 'tr' ? 'active' : '';
+        }
+    </script>
+</body>
+</html>
