@@ -10,84 +10,63 @@
         .container { max-width: 720px; margin: 0 auto; }
         h1 { color: #00ff80; font-size: 28px; margin-bottom: 8px; font-family: monospace; }
         h2 { color: #00ff80; font-size: 18px; margin-top: 32px; margin-bottom: 12px; font-family: monospace; }
-        h3 { color: #a0f0c0; font-size: 15px; margin-top: 20px; margin-bottom: 8px; font-family: monospace; }
         p, li { font-size: 15px; margin-bottom: 10px; }
-        ul { padding-left: 24px; }
         .date { color: #666; font-size: 13px; margin-bottom: 32px; font-family: monospace; }
         a { color: #6ba3ff; }
-        .lang-switch { text-align: right; margin-bottom: 24px; }
-        .lang-switch a { cursor: pointer; padding: 6px 16px; border: 1px solid #333; border-radius: 8px; text-decoration: none; font-size: 13px; font-family: monospace; }
+        .lang-switch { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; margin-bottom: 24px; }
+        .lang-switch a { cursor: pointer; padding: 4px 12px; border: 1px solid #333; border-radius: 8px; text-decoration: none; font-size: 12px; font-family: monospace; color: #c8ccd4; }
         .lang-switch a.active { background: #00ff80; color: #0a0e1a; border-color: #00ff80; }
         .section { margin-bottom: 24px; }
         hr { border: none; border-top: 1px solid #1a1f2e; margin: 32px 0; }
-        #tr { display: none; }
         .contact-card { background: #111827; border: 1px solid #1f2937; border-radius: 12px; padding: 24px; margin: 20px 0; }
         .contact-card a { display: inline-block; background: #00ff80; color: #0a0e1a; text-decoration: none; padding: 10px 24px; border-radius: 8px; font-weight: 600; font-family: monospace; font-size: 14px; margin-top: 12px; }
         .faq-item { background: #111827; border: 1px solid #1f2937; border-radius: 10px; padding: 16px 20px; margin-bottom: 12px; }
         .faq-item strong { color: #e0e0e0; font-size: 14px; }
         .faq-item p { color: #9ca3af; font-size: 13px; margin-top: 6px; margin-bottom: 0; }
+        .lang-content { display: none; }
+        .lang-content.visible { display: block; }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="lang-switch">
             <a id="btn-en" class="active" onclick="showLang('en')">English</a>
-            <a id="btn-tr" onclick="showLang('tr')">Türkçe</a>
+            <a id="btn-tr" onclick="showLang('tr')">Turkce</a>
+            <a id="btn-de" onclick="showLang('de')">Deutsch</a>
+            <a id="btn-fr" onclick="showLang('fr')">Francais</a>
+            <a id="btn-ja" onclick="showLang('ja')">日本語</a>
+            <a id="btn-es" onclick="showLang('es')">Espanol</a>
+            <a id="btn-ko" onclick="showLang('ko')">한국어</a>
+            <a id="btn-pt" onclick="showLang('pt')">Portugues</a>
+            <a id="btn-zh" onclick="showLang('zh')">中文</a>
         </div>
 
         <!-- ENGLISH -->
-        <div id="en">
+        <div id="en" class="lang-content visible">
             <h1>// SUPPORT</h1>
             <p class="date">Bitwise — Binary Logic Puzzle</p>
-
             <div class="section">
                 <h2>Contact Us</h2>
                 <p>Have a question, found a bug, or want to share feedback? We'd love to hear from you.</p>
                 <div class="contact-card">
-                    <p>📧 Email us at:</p>
+                    <p>Email us at:</p>
                     <a href="mailto:aytuncsevren@gmail.com?subject=Bitwise%20Support">aytuncsevren@gmail.com</a>
                 </div>
-                <p>We typically respond within 24–48 hours.</p>
+                <p>We typically respond within 24-48 hours.</p>
             </div>
-
             <hr>
-
             <div class="section">
                 <h2>Frequently Asked Questions</h2>
-
-                <div class="faq-item">
-                    <strong>How do I get more hints?</strong>
-                    <p>You start each day with 3 free hints (if your balance is below 3). You can also purchase hint packs or unlimited hints from the in-app store.</p>
-                </div>
-
-                <div class="faq-item">
-                    <strong>How do I restore my purchases?</strong>
-                    <p>Go to Store and tap "Restore Purchases" at the bottom. Make sure you're signed in with the same Apple ID used for the original purchase.</p>
-                </div>
-
-                <div class="faq-item">
-                    <strong>What is the Daily Puzzle?</strong>
-                    <p>A new puzzle is available every day. Complete it to build your daily streak! Everyone gets the same puzzle each day.</p>
-                </div>
-
-                <div class="faq-item">
-                    <strong>Can I play offline?</strong>
-                    <p>Yes! Bitwise works fully offline. An internet connection is only needed for purchases and restoring purchases.</p>
-                </div>
-
-                <div class="faq-item">
-                    <strong>How do I remove ads?</strong>
-                    <p>You can purchase the "Remove Ads" option from the in-app store for a one-time payment.</p>
-                </div>
-
-                <div class="faq-item">
-                    <strong>My progress was lost. What should I do?</strong>
-                    <p>Game data is stored locally on your device. Unfortunately, if the app is deleted, local data cannot be recovered. Purchases can always be restored via the Store.</p>
-                </div>
+                <div class="faq-item"><strong>How do I get more hints?</strong><p>You start each day with 3 free hints (if your balance is below 3). You can also purchase hint packs or unlimited hints from the in-app store.</p></div>
+                <div class="faq-item"><strong>How do I restore my purchases?</strong><p>Go to Store and tap "Restore Purchases" at the bottom. Make sure you're signed in with the same Apple ID.</p></div>
+                <div class="faq-item"><strong>What is the Daily Puzzle?</strong><p>A new puzzle is available every day. Complete it to build your daily streak! Everyone gets the same puzzle each day.</p></div>
+                <div class="faq-item"><strong>How does iCloud sync work?</strong><p>Enable iCloud sync in Settings to automatically sync your progress across all your devices. Your data is stored securely in your personal iCloud account.</p></div>
+                <div class="faq-item"><strong>Can I backup my data?</strong><p>Yes! Go to Settings and use the Export function to save your data as a JSON file. You can import it later to restore your progress.</p></div>
+                <div class="faq-item"><strong>Can I play offline?</strong><p>Yes! Bitwise works fully offline. An internet connection is only needed for purchases, iCloud sync, and leaderboards.</p></div>
+                <div class="faq-item"><strong>How do I remove ads?</strong><p>You can purchase the "Remove Ads" option from the in-app store for a one-time payment.</p></div>
+                <div class="faq-item"><strong>My progress was lost. What should I do?</strong><p>If you had iCloud sync enabled, your data should restore automatically on any device. You can also import a JSON backup from Settings. Purchases can always be restored via the Store.</p></div>
             </div>
-
             <hr>
-
             <div class="section">
                 <h2>System Requirements</h2>
                 <p>iOS 17.0 or later. Compatible with iPhone and iPad.</p>
@@ -95,71 +74,269 @@
         </div>
 
         <!-- TURKISH -->
-        <div id="tr">
+        <div id="tr" class="lang-content">
             <h1>// DESTEK</h1>
-            <p class="date">Bitwise — İkili Mantık Bulmacası</p>
-
+            <p class="date">Bitwise — Ikili Mantik Bulmacasi</p>
             <div class="section">
-                <h2>Bize Ulaşın</h2>
-                <p>Sorunuz mu var, bir hata mı buldunuz veya geri bildirim mi paylaşmak istiyorsunuz? Sizden haber almaktan memnuniyet duyarız.</p>
+                <h2>Bize Ulasin</h2>
+                <p>Sorunuz mu var, bir hata mi buldunuz veya geri bildirim mi paylasacaksiniz?</p>
                 <div class="contact-card">
-                    <p>📧 E-posta:</p>
+                    <p>E-posta:</p>
                     <a href="mailto:aytuncsevren@gmail.com?subject=Bitwise%20Destek">aytuncsevren@gmail.com</a>
                 </div>
-                <p>Genellikle 24–48 saat içinde yanıt veriyoruz.</p>
+                <p>Genellikle 24-48 saat icinde yanit veriyoruz.</p>
             </div>
-
             <hr>
-
             <div class="section">
-                <h2>Sıkça Sorulan Sorular</h2>
-
-                <div class="faq-item">
-                    <strong>Daha fazla ipucu nasıl alabilirim?</strong>
-                    <p>Her gün ipucu bakiyeniz 3'ün altındaysa otomatik olarak 3'e tamamlanır. Ayrıca uygulama içi mağazadan ipucu paketleri veya sınırsız ipucu satın alabilirsiniz.</p>
-                </div>
-
-                <div class="faq-item">
-                    <strong>Satın alımlarımı nasıl geri yüklerim?</strong>
-                    <p>Mağaza sayfasına gidin ve alttaki "Satın Alımları Geri Yükle" seçeneğine dokunun. Orijinal satın alma işleminde kullanılan Apple ID ile giriş yaptığınızdan emin olun.</p>
-                </div>
-
-                <div class="faq-item">
-                    <strong>Günlük Bulmaca nedir?</strong>
-                    <p>Her gün yeni bir bulmaca sunulur. Günlük serinizi oluşturmak için tamamlayın! Herkes her gün aynı bulmacayı alır.</p>
-                </div>
-
-                <div class="faq-item">
-                    <strong>Çevrimdışı oynayabilir miyim?</strong>
-                    <p>Evet! Bitwise tamamen çevrimdışı çalışır. İnternet bağlantısı yalnızca satın alma ve geri yükleme işlemleri için gereklidir.</p>
-                </div>
-
-                <div class="faq-item">
-                    <strong>Reklamları nasıl kaldırabilirim?</strong>
-                    <p>Uygulama içi mağazadan tek seferlik bir ödemeyle "Reklamları Kaldır" seçeneğini satın alabilirsiniz.</p>
-                </div>
-
-                <div class="faq-item">
-                    <strong>İlerleme verilerim kayboldu. Ne yapmalıyım?</strong>
-                    <p>Oyun verileri cihazınızda yerel olarak saklanır. Uygulama silinirse yerel veriler kurtarılamaz. Satın alımlarınız mağaza üzerinden her zaman geri yüklenebilir.</p>
-                </div>
+                <h2>Sikca Sorulan Sorular</h2>
+                <div class="faq-item"><strong>Daha fazla ipucu nasil alirim?</strong><p>Her gun ipucu bakiyeniz 3'un altindaysa otomatik olarak 3'e tamamlanir. Magazadan ipucu paketleri veya sinirsiz ipucu satin alabilirsiniz.</p></div>
+                <div class="faq-item"><strong>Satin alimlarimi nasil geri yuklerim?</strong><p>Magaza sayfasindaki "Satin Alimlari Geri Yukle" secenegine dokunun. Ayni Apple ID ile giris yaptiginizdan emin olun.</p></div>
+                <div class="faq-item"><strong>Gunluk Bulmaca nedir?</strong><p>Her gun yeni bir bulmaca sunulur. Gunluk serinizi olusturmak icin tamamlayin! Herkes ayni bulmacayi alir.</p></div>
+                <div class="faq-item"><strong>iCloud senkronizasyonu nasil calisir?</strong><p>Ayarlar'dan iCloud senkronizasyonunu etkinlestirerek ilerlemenizi tum cihazlarinizda otomatik senkronize edin. Verileriniz kisisel iCloud hesabinizda guvenle saklanir.</p></div>
+                <div class="faq-item"><strong>Verilerimi yedekleyebilir miyim?</strong><p>Evet! Ayarlar'a gidin ve Disa Aktar fonksiyonunu kullanarak verilerinizi JSON dosyasi olarak kaydedin. Daha sonra ice aktararak geri yukleyebilirsiniz.</p></div>
+                <div class="faq-item"><strong>Cevrimdisi oynayabilir miyim?</strong><p>Evet! Bitwise tamamen cevrimdisi calisir. Internet yalnizca satin alma, iCloud senkronizasyonu ve liderlik tablolari icin gereklidir.</p></div>
+                <div class="faq-item"><strong>Reklamlari nasil kaldiririm?</strong><p>Magazadan tek seferlik bir odemeyle "Reklamlari Kaldir" secenegini satin alabilirsiniz.</p></div>
+                <div class="faq-item"><strong>Ilerleme verilerim kayboldu. Ne yapmaliyim?</strong><p>iCloud senkronizasyonu aciksa verileriniz herhangi bir cihazda otomatik geri yuklenir. Ayrica Ayarlar'dan JSON yedegini ice aktarabilirsiniz. Satin alimlar her zaman Magaza'dan geri yuklenebilir.</p></div>
             </div>
-
             <hr>
-
             <div class="section">
                 <h2>Sistem Gereksinimleri</h2>
-                <p>iOS 17.0 veya sonrası. iPhone ve iPad ile uyumludur.</p>
+                <p>iOS 17.0 veya sonrasi. iPhone ve iPad ile uyumludur.</p>
+            </div>
+        </div>
+
+        <!-- GERMAN -->
+        <div id="de" class="lang-content">
+            <h1>// SUPPORT</h1>
+            <p class="date">Bitwise — Binaeres Logikraetsel</p>
+            <div class="section">
+                <h2>Kontakt</h2>
+                <p>Frage, Fehler gefunden oder Feedback? Wir hoeren gerne von Ihnen.</p>
+                <div class="contact-card">
+                    <p>E-Mail:</p>
+                    <a href="mailto:aytuncsevren@gmail.com?subject=Bitwise%20Support">aytuncsevren@gmail.com</a>
+                </div>
+                <p>Wir antworten normalerweise innerhalb von 24-48 Stunden.</p>
+            </div>
+            <hr>
+            <div class="section">
+                <h2>Haeufig gestellte Fragen</h2>
+                <div class="faq-item"><strong>Wie bekomme ich mehr Hinweise?</strong><p>Sie starten jeden Tag mit 3 kostenlosen Hinweisen (wenn Ihr Guthaben unter 3 liegt). Sie koennen auch Pakete oder unbegrenzte Hinweise kaufen.</p></div>
+                <div class="faq-item"><strong>Wie stelle ich Kaeufe wieder her?</strong><p>Gehen Sie zum Store und tippen Sie unten auf "Kaeufe wiederherstellen". Stellen Sie sicher, dass Sie mit derselben Apple ID angemeldet sind.</p></div>
+                <div class="faq-item"><strong>Was ist das taegliche Raetsel?</strong><p>Jeden Tag gibt es ein neues Raetsel. Alle erhalten dasselbe Raetsel.</p></div>
+                <div class="faq-item"><strong>Wie funktioniert die iCloud-Synchronisierung?</strong><p>Aktivieren Sie die iCloud-Synchronisierung in den Einstellungen, um Ihren Fortschritt automatisch auf allen Geraeten zu synchronisieren.</p></div>
+                <div class="faq-item"><strong>Kann ich meine Daten sichern?</strong><p>Ja! Unter Einstellungen koennen Sie Ihre Daten als JSON-Datei exportieren und spaeter wieder importieren.</p></div>
+                <div class="faq-item"><strong>Kann ich offline spielen?</strong><p>Ja! Bitwise funktioniert vollstaendig offline. Internet wird nur fuer Kaeufe, iCloud-Synchronisierung und Bestenlisten benoetigt.</p></div>
+                <div class="faq-item"><strong>Wie entferne ich Werbung?</strong><p>Sie koennen "Werbung entfernen" im Store als einmalige Zahlung kaufen.</p></div>
+                <div class="faq-item"><strong>Mein Fortschritt ist verloren. Was tun?</strong><p>Wenn die iCloud-Synchronisierung aktiv war, werden Ihre Daten automatisch wiederhergestellt. Sie koennen auch ein JSON-Backup importieren. Kaeufe koennen immer ueber den Store wiederhergestellt werden.</p></div>
+            </div>
+            <hr>
+            <div class="section">
+                <h2>Systemanforderungen</h2>
+                <p>iOS 17.0 oder neuer. Kompatibel mit iPhone und iPad.</p>
+            </div>
+        </div>
+
+        <!-- FRENCH -->
+        <div id="fr" class="lang-content">
+            <h1>// SUPPORT</h1>
+            <p class="date">Bitwise — Puzzle Logique Binaire</p>
+            <div class="section">
+                <h2>Nous contacter</h2>
+                <p>Une question, un bug ou un retour? Nous serions ravis de vous entendre.</p>
+                <div class="contact-card">
+                    <p>E-mail :</p>
+                    <a href="mailto:aytuncsevren@gmail.com?subject=Bitwise%20Support">aytuncsevren@gmail.com</a>
+                </div>
+                <p>Nous repondons generalement sous 24-48 heures.</p>
+            </div>
+            <hr>
+            <div class="section">
+                <h2>Questions frequentes</h2>
+                <div class="faq-item"><strong>Comment obtenir plus d'indices?</strong><p>Vous commencez chaque jour avec 3 indices gratuits. Vous pouvez aussi acheter des packs ou des indices illimites.</p></div>
+                <div class="faq-item"><strong>Comment restaurer mes achats?</strong><p>Allez dans la boutique et appuyez sur "Restaurer les achats". Assurez-vous d'etre connecte avec le meme identifiant Apple.</p></div>
+                <div class="faq-item"><strong>Qu'est-ce que le puzzle quotidien?</strong><p>Un nouveau puzzle est disponible chaque jour. Tout le monde recoit le meme puzzle.</p></div>
+                <div class="faq-item"><strong>Comment fonctionne la synchronisation iCloud?</strong><p>Activez la synchronisation iCloud dans les parametres pour synchroniser automatiquement votre progression sur tous vos appareils.</p></div>
+                <div class="faq-item"><strong>Puis-je sauvegarder mes donnees?</strong><p>Oui! Dans les parametres, exportez vos donnees en fichier JSON. Vous pourrez les reimporter plus tard.</p></div>
+                <div class="faq-item"><strong>Puis-je jouer hors ligne?</strong><p>Oui! Bitwise fonctionne entierement hors ligne. Internet n'est necessaire que pour les achats, iCloud et les classements.</p></div>
+                <div class="faq-item"><strong>Comment supprimer les publicites?</strong><p>Achetez "Supprimer les pubs" dans la boutique pour un paiement unique.</p></div>
+                <div class="faq-item"><strong>J'ai perdu ma progression. Que faire?</strong><p>Si la synchronisation iCloud etait activee, vos donnees se restaureront automatiquement. Vous pouvez aussi importer une sauvegarde JSON. Les achats peuvent toujours etre restaures.</p></div>
+            </div>
+            <hr>
+            <div class="section">
+                <h2>Configuration requise</h2>
+                <p>iOS 17.0 ou ulterieur. Compatible iPhone et iPad.</p>
+            </div>
+        </div>
+
+        <!-- JAPANESE -->
+        <div id="ja" class="lang-content">
+            <h1>// サポート</h1>
+            <p class="date">Bitwise — バイナリロジックパズル</p>
+            <div class="section">
+                <h2>お問い合わせ</h2>
+                <p>ご質問、バグ報告、フィードバックがありましたらお気軽にどうぞ。</p>
+                <div class="contact-card">
+                    <p>メール:</p>
+                    <a href="mailto:aytuncsevren@gmail.com?subject=Bitwise%20Support">aytuncsevren@gmail.com</a>
+                </div>
+                <p>通常24〜48時間以内にご返信いたします。</p>
+            </div>
+            <hr>
+            <div class="section">
+                <h2>よくある質問</h2>
+                <div class="faq-item"><strong>ヒントをもっと得るには?</strong><p>毎日ヒント残高が3未満の場合、3つの無料ヒントが付与されます。ストアでパックや無制限ヒントも購入できます。</p></div>
+                <div class="faq-item"><strong>購入を復元するには?</strong><p>ストアの「購入を復元」をタップしてください。同じApple IDでサインインしていることを確認してください。</p></div>
+                <div class="faq-item"><strong>デイリーパズルとは?</strong><p>毎日新しいパズルが出題されます。全員同じパズルです。</p></div>
+                <div class="faq-item"><strong>iCloud同期の仕組みは?</strong><p>設定でiCloud同期を有効にすると、すべてのデバイスで進行状況が自動同期されます。</p></div>
+                <div class="faq-item"><strong>データをバックアップできますか?</strong><p>はい!設定からデータをJSONファイルとしてエクスポートできます。後でインポートして復元できます。</p></div>
+                <div class="faq-item"><strong>オフラインでプレイできますか?</strong><p>はい!完全にオフラインで動作します。インターネットは購入、iCloud同期、リーダーボードにのみ必要です。</p></div>
+                <div class="faq-item"><strong>広告を削除するには?</strong><p>ストアで「広告を削除」を一回限りの支払いで購入できます。</p></div>
+                <div class="faq-item"><strong>進行状況が失われました。どうすればいいですか?</strong><p>iCloud同期が有効だった場合、データは自動的に復元されます。設定からJSONバックアップをインポートすることもできます。購入はストアからいつでも復元可能です。</p></div>
+            </div>
+            <hr>
+            <div class="section">
+                <h2>システム要件</h2>
+                <p>iOS 17.0以降。iPhone、iPadに対応。</p>
+            </div>
+        </div>
+
+        <!-- SPANISH -->
+        <div id="es" class="lang-content">
+            <h1>// SOPORTE</h1>
+            <p class="date">Bitwise — Puzzle de Logica Binaria</p>
+            <div class="section">
+                <h2>Contactenos</h2>
+                <p>Tiene alguna pregunta, encontro un error o quiere compartir su opinion?</p>
+                <div class="contact-card">
+                    <p>Correo:</p>
+                    <a href="mailto:aytuncsevren@gmail.com?subject=Bitwise%20Soporte">aytuncsevren@gmail.com</a>
+                </div>
+                <p>Normalmente respondemos en 24-48 horas.</p>
+            </div>
+            <hr>
+            <div class="section">
+                <h2>Preguntas frecuentes</h2>
+                <div class="faq-item"><strong>Como obtengo mas pistas?</strong><p>Comienzas cada dia con 3 pistas gratis. Tambien puedes comprar paquetes o pistas ilimitadas en la tienda.</p></div>
+                <div class="faq-item"><strong>Como restauro mis compras?</strong><p>Ve a la Tienda y toca "Restaurar Compras". Asegurate de usar el mismo Apple ID.</p></div>
+                <div class="faq-item"><strong>Que es el Puzzle Diario?</strong><p>Un nuevo puzzle esta disponible cada dia. Todos reciben el mismo puzzle.</p></div>
+                <div class="faq-item"><strong>Como funciona la sincronizacion iCloud?</strong><p>Activa la sincronizacion iCloud en Ajustes para sincronizar tu progreso automaticamente en todos tus dispositivos.</p></div>
+                <div class="faq-item"><strong>Puedo hacer backup de mis datos?</strong><p>Si! Ve a Ajustes y exporta tus datos como archivo JSON. Puedes importarlo despues para restaurar tu progreso.</p></div>
+                <div class="faq-item"><strong>Puedo jugar sin conexion?</strong><p>Si! Bitwise funciona completamente offline. Internet solo se necesita para compras, iCloud y clasificaciones.</p></div>
+                <div class="faq-item"><strong>Como elimino los anuncios?</strong><p>Compra "Quitar anuncios" en la tienda con un pago unico.</p></div>
+                <div class="faq-item"><strong>Perdi mi progreso. Que hago?</strong><p>Si la sincronizacion iCloud estaba activa, tus datos se restauraran automaticamente. Tambien puedes importar un backup JSON. Las compras siempre se pueden restaurar desde la Tienda.</p></div>
+            </div>
+            <hr>
+            <div class="section">
+                <h2>Requisitos del sistema</h2>
+                <p>iOS 17.0 o posterior. Compatible con iPhone y iPad.</p>
+            </div>
+        </div>
+
+        <!-- KOREAN -->
+        <div id="ko" class="lang-content">
+            <h1>// 지원</h1>
+            <p class="date">Bitwise — 바이너리 로직 퍼즐</p>
+            <div class="section">
+                <h2>문의하기</h2>
+                <p>질문, 버그 신고 또는 피드백이 있으신가요?</p>
+                <div class="contact-card">
+                    <p>이메일:</p>
+                    <a href="mailto:aytuncsevren@gmail.com?subject=Bitwise%20Support">aytuncsevren@gmail.com</a>
+                </div>
+                <p>보통 24~48시간 내에 답변합니다.</p>
+            </div>
+            <hr>
+            <div class="section">
+                <h2>자주 묻는 질문</h2>
+                <div class="faq-item"><strong>힌트를 더 얻으려면?</strong><p>매일 잔액이 3 미만이면 3개의 무료 힌트가 제공됩니다. 스토어에서 팩이나 무제한 힌트를 구매할 수도 있습니다.</p></div>
+                <div class="faq-item"><strong>구매를 복원하려면?</strong><p>스토어에서 "구매 복원"을 탭하세요. 동일한 Apple ID로 로그인되어 있는지 확인하세요.</p></div>
+                <div class="faq-item"><strong>매일 퍼즐이란?</strong><p>매일 새로운 퍼즐이 제공됩니다. 모든 사용자가 같은 퍼즐을 받습니다.</p></div>
+                <div class="faq-item"><strong>iCloud 동기화는 어떻게 작동하나요?</strong><p>설정에서 iCloud 동기화를 활성화하면 모든 기기에서 진행 상황이 자동으로 동기화됩니다.</p></div>
+                <div class="faq-item"><strong>데이터를 백업할 수 있나요?</strong><p>네! 설정에서 데이터를 JSON 파일로 내보낼 수 있습니다. 나중에 가져와서 복원할 수 있습니다.</p></div>
+                <div class="faq-item"><strong>오프라인으로 플레이할 수 있나요?</strong><p>네! 완전히 오프라인으로 작동합니다. 인터넷은 구매, iCloud 동기화, 리더보드에만 필요합니다.</p></div>
+                <div class="faq-item"><strong>광고를 제거하려면?</strong><p>스토어에서 "광고 제거"를 일회성 결제로 구매하세요.</p></div>
+                <div class="faq-item"><strong>진행 상황이 사라졌어요. 어떻게 하나요?</strong><p>iCloud 동기화가 활성화되어 있었다면 데이터가 자동으로 복원됩니다. 설정에서 JSON 백업을 가져올 수도 있습니다. 구매는 스토어에서 항상 복원 가능합니다.</p></div>
+            </div>
+            <hr>
+            <div class="section">
+                <h2>시스템 요구사항</h2>
+                <p>iOS 17.0 이상. iPhone 및 iPad 호환.</p>
+            </div>
+        </div>
+
+        <!-- PORTUGUESE (BRAZIL) -->
+        <div id="pt" class="lang-content">
+            <h1>// SUPORTE</h1>
+            <p class="date">Bitwise — Puzzle Logico Binario</p>
+            <div class="section">
+                <h2>Fale conosco</h2>
+                <p>Tem alguma duvida, encontrou um bug ou quer compartilhar feedback?</p>
+                <div class="contact-card">
+                    <p>E-mail:</p>
+                    <a href="mailto:aytuncsevren@gmail.com?subject=Bitwise%20Suporte">aytuncsevren@gmail.com</a>
+                </div>
+                <p>Normalmente respondemos em 24-48 horas.</p>
+            </div>
+            <hr>
+            <div class="section">
+                <h2>Perguntas frequentes</h2>
+                <div class="faq-item"><strong>Como consigo mais dicas?</strong><p>Voce comeca cada dia com 3 dicas gratis. Tambem pode comprar pacotes ou dicas ilimitadas na loja.</p></div>
+                <div class="faq-item"><strong>Como restauro minhas compras?</strong><p>Va a Loja e toque em "Restaurar Compras". Certifique-se de usar o mesmo Apple ID.</p></div>
+                <div class="faq-item"><strong>O que e o Puzzle Diario?</strong><p>Um novo puzzle esta disponivel todos os dias. Todos recebem o mesmo puzzle.</p></div>
+                <div class="faq-item"><strong>Como funciona a sincronizacao iCloud?</strong><p>Ative a sincronizacao iCloud nas Configuracoes para sincronizar seu progresso automaticamente em todos os dispositivos.</p></div>
+                <div class="faq-item"><strong>Posso fazer backup dos meus dados?</strong><p>Sim! Nas Configuracoes, exporte seus dados como arquivo JSON. Voce pode importar depois para restaurar seu progresso.</p></div>
+                <div class="faq-item"><strong>Posso jogar offline?</strong><p>Sim! Bitwise funciona completamente offline. Internet so e necessario para compras, iCloud e rankings.</p></div>
+                <div class="faq-item"><strong>Como removo os anuncios?</strong><p>Compre "Remover anuncios" na loja com pagamento unico.</p></div>
+                <div class="faq-item"><strong>Perdi meu progresso. O que fazer?</strong><p>Se a sincronizacao iCloud estava ativa, seus dados serao restaurados automaticamente. Voce tambem pode importar um backup JSON. Compras podem sempre ser restauradas pela Loja.</p></div>
+            </div>
+            <hr>
+            <div class="section">
+                <h2>Requisitos do sistema</h2>
+                <p>iOS 17.0 ou posterior. Compativel com iPhone e iPad.</p>
+            </div>
+        </div>
+
+        <!-- CHINESE SIMPLIFIED -->
+        <div id="zh" class="lang-content">
+            <h1>// 支持</h1>
+            <p class="date">Bitwise — 二进制逻辑谜题</p>
+            <div class="section">
+                <h2>联系我们</h2>
+                <p>有问题、发现bug或想分享反馈?</p>
+                <div class="contact-card">
+                    <p>邮箱:</p>
+                    <a href="mailto:aytuncsevren@gmail.com?subject=Bitwise%20Support">aytuncsevren@gmail.com</a>
+                </div>
+                <p>我们通常在24-48小时内回复。</p>
+            </div>
+            <hr>
+            <div class="section">
+                <h2>常见问题</h2>
+                <div class="faq-item"><strong>如何获得更多提示?</strong><p>每天提示余额低于3时会自动补充至3个免费提示。您也可以在商店购买提示包或无限提示。</p></div>
+                <div class="faq-item"><strong>如何恢复购买?</strong><p>前往商店，点击底部的"恢复购买"。请确保使用相同的Apple ID登录。</p></div>
+                <div class="faq-item"><strong>什么是每日谜题?</strong><p>每天都有一个新谜题。所有人收到相同的谜题。</p></div>
+                <div class="faq-item"><strong>iCloud同步如何工作?</strong><p>在设置中启用iCloud同步，您的进度将在所有设备上自动同步。</p></div>
+                <div class="faq-item"><strong>可以备份数据吗?</strong><p>可以!在设置中将数据导出为JSON文件。之后可以导入来恢复进度。</p></div>
+                <div class="faq-item"><strong>可以离线玩吗?</strong><p>可以!Bitwise完全支持离线。只有购买、iCloud同步和排行榜需要网络。</p></div>
+                <div class="faq-item"><strong>如何移除广告?</strong><p>在商店中一次性购买"移除广告"即可。</p></div>
+                <div class="faq-item"><strong>进度丢失了怎么办?</strong><p>如果启用了iCloud同步，数据会自动恢复。您也可以从设置导入JSON备份。购买可随时从商店恢复。</p></div>
+            </div>
+            <hr>
+            <div class="section">
+                <h2>系统要求</h2>
+                <p>iOS 17.0或更高版本。兼容iPhone和iPad。</p>
             </div>
         </div>
     </div>
 
     <script>
+        const langs = ['en','tr','de','fr','ja','es','ko','pt','zh'];
         function showLang(lang) {
-            document.getElementById('en').style.display = lang === 'en' ? 'block' : 'none';
-            document.getElementById('tr').style.display = lang === 'tr' ? 'block' : 'none';
-            document.getElementById('btn-en').className = lang === 'en' ? 'active' : '';
-            document.getElementById('btn-tr').className = lang === 'tr' ? 'active' : '';
+            langs.forEach(function(l) {
+                document.getElementById(l).className = l === lang ? 'lang-content visible' : 'lang-content';
+                document.getElementById('btn-' + l).className = l === lang ? 'active' : '';
+            });
         }
     </script>
 </body>
