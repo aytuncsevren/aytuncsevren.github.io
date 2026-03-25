@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitwise — Binary Logic Puzzle</title>
+    <title>Bitwise - Binary Logic Puzzle Game for iOS</title>
+    <meta name="description" content="Bitwise is a binary logic puzzle game for iOS. Think binary. Solve with logic.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e1a; color: #c8ccd4; line-height: 1.7; }
@@ -40,368 +41,1087 @@
     </style>
 </head>
 <body>
-    <div class="lang-switch">
-        <a id="btn-en" class="active" onclick="showLang('en')">English</a>
-        <a id="btn-tr" onclick="showLang('tr')">Turkce</a>
-        <a id="btn-de" onclick="showLang('de')">Deutsch</a>
-        <a id="btn-fr" onclick="showLang('fr')">Francais</a>
-        <a id="btn-ja" onclick="showLang('ja')">日本語</a>
-        <a id="btn-es" onclick="showLang('es')">Espanol</a>
-        <a id="btn-ko" onclick="showLang('ko')">한국어</a>
-        <a id="btn-pt" onclick="showLang('pt')">Portugues</a>
-        <a id="btn-zh" onclick="showLang('zh')">中文</a>
-    </div>
 
-    <!-- ENGLISH -->
-    <div id="en" class="lang-content visible">
-        <div class="hero">
-            <img src="app-icon.png" alt="Bitwise App Icon" onerror="this.style.display='none'">
-            <h1>BITWISE</h1>
-            <p class="tagline">Think in binary. Solve with logic.</p>
-        </div>
-        <div class="binary-strip">01000010 01001001 01010100 01010111 01001001 01010011 01000101 01000010 01001001 01010100 01010111 01001001 01010011 01000101</div>
-        <div class="features">
-            <h2>// FEATURES</h2>
-            <div class="feature-grid">
-                <div class="feature-card"><div class="icon">🧩</div><h3>3 Difficulty Levels</h3><p>Easy, Medium, Hard — challenge yourself at your own pace.</p></div>
-                <div class="feature-card"><div class="icon">📅</div><h3>Daily Puzzle</h3><p>A fresh challenge every day. Build your streak!</p></div>
-                <div class="feature-card"><div class="icon">💡</div><h3>Smart Hints</h3><p>3 free hints daily. Need more? Grab packs or go unlimited.</p></div>
-                <div class="feature-card"><div class="icon">⚔️</div><h3>Challenge Mode</h3><p>Challenge friends to the same puzzle. Compare times!</p></div>
-                <div class="feature-card"><div class="icon">☁️</div><h3>iCloud Sync</h3><p>Your progress syncs across all your devices automatically.</p></div>
-                <div class="feature-card"><div class="icon">🏆</div><h3>Achievements</h3><p>Unlock achievements and track your statistics.</p></div>
-                <div class="feature-card"><div class="icon">🎨</div><h3>8 Themes</h3><p>Personalize your experience with premium visual styles.</p></div>
-                <div class="feature-card"><div class="icon">✈️</div><h3>Offline Play</h3><p>No internet needed. Play anywhere, anytime.</p></div>
+<nav class="lang-switch">
+    <a id="btn-en" class="active" onclick="showLang('en')">English</a>
+    <a id="btn-tr" onclick="showLang('tr')">T&#252;rk&#231;e</a>
+    <a id="btn-de" onclick="showLang('de')">Deutsch</a>
+    <a id="btn-fr" onclick="showLang('fr')">Fran&#231;ais</a>
+    <a id="btn-ja" onclick="showLang('ja')">&#26085;&#26412;&#35486;</a>
+    <a id="btn-es" onclick="showLang('es')">Espa&#241;ol</a>
+    <a id="btn-ko" onclick="showLang('ko')">&#54620;&#44397;&#50612;</a>
+    <a id="btn-pt" onclick="showLang('pt')">Portugu&#234;s</a>
+    <a id="btn-zh" onclick="showLang('zh')">&#20013;&#25991;</a>
+    <a id="btn-it" onclick="showLang('it')">Italiano</a>
+    <a id="btn-nl" onclick="showLang('nl')">Nederlands</a>
+    <a id="btn-ru" onclick="showLang('ru')">&#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081;</a>
+</nav>
+
+<!-- ==================== ENGLISH ==================== -->
+<div id="en" class="lang-content visible">
+    <section class="hero">
+        <img src="../app-icon.png" alt="Bitwise App Icon">
+        <h1>BITWISE</h1>
+        <p class="tagline">Think binary. Solve with logic.</p>
+    </section>
+
+    <div class="binary-strip">01001010 11010010 00101101 01010011 10010110 01101001 00110100 10101010 01010101 11001100 00110011 10101010 01010101 11001100 00110011 10101010 01010101</div>
+
+    <section class="features">
+        <h2>// FEATURES</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="icon">&#129513;</div>
+                <h3>4 Difficulty Levels</h3>
+                <p>Easy (6&#215;6), Medium (6&#215;6), Hard (6&#215;6), Extreme (8&#215;8) &#8212; challenge yourself at your own pace.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128197;</div>
+                <h3>Daily Puzzle</h3>
+                <p>A fresh challenge every day. Build your streak!</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128161;</div>
+                <h3>Smart Hints</h3>
+                <p>3 free hints daily. Need more? Grab packs or go unlimited with Bitwise Pro.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9876;&#65039;</div>
+                <h3>Challenge Mode</h3>
+                <p>Challenge friends to the same puzzle. Compare times!</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9989;</div>
+                <h3>Check Mistakes</h3>
+                <p>Instantly see if your moves are correct.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9729;&#65039;</div>
+                <h3>iCloud Sync</h3>
+                <p>Your progress syncs across all your devices automatically.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127941;</div>
+                <h3>Leaderboards</h3>
+                <p>Compete globally with Game Center leaderboards.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127942;</div>
+                <h3>Achievements</h3>
+                <p>Unlock achievements and track your statistics.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127912;</div>
+                <h3>8 Themes</h3>
+                <p>Personalize your experience with premium visual styles.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9992;&#65039;</div>
+                <h3>Offline Play</h3>
+                <p>No internet needed. Play anywhere, anytime.</p>
             </div>
         </div>
-        <div class="rules">
-            <h2>// RULES</h2>
-            <ul class="rule-list">
-                <li><span>01</span> Each cell must be 0 or 1</li>
-                <li><span>02</span> No more than two consecutive same digits</li>
-                <li><span>03</span> Equal number of 0s and 1s in each row/column</li>
-                <li><span>04</span> No two rows or columns can be identical</li>
-            </ul>
-        </div>
-        <div class="cta"><h2>Sharpen your logic.</h2><p>One bit at a time.</p></div>
-        <footer>
-            <a href="privacy-policy.html">Privacy Policy</a>
-            <a href="support.html">Support</a>
-            <p>&copy; 2026 Aytunc Sevren. All rights reserved.</p>
-        </footer>
-    </div>
+    </section>
 
-    <!-- TURKISH -->
-    <div id="tr" class="lang-content">
-        <div class="hero">
-            <img src="app-icon.png" alt="Bitwise App Icon" onerror="this.style.display='none'">
-            <h1>BITWISE</h1>
-            <p class="tagline">Ikilik dusun. Mantikla coz.</p>
-        </div>
-        <div class="binary-strip">01000010 01001001 01010100 01010111 01001001 01010011 01000101 01000010 01001001 01010100 01010111 01001001 01010011 01000101</div>
-        <div class="features">
-            <h2>// OZELLIKLER</h2>
-            <div class="feature-grid">
-                <div class="feature-card"><div class="icon">🧩</div><h3>3 Zorluk Seviyesi</h3><p>Kolay, Orta, Zor — kendi hizinda kendine meydan oku.</p></div>
-                <div class="feature-card"><div class="icon">📅</div><h3>Gunluk Bulmaca</h3><p>Her gun yeni bir meydan okuma. Serini olustur!</p></div>
-                <div class="feature-card"><div class="icon">💡</div><h3>Akilli Ipuclari</h3><p>Her gun 3 ucretsiz ipucu. Daha fazlasi icin magazayi ziyaret et.</p></div>
-                <div class="feature-card"><div class="icon">⚔️</div><h3>Meydan Okuma</h3><p>Arkadaslarini ayni bulmacayi cozmeye davet et. Sureleri karsilastir!</p></div>
-                <div class="feature-card"><div class="icon">☁️</div><h3>iCloud Senkronizasyon</h3><p>Ilerlemeniz tum cihazlarinizda otomatik senkronize edilir.</p></div>
-                <div class="feature-card"><div class="icon">🏆</div><h3>Basarimlar</h3><p>Basarimlarin kilidini ac ve istatistiklerini takip et.</p></div>
-                <div class="feature-card"><div class="icon">🎨</div><h3>8 Tema</h3><p>Premium temalarla deneyimini kisisellistir.</p></div>
-                <div class="feature-card"><div class="icon">✈️</div><h3>Cevrimdisi Oyun</h3><p>Internet gerekmez. Her yerde, her zaman oyna.</p></div>
+    <section class="rules">
+        <h2>// RULES</h2>
+        <ul class="rule-list">
+            <li><span>01</span> Each cell must be 0 or 1</li>
+            <li><span>02</span> No more than two consecutive same digits</li>
+            <li><span>03</span> Equal number of 0s and 1s in each row/column</li>
+            <li><span>04</span> No two rows or columns can be identical</li>
+        </ul>
+    </section>
+
+    <section class="cta">
+        <h2>Sharpen your logic.</h2>
+        <p>One bit at a time.</p>
+    </section>
+
+    <footer>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="support.html">Support</a>
+        <p>&#169; 2026 Aytunc Sevren. All rights reserved.</p>
+    </footer>
+</div>
+
+<!-- ==================== TURKISH ==================== -->
+<div id="tr" class="lang-content">
+    <section class="hero">
+        <img src="../app-icon.png" alt="Bitwise Uygulama Simgesi">
+        <h1>BITWISE</h1>
+        <p class="tagline">&#304;kilik d&#252;&#351;&#252;n. Mant&#305;kla &#231;&#246;z.</p>
+    </section>
+
+    <div class="binary-strip">01001010 11010010 00101101 01010011 10010110 01101001 00110100 10101010 01010101 11001100 00110011 10101010 01010101 11001100 00110011 10101010 01010101</div>
+
+    <section class="features">
+        <h2>// &#214;ZELL&#304;KLER</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="icon">&#129513;</div>
+                <h3>4 Zorluk Seviyesi</h3>
+                <p>Kolay (6&#215;6), Orta (6&#215;6), Zor (6&#215;6), Ekstrem (8&#215;8) &#8212; kendi h&#305;z&#305;nda kendini zorla.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128197;</div>
+                <h3>G&#252;nl&#252;k Bulmaca</h3>
+                <p>Her g&#252;n yeni bir meydan okuma. Serini olu&#351;tur!</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128161;</div>
+                <h3>Ak&#305;ll&#305; &#304;pu&#231;lar&#305;</h3>
+                <p>Her g&#252;n 3 &#252;cretsiz ipucu. Daha fazlas&#305; i&#231;in paket al veya Bitwise Pro ile s&#305;n&#305;rs&#305;z kullan.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9876;&#65039;</div>
+                <h3>Meydan Okuma Modu</h3>
+                <p>Arkada&#351;lar&#305;n&#305; ayn&#305; bulmacay&#305; &#231;&#246;zmeye davet et. S&#252;releri kar&#351;&#305;la&#351;t&#305;r!</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9989;</div>
+                <h3>Hata Kontrol&#252;</h3>
+                <p>Hamlelerinin do&#287;ru olup olmad&#305;&#287;&#305;n&#305; an&#305;nda g&#246;r.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9729;&#65039;</div>
+                <h3>iCloud Senkronizasyon</h3>
+                <p>&#304;lerlemeniz t&#252;m cihazlar&#305;n&#305;zda otomatik senkronize edilir.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127941;</div>
+                <h3>Liderlik Tablolar&#305;</h3>
+                <p>Game Center ile d&#252;nya genelinde yar&#305;&#351;.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127942;</div>
+                <h3>Ba&#351;ar&#305;mlar</h3>
+                <p>Ba&#351;ar&#305;mlar&#305;n kilidini a&#231; ve istatistiklerini takip et.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127912;</div>
+                <h3>8 Tema</h3>
+                <p>Premium temalarla deneyimini ki&#351;iselle&#351;tir.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9992;&#65039;</div>
+                <h3>&#199;evrimd&#305;&#351;&#305; Oyun</h3>
+                <p>&#304;nternet gerekmez. Her yerde, her zaman oyna.</p>
             </div>
         </div>
-        <div class="rules">
-            <h2>// KURALLAR</h2>
-            <ul class="rule-list">
-                <li><span>01</span> Her hucre 0 veya 1 olmali</li>
-                <li><span>02</span> Ikiden fazla ardisik ayni rakam olamaz</li>
-                <li><span>03</span> Her satir ve sutunda esit sayida 0 ve 1</li>
-                <li><span>04</span> Hicbir iki satir veya sutun ayni olamaz</li>
-            </ul>
-        </div>
-        <div class="cta"><h2>Mantigini keskinlestir.</h2><p>Her seferinde bir bit.</p></div>
-        <footer>
-            <a href="privacy-policy.html">Gizlilik Politikasi</a>
-            <a href="support.html">Destek</a>
-            <p>&copy; 2026 Aytunc Sevren. Tum haklari saklidir.</p>
-        </footer>
-    </div>
+    </section>
 
-    <!-- GERMAN -->
-    <div id="de" class="lang-content">
-        <div class="hero">
-            <img src="app-icon.png" alt="Bitwise App Icon" onerror="this.style.display='none'">
-            <h1>BITWISE</h1>
-            <p class="tagline">Denke binar. Lose mit Logik.</p>
-        </div>
-        <div class="binary-strip">01000010 01001001 01010100 01010111 01001001 01010011 01000101 01000010 01001001 01010100 01010111 01001001 01010011 01000101</div>
-        <div class="features">
-            <h2>// FUNKTIONEN</h2>
-            <div class="feature-grid">
-                <div class="feature-card"><div class="icon">🧩</div><h3>3 Schwierigkeitsstufen</h3><p>Leicht, Mittel, Schwer — fordere dich in deinem eigenen Tempo.</p></div>
-                <div class="feature-card"><div class="icon">📅</div><h3>Tagliches Ratsel</h3><p>Jeden Tag eine neue Herausforderung. Baue deine Serie!</p></div>
-                <div class="feature-card"><div class="icon">💡</div><h3>Smarte Hinweise</h3><p>Taglich 3 kostenlose Hinweise. Mehr gefallig? Hole dir Pakete.</p></div>
-                <div class="feature-card"><div class="icon">⚔️</div><h3>Herausforderungsmodus</h3><p>Fordere Freunde zum gleichen Ratsel heraus. Vergleiche Zeiten!</p></div>
-                <div class="feature-card"><div class="icon">☁️</div><h3>iCloud-Synchronisierung</h3><p>Dein Fortschritt wird automatisch auf all deinen Geraten synchronisiert.</p></div>
-                <div class="feature-card"><div class="icon">🏆</div><h3>Erfolge</h3><p>Schalte Erfolge frei und verfolge deine Statistiken.</p></div>
-                <div class="feature-card"><div class="icon">🎨</div><h3>8 Themen</h3><p>Personalisiere dein Erlebnis mit Premium-Designs.</p></div>
-                <div class="feature-card"><div class="icon">✈️</div><h3>Offline spielen</h3><p>Kein Internet noetig. Spiele ueberall und jederzeit.</p></div>
+    <section class="rules">
+        <h2>// KURALLAR</h2>
+        <ul class="rule-list">
+            <li><span>01</span> Her h&#252;cre 0 veya 1 olmal&#305;</li>
+            <li><span>02</span> &#304;kiden fazla ard&#305;&#351;&#305;k ayn&#305; rakam olamaz</li>
+            <li><span>03</span> Her sat&#305;r ve s&#252;tunda e&#351;it say&#305;da 0 ve 1</li>
+            <li><span>04</span> Hi&#231;bir iki sat&#305;r veya s&#252;tun ayn&#305; olamaz</li>
+        </ul>
+    </section>
+
+    <section class="cta">
+        <h2>Mant&#305;&#287;&#305;n&#305; keskinle&#351;tir.</h2>
+        <p>Her seferinde bir bit.</p>
+    </section>
+
+    <footer>
+        <a href="privacy-policy.html">Gizlilik Politikas&#305;</a>
+        <a href="support.html">Destek</a>
+        <p>&#169; 2026 Aytun&#231; Sevren. T&#252;m haklar&#305; sakl&#305;d&#305;r.</p>
+    </footer>
+</div>
+
+<!-- ==================== GERMAN ==================== -->
+<div id="de" class="lang-content">
+    <section class="hero">
+        <img src="../app-icon.png" alt="Bitwise App-Symbol">
+        <h1>BITWISE</h1>
+        <p class="tagline">Denke bin&#228;r. L&#246;se mit Logik.</p>
+    </section>
+
+    <div class="binary-strip">01001010 11010010 00101101 01010011 10010110 01101001 00110100 10101010 01010101 11001100 00110011 10101010 01010101 11001100 00110011 10101010 01010101</div>
+
+    <section class="features">
+        <h2>// FUNKTIONEN</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="icon">&#129513;</div>
+                <h3>4 Schwierigkeitsstufen</h3>
+                <p>Einfach (6&#215;6), Mittel (6&#215;6), Schwer (6&#215;6), Extrem (8&#215;8) &#8212; fordere dich in deinem eigenen Tempo heraus.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128197;</div>
+                <h3>T&#228;gliches R&#228;tsel</h3>
+                <p>Jeden Tag eine neue Herausforderung. Baue deine Serie auf!</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128161;</div>
+                <h3>Smarte Hinweise</h3>
+                <p>3 kostenlose Hinweise t&#228;glich. Mehr ben&#246;tigt? Pakete kaufen oder unbegrenzt mit Bitwise Pro.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9876;&#65039;</div>
+                <h3>Herausforderungsmodus</h3>
+                <p>Fordere Freunde zum gleichen R&#228;tsel heraus. Vergleiche Zeiten!</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9989;</div>
+                <h3>Fehlerpr&#252;fung</h3>
+                <p>Sieh sofort, ob deine Z&#252;ge korrekt sind.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9729;&#65039;</div>
+                <h3>iCloud-Synchronisierung</h3>
+                <p>Dein Fortschritt wird automatisch auf allen Ger&#228;ten synchronisiert.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127941;</div>
+                <h3>Bestenlisten</h3>
+                <p>Tritt weltweit mit Game Center Bestenlisten an.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127942;</div>
+                <h3>Erfolge</h3>
+                <p>Schalte Erfolge frei und verfolge deine Statistiken.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127912;</div>
+                <h3>8 Themen</h3>
+                <p>Personalisiere dein Erlebnis mit Premium-Designs.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9992;&#65039;</div>
+                <h3>Offline spielen</h3>
+                <p>Kein Internet n&#246;tig. Spiele &#252;berall und jederzeit.</p>
             </div>
         </div>
-        <div class="rules">
-            <h2>// REGELN</h2>
-            <ul class="rule-list">
-                <li><span>01</span> Jede Zelle muss 0 oder 1 sein</li>
-                <li><span>02</span> Nicht mehr als zwei aufeinanderfolgende gleiche Ziffern</li>
-                <li><span>03</span> Gleiche Anzahl von 0en und 1en in jeder Zeile/Spalte</li>
-                <li><span>04</span> Keine zwei Zeilen oder Spalten duerfen identisch sein</li>
-            </ul>
-        </div>
-        <div class="cta"><h2>Scharfe deine Logik.</h2><p>Ein Bit nach dem anderen.</p></div>
-        <footer>
-            <a href="privacy-policy.html">Datenschutz</a>
-            <a href="support.html">Support</a>
-            <p>&copy; 2026 Aytunc Sevren. Alle Rechte vorbehalten.</p>
-        </footer>
-    </div>
+    </section>
 
-    <!-- FRENCH -->
-    <div id="fr" class="lang-content">
-        <div class="hero">
-            <img src="app-icon.png" alt="Bitwise App Icon" onerror="this.style.display='none'">
-            <h1>BITWISE</h1>
-            <p class="tagline">Pensez en binaire. Resolvez avec logique.</p>
-        </div>
-        <div class="binary-strip">01000010 01001001 01010100 01010111 01001001 01010011 01000101 01000010 01001001 01010100 01010111 01001001 01010011 01000101</div>
-        <div class="features">
-            <h2>// FONCTIONNALITES</h2>
-            <div class="feature-grid">
-                <div class="feature-card"><div class="icon">🧩</div><h3>3 Niveaux de difficulte</h3><p>Facile, Moyen, Difficile — defiez-vous a votre rythme.</p></div>
-                <div class="feature-card"><div class="icon">📅</div><h3>Puzzle quotidien</h3><p>Un nouveau defi chaque jour. Construisez votre serie!</p></div>
-                <div class="feature-card"><div class="icon">💡</div><h3>Indices intelligents</h3><p>3 indices gratuits par jour. Besoin de plus? Achetez des packs.</p></div>
-                <div class="feature-card"><div class="icon">⚔️</div><h3>Mode Defi</h3><p>Defiez vos amis sur le meme puzzle. Comparez les temps!</p></div>
-                <div class="feature-card"><div class="icon">☁️</div><h3>Synchronisation iCloud</h3><p>Votre progression se synchronise automatiquement sur tous vos appareils.</p></div>
-                <div class="feature-card"><div class="icon">🏆</div><h3>Succes</h3><p>Debloquez des succes et suivez vos statistiques.</p></div>
-                <div class="feature-card"><div class="icon">🎨</div><h3>8 Themes</h3><p>Personnalisez votre experience avec des styles premium.</p></div>
-                <div class="feature-card"><div class="icon">✈️</div><h3>Jeu hors ligne</h3><p>Pas besoin d'internet. Jouez partout, a tout moment.</p></div>
+    <section class="rules">
+        <h2>// REGELN</h2>
+        <ul class="rule-list">
+            <li><span>01</span> Jede Zelle muss 0 oder 1 sein</li>
+            <li><span>02</span> Nicht mehr als zwei aufeinanderfolgende gleiche Ziffern</li>
+            <li><span>03</span> Gleiche Anzahl von 0en und 1en in jeder Zeile/Spalte</li>
+            <li><span>04</span> Keine zwei Zeilen oder Spalten d&#252;rfen identisch sein</li>
+        </ul>
+    </section>
+
+    <section class="cta">
+        <h2>Sch&#228;rfe deine Logik.</h2>
+        <p>Ein Bit nach dem anderen.</p>
+    </section>
+
+    <footer>
+        <a href="privacy-policy.html">Datenschutzrichtlinie</a>
+        <a href="support.html">Support</a>
+        <p>&#169; 2026 Aytunc Sevren. Alle Rechte vorbehalten.</p>
+    </footer>
+</div>
+
+<!-- ==================== FRENCH ==================== -->
+<div id="fr" class="lang-content">
+    <section class="hero">
+        <img src="../app-icon.png" alt="Ic&#244;ne Bitwise">
+        <h1>BITWISE</h1>
+        <p class="tagline">Pensez en binaire. R&#233;solvez avec logique.</p>
+    </section>
+
+    <div class="binary-strip">01001010 11010010 00101101 01010011 10010110 01101001 00110100 10101010 01010101 11001100 00110011 10101010 01010101 11001100 00110011 10101010 01010101</div>
+
+    <section class="features">
+        <h2>// FONCTIONNALIT&#201;S</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="icon">&#129513;</div>
+                <h3>4 Niveaux de difficult&#233;</h3>
+                <p>Facile (6&#215;6), Moyen (6&#215;6), Difficile (6&#215;6), Extr&#234;me (8&#215;8) &#8212; relevez le d&#233;fi &#224; votre rythme.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128197;</div>
+                <h3>Puzzle quotidien</h3>
+                <p>Un nouveau d&#233;fi chaque jour. Construisez votre s&#233;rie !</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128161;</div>
+                <h3>Indices intelligents</h3>
+                <p>3 indices gratuits par jour. Besoin de plus ? Achetez des packs ou passez en illimit&#233; avec Bitwise Pro.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9876;&#65039;</div>
+                <h3>Mode D&#233;fi</h3>
+                <p>D&#233;fiez vos amis sur le m&#234;me puzzle. Comparez les temps !</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9989;</div>
+                <h3>V&#233;rification d&#8217;erreurs</h3>
+                <p>Voyez instantan&#233;ment si vos coups sont corrects.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9729;&#65039;</div>
+                <h3>Synchronisation iCloud</h3>
+                <p>Votre progression se synchronise automatiquement sur tous vos appareils.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127941;</div>
+                <h3>Classements</h3>
+                <p>Affrontez le monde entier avec les classements Game Center.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127942;</div>
+                <h3>Succ&#232;s</h3>
+                <p>D&#233;bloquez des succ&#232;s et suivez vos statistiques.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127912;</div>
+                <h3>8 Th&#232;mes</h3>
+                <p>Personnalisez votre exp&#233;rience avec des styles visuels premium.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9992;&#65039;</div>
+                <h3>Jeu hors ligne</h3>
+                <p>Pas besoin d&#8217;internet. Jouez partout, &#224; tout moment.</p>
             </div>
         </div>
-        <div class="rules">
-            <h2>// REGLES</h2>
-            <ul class="rule-list">
-                <li><span>01</span> Chaque cellule doit etre 0 ou 1</li>
-                <li><span>02</span> Pas plus de deux chiffres identiques consecutifs</li>
-                <li><span>03</span> Nombre egal de 0 et de 1 dans chaque ligne/colonne</li>
-                <li><span>04</span> Aucune ligne ou colonne ne peut etre identique</li>
-            </ul>
-        </div>
-        <div class="cta"><h2>Aiguisez votre logique.</h2><p>Un bit a la fois.</p></div>
-        <footer>
-            <a href="privacy-policy.html">Politique de confidentialite</a>
-            <a href="support.html">Support</a>
-            <p>&copy; 2026 Aytunc Sevren. Tous droits reserves.</p>
-        </footer>
-    </div>
+    </section>
 
-    <!-- JAPANESE -->
-    <div id="ja" class="lang-content">
-        <div class="hero">
-            <img src="app-icon.png" alt="Bitwise App Icon" onerror="this.style.display='none'">
-            <h1>BITWISE</h1>
-            <p class="tagline">バイナリで考える。ロジックで解く。</p>
-        </div>
-        <div class="binary-strip">01000010 01001001 01010100 01010111 01001001 01010011 01000101 01000010 01001001 01010100 01010111 01001001 01010011 01000101</div>
-        <div class="features">
-            <h2>// 機能</h2>
-            <div class="feature-grid">
-                <div class="feature-card"><div class="icon">🧩</div><h3>3つの難易度</h3><p>簡単、普通、難しい — 自分のペースで挑戦しよう。</p></div>
-                <div class="feature-card"><div class="icon">📅</div><h3>デイリーパズル</h3><p>毎日新しいチャレンジ。連続記録を作ろう!</p></div>
-                <div class="feature-card"><div class="icon">💡</div><h3>スマートヒント</h3><p>毎日3つの無料ヒント。もっと必要?パックを購入しよう。</p></div>
-                <div class="feature-card"><div class="icon">⚔️</div><h3>チャレンジモード</h3><p>友達に同じパズルを挑戦!タイムを比較しよう!</p></div>
-                <div class="feature-card"><div class="icon">☁️</div><h3>iCloud同期</h3><p>すべてのデバイス間で進行状況が自動同期されます。</p></div>
-                <div class="feature-card"><div class="icon">🏆</div><h3>実績</h3><p>実績をアンロックし、統計を追跡しよう。</p></div>
-                <div class="feature-card"><div class="icon">🎨</div><h3>8つのテーマ</h3><p>プレミアムスタイルで体験をカスタマイズ。</p></div>
-                <div class="feature-card"><div class="icon">✈️</div><h3>オフラインプレイ</h3><p>インターネット不要。いつでもどこでもプレイ。</p></div>
+    <section class="rules">
+        <h2>// R&#200;GLES</h2>
+        <ul class="rule-list">
+            <li><span>01</span> Chaque cellule doit &#234;tre 0 ou 1</li>
+            <li><span>02</span> Pas plus de deux chiffres cons&#233;cutifs identiques</li>
+            <li><span>03</span> Nombre &#233;gal de 0 et de 1 dans chaque ligne/colonne</li>
+            <li><span>04</span> Aucune ligne ou colonne ne peut &#234;tre identique</li>
+        </ul>
+    </section>
+
+    <section class="cta">
+        <h2>Aiguisez votre logique.</h2>
+        <p>Un bit &#224; la fois.</p>
+    </section>
+
+    <footer>
+        <a href="privacy-policy.html">Politique de confidentialit&#233;</a>
+        <a href="support.html">Assistance</a>
+        <p>&#169; 2026 Aytunc Sevren. Tous droits r&#233;serv&#233;s.</p>
+    </footer>
+</div>
+
+<!-- ==================== JAPANESE ==================== -->
+<div id="ja" class="lang-content">
+    <section class="hero">
+        <img src="../app-icon.png" alt="Bitwise&#12450;&#12503;&#12522;&#12450;&#12452;&#12467;&#12531;">
+        <h1>BITWISE</h1>
+        <p class="tagline">&#12496;&#12452;&#12490;&#12522;&#12540;&#12391;&#32771;&#12360;&#12427;&#12290;&#35542;&#29702;&#12391;&#35299;&#12367;&#12290;</p>
+    </section>
+
+    <div class="binary-strip">01001010 11010010 00101101 01010011 10010110 01101001 00110100 10101010 01010101 11001100 00110011 10101010 01010101 11001100 00110011 10101010 01010101</div>
+
+    <section class="features">
+        <h2>// &#27231;&#33021;</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="icon">&#129513;</div>
+                <h3>4&#12388;&#12398;&#38627;&#26131;&#24230;</h3>
+                <p>&#12452;&#12540;&#12472;&#12540; (6&#215;6)&#12289;&#12511;&#12487;&#12451;&#12450;&#12512; (6&#215;6)&#12289;&#12495;&#12540;&#12489; (6&#215;6)&#12289;&#12456;&#12463;&#12473;&#12488;&#12522;&#12540;&#12512; (8&#215;8) &#8212; &#33258;&#20998;&#12398;&#12506;&#12540;&#12473;&#12391;&#25361;&#25126;&#12375;&#12424;&#12358;&#12290;</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128197;</div>
+                <h3>&#12487;&#12452;&#12522;&#12540;&#12497;&#12474;&#12523;</h3>
+                <p>&#27598;&#26085;&#26032;&#12375;&#12356;&#12481;&#12515;&#12524;&#12531;&#12472;&#12290;&#36899;&#32154;&#35352;&#37682;&#12434;&#20316;&#12429;&#12358;&#65281;</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128161;</div>
+                <h3>&#12473;&#12510;&#12540;&#12488;&#12498;&#12531;&#12488;</h3>
+                <p>&#27598;&#26085;3&#12388;&#12398;&#28961;&#26009;&#12498;&#12531;&#12488;&#12290;&#12418;&#12387;&#12392;&#24517;&#35201;&#65311;&#12497;&#12483;&#12463;&#12434;&#36092;&#20837;&#12377;&#12427;&#12363;&#12289;Bitwise Pro&#12391;&#28961;&#21046;&#38480;&#12395;&#12290;</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9876;&#65039;</div>
+                <h3>&#12481;&#12515;&#12524;&#12531;&#12472;&#12514;&#12540;&#12489;</h3>
+                <p>&#21451;&#36948;&#12434;&#21516;&#12376;&#12497;&#12474;&#12523;&#12395;&#25361;&#25126;&#12373;&#12379;&#12424;&#12358;&#12290;&#12479;&#12452;&#12512;&#12434;&#27604;&#36611;&#65281;</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9989;</div>
+                <h3>&#12511;&#12473;&#12481;&#12455;&#12483;&#12463;</h3>
+                <p>&#12354;&#12394;&#12383;&#12398;&#25163;&#12364;&#27491;&#12375;&#12356;&#12363;&#30636;&#26178;&#12395;&#30906;&#35469;&#12290;</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9729;&#65039;</div>
+                <h3>iCloud&#21516;&#26399;</h3>
+                <p>&#36914;&#34892;&#29366;&#27841;&#12364;&#12377;&#12409;&#12390;&#12398;&#12487;&#12496;&#12452;&#12473;&#12391;&#33258;&#21205;&#21516;&#26399;&#12290;</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127941;</div>
+                <h3>&#12522;&#12540;&#12480;&#12540;&#12508;&#12540;&#12489;</h3>
+                <p>Game Center&#12398;&#12522;&#12540;&#12480;&#12540;&#12508;&#12540;&#12489;&#12391;&#19990;&#30028;&#20013;&#12392;&#31478;&#20105;&#12290;</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127942;</div>
+                <h3>&#23455;&#32318;</h3>
+                <p>&#23455;&#32318;&#12434;&#12450;&#12531;&#12525;&#12483;&#12463;&#12375;&#12289;&#32113;&#35336;&#12434;&#36861;&#36321;&#12375;&#12424;&#12358;&#12290;</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127912;</div>
+                <h3>8&#12388;&#12398;&#12486;&#12540;&#12510;</h3>
+                <p>&#12503;&#12524;&#12511;&#12450;&#12512;&#12394;&#12499;&#12472;&#12517;&#12450;&#12523;&#12473;&#12479;&#12452;&#12523;&#12391;&#20307;&#39443;&#12434;&#12459;&#12473;&#12479;&#12510;&#12452;&#12474;&#12290;</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9992;&#65039;</div>
+                <h3>&#12458;&#12501;&#12521;&#12452;&#12531;&#12503;&#12524;&#12452;</h3>
+                <p>&#12452;&#12531;&#12479;&#12540;&#12493;&#12483;&#12488;&#19981;&#35201;&#12290;&#12356;&#12388;&#12391;&#12418;&#12289;&#12393;&#12371;&#12391;&#12418;&#12503;&#12524;&#12452;&#12290;</p>
             </div>
         </div>
-        <div class="rules">
-            <h2>// ルール</h2>
-            <ul class="rule-list">
-                <li><span>01</span> 各セルは0または1</li>
-                <li><span>02</span> 同じ数字が3つ以上連続してはいけない</li>
-                <li><span>03</span> 各行と列に0と1が同数</li>
-                <li><span>04</span> 同じ行や列は2つ存在できない</li>
-            </ul>
-        </div>
-        <div class="cta"><h2>ロジックを磨こう。</h2><p>1ビットずつ。</p></div>
-        <footer>
-            <a href="privacy-policy.html">プライバシーポリシー</a>
-            <a href="support.html">サポート</a>
-            <p>&copy; 2026 Aytunc Sevren. All rights reserved.</p>
-        </footer>
-    </div>
+    </section>
 
-    <!-- SPANISH -->
-    <div id="es" class="lang-content">
-        <div class="hero">
-            <img src="app-icon.png" alt="Bitwise App Icon" onerror="this.style.display='none'">
-            <h1>BITWISE</h1>
-            <p class="tagline">Piensa en binario. Resuelve con logica.</p>
-        </div>
-        <div class="binary-strip">01000010 01001001 01010100 01010111 01001001 01010011 01000101 01000010 01001001 01010100 01010111 01001001 01010011 01000101</div>
-        <div class="features">
-            <h2>// CARACTERISTICAS</h2>
-            <div class="feature-grid">
-                <div class="feature-card"><div class="icon">🧩</div><h3>3 Niveles de dificultad</h3><p>Facil, Medio, Dificil — desafiate a tu propio ritmo.</p></div>
-                <div class="feature-card"><div class="icon">📅</div><h3>Puzzle Diario</h3><p>Un nuevo desafio cada dia. Construye tu racha!</p></div>
-                <div class="feature-card"><div class="icon">💡</div><h3>Pistas inteligentes</h3><p>3 pistas gratis al dia. Necesitas mas? Compra paquetes.</p></div>
-                <div class="feature-card"><div class="icon">⚔️</div><h3>Modo Desafio</h3><p>Desafia a tus amigos al mismo puzzle. Compara tiempos!</p></div>
-                <div class="feature-card"><div class="icon">☁️</div><h3>Sincronizacion iCloud</h3><p>Tu progreso se sincroniza automaticamente en todos tus dispositivos.</p></div>
-                <div class="feature-card"><div class="icon">🏆</div><h3>Logros</h3><p>Desbloquea logros y sigue tus estadisticas.</p></div>
-                <div class="feature-card"><div class="icon">🎨</div><h3>8 Temas</h3><p>Personaliza tu experiencia con estilos visuales premium.</p></div>
-                <div class="feature-card"><div class="icon">✈️</div><h3>Juego sin conexion</h3><p>Sin internet necesario. Juega en cualquier lugar y momento.</p></div>
+    <section class="rules">
+        <h2>// &#12523;&#12540;&#12523;</h2>
+        <ul class="rule-list">
+            <li><span>01</span> &#21508;&#12475;&#12523;&#12399;0&#12414;&#12383;&#12399;1</li>
+            <li><span>02</span> &#21516;&#12376;&#25968;&#23383;&#12399;2&#12388;&#12414;&#12391;&#36899;&#32154;</li>
+            <li><span>03</span> &#21508;&#34892;&#12539;&#21015;&#12395;0&#12392;1&#12364;&#21516;&#25968;</li>
+            <li><span>04</span> &#21516;&#12376;&#34892;&#12420;&#21015;&#12399;&#19981;&#21487;</li>
+        </ul>
+    </section>
+
+    <section class="cta">
+        <h2>&#35542;&#29702;&#12434;&#30740;&#12366;&#28548;&#12414;&#12379;&#12290;</h2>
+        <p>&#19968;&#24230;&#12395;1&#12499;&#12483;&#12488;&#12378;&#12388;&#12290;</p>
+    </section>
+
+    <footer>
+        <a href="privacy-policy.html">&#12503;&#12521;&#12452;&#12496;&#12471;&#12540;&#12509;&#12522;&#12471;&#12540;</a>
+        <a href="support.html">&#12469;&#12509;&#12540;&#12488;</a>
+        <p>&#169; 2026 Aytunc Sevren. All rights reserved.</p>
+    </footer>
+</div>
+
+<!-- ==================== SPANISH ==================== -->
+<div id="es" class="lang-content">
+    <section class="hero">
+        <img src="../app-icon.png" alt="Icono de Bitwise">
+        <h1>BITWISE</h1>
+        <p class="tagline">Piensa en binario. Resuelve con l&#243;gica.</p>
+    </section>
+
+    <div class="binary-strip">01001010 11010010 00101101 01010011 10010110 01101001 00110100 10101010 01010101 11001100 00110011 10101010 01010101 11001100 00110011 10101010 01010101</div>
+
+    <section class="features">
+        <h2>// CARACTER&#205;STICAS</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="icon">&#129513;</div>
+                <h3>4 Niveles de dificultad</h3>
+                <p>F&#225;cil (6&#215;6), Medio (6&#215;6), Dif&#237;cil (6&#215;6), Extremo (8&#215;8) &#8212; des&#225;f&#237;ate a tu propio ritmo.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128197;</div>
+                <h3>Puzzle Diario</h3>
+                <p>Un nuevo desaf&#237;o cada d&#237;a. &#161;Construye tu racha!</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128161;</div>
+                <h3>Pistas inteligentes</h3>
+                <p>3 pistas gratuitas al d&#237;a. &#191;Necesitas m&#225;s? Compra paquetes o hazlo ilimitado con Bitwise Pro.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9876;&#65039;</div>
+                <h3>Modo Desaf&#237;o</h3>
+                <p>Desaf&#237;a a tus amigos al mismo puzzle. &#161;Compara tiempos!</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9989;</div>
+                <h3>Verificar errores</h3>
+                <p>Ve instant&#225;neamente si tus movimientos son correctos.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9729;&#65039;</div>
+                <h3>Sincronizaci&#243;n iCloud</h3>
+                <p>Tu progreso se sincroniza autom&#225;ticamente en todos tus dispositivos.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127941;</div>
+                <h3>Clasificaciones</h3>
+                <p>Compite globalmente con las clasificaciones de Game Center.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127942;</div>
+                <h3>Logros</h3>
+                <p>Desbloquea logros y sigue tus estad&#237;sticas.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127912;</div>
+                <h3>8 Temas</h3>
+                <p>Personaliza tu experiencia con estilos visuales premium.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9992;&#65039;</div>
+                <h3>Juego sin conexi&#243;n</h3>
+                <p>Sin internet necesario. Juega donde quieras, cuando quieras.</p>
             </div>
         </div>
-        <div class="rules">
-            <h2>// REGLAS</h2>
-            <ul class="rule-list">
-                <li><span>01</span> Cada celda debe ser 0 o 1</li>
-                <li><span>02</span> No mas de dos digitos consecutivos iguales</li>
-                <li><span>03</span> Igual numero de 0s y 1s en cada fila/columna</li>
-                <li><span>04</span> Ninguna fila o columna puede ser identica</li>
-            </ul>
-        </div>
-        <div class="cta"><h2>Agudiza tu logica.</h2><p>Un bit a la vez.</p></div>
-        <footer>
-            <a href="privacy-policy.html">Politica de Privacidad</a>
-            <a href="support.html">Soporte</a>
-            <p>&copy; 2026 Aytunc Sevren. Todos los derechos reservados.</p>
-        </footer>
-    </div>
+    </section>
 
-    <!-- KOREAN -->
-    <div id="ko" class="lang-content">
-        <div class="hero">
-            <img src="app-icon.png" alt="Bitwise App Icon" onerror="this.style.display='none'">
-            <h1>BITWISE</h1>
-            <p class="tagline">바이너리로 생각하세요. 논리로 풀어보세요.</p>
-        </div>
-        <div class="binary-strip">01000010 01001001 01010100 01010111 01001001 01010011 01000101 01000010 01001001 01010100 01010111 01001001 01010011 01000101</div>
-        <div class="features">
-            <h2>// 기능</h2>
-            <div class="feature-grid">
-                <div class="feature-card"><div class="icon">🧩</div><h3>3가지 난이도</h3><p>쉬움, 보통, 어려움 — 자신의 속도로 도전하세요.</p></div>
-                <div class="feature-card"><div class="icon">📅</div><h3>매일 퍼즐</h3><p>매일 새로운 도전. 연속 기록을 만드세요!</p></div>
-                <div class="feature-card"><div class="icon">💡</div><h3>스마트 힌트</h3><p>매일 3개 무료 힌트. 더 필요하면 팩을 구매하세요.</p></div>
-                <div class="feature-card"><div class="icon">⚔️</div><h3>챌린지 모드</h3><p>친구에게 같은 퍼즐 도전장을 보내세요. 시간을 비교!</p></div>
-                <div class="feature-card"><div class="icon">☁️</div><h3>iCloud 동기화</h3><p>모든 기기에서 진행 상황이 자동으로 동기화됩니다.</p></div>
-                <div class="feature-card"><div class="icon">🏆</div><h3>업적</h3><p>업적을 잠금 해제하고 통계를 추적하세요.</p></div>
-                <div class="feature-card"><div class="icon">🎨</div><h3>8가지 테마</h3><p>프리미엄 스타일로 경험을 커스터마이즈하세요.</p></div>
-                <div class="feature-card"><div class="icon">✈️</div><h3>오프라인 플레이</h3><p>인터넷 불필요. 언제 어디서나 플레이.</p></div>
+    <section class="rules">
+        <h2>// REGLAS</h2>
+        <ul class="rule-list">
+            <li><span>01</span> Cada celda debe ser 0 o 1</li>
+            <li><span>02</span> No m&#225;s de dos d&#237;gitos consecutivos iguales</li>
+            <li><span>03</span> Igual n&#250;mero de 0s y 1s en cada fila/columna</li>
+            <li><span>04</span> Ninguna fila o columna puede ser id&#233;ntica</li>
+        </ul>
+    </section>
+
+    <section class="cta">
+        <h2>Agudiza tu l&#243;gica.</h2>
+        <p>Un bit a la vez.</p>
+    </section>
+
+    <footer>
+        <a href="privacy-policy.html">Pol&#237;tica de privacidad</a>
+        <a href="support.html">Soporte</a>
+        <p>&#169; 2026 Aytunc Sevren. Todos los derechos reservados.</p>
+    </footer>
+</div>
+
+<!-- ==================== KOREAN ==================== -->
+<div id="ko" class="lang-content">
+    <section class="hero">
+        <img src="../app-icon.png" alt="Bitwise &#50545; &#50500;&#51060;&#53080;">
+        <h1>BITWISE</h1>
+        <p class="tagline">&#51060;&#51652;&#48277;&#51004;&#47196; &#49373;&#44033;&#54616;&#44256;, &#45436;&#47532;&#47196; &#54400;&#50612;&#48372;&#49464;&#50836;.</p>
+    </section>
+
+    <div class="binary-strip">01001010 11010010 00101101 01010011 10010110 01101001 00110100 10101010 01010101 11001100 00110011 10101010 01010101 11001100 00110011 10101010 01010101</div>
+
+    <section class="features">
+        <h2>// &#44592;&#45733;</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="icon">&#129513;</div>
+                <h3>4&#44032;&#51648; &#45212;&#51060;&#46020;</h3>
+                <p>&#49772;&#50880; (6&#215;6), &#48372;&#53685; (6&#215;6), &#50612;&#47140;&#50880; (6&#215;6), &#44537;&#54620; (8&#215;8) &#8212; &#51088;&#49888;&#51032; &#49549;&#46020;&#47196; &#46020;&#51204;&#54616;&#49464;&#50836;.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128197;</div>
+                <h3>&#51068;&#51068; &#54140;&#51600;</h3>
+                <p>&#47588;&#51068; &#49352;&#47196;&#50868; &#46020;&#51204;. &#50672;&#49549; &#44592;&#47197;&#51012; &#49464;&#50892;&#48372;&#49464;&#50836;!</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128161;</div>
+                <h3>&#49828;&#47560;&#53944; &#55180;&#53944;</h3>
+                <p>&#47588;&#51068; 3&#44060;&#51032; &#47924;&#47308; &#55180;&#53944;. &#45908; &#54596;&#50836;&#54616;&#49888;&#44032;&#50836;? &#54057;&#51012; &#44396;&#47588;&#54616;&#44144;&#45208; Bitwise Pro&#47196; &#47924;&#51228;&#54620;&#51004;&#47196;.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9876;&#65039;</div>
+                <h3>&#46020;&#51204; &#47784;&#46300;</h3>
+                <p>&#52828;&#44396;&#50640;&#44172; &#44057;&#51008; &#54140;&#51600;&#51012; &#46020;&#51204;&#54616;&#49464;&#50836;. &#49884;&#44036;&#51012; &#48708;&#44368;&#54616;&#49464;&#50836;!</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9989;</div>
+                <h3>&#49892;&#49688; &#54869;&#51064;</h3>
+                <p>&#45817;&#49888;&#51032; &#49688;&#44032; &#47582;&#45716;&#51648; &#51593;&#49884; &#54869;&#51064;&#54616;&#49464;&#50836;.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9729;&#65039;</div>
+                <h3>iCloud &#46041;&#44592;&#54868;</h3>
+                <p>&#51652;&#54665; &#49345;&#54889;&#51060; &#47784;&#46304; &#44592;&#44592;&#50640;&#49436; &#51088;&#46041; &#46041;&#44592;&#54868;&#46121;&#45768;&#45796;.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127941;</div>
+                <h3>&#47532;&#45908;&#48372;&#46300;</h3>
+                <p>Game Center &#47532;&#45908;&#48372;&#46300;&#47196; &#51204; &#49464;&#44228;&#50752; &#44221;&#51137;&#54616;&#49464;&#50836;.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127942;</div>
+                <h3>&#50629;&#51201;</h3>
+                <p>&#50629;&#51201;&#51012; &#45804;&#49457;&#54616;&#44256; &#53685;&#44228;&#47484; &#52628;&#51201;&#54616;&#49464;&#50836;.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127912;</div>
+                <h3>8&#44032;&#51648; &#53580;&#47560;</h3>
+                <p>&#54532;&#47532;&#48120;&#50628; &#48708;&#51452;&#50620; &#49828;&#53440;&#51068;&#47196; &#44221;&#54744;&#51012; &#44060;&#51064;&#54868;&#54616;&#49464;&#50836;.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9992;&#65039;</div>
+                <h3>&#50724;&#54532;&#46972;&#51064; &#54540;&#47112;&#51060;</h3>
+                <p>&#51064;&#53552;&#45367; &#48520;&#54596;&#50836;. &#50616;&#51228; &#50612;&#46356;&#49436;&#45208; &#54540;&#47112;&#51060;&#54616;&#49464;&#50836;.</p>
             </div>
         </div>
-        <div class="rules">
-            <h2>// 규칙</h2>
-            <ul class="rule-list">
-                <li><span>01</span> 각 셀은 0 또는 1</li>
-                <li><span>02</span> 같은 숫자가 3개 이상 연속 불가</li>
-                <li><span>03</span> 각 행과 열에 0과 1이 동일한 수</li>
-                <li><span>04</span> 동일한 행이나 열은 존재할 수 없음</li>
-            </ul>
-        </div>
-        <div class="cta"><h2>논리를 날카롭게.</h2><p>한 비트씩.</p></div>
-        <footer>
-            <a href="privacy-policy.html">개인정보 처리방침</a>
-            <a href="support.html">지원</a>
-            <p>&copy; 2026 Aytunc Sevren. All rights reserved.</p>
-        </footer>
-    </div>
+    </section>
 
-    <!-- PORTUGUESE (BRAZIL) -->
-    <div id="pt" class="lang-content">
-        <div class="hero">
-            <img src="app-icon.png" alt="Bitwise App Icon" onerror="this.style.display='none'">
-            <h1>BITWISE</h1>
-            <p class="tagline">Pense em binario. Resolva com logica.</p>
-        </div>
-        <div class="binary-strip">01000010 01001001 01010100 01010111 01001001 01010011 01000101 01000010 01001001 01010100 01010111 01001001 01010011 01000101</div>
-        <div class="features">
-            <h2>// RECURSOS</h2>
-            <div class="feature-grid">
-                <div class="feature-card"><div class="icon">🧩</div><h3>3 Niveis de dificuldade</h3><p>Facil, Medio, Dificil — desafie-se no seu ritmo.</p></div>
-                <div class="feature-card"><div class="icon">📅</div><h3>Puzzle Diario</h3><p>Um novo desafio todos os dias. Construa sua sequencia!</p></div>
-                <div class="feature-card"><div class="icon">💡</div><h3>Dicas inteligentes</h3><p>3 dicas gratis por dia. Precisa de mais? Compre pacotes.</p></div>
-                <div class="feature-card"><div class="icon">⚔️</div><h3>Modo Desafio</h3><p>Desafie amigos para o mesmo puzzle. Compare tempos!</p></div>
-                <div class="feature-card"><div class="icon">☁️</div><h3>Sincronizacao iCloud</h3><p>Seu progresso sincroniza automaticamente em todos os dispositivos.</p></div>
-                <div class="feature-card"><div class="icon">🏆</div><h3>Conquistas</h3><p>Desbloqueie conquistas e acompanhe suas estatisticas.</p></div>
-                <div class="feature-card"><div class="icon">🎨</div><h3>8 Temas</h3><p>Personalize sua experiencia com estilos visuais premium.</p></div>
-                <div class="feature-card"><div class="icon">✈️</div><h3>Jogue offline</h3><p>Sem internet necessario. Jogue em qualquer lugar.</p></div>
+    <section class="rules">
+        <h2>// &#44508;&#52825;</h2>
+        <ul class="rule-list">
+            <li><span>01</span> &#44033; &#49472;&#51008; 0 &#46608;&#45716; 1</li>
+            <li><span>02</span> &#44057;&#51008; &#49707;&#51088; &#50672;&#49549; 2&#44060;&#44620;&#51648;</li>
+            <li><span>03</span> &#44033; &#54665;/&#50676;&#50640; 0&#44284; 1&#51060; &#44057;&#51008; &#49688;</li>
+            <li><span>04</span> &#44057;&#51008; &#54665;&#51060;&#45208; &#50676;&#51008; &#48520;&#44032;</li>
+        </ul>
+    </section>
+
+    <section class="cta">
+        <h2>&#45436;&#47532;&#47484; &#45216;&#52852;&#47213;&#44172; &#54616;&#49464;&#50836;.</h2>
+        <p>&#54620; &#48264;&#50640; &#54620; &#48708;&#53944;&#50473;.</p>
+    </section>
+
+    <footer>
+        <a href="privacy-policy.html">&#44060;&#51064;&#51221;&#48372; &#52376;&#47532;&#48169;&#52840;</a>
+        <a href="support.html">&#51648;&#50896;</a>
+        <p>&#169; 2026 Aytunc Sevren. All rights reserved.</p>
+    </footer>
+</div>
+
+<!-- ==================== PORTUGUESE ==================== -->
+<div id="pt" class="lang-content">
+    <section class="hero">
+        <img src="../app-icon.png" alt="&#205;cone do Bitwise">
+        <h1>BITWISE</h1>
+        <p class="tagline">Pense em bin&#225;rio. Resolva com l&#243;gica.</p>
+    </section>
+
+    <div class="binary-strip">01001010 11010010 00101101 01010011 10010110 01101001 00110100 10101010 01010101 11001100 00110011 10101010 01010101 11001100 00110011 10101010 01010101</div>
+
+    <section class="features">
+        <h2>// RECURSOS</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="icon">&#129513;</div>
+                <h3>4 N&#237;veis de dificuldade</h3>
+                <p>F&#225;cil (6&#215;6), M&#233;dio (6&#215;6), Dif&#237;cil (6&#215;6), Extremo (8&#215;8) &#8212; desafie-se no seu pr&#243;prio ritmo.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128197;</div>
+                <h3>Puzzle Di&#225;rio</h3>
+                <p>Um novo desafio todos os dias. Construa sua sequ&#234;ncia!</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128161;</div>
+                <h3>Dicas inteligentes</h3>
+                <p>3 dicas gratuitas por dia. Precisa de mais? Compre pacotes ou v&#225; ilimitado com Bitwise Pro.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9876;&#65039;</div>
+                <h3>Modo Desafio</h3>
+                <p>Desafie amigos para o mesmo puzzle. Compare tempos!</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9989;</div>
+                <h3>Verifica&#231;&#227;o de erros</h3>
+                <p>Veja instantaneamente se seus movimentos est&#227;o corretos.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9729;&#65039;</div>
+                <h3>Sincroniza&#231;&#227;o iCloud</h3>
+                <p>Seu progresso sincroniza automaticamente em todos os seus dispositivos.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127941;</div>
+                <h3>Classifica&#231;&#245;es</h3>
+                <p>Compita globalmente com as classifica&#231;&#245;es do Game Center.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127942;</div>
+                <h3>Conquistas</h3>
+                <p>Desbloqueie conquistas e acompanhe suas estat&#237;sticas.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127912;</div>
+                <h3>8 Temas</h3>
+                <p>Personalize sua experi&#234;ncia com estilos visuais premium.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9992;&#65039;</div>
+                <h3>Jogue offline</h3>
+                <p>Sem internet necess&#225;ria. Jogue em qualquer lugar, a qualquer hora.</p>
             </div>
         </div>
-        <div class="rules">
-            <h2>// REGRAS</h2>
-            <ul class="rule-list">
-                <li><span>01</span> Cada celula deve ser 0 ou 1</li>
-                <li><span>02</span> No maximo dois digitos consecutivos iguais</li>
-                <li><span>03</span> Numero igual de 0s e 1s em cada linha/coluna</li>
-                <li><span>04</span> Nenhuma linha ou coluna pode ser identica</li>
-            </ul>
-        </div>
-        <div class="cta"><h2>Afie sua logica.</h2><p>Um bit de cada vez.</p></div>
-        <footer>
-            <a href="privacy-policy.html">Politica de Privacidade</a>
-            <a href="support.html">Suporte</a>
-            <p>&copy; 2026 Aytunc Sevren. Todos os direitos reservados.</p>
-        </footer>
-    </div>
+    </section>
 
-    <!-- CHINESE SIMPLIFIED -->
-    <div id="zh" class="lang-content">
-        <div class="hero">
-            <img src="app-icon.png" alt="Bitwise App Icon" onerror="this.style.display='none'">
-            <h1>BITWISE</h1>
-            <p class="tagline">用二进制思考。用逻辑解题。</p>
-        </div>
-        <div class="binary-strip">01000010 01001001 01010100 01010111 01001001 01010011 01000101 01000010 01001001 01010100 01010111 01001001 01010011 01000101</div>
-        <div class="features">
-            <h2>// 功能</h2>
-            <div class="feature-grid">
-                <div class="feature-card"><div class="icon">🧩</div><h3>3个难度级别</h3><p>简单、中等、困难 — 按自己的节奏挑战。</p></div>
-                <div class="feature-card"><div class="icon">📅</div><h3>每日谜题</h3><p>每天一个新挑战。保持你的连胜记录!</p></div>
-                <div class="feature-card"><div class="icon">💡</div><h3>智能提示</h3><p>每日3个免费提示。需要更多?购买提示包。</p></div>
-                <div class="feature-card"><div class="icon">⚔️</div><h3>挑战模式</h3><p>挑战朋友解决同一谜题。比较用时!</p></div>
-                <div class="feature-card"><div class="icon">☁️</div><h3>iCloud同步</h3><p>你的进度会在所有设备之间自动同步。</p></div>
-                <div class="feature-card"><div class="icon">🏆</div><h3>成就</h3><p>解锁成就并追踪你的统计数据。</p></div>
-                <div class="feature-card"><div class="icon">🎨</div><h3>8种主题</h3><p>用高级视觉风格个性化你的体验。</p></div>
-                <div class="feature-card"><div class="icon">✈️</div><h3>离线游戏</h3><p>无需网络。随时随地畅玩。</p></div>
+    <section class="rules">
+        <h2>// REGRAS</h2>
+        <ul class="rule-list">
+            <li><span>01</span> Cada c&#233;lula deve ser 0 ou 1</li>
+            <li><span>02</span> No m&#225;ximo dois d&#237;gitos consecutivos iguais</li>
+            <li><span>03</span> N&#250;mero igual de 0s e 1s em cada linha/coluna</li>
+            <li><span>04</span> Nenhuma linha ou coluna pode ser id&#234;ntica</li>
+        </ul>
+    </section>
+
+    <section class="cta">
+        <h2>Afie sua l&#243;gica.</h2>
+        <p>Um bit de cada vez.</p>
+    </section>
+
+    <footer>
+        <a href="privacy-policy.html">Pol&#237;tica de Privacidade</a>
+        <a href="support.html">Suporte</a>
+        <p>&#169; 2026 Aytunc Sevren. Todos os direitos reservados.</p>
+    </footer>
+</div>
+
+<!-- ==================== CHINESE ==================== -->
+<div id="zh" class="lang-content">
+    <section class="hero">
+        <img src="../app-icon.png" alt="Bitwise &#24212;&#29992;&#22270;&#26631;">
+        <h1>BITWISE</h1>
+        <p class="tagline">&#20108;&#36827;&#21046;&#24605;&#32500;&#12290;&#36923;&#36753;&#27714;&#35299;&#12290;</p>
+    </section>
+
+    <div class="binary-strip">01001010 11010010 00101101 01010011 10010110 01101001 00110100 10101010 01010101 11001100 00110011 10101010 01010101 11001100 00110011 10101010 01010101</div>
+
+    <section class="features">
+        <h2>// &#21151;&#33021;</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="icon">&#129513;</div>
+                <h3>4&#20010;&#38590;&#24230;&#31561;&#32423;</h3>
+                <p>&#31616;&#21333; (6&#215;6)&#12289;&#20013;&#31561; (6&#215;6)&#12289;&#22256;&#38590; (6&#215;6)&#12289;&#26497;&#38480; (8&#215;8) &#8212; &#25353;&#29031;&#33258;&#24049;&#30340;&#33410;&#22863;&#25361;&#25112;&#12290;</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128197;</div>
+                <h3>&#27599;&#26085;&#35868;&#39064;</h3>
+                <p>&#27599;&#22825;&#19968;&#20010;&#26032;&#25361;&#25112;&#12290;&#24314;&#31435;&#20320;&#30340;&#36830;&#32988;&#32426;&#24405;&#65281;</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128161;</div>
+                <h3>&#26234;&#33021;&#25552;&#31034;</h3>
+                <p>&#27599;&#22825;3&#20010;&#20813;&#36153;&#25552;&#31034;&#12290;&#38656;&#35201;&#26356;&#22810;&#65311;&#36141;&#20080;&#22871;&#39184;&#25110;&#36890;&#36807;Bitwise Pro&#26080;&#38480;&#20351;&#29992;&#12290;</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9876;&#65039;</div>
+                <h3>&#25361;&#25112;&#27169;&#24335;</h3>
+                <p>&#21521;&#26379;&#21451;&#21457;&#36215;&#21516;&#19968;&#35868;&#39064;&#30340;&#25361;&#25112;&#12290;&#27604;&#36739;&#26102;&#38388;&#65281;</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9989;</div>
+                <h3>&#26816;&#26597;&#38169;&#35823;</h3>
+                <p>&#21363;&#26102;&#26597;&#30475;&#20320;&#30340;&#25805;&#20316;&#26159;&#21542;&#27491;&#30830;&#12290;</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9729;&#65039;</div>
+                <h3>iCloud &#21516;&#27493;</h3>
+                <p>&#36827;&#24230;&#22312;&#25152;&#26377;&#35774;&#22791;&#19978;&#33258;&#21160;&#21516;&#27493;&#12290;</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127941;</div>
+                <h3>&#25490;&#34892;&#27036;</h3>
+                <p>&#36890;&#36807;Game Center&#25490;&#34892;&#27036;&#19982;&#20840;&#29699;&#29609;&#23478;&#31454;&#20105;&#12290;</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127942;</div>
+                <h3>&#25104;&#23601;</h3>
+                <p>&#35299;&#38145;&#25104;&#23601;&#24182;&#36861;&#36394;&#20320;&#30340;&#32479;&#35745;&#25968;&#25454;&#12290;</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127912;</div>
+                <h3>8&#20010;&#20027;&#39064;</h3>
+                <p>&#29992;&#39640;&#32423;&#35270;&#35273;&#39118;&#26684;&#20010;&#24615;&#21270;&#20320;&#30340;&#20307;&#39564;&#12290;</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9992;&#65039;</div>
+                <h3>&#31163;&#32447;&#28216;&#29609;</h3>
+                <p>&#26080;&#38656;&#32852;&#32593;&#12290;&#38543;&#26102;&#38543;&#22320;&#30021;&#29609;&#12290;</p>
             </div>
         </div>
-        <div class="rules">
-            <h2>// 规则</h2>
-            <ul class="rule-list">
-                <li><span>01</span> 每个格子必须是0或1</li>
-                <li><span>02</span> 不能有超过两个连续相同的数字</li>
-                <li><span>03</span> 每行每列的0和1数量相等</li>
-                <li><span>04</span> 不能有两行或两列完全相同</li>
-            </ul>
-        </div>
-        <div class="cta"><h2>磨砺你的逻辑。</h2><p>一次一个比特。</p></div>
-        <footer>
-            <a href="privacy-policy.html">隐私政策</a>
-            <a href="support.html">支持</a>
-            <p>&copy; 2026 Aytunc Sevren. All rights reserved.</p>
-        </footer>
-    </div>
+    </section>
 
-    <script>
-        const langs = ['en','tr','de','fr','ja','es','ko','pt','zh'];
-        function showLang(lang) {
-            langs.forEach(function(l) {
-                document.getElementById(l).className = l === lang ? 'lang-content visible' : 'lang-content';
-                document.getElementById('btn-' + l).className = l === lang ? 'active' : '';
-            });
-        }
-    </script>
+    <section class="rules">
+        <h2>// &#35268;&#21017;</h2>
+        <ul class="rule-list">
+            <li><span>01</span> &#27599;&#20010;&#21333;&#20803;&#26684;&#24517;&#39035;&#26159;0&#25110;1</li>
+            <li><span>02</span> &#21516;&#19968;&#25968;&#23383;&#26368;&#22810;&#36830;&#32493;&#20004;&#20010;</li>
+            <li><span>03</span> &#27599;&#34892;/&#21015;&#20013;0&#21644;1&#30340;&#25968;&#37327;&#30456;&#31561;</li>
+            <li><span>04</span> &#20219;&#20309;&#20004;&#34892;&#25110;&#20004;&#21015;&#19981;&#33021;&#30456;&#21516;</li>
+        </ul>
+    </section>
+
+    <section class="cta">
+        <h2>&#30952;&#30778;&#20320;&#30340;&#36923;&#36753;&#12290;</h2>
+        <p>&#19968;&#27425;&#19968;&#20010;&#27604;&#29305;&#12290;</p>
+    </section>
+
+    <footer>
+        <a href="privacy-policy.html">&#38544;&#31169;&#25919;&#31574;</a>
+        <a href="support.html">&#25903;&#25345;</a>
+        <p>&#169; 2026 Aytunc Sevren. All rights reserved.</p>
+    </footer>
+</div>
+
+<!-- ==================== ITALIAN ==================== -->
+<div id="it" class="lang-content">
+    <section class="hero">
+        <img src="../app-icon.png" alt="Icona Bitwise">
+        <h1>BITWISE</h1>
+        <p class="tagline">Pensa in binario. Risolvi con la logica.</p>
+    </section>
+
+    <div class="binary-strip">01001010 11010010 00101101 01010011 10010110 01101001 00110100 10101010 01010101 11001100 00110011 10101010 01010101 11001100 00110011 10101010 01010101</div>
+
+    <section class="features">
+        <h2>// FUNZIONALIT&#192;</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="icon">&#129513;</div>
+                <h3>4 Livelli di difficolt&#224;</h3>
+                <p>Facile (6&#215;6), Medio (6&#215;6), Difficile (6&#215;6), Estremo (8&#215;8) &#8212; sfida te stesso al tuo ritmo.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128197;</div>
+                <h3>Puzzle giornaliero</h3>
+                <p>Una nuova sfida ogni giorno. Costruisci la tua serie!</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128161;</div>
+                <h3>Suggerimenti intelligenti</h3>
+                <p>3 suggerimenti gratuiti al giorno. Ne servono di pi&#249;? Acquista pacchetti o vai illimitato con Bitwise Pro.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9876;&#65039;</div>
+                <h3>Modalit&#224; Sfida</h3>
+                <p>Sfida gli amici allo stesso puzzle. Confronta i tempi!</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9989;</div>
+                <h3>Controllo errori</h3>
+                <p>Vedi istantaneamente se le tue mosse sono corrette.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9729;&#65039;</div>
+                <h3>Sincronizzazione iCloud</h3>
+                <p>I tuoi progressi si sincronizzano automaticamente su tutti i tuoi dispositivi.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127941;</div>
+                <h3>Classifiche</h3>
+                <p>Competi a livello globale con le classifiche di Game Center.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127942;</div>
+                <h3>Obiettivi</h3>
+                <p>Sblocca obiettivi e monitora le tue statistiche.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127912;</div>
+                <h3>8 Temi</h3>
+                <p>Personalizza la tua esperienza con stili visivi premium.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9992;&#65039;</div>
+                <h3>Gioco offline</h3>
+                <p>Nessuna connessione necessaria. Gioca ovunque, in qualsiasi momento.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="rules">
+        <h2>// REGOLE</h2>
+        <ul class="rule-list">
+            <li><span>01</span> Ogni cella deve essere 0 o 1</li>
+            <li><span>02</span> Non pi&#249; di due cifre consecutive uguali</li>
+            <li><span>03</span> Numero uguale di 0 e 1 in ogni riga/colonna</li>
+            <li><span>04</span> Nessuna riga o colonna pu&#242; essere identica</li>
+        </ul>
+    </section>
+
+    <section class="cta">
+        <h2>Affina la tua logica.</h2>
+        <p>Un bit alla volta.</p>
+    </section>
+
+    <footer>
+        <a href="privacy-policy.html">Informativa sulla privacy</a>
+        <a href="support.html">Supporto</a>
+        <p>&#169; 2026 Aytunc Sevren. Tutti i diritti riservati.</p>
+    </footer>
+</div>
+
+<!-- ==================== DUTCH ==================== -->
+<div id="nl" class="lang-content">
+    <section class="hero">
+        <img src="../app-icon.png" alt="Bitwise App-icoon">
+        <h1>BITWISE</h1>
+        <p class="tagline">Denk binair. Los op met logica.</p>
+    </section>
+
+    <div class="binary-strip">01001010 11010010 00101101 01010011 10010110 01101001 00110100 10101010 01010101 11001100 00110011 10101010 01010101 11001100 00110011 10101010 01010101</div>
+
+    <section class="features">
+        <h2>// FUNCTIES</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="icon">&#129513;</div>
+                <h3>4 Moeilijkheidsniveaus</h3>
+                <p>Makkelijk (6&#215;6), Gemiddeld (6&#215;6), Moeilijk (6&#215;6), Extreem (8&#215;8) &#8212; daag jezelf uit op je eigen tempo.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128197;</div>
+                <h3>Dagelijkse puzzel</h3>
+                <p>Elke dag een nieuwe uitdaging. Bouw je reeks op!</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128161;</div>
+                <h3>Slimme hints</h3>
+                <p>3 gratis hints per dag. Meer nodig? Koop pakketten of ga onbeperkt met Bitwise Pro.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9876;&#65039;</div>
+                <h3>Uitdagingsmodus</h3>
+                <p>Daag vrienden uit voor dezelfde puzzel. Vergelijk tijden!</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9989;</div>
+                <h3>Foutcontrole</h3>
+                <p>Zie direct of je zetten correct zijn.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9729;&#65039;</div>
+                <h3>iCloud-synchronisatie</h3>
+                <p>Je voortgang synchroniseert automatisch op al je apparaten.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127941;</div>
+                <h3>Ranglijsten</h3>
+                <p>Concurreer wereldwijd met Game Center ranglijsten.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127942;</div>
+                <h3>Prestaties</h3>
+                <p>Ontgrendel prestaties en volg je statistieken.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127912;</div>
+                <h3>8 Thema&#8217;s</h3>
+                <p>Personaliseer je ervaring met premium visuele stijlen.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9992;&#65039;</div>
+                <h3>Offline spelen</h3>
+                <p>Geen internet nodig. Speel overal, altijd.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="rules">
+        <h2>// REGELS</h2>
+        <ul class="rule-list">
+            <li><span>01</span> Elke cel moet 0 of 1 zijn</li>
+            <li><span>02</span> Niet meer dan twee opeenvolgende dezelfde cijfers</li>
+            <li><span>03</span> Gelijk aantal 0&#8217;s en 1&#8217;s in elke rij/kolom</li>
+            <li><span>04</span> Geen twee rijen of kolommen mogen identiek zijn</li>
+        </ul>
+    </section>
+
+    <section class="cta">
+        <h2>Verscherp je logica.</h2>
+        <p>E&#233;n bit per keer.</p>
+    </section>
+
+    <footer>
+        <a href="privacy-policy.html">Privacybeleid</a>
+        <a href="support.html">Ondersteuning</a>
+        <p>&#169; 2026 Aytunc Sevren. Alle rechten voorbehouden.</p>
+    </footer>
+</div>
+
+<!-- ==================== RUSSIAN ==================== -->
+<div id="ru" class="lang-content">
+    <section class="hero">
+        <img src="../app-icon.png" alt="&#1047;&#1085;&#1072;&#1095;&#1086;&#1082; Bitwise">
+        <h1>BITWISE</h1>
+        <p class="tagline">&#1052;&#1099;&#1089;&#1083;&#1080;&#1090;&#1077; &#1076;&#1074;&#1086;&#1080;&#1095;&#1085;&#1086;. &#1056;&#1077;&#1096;&#1072;&#1081;&#1090;&#1077; &#1083;&#1086;&#1075;&#1080;&#1095;&#1077;&#1089;&#1082;&#1080;.</p>
+    </section>
+
+    <div class="binary-strip">01001010 11010010 00101101 01010011 10010110 01101001 00110100 10101010 01010101 11001100 00110011 10101010 01010101 11001100 00110011 10101010 01010101</div>
+
+    <section class="features">
+        <h2>// &#1042;&#1054;&#1047;&#1052;&#1054;&#1046;&#1053;&#1054;&#1057;&#1058;&#1048;</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="icon">&#129513;</div>
+                <h3>4 &#1091;&#1088;&#1086;&#1074;&#1085;&#1103; &#1089;&#1083;&#1086;&#1078;&#1085;&#1086;&#1089;&#1090;&#1080;</h3>
+                <p>&#1051;&#1105;&#1075;&#1082;&#1080;&#1081; (6&#215;6), &#1057;&#1088;&#1077;&#1076;&#1085;&#1080;&#1081; (6&#215;6), &#1057;&#1083;&#1086;&#1078;&#1085;&#1099;&#1081; (6&#215;6), &#1069;&#1082;&#1089;&#1090;&#1088;&#1077;&#1084;&#1072;&#1083;&#1100;&#1085;&#1099;&#1081; (8&#215;8) &#8212; &#1073;&#1088;&#1086;&#1089;&#1100;&#1090;&#1077; &#1089;&#1077;&#1073;&#1077; &#1074;&#1099;&#1079;&#1086;&#1074; &#1074; &#1089;&#1074;&#1086;&#1105;&#1084; &#1090;&#1077;&#1084;&#1087;&#1077;.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128197;</div>
+                <h3>&#1045;&#1078;&#1077;&#1076;&#1085;&#1077;&#1074;&#1085;&#1072;&#1103; &#1075;&#1086;&#1083;&#1086;&#1074;&#1086;&#1083;&#1086;&#1084;&#1082;&#1072;</h3>
+                <p>&#1053;&#1086;&#1074;&#1086;&#1077; &#1080;&#1089;&#1087;&#1099;&#1090;&#1072;&#1085;&#1080;&#1077; &#1082;&#1072;&#1078;&#1076;&#1099;&#1081; &#1076;&#1077;&#1085;&#1100;. &#1057;&#1090;&#1088;&#1086;&#1081;&#1090;&#1077; &#1089;&#1074;&#1086;&#1102; &#1089;&#1077;&#1088;&#1080;&#1102;!</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128161;</div>
+                <h3>&#1059;&#1084;&#1085;&#1099;&#1077; &#1087;&#1086;&#1076;&#1089;&#1082;&#1072;&#1079;&#1082;&#1080;</h3>
+                <p>3 &#1073;&#1077;&#1089;&#1087;&#1083;&#1072;&#1090;&#1085;&#1099;&#1077; &#1087;&#1086;&#1076;&#1089;&#1082;&#1072;&#1079;&#1082;&#1080; &#1074; &#1076;&#1077;&#1085;&#1100;. &#1053;&#1091;&#1078;&#1085;&#1086; &#1073;&#1086;&#1083;&#1100;&#1096;&#1077;? &#1050;&#1091;&#1087;&#1080;&#1090;&#1077; &#1087;&#1072;&#1082;&#1077;&#1090;&#1099; &#1080;&#1083;&#1080; &#1087;&#1086;&#1083;&#1091;&#1095;&#1080;&#1090;&#1077; &#1073;&#1077;&#1079;&#1083;&#1080;&#1084;&#1080;&#1090; &#1089; Bitwise Pro.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9876;&#65039;</div>
+                <h3>&#1056;&#1077;&#1078;&#1080;&#1084; &#1074;&#1099;&#1079;&#1086;&#1074;&#1072;</h3>
+                <p>&#1041;&#1088;&#1086;&#1089;&#1100;&#1090;&#1077; &#1076;&#1088;&#1091;&#1079;&#1100;&#1103;&#1084; &#1074;&#1099;&#1079;&#1086;&#1074; &#1085;&#1072; &#1090;&#1091; &#1078;&#1077; &#1075;&#1086;&#1083;&#1086;&#1074;&#1086;&#1083;&#1086;&#1084;&#1082;&#1091;. &#1057;&#1088;&#1072;&#1074;&#1085;&#1080;&#1090;&#1077; &#1074;&#1088;&#1077;&#1084;&#1103;!</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9989;</div>
+                <h3>&#1055;&#1088;&#1086;&#1074;&#1077;&#1088;&#1082;&#1072; &#1086;&#1096;&#1080;&#1073;&#1086;&#1082;</h3>
+                <p>&#1052;&#1075;&#1085;&#1086;&#1074;&#1077;&#1085;&#1085;&#1086; &#1091;&#1079;&#1085;&#1072;&#1081;&#1090;&#1077;, &#1087;&#1088;&#1072;&#1074;&#1080;&#1083;&#1100;&#1085;&#1099; &#1083;&#1080; &#1074;&#1072;&#1096;&#1080; &#1093;&#1086;&#1076;&#1099;.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9729;&#65039;</div>
+                <h3>&#1057;&#1080;&#1085;&#1093;&#1088;&#1086;&#1085;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; iCloud</h3>
+                <p>&#1042;&#1072;&#1096; &#1087;&#1088;&#1086;&#1075;&#1088;&#1077;&#1089;&#1089; &#1072;&#1074;&#1090;&#1086;&#1084;&#1072;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1080; &#1089;&#1080;&#1085;&#1093;&#1088;&#1086;&#1085;&#1080;&#1079;&#1080;&#1088;&#1091;&#1077;&#1090;&#1089;&#1103; &#1085;&#1072; &#1074;&#1089;&#1077;&#1093; &#1091;&#1089;&#1090;&#1088;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072;&#1093;.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127941;</div>
+                <h3>&#1058;&#1072;&#1073;&#1083;&#1080;&#1094;&#1099; &#1083;&#1080;&#1076;&#1077;&#1088;&#1086;&#1074;</h3>
+                <p>&#1057;&#1086;&#1088;&#1077;&#1074;&#1085;&#1091;&#1081;&#1090;&#1077;&#1089;&#1100; &#1089;&#1086; &#1074;&#1089;&#1077;&#1084; &#1084;&#1080;&#1088;&#1086;&#1084; &#1095;&#1077;&#1088;&#1077;&#1079; &#1090;&#1072;&#1073;&#1083;&#1080;&#1094;&#1099; &#1083;&#1080;&#1076;&#1077;&#1088;&#1086;&#1074; Game Center.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127942;</div>
+                <h3>&#1044;&#1086;&#1089;&#1090;&#1080;&#1078;&#1077;&#1085;&#1080;&#1103;</h3>
+                <p>&#1054;&#1090;&#1082;&#1088;&#1099;&#1074;&#1072;&#1081;&#1090;&#1077; &#1076;&#1086;&#1089;&#1090;&#1080;&#1078;&#1077;&#1085;&#1080;&#1103; &#1080; &#1086;&#1090;&#1089;&#1083;&#1077;&#1078;&#1080;&#1074;&#1072;&#1081;&#1090;&#1077; &#1089;&#1074;&#1086;&#1102; &#1089;&#1090;&#1072;&#1090;&#1080;&#1089;&#1090;&#1080;&#1082;&#1091;.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127912;</div>
+                <h3>8 &#1090;&#1077;&#1084;</h3>
+                <p>&#1055;&#1077;&#1088;&#1089;&#1086;&#1085;&#1072;&#1083;&#1080;&#1079;&#1080;&#1088;&#1091;&#1081;&#1090;&#1077; &#1074;&#1087;&#1077;&#1095;&#1072;&#1090;&#1083;&#1077;&#1085;&#1080;&#1077; &#1089; &#1087;&#1086;&#1084;&#1086;&#1097;&#1100;&#1102; &#1087;&#1088;&#1077;&#1084;&#1080;&#1072;&#1083;&#1100;&#1085;&#1099;&#1093; &#1074;&#1080;&#1079;&#1091;&#1072;&#1083;&#1100;&#1085;&#1099;&#1093; &#1089;&#1090;&#1080;&#1083;&#1077;&#1081;.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9992;&#65039;</div>
+                <h3>&#1054;&#1092;&#1083;&#1072;&#1081;&#1085;-&#1080;&#1075;&#1088;&#1072;</h3>
+                <p>&#1048;&#1085;&#1090;&#1077;&#1088;&#1085;&#1077;&#1090; &#1085;&#1077; &#1085;&#1091;&#1078;&#1077;&#1085;. &#1048;&#1075;&#1088;&#1072;&#1081;&#1090;&#1077; &#1075;&#1076;&#1077; &#1091;&#1075;&#1086;&#1076;&#1085;&#1086;, &#1082;&#1086;&#1075;&#1076;&#1072; &#1091;&#1075;&#1086;&#1076;&#1085;&#1086;.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="rules">
+        <h2>// &#1055;&#1056;&#1040;&#1042;&#1048;&#1051;&#1040;</h2>
+        <ul class="rule-list">
+            <li><span>01</span> &#1050;&#1072;&#1078;&#1076;&#1072;&#1103; &#1103;&#1095;&#1077;&#1081;&#1082;&#1072; &#1076;&#1086;&#1083;&#1078;&#1085;&#1072; &#1073;&#1099;&#1090;&#1100; 0 &#1080;&#1083;&#1080; 1</li>
+            <li><span>02</span> &#1053;&#1077; &#1073;&#1086;&#1083;&#1077;&#1077; &#1076;&#1074;&#1091;&#1093; &#1086;&#1076;&#1080;&#1085;&#1072;&#1082;&#1086;&#1074;&#1099;&#1093; &#1094;&#1080;&#1092;&#1088; &#1087;&#1086;&#1076;&#1088;&#1103;&#1076;</li>
+            <li><span>03</span> &#1056;&#1072;&#1074;&#1085;&#1086;&#1077; &#1082;&#1086;&#1083;&#1080;&#1095;&#1077;&#1089;&#1090;&#1074;&#1086; 0 &#1080; 1 &#1074; &#1082;&#1072;&#1078;&#1076;&#1086;&#1081; &#1089;&#1090;&#1088;&#1086;&#1082;&#1077;/&#1089;&#1090;&#1086;&#1083;&#1073;&#1094;&#1077;</li>
+            <li><span>04</span> &#1053;&#1080;&#1082;&#1072;&#1082;&#1080;&#1077; &#1076;&#1074;&#1077; &#1089;&#1090;&#1088;&#1086;&#1082;&#1080; &#1080;&#1083;&#1080; &#1089;&#1090;&#1086;&#1083;&#1073;&#1094;&#1072; &#1085;&#1077; &#1084;&#1086;&#1075;&#1091;&#1090; &#1073;&#1099;&#1090;&#1100; &#1086;&#1076;&#1080;&#1085;&#1072;&#1082;&#1086;&#1074;&#1099;&#1084;&#1080;</li>
+        </ul>
+    </section>
+
+    <section class="cta">
+        <h2>&#1054;&#1090;&#1090;&#1086;&#1095;&#1080;&#1090;&#1077; &#1089;&#1074;&#1086;&#1102; &#1083;&#1086;&#1075;&#1080;&#1082;&#1091;.</h2>
+        <p>&#1055;&#1086; &#1086;&#1076;&#1085;&#1086;&#1084;&#1091; &#1073;&#1080;&#1090;&#1091; &#1079;&#1072; &#1088;&#1072;&#1079;.</p>
+    </section>
+
+    <footer>
+        <a href="privacy-policy.html">&#1055;&#1086;&#1083;&#1080;&#1090;&#1080;&#1082;&#1072; &#1082;&#1086;&#1085;&#1092;&#1080;&#1076;&#1077;&#1085;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1086;&#1089;&#1090;&#1080;</a>
+        <a href="support.html">&#1055;&#1086;&#1076;&#1076;&#1077;&#1088;&#1078;&#1082;&#1072;</a>
+        <p>&#169; 2026 Aytunc Sevren. &#1042;&#1089;&#1077; &#1087;&#1088;&#1072;&#1074;&#1072; &#1079;&#1072;&#1097;&#1080;&#1097;&#1077;&#1085;&#1099;.</p>
+    </footer>
+</div>
+
+<script>
+var langs = ['en','tr','de','fr','ja','es','ko','pt','zh','it','nl','ru'];
+function showLang(lang) {
+    langs.forEach(function(l) {
+        document.getElementById(l).className = l === lang ? 'lang-content visible' : 'lang-content';
+        document.getElementById('btn-' + l).className = l === lang ? 'active' : '';
+    });
+}
+</script>
+
 </body>
 </html>
