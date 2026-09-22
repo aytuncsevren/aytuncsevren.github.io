@@ -4,43 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bitwise - Privacy Policy</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e1a; color: #c8ccd4; line-height: 1.7; padding: 40px 20px; }
-        .container { max-width: 720px; margin: 0 auto; }
-        h1 { color: #00ff80; font-size: 28px; margin-bottom: 8px; font-family: monospace; }
-        h2 { color: #00ff80; font-size: 18px; margin-top: 32px; margin-bottom: 12px; font-family: monospace; }
-        p, li { font-size: 15px; margin-bottom: 10px; }
-        ul { padding-left: 24px; }
-        .date { color: #666; font-size: 13px; margin-bottom: 32px; font-family: monospace; }
-        a { color: #6ba3ff; }
-        .lang-switch { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; margin-bottom: 24px; }
-        .lang-switch a { cursor: pointer; padding: 4px 12px; border: 1px solid #333; border-radius: 8px; text-decoration: none; font-size: 12px; font-family: monospace; color: #c8ccd4; }
-        .lang-switch a.active { background: #00ff80; color: #0a0e1a; border-color: #00ff80; }
-        .section { margin-bottom: 24px; }
-        hr { border: none; border-top: 1px solid #1a1f2e; margin: 32px 0; }
-        .lang-content { display: none; }
-        .lang-content.visible { display: block; }
-    </style>
+    <meta name="theme-color" content="#0a0e1a">
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+:root {
+  --bg: #0a0e1a; --surface: #111827; --border: #1f2937;
+  --text: #c8ccd4; --text-strong: #eef0f4; --muted: #9ca3af; --faint: #4b5563;
+  --accent: #00ff80; --accent-2: #1a7cff; --accent-ink: #0a0e1a;
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Roboto Mono", monospace;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.7; overflow-x: hidden; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 0; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-weight: 700; color: var(--text-strong); letter-spacing: .08em; text-decoration: none; }
+.brand img { width: 32px; height: 32px; border-radius: 8px; }
+select { background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px; font-family: var(--mono); font-size: 13px; }
+main { padding-top: 24px; }
+h1 { color: var(--text-strong); font-size: clamp(24px, 4.4vw, 32px); line-height: 1.25; margin-bottom: 8px; }
+.date { display: inline-block; font-family: var(--mono); font-size: 12px; color: var(--accent); border: 1px solid #1d4b35; border-radius: 999px; padding: 2px 10px; margin-bottom: 28px; }
+h2 { font-family: var(--mono); color: var(--accent); font-size: 15px; letter-spacing: .02em; margin: 36px 0 12px; padding-top: 24px; border-top: 1px solid #141a28; }
+.section { margin-bottom: 8px; }
+.section:first-of-type { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; }
+.section:first-of-type p:last-child { margin-bottom: 0; }
+p, li { font-size: 15px; margin-bottom: 10px; color: var(--muted); }
+strong { color: var(--text-strong); font-weight: 600; }
+ul { padding-left: 22px; margin-bottom: 10px; }
+li::marker { color: var(--accent); }
+a { color: #6ba3ff; }
+hr { border: none; border-top: 1px solid #141a28; margin: 32px 0; }
+.lang-content { display: none; }
+.lang-content.visible { display: block; }
+footer { border-top: 1px solid #141a28; margin-top: 56px; padding: 28px 0 40px; text-align: center; font-family: var(--mono); font-size: 13px; }
+footer nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; }
+footer a { text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+footer p { color: var(--faint); font-size: 12px; margin-top: 14px; }
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="lang-switch">
-            <a id="btn-en" class="active" onclick="showLang('en')">English</a>
-            <a id="btn-tr" onclick="showLang('tr')">Türkçe</a>
-            <a id="btn-de" onclick="showLang('de')">Deutsch</a>
-            <a id="btn-fr" onclick="showLang('fr')">Français</a>
-            <a id="btn-ja" onclick="showLang('ja')">日本語</a>
-            <a id="btn-es" onclick="showLang('es')">Español</a>
-            <a id="btn-ko" onclick="showLang('ko')">한국어</a>
-            <a id="btn-pt" onclick="showLang('pt')">Português</a>
-            <a id="btn-zh" onclick="showLang('zh')">中文</a>
-            <a id="btn-it" onclick="showLang('it')">Italiano</a>
-            <a id="btn-nl" onclick="showLang('nl')">Nederlands</a>
-            <a id="btn-ru" onclick="showLang('ru')">Русский</a>
-        </div>
+<div class="wrap">
+    <header class="topbar">
+        <a class="brand" href="./"><img src="icon.png" alt="" width="32" height="32">BITWISE</a>
+        <select id="lang" aria-label="Language">
+            <option value="en">English</option><option value="tr">Türkçe</option><option value="de">Deutsch</option>
+            <option value="fr">Français</option><option value="ja">日本語</option><option value="es">Español</option>
+            <option value="ko">한국어</option><option value="pt">Português</option><option value="zh">中文</option>
+            <option value="it">Italiano</option><option value="nl">Nederlands</option><option value="ru">Русский</option>
+        </select>
+    </header>
+    <main>
 
-        <!-- ENGLISH -->
+<!-- ENGLISH -->
         <div id="en" class="lang-content visible">
             <h1>Bitwise — Privacy Policy</h1>
             <p class="date">Effective Date: May 7, 2026</p>
@@ -777,16 +794,45 @@
             <h2>9. Контакты</h2>
             <div class="section"><p>Вопросы: <a href="mailto:aytuncsevren@gmail.com">aytuncsevren@gmail.com</a></p></div>
         </div>
-    </div>
+        </main>
+    <footer>
+        <nav>
+            <a href="./" data-f="0">Home</a>
+            <a href="support.html" data-f="1">Support</a>
+            <a href="privacy-policy.html" data-f="2">Privacy Policy (iOS)</a>
+            <a href="android/privacy-policy.html" data-f="3">Privacy Policy (Android)</a>
+        </nav>
+        <p>© 2026 Aytunç Sevren</p>
+    </footer>
+</div>
+
 
     <script>
-        const langs = ['en','tr','de','fr','ja','es','ko','pt','zh','it','nl','ru'];
-        function showLang(lang) {
-            langs.forEach(function(l) {
-                document.getElementById(l).className = l === lang ? 'lang-content visible' : 'lang-content';
-                document.getElementById('btn-' + l).className = l === lang ? 'active' : '';
-            });
-        }
-    </script>
+var LANGS = ['en','tr','de','fr','ja','es','ko','pt','zh','it','nl','ru'];
+var HTML_LANG = { pt: 'pt-BR', zh: 'zh-Hans' };
+var FOOT = {"en": ["Home", "Support", "Privacy Policy (iOS)", "Privacy Policy (Android)"], "tr": ["Ana sayfa", "Destek", "Gizlilik Politikası (iOS)", "Gizlilik Politikası (Android)"], "de": ["Startseite", "Support", "Datenschutz (iOS)", "Datenschutz (Android)"], "fr": ["Accueil", "Assistance", "Confidentialité (iOS)", "Confidentialité (Android)"], "ja": ["ホーム", "サポート", "プライバシーポリシー(iOS)", "プライバシーポリシー(Android)"], "es": ["Inicio", "Soporte", "Privacidad (iOS)", "Privacidad (Android)"], "ko": ["홈", "지원", "개인정보 처리방침 (iOS)", "개인정보 처리방침 (Android)"], "pt": ["Início", "Suporte", "Privacidade (iOS)", "Privacidade (Android)"], "zh": ["首页", "支持", "隐私政策(iOS)", "隐私政策(Android)"], "it": ["Home", "Assistenza", "Privacy (iOS)", "Privacy (Android)"], "nl": ["Home", "Ondersteuning", "Privacybeleid (iOS)", "Privacybeleid (Android)"], "ru": ["Главная", "Поддержка", "Конфиденциальность (iOS)", "Конфиденциальность (Android)"]};
+function showLang(lang) {
+    if (LANGS.indexOf(lang) < 0) lang = 'en';
+    LANGS.forEach(function (l) {
+        document.getElementById(l).className = l === lang ? 'lang-content visible' : 'lang-content';
+    });
+    document.documentElement.lang = HTML_LANG[lang] || lang;
+    document.querySelectorAll('[data-f]').forEach(function (a) { a.textContent = FOOT[lang][+a.getAttribute('data-f')]; });
+    var h1 = document.querySelector('#' + lang + ' h1');
+    if (h1) document.title = h1.textContent;
+    document.getElementById('lang').value = lang;
+    try { localStorage.setItem('bitwise.lang', lang); } catch (e) {}
+}
+function initialLang() {
+    var q = new URLSearchParams(location.search).get('lang');
+    if (q && LANGS.indexOf(q) >= 0) return q;
+    try { var s = localStorage.getItem('bitwise.lang'); if (s && LANGS.indexOf(s) >= 0) return s; } catch (e) {}
+    var nav = navigator.languages || [navigator.language || 'en'];
+    for (var i = 0; i < nav.length; i++) { var p = String(nav[i]).slice(0, 2).toLowerCase(); if (LANGS.indexOf(p) >= 0) return p; }
+    return 'en';
+}
+document.getElementById('lang').addEventListener('change', function (e) { showLang(e.target.value); });
+showLang(initialLang());
+</script>
 </body>
 </html>

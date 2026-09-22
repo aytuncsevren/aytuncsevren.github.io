@@ -1,478 +1,423 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitwise - Support</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e1a; color: #c8ccd4; line-height: 1.7; padding: 40px 20px; }
-        .container { max-width: 720px; margin: 0 auto; }
-        h1 { color: #00ff80; font-size: 28px; margin-bottom: 8px; font-family: monospace; }
-        h2 { color: #00ff80; font-size: 18px; margin-top: 32px; margin-bottom: 12px; font-family: monospace; }
-        p, li { font-size: 15px; margin-bottom: 10px; }
-        .date { color: #666; font-size: 13px; margin-bottom: 32px; font-family: monospace; }
-        a { color: #6ba3ff; }
-        .lang-switch { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; margin-bottom: 24px; }
-        .lang-switch a { cursor: pointer; padding: 4px 12px; border: 1px solid #333; border-radius: 8px; text-decoration: none; font-size: 12px; font-family: monospace; color: #c8ccd4; }
-        .lang-switch a.active { background: #00ff80; color: #0a0e1a; border-color: #00ff80; }
-        .section { margin-bottom: 24px; }
-        hr { border: none; border-top: 1px solid #1a1f2e; margin: 32px 0; }
-        .contact-card { background: #111827; border: 1px solid #1f2937; border-radius: 12px; padding: 24px; margin: 20px 0; }
-        .contact-card a { display: inline-block; background: #00ff80; color: #0a0e1a; text-decoration: none; padding: 10px 24px; border-radius: 8px; font-weight: 600; font-family: monospace; font-size: 14px; margin-top: 12px; }
-        .faq-item { background: #111827; border: 1px solid #1f2937; border-radius: 10px; padding: 16px 20px; margin-bottom: 12px; }
-        .faq-item strong { color: #e0e0e0; font-size: 14px; }
-        .faq-item p { color: #9ca3af; font-size: 13px; margin-top: 6px; margin-bottom: 0; }
-        .lang-content { display: none; }
-        .lang-content.visible { display: block; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitwise Support</title>
+<meta name="description" content="Help and frequently asked questions for Bitwise on iOS and Android: wink and voice modes, hints, purchases, sync and backups.">
+<meta name="theme-color" content="#0a0e1a">
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+:root {
+  --bg: #0a0e1a; --surface: #111827; --border: #1f2937;
+  --text: #c8ccd4; --text-strong: #eef0f4; --muted: #9ca3af; --faint: #4b5563;
+  --accent: #00ff80; --accent-2: #1a7cff; --accent-ink: #0a0e1a;
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Roboto Mono", monospace;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.65; overflow-x: hidden; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 0; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-weight: 700; color: var(--text-strong); letter-spacing: .08em; text-decoration: none; }
+.brand img { width: 32px; height: 32px; border-radius: 8px; }
+select { background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px; font-family: var(--mono); font-size: 13px; }
+h1 { font-family: var(--mono); color: var(--accent); font-size: 15px; letter-spacing: .1em; margin: 32px 0 8px; }
+.lead { color: var(--text-strong); font-size: clamp(22px, 4vw, 30px); font-weight: 600; line-height: 1.3; margin-bottom: 28px; }
+h2 { font-family: var(--mono); color: var(--text-strong); font-size: 17px; margin: 40px 0 14px; }
+.contact { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 22px; }
+.contact p { color: var(--muted); }
+.contact a.btn { display: inline-block; background: var(--accent); color: var(--accent-ink); text-decoration: none; padding: 10px 20px; border-radius: 10px; font-weight: 600; font-family: var(--mono); font-size: 14px; margin: 14px 0 8px; word-break: break-all; }
+.contact small { color: var(--faint); font-family: var(--mono); font-size: 12px; display: block; }
+details { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px; }
+summary { cursor: pointer; list-style: none; padding: 14px 18px; color: var(--text-strong); font-weight: 600; font-size: 15px; display: flex; gap: 12px; align-items: baseline; }
+summary::-webkit-details-marker { display: none; }
+summary::before { content: "+"; font-family: var(--mono); color: var(--accent); flex: none; }
+details[open] summary::before { content: "−"; }
+details p { padding: 0 18px 16px 40px; color: var(--muted); font-size: 14px; }
+.req { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; font-family: var(--mono); font-size: 14px; }
+.req div { display: flex; gap: 10px; }
+.req b { color: var(--accent); font-weight: 600; min-width: 72px; }
+footer { border-top: 1px solid #141a28; margin-top: 56px; padding: 28px 0 40px; text-align: center; font-family: var(--mono); font-size: 13px; }
+footer nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; }
+footer a { color: #6ba3ff; text-decoration: none; }
+footer p { color: var(--faint); font-size: 12px; margin-top: 14px; }
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="lang-switch">
-            <a id="btn-en" class="active" onclick="showLang('en')">English</a>
-            <a id="btn-tr" onclick="showLang('tr')">Türkçe</a>
-            <a id="btn-de" onclick="showLang('de')">Deutsch</a>
-            <a id="btn-fr" onclick="showLang('fr')">Français</a>
-            <a id="btn-ja" onclick="showLang('ja')">日本語</a>
-            <a id="btn-es" onclick="showLang('es')">Español</a>
-            <a id="btn-ko" onclick="showLang('ko')">한국어</a>
-            <a id="btn-pt" onclick="showLang('pt')">Português</a>
-            <a id="btn-zh" onclick="showLang('zh')">中文</a>
-            <a id="btn-it" onclick="showLang('it')">Italiano</a>
-            <a id="btn-nl" onclick="showLang('nl')">Nederlands</a>
-            <a id="btn-ru" onclick="showLang('ru')">Русский</a>
-        </div>
+<div class="wrap">
+  <header class="topbar">
+    <a class="brand" href="./"><img src="icon.png" alt="" width="32" height="32">BITWISE</a>
+    <select id="lang" aria-label="Language">
+      <option value="en">English</option><option value="tr">Türkçe</option><option value="de">Deutsch</option>
+      <option value="fr">Français</option><option value="ja">日本語</option><option value="es">Español</option>
+      <option value="ko">한국어</option><option value="pt">Português</option><option value="zh">中文</option>
+      <option value="it">Italiano</option><option value="nl">Nederlands</option><option value="ru">Русский</option>
+    </select>
+  </header>
 
-        <!-- ENGLISH -->
-        <div id="en" class="lang-content visible">
-            <h1>// SUPPORT</h1>
-            <p class="date">Bitwise — Binary Logic Puzzle</p>
-            <div class="section">
-                <h2>Contact Us</h2>
-                <p>Have a question, found a bug, or want to share feedback? We'd love to hear from you.</p>
-                <div class="contact-card">
-                    <p>Email us at:</p>
-                    <a href="mailto:aytuncsevren@gmail.com?subject=Bitwise%20Support">aytuncsevren@gmail.com</a>
-                </div>
-                <p>We typically respond within 24-48 hours.</p>
-            </div>
-            <hr>
-            <div class="section">
-                <h2>Frequently Asked Questions</h2>
-                <div class="faq-item"><strong>How do I get more hints?</strong><p>You start each day with 3 free hints (if your balance is below 3). You can also purchase hint packs or upgrade to Bitwise Pro for unlimited hints from the in-app store.</p></div>
-                <div class="faq-item"><strong>How do I restore my purchases?</strong><p>Go to Store and tap "Restore Purchases" at the bottom. Make sure you're signed in with the same Apple ID.</p></div>
-                <div class="faq-item"><strong>What is the Daily Puzzle?</strong><p>A new puzzle is available every day. Complete it to build your daily streak! Everyone gets the same puzzle each day.</p></div>
-                <div class="faq-item"><strong>What is Check Mistakes?</strong><p>Check Mistakes lets you instantly verify if your current moves are correct. Incorrect cells will be highlighted so you can fix them.</p></div>
-                <div class="faq-item"><strong>What is Bitwise Pro?</strong><p>Bitwise Pro is a premium subscription that gives you unlimited hints and access to all premium themes. You can subscribe from the in-app store.</p></div>
-                <div class="faq-item"><strong>What are the difficulty levels?</strong><p>Bitwise offers 4 difficulty levels: Easy (6×6), Medium (6×6), Hard (6×6), and Extreme (8×8). Each level provides a unique challenge.</p></div>
-                <div class="faq-item"><strong>How does iCloud sync work?</strong><p>Enable iCloud sync in Settings to automatically sync your progress across all your devices. Your data is stored securely in your personal iCloud account.</p></div>
-                <div class="faq-item"><strong>Can I backup my data?</strong><p>Yes! Go to Settings and use the Export function to save your data as a JSON file. You can import it later to restore your progress.</p></div>
-                <div class="faq-item"><strong>Can I play offline?</strong><p>Yes! Bitwise works fully offline. An internet connection is only needed for purchases, iCloud sync, and leaderboards.</p></div>
-                <div class="faq-item"><strong>How do I remove ads?</strong><p>You can purchase the "Remove Ads" option or upgrade to Bitwise Pro from the in-app store.</p></div>
-                <div class="faq-item"><strong>My progress was lost. What should I do?</strong><p>If you had iCloud sync enabled, your data should restore automatically on any device. You can also import a JSON backup from Settings. Purchases can always be restored via the Store.</p></div>
-            </div>
-            <hr>
-            <div class="section">
-                <h2>System Requirements</h2>
-                <p>iOS 17.0 or later. Compatible with iPhone and iPad.</p>
-            </div>
-        </div>
+  <main>
+    <h1 data-i18n="h">// SUPPORT</h1>
+    <p class="lead" data-i18n="lead">How can we help?</p>
 
-        <!-- TURKISH -->
-        <div id="tr" class="lang-content">
-            <h1>// DESTEK</h1>
-            <p class="date">Bitwise — İkili Mantık Bulmacası</p>
-            <div class="section">
-                <h2>Bize Ulaşın</h2>
-                <p>Sorunuz mu var, bir hata mı buldunuz veya geri bildirim mi paylaşacaksınız?</p>
-                <div class="contact-card">
-                    <p>E-posta:</p>
-                    <a href="mailto:aytuncsevren@gmail.com?subject=Bitwise%20Destek">aytuncsevren@gmail.com</a>
-                </div>
-                <p>Genellikle 24-48 saat içinde yanıt veriyoruz.</p>
-            </div>
-            <hr>
-            <div class="section">
-                <h2>Sıkça Sorulan Sorular</h2>
-                <div class="faq-item"><strong>Daha fazla ipucu nasıl alırım?</strong><p>Her gün ipucu bakiyeniz 3'ün altındaysa otomatik olarak 3'e tamamlanır. Mağazadan ipucu paketleri satın alabilir veya Bitwise Pro'ya yükselterek sınırsız ipucu kullanabilirsiniz.</p></div>
-                <div class="faq-item"><strong>Satın alımlarımı nasıl geri yüklerim?</strong><p>Mağaza sayfasındaki "Satın Alımları Geri Yükle" seçeneğine dokunun. Aynı Apple ID ile giriş yaptığınızdan emin olun.</p></div>
-                <div class="faq-item"><strong>Günlük Bulmaca nedir?</strong><p>Her gün yeni bir bulmaca sunulur. Günlük serinizi oluşturmak için tamamlayın! Herkes aynı bulmacayı alır.</p></div>
-                <div class="faq-item"><strong>Hata Kontrolü nedir?</strong><p>Hata Kontrolü, mevcut hamlelerinizin doğru olup olmadığını anında doğrulamanızı sağlar. Yanlış hücreler vurgulanır.</p></div>
-                <div class="faq-item"><strong>Bitwise Pro nedir?</strong><p>Bitwise Pro, sınırsız ipucu ve tüm premium temalara erişim sağlayan bir premium aboneliktir. Uygulama içi mağazadan abone olabilirsiniz.</p></div>
-                <div class="faq-item"><strong>Zorluk seviyeleri nelerdir?</strong><p>Bitwise 4 zorluk seviyesi sunar: Kolay (6×6), Orta (6×6), Zor (6×6) ve Ekstrem (8×8). Her seviye benzersiz bir meydan okuma sunar.</p></div>
-                <div class="faq-item"><strong>iCloud senkronizasyonu nasıl çalışır?</strong><p>Ayarlar'dan iCloud senkronizasyonunu etkinleştirerek ilerlemenizi tüm cihazlarınızda otomatik senkronize edin. Verileriniz kişisel iCloud hesabınızda güvenle saklanır.</p></div>
-                <div class="faq-item"><strong>Verilerimi yedekleyebilir miyim?</strong><p>Evet! Ayarlar'a gidin ve Dışa Aktar fonksiyonunu kullanarak verilerinizi JSON dosyası olarak kaydedin. Daha sonra içe aktararak geri yükleyebilirsiniz.</p></div>
-                <div class="faq-item"><strong>Çevrimdışı oynayabilir miyim?</strong><p>Evet! Bitwise tamamen çevrimdışı çalışır. İnternet yalnızca satın alma, iCloud senkronizasyonu ve liderlik tabloları için gereklidir.</p></div>
-                <div class="faq-item"><strong>Reklamları nasıl kaldırırım?</strong><p>Mağazadan "Reklamları Kaldır" seçeneğini satın alabilir veya Bitwise Pro'ya yükseltebilirsiniz.</p></div>
-                <div class="faq-item"><strong>İlerleme verilerim kayboldu. Ne yapmalıyım?</strong><p>iCloud senkronizasyonu açıksa verileriniz herhangi bir cihazda otomatik geri yüklenir. Ayrıca Ayarlar'dan JSON yedeğini içe aktarabilirsiniz. Satın alımlar her zaman Mağaza'dan geri yüklenebilir.</p></div>
-            </div>
-            <hr>
-            <div class="section">
-                <h2>Sistem Gereksinimleri</h2>
-                <p>iOS 17.0 veya sonrası. iPhone ve iPad ile uyumludur.</p>
-            </div>
-        </div>
-
-        <!-- GERMAN -->
-        <div id="de" class="lang-content">
-            <h1>// SUPPORT</h1>
-            <p class="date">Bitwise — Binäres Logikrätsel</p>
-            <div class="section">
-                <h2>Kontakt</h2>
-                <p>Frage, Fehler gefunden oder Feedback? Wir hören gerne von Ihnen.</p>
-                <div class="contact-card">
-                    <p>E-Mail:</p>
-                    <a href="mailto:aytuncsevren@gmail.com?subject=Bitwise%20Support">aytuncsevren@gmail.com</a>
-                </div>
-                <p>Wir antworten normalerweise innerhalb von 24-48 Stunden.</p>
-            </div>
-            <hr>
-            <div class="section">
-                <h2>Häufig gestellte Fragen</h2>
-                <div class="faq-item"><strong>Wie bekomme ich mehr Hinweise?</strong><p>Sie starten jeden Tag mit 3 kostenlosen Hinweisen (wenn Ihr Guthaben unter 3 liegt). Sie können auch Pakete kaufen oder auf Bitwise Pro upgraden für unbegrenzte Hinweise.</p></div>
-                <div class="faq-item"><strong>Wie stelle ich Käufe wieder her?</strong><p>Gehen Sie zum Store und tippen Sie unten auf "Käufe wiederherstellen". Stellen Sie sicher, dass Sie mit derselben Apple ID angemeldet sind.</p></div>
-                <div class="faq-item"><strong>Was ist das tägliche Rätsel?</strong><p>Jeden Tag gibt es ein neues Rätsel. Vervollständigen Sie es, um Ihre Serie aufzubauen! Alle erhalten dasselbe Rätsel.</p></div>
-                <div class="faq-item"><strong>Was ist Fehlerprüfung?</strong><p>Die Fehlerprüfung ermöglicht es Ihnen, sofort zu überprüfen, ob Ihre aktuellen Züge korrekt sind. Falsche Zellen werden hervorgehoben.</p></div>
-                <div class="faq-item"><strong>Was ist Bitwise Pro?</strong><p>Bitwise Pro ist ein Premium-Abonnement mit unbegrenzten Hinweisen und Zugang zu allen Premium-Themen. Sie können im In-App-Store abonnieren.</p></div>
-                <div class="faq-item"><strong>Welche Schwierigkeitsstufen gibt es?</strong><p>Bitwise bietet 4 Schwierigkeitsstufen: Leicht (6×6), Mittel (6×6), Schwer (6×6) und Extrem (8×8). Jede Stufe bietet eine einzigartige Herausforderung.</p></div>
-                <div class="faq-item"><strong>Wie funktioniert die iCloud-Synchronisierung?</strong><p>Aktivieren Sie die iCloud-Synchronisierung in den Einstellungen, um Ihren Fortschritt automatisch auf allen Geräten zu synchronisieren.</p></div>
-                <div class="faq-item"><strong>Kann ich meine Daten sichern?</strong><p>Ja! Unter Einstellungen können Sie Ihre Daten als JSON-Datei exportieren und später wieder importieren.</p></div>
-                <div class="faq-item"><strong>Kann ich offline spielen?</strong><p>Ja! Bitwise funktioniert vollständig offline. Internet wird nur für Käufe, iCloud-Synchronisierung und Bestenlisten benötigt.</p></div>
-                <div class="faq-item"><strong>Wie entferne ich Werbung?</strong><p>Sie können "Werbung entfernen" kaufen oder auf Bitwise Pro upgraden.</p></div>
-                <div class="faq-item"><strong>Mein Fortschritt ist verloren. Was tun?</strong><p>Wenn die iCloud-Synchronisierung aktiv war, werden Ihre Daten automatisch wiederhergestellt. Sie können auch ein JSON-Backup importieren. Käufe können immer über den Store wiederhergestellt werden.</p></div>
-            </div>
-            <hr>
-            <div class="section">
-                <h2>Systemanforderungen</h2>
-                <p>iOS 17.0 oder neuer. Kompatibel mit iPhone und iPad.</p>
-            </div>
-        </div>
-
-        <!-- FRENCH -->
-        <div id="fr" class="lang-content">
-            <h1>// SUPPORT</h1>
-            <p class="date">Bitwise — Puzzle Logique Binaire</p>
-            <div class="section">
-                <h2>Nous contacter</h2>
-                <p>Une question, un bug ou un retour ? Nous serions ravis de vous entendre.</p>
-                <div class="contact-card">
-                    <p>E-mail :</p>
-                    <a href="mailto:aytuncsevren@gmail.com?subject=Bitwise%20Support">aytuncsevren@gmail.com</a>
-                </div>
-                <p>Nous répondons généralement sous 24-48 heures.</p>
-            </div>
-            <hr>
-            <div class="section">
-                <h2>Questions fréquentes</h2>
-                <div class="faq-item"><strong>Comment obtenir plus d'indices ?</strong><p>Vous commencez chaque jour avec 3 indices gratuits. Vous pouvez aussi acheter des packs ou passer à Bitwise Pro pour des indices illimités.</p></div>
-                <div class="faq-item"><strong>Comment restaurer mes achats ?</strong><p>Allez dans la boutique et appuyez sur "Restaurer les achats". Assurez-vous d'être connecté avec le même identifiant Apple.</p></div>
-                <div class="faq-item"><strong>Qu'est-ce que le puzzle quotidien ?</strong><p>Un nouveau puzzle est disponible chaque jour. Complétez-le pour construire votre série ! Tout le monde reçoit le même puzzle.</p></div>
-                <div class="faq-item"><strong>Qu'est-ce que la vérification d'erreurs ?</strong><p>La vérification d'erreurs vous permet de vérifier instantanément si vos mouvements sont corrects. Les cellules incorrectes seront mises en évidence.</p></div>
-                <div class="faq-item"><strong>Qu'est-ce que Bitwise Pro ?</strong><p>Bitwise Pro est un abonnement premium offrant des indices illimités et l'accès à tous les thèmes premium. Abonnez-vous depuis la boutique.</p></div>
-                <div class="faq-item"><strong>Quels sont les niveaux de difficulté ?</strong><p>Bitwise propose 4 niveaux : Facile (6×6), Moyen (6×6), Difficile (6×6) et Extrême (8×8). Chaque niveau offre un défi unique.</p></div>
-                <div class="faq-item"><strong>Comment fonctionne la synchronisation iCloud ?</strong><p>Activez la synchronisation iCloud dans les paramètres pour synchroniser automatiquement votre progression sur tous vos appareils.</p></div>
-                <div class="faq-item"><strong>Puis-je sauvegarder mes données ?</strong><p>Oui ! Dans les paramètres, exportez vos données en fichier JSON. Vous pourrez les réimporter plus tard.</p></div>
-                <div class="faq-item"><strong>Puis-je jouer hors ligne ?</strong><p>Oui ! Bitwise fonctionne entièrement hors ligne. Internet n'est nécessaire que pour les achats, iCloud et les classements.</p></div>
-                <div class="faq-item"><strong>Comment supprimer les publicités ?</strong><p>Achetez "Supprimer les pubs" ou passez à Bitwise Pro depuis la boutique.</p></div>
-                <div class="faq-item"><strong>J'ai perdu ma progression. Que faire ?</strong><p>Si la synchronisation iCloud était activée, vos données se restaureront automatiquement. Vous pouvez aussi importer une sauvegarde JSON. Les achats peuvent toujours être restaurés.</p></div>
-            </div>
-            <hr>
-            <div class="section">
-                <h2>Configuration requise</h2>
-                <p>iOS 17.0 ou ultérieur. Compatible iPhone et iPad.</p>
-            </div>
-        </div>
-
-        <!-- JAPANESE -->
-        <div id="ja" class="lang-content">
-            <h1>// サポート</h1>
-            <p class="date">Bitwise — バイナリロジックパズル</p>
-            <div class="section">
-                <h2>お問い合わせ</h2>
-                <p>ご質問、バグ報告、フィードバックがありましたらお気軽にどうぞ。</p>
-                <div class="contact-card">
-                    <p>メール:</p>
-                    <a href="mailto:aytuncsevren@gmail.com?subject=Bitwise%20Support">aytuncsevren@gmail.com</a>
-                </div>
-                <p>通常24〜48時間以内にご返信いたします。</p>
-            </div>
-            <hr>
-            <div class="section">
-                <h2>よくある質問</h2>
-                <div class="faq-item"><strong>ヒントをもっと得るには？</strong><p>毎日ヒント残高が3未満の場合、3つの無料ヒントが付与されます。ストアでパックを購入するか、Bitwise Proにアップグレードして無制限ヒントを利用できます。</p></div>
-                <div class="faq-item"><strong>購入を復元するには？</strong><p>ストアの「購入を復元」をタップしてください。同じApple IDでサインインしていることを確認してください。</p></div>
-                <div class="faq-item"><strong>デイリーパズルとは？</strong><p>毎日新しいパズルが出題されます。完了して連続記録を作りましょう！全員同じパズルです。</p></div>
-                <div class="faq-item"><strong>ミスチェックとは？</strong><p>ミスチェックを使うと、現在の手が正しいかどうかを即座に確認できます。間違ったセルがハイライトされます。</p></div>
-                <div class="faq-item"><strong>Bitwise Proとは？</strong><p>Bitwise Proは、無制限ヒントとすべてのプレミアムテーマへのアクセスを提供するプレミアムサブスクリプションです。</p></div>
-                <div class="faq-item"><strong>難易度レベルは？</strong><p>Bitwiseには4つの難易度があります：簡単（6×6）、普通（6×6）、難しい（6×6）、エクストリーム（8×8）。</p></div>
-                <div class="faq-item"><strong>iCloud同期の仕組みは？</strong><p>設定でiCloud同期を有効にすると、すべてのデバイスで進行状況が自動同期されます。</p></div>
-                <div class="faq-item"><strong>データをバックアップできますか？</strong><p>はい！設定からデータをJSONファイルとしてエクスポートできます。後でインポートして復元できます。</p></div>
-                <div class="faq-item"><strong>オフラインでプレイできますか？</strong><p>はい！完全にオフラインで動作します。インターネットは購入、iCloud同期、リーダーボードにのみ必要です。</p></div>
-                <div class="faq-item"><strong>広告を削除するには？</strong><p>ストアで「広告を削除」を購入するか、Bitwise Proにアップグレードしてください。</p></div>
-                <div class="faq-item"><strong>進行状況が失われました。どうすればいいですか？</strong><p>iCloud同期が有効だった場合、データは自動的に復元されます。設定からJSONバックアップをインポートすることもできます。購入はストアからいつでも復元可能です。</p></div>
-            </div>
-            <hr>
-            <div class="section">
-                <h2>システム要件</h2>
-                <p>iOS 17.0以降。iPhone、iPadに対応。</p>
-            </div>
-        </div>
-
-        <!-- SPANISH -->
-        <div id="es" class="lang-content">
-            <h1>// SOPORTE</h1>
-            <p class="date">Bitwise — Puzzle de Lógica Binaria</p>
-            <div class="section">
-                <h2>Contáctenos</h2>
-                <p>¿Tiene alguna pregunta, encontró un error o quiere compartir su opinión?</p>
-                <div class="contact-card">
-                    <p>Correo:</p>
-                    <a href="mailto:aytuncsevren@gmail.com?subject=Bitwise%20Soporte">aytuncsevren@gmail.com</a>
-                </div>
-                <p>Normalmente respondemos en 24-48 horas.</p>
-            </div>
-            <hr>
-            <div class="section">
-                <h2>Preguntas frecuentes</h2>
-                <div class="faq-item"><strong>¿Cómo obtengo más pistas?</strong><p>Comienzas cada día con 3 pistas gratis. También puedes comprar paquetes o actualizar a Bitwise Pro para pistas ilimitadas.</p></div>
-                <div class="faq-item"><strong>¿Cómo restauro mis compras?</strong><p>Ve a la Tienda y toca "Restaurar Compras". Asegúrate de usar el mismo Apple ID.</p></div>
-                <div class="faq-item"><strong>¿Qué es el Puzzle Diario?</strong><p>Un nuevo puzzle está disponible cada día. ¡Complétalo para construir tu racha! Todos reciben el mismo puzzle.</p></div>
-                <div class="faq-item"><strong>¿Qué es Verificar errores?</strong><p>Verificar errores te permite comprobar instantáneamente si tus movimientos son correctos. Las celdas incorrectas se resaltarán.</p></div>
-                <div class="faq-item"><strong>¿Qué es Bitwise Pro?</strong><p>Bitwise Pro es una suscripción premium que te da pistas ilimitadas y acceso a todos los temas premium. Puedes suscribirte desde la tienda.</p></div>
-                <div class="faq-item"><strong>¿Cuáles son los niveles de dificultad?</strong><p>Bitwise ofrece 4 niveles: Fácil (6×6), Medio (6×6), Difícil (6×6) y Extremo (8×8). Cada nivel ofrece un desafío único.</p></div>
-                <div class="faq-item"><strong>¿Cómo funciona la sincronización iCloud?</strong><p>Activa la sincronización iCloud en Ajustes para sincronizar tu progreso automáticamente en todos tus dispositivos.</p></div>
-                <div class="faq-item"><strong>¿Puedo hacer backup de mis datos?</strong><p>¡Sí! Ve a Ajustes y exporta tus datos como archivo JSON. Puedes importarlo después para restaurar tu progreso.</p></div>
-                <div class="faq-item"><strong>¿Puedo jugar sin conexión?</strong><p>¡Sí! Bitwise funciona completamente offline. Internet solo se necesita para compras, iCloud y clasificaciones.</p></div>
-                <div class="faq-item"><strong>¿Cómo elimino los anuncios?</strong><p>Compra "Quitar anuncios" o actualiza a Bitwise Pro desde la tienda.</p></div>
-                <div class="faq-item"><strong>Perdí mi progreso. ¿Qué hago?</strong><p>Si la sincronización iCloud estaba activa, tus datos se restaurarán automáticamente. También puedes importar un backup JSON. Las compras siempre se pueden restaurar desde la Tienda.</p></div>
-            </div>
-            <hr>
-            <div class="section">
-                <h2>Requisitos del sistema</h2>
-                <p>iOS 17.0 o posterior. Compatible con iPhone y iPad.</p>
-            </div>
-        </div>
-
-        <!-- KOREAN -->
-        <div id="ko" class="lang-content">
-            <h1>// 지원</h1>
-            <p class="date">Bitwise — 바이너리 로직 퍼즐</p>
-            <div class="section">
-                <h2>문의하기</h2>
-                <p>질문, 버그 신고 또는 피드백이 있으신가요?</p>
-                <div class="contact-card">
-                    <p>이메일:</p>
-                    <a href="mailto:aytuncsevren@gmail.com?subject=Bitwise%20Support">aytuncsevren@gmail.com</a>
-                </div>
-                <p>보통 24~48시간 내에 답변합니다.</p>
-            </div>
-            <hr>
-            <div class="section">
-                <h2>자주 묻는 질문</h2>
-                <div class="faq-item"><strong>힌트를 더 얻으려면?</strong><p>매일 잔액이 3 미만이면 3개의 무료 힌트가 제공됩니다. 스토어에서 팩을 구매하거나 Bitwise Pro로 업그레이드하여 무제한 힌트를 사용할 수 있습니다.</p></div>
-                <div class="faq-item"><strong>구매를 복원하려면?</strong><p>스토어에서 "구매 복원"을 탭하세요. 동일한 Apple ID로 로그인되어 있는지 확인하세요.</p></div>
-                <div class="faq-item"><strong>매일 퍼즐이란?</strong><p>매일 새로운 퍼즐이 제공됩니다. 완료하여 연속 기록을 만드세요! 모든 사용자가 같은 퍼즐을 받습니다.</p></div>
-                <div class="faq-item"><strong>실수 확인이란?</strong><p>실수 확인을 사용하면 현재 이동이 올바른지 즉시 확인할 수 있습니다. 잘못된 셀이 강조 표시됩니다.</p></div>
-                <div class="faq-item"><strong>Bitwise Pro란?</strong><p>Bitwise Pro는 무제한 힌트와 모든 프리미엄 테마에 대한 액세스를 제공하는 프리미엄 구독입니다.</p></div>
-                <div class="faq-item"><strong>난이도 레벨은?</strong><p>Bitwise는 4가지 난이도를 제공합니다: 쉬움 (6×6), 보통 (6×6), 어려움 (6×6), 극한 (8×8).</p></div>
-                <div class="faq-item"><strong>iCloud 동기화는 어떻게 작동하나요?</strong><p>설정에서 iCloud 동기화를 활성화하면 모든 기기에서 진행 상황이 자동으로 동기화됩니다.</p></div>
-                <div class="faq-item"><strong>데이터를 백업할 수 있나요?</strong><p>네! 설정에서 데이터를 JSON 파일로 내보낼 수 있습니다. 나중에 가져와서 복원할 수 있습니다.</p></div>
-                <div class="faq-item"><strong>오프라인으로 플레이할 수 있나요?</strong><p>네! 완전히 오프라인으로 작동합니다. 인터넷은 구매, iCloud 동기화, 리더보드에만 필요합니다.</p></div>
-                <div class="faq-item"><strong>광고를 제거하려면?</strong><p>스토어에서 "광고 제거"를 구매하거나 Bitwise Pro로 업그레이드하세요.</p></div>
-                <div class="faq-item"><strong>진행 상황이 사라졌어요. 어떻게 하나요?</strong><p>iCloud 동기화가 활성화되어 있었다면 데이터가 자동으로 복원됩니다. 설정에서 JSON 백업을 가져올 수도 있습니다. 구매는 스토어에서 항상 복원 가능합니다.</p></div>
-            </div>
-            <hr>
-            <div class="section">
-                <h2>시스템 요구사항</h2>
-                <p>iOS 17.0 이상. iPhone 및 iPad 호환.</p>
-            </div>
-        </div>
-
-        <!-- PORTUGUESE (BRAZIL) -->
-        <div id="pt" class="lang-content">
-            <h1>// SUPORTE</h1>
-            <p class="date">Bitwise — Puzzle Lógico Binário</p>
-            <div class="section">
-                <h2>Fale conosco</h2>
-                <p>Tem alguma dúvida, encontrou um bug ou quer compartilhar feedback?</p>
-                <div class="contact-card">
-                    <p>E-mail:</p>
-                    <a href="mailto:aytuncsevren@gmail.com?subject=Bitwise%20Suporte">aytuncsevren@gmail.com</a>
-                </div>
-                <p>Normalmente respondemos em 24-48 horas.</p>
-            </div>
-            <hr>
-            <div class="section">
-                <h2>Perguntas frequentes</h2>
-                <div class="faq-item"><strong>Como consigo mais dicas?</strong><p>Você começa cada dia com 3 dicas grátis. Também pode comprar pacotes ou assinar o Bitwise Pro para dicas ilimitadas.</p></div>
-                <div class="faq-item"><strong>Como restauro minhas compras?</strong><p>Vá à Loja e toque em "Restaurar Compras". Certifique-se de usar o mesmo Apple ID.</p></div>
-                <div class="faq-item"><strong>O que é o Puzzle Diário?</strong><p>Um novo puzzle está disponível todos os dias. Complete-o para construir sua sequência! Todos recebem o mesmo puzzle.</p></div>
-                <div class="faq-item"><strong>O que é Verificação de erros?</strong><p>A Verificação de erros permite verificar instantaneamente se seus movimentos estão corretos. Células incorretas serão destacadas.</p></div>
-                <div class="faq-item"><strong>O que é Bitwise Pro?</strong><p>Bitwise Pro é uma assinatura premium que oferece dicas ilimitadas e acesso a todos os temas premium. Assine pela loja do app.</p></div>
-                <div class="faq-item"><strong>Quais são os níveis de dificuldade?</strong><p>Bitwise oferece 4 níveis: Fácil (6×6), Médio (6×6), Difícil (6×6) e Extremo (8×8). Cada nível oferece um desafio único.</p></div>
-                <div class="faq-item"><strong>Como funciona a sincronização iCloud?</strong><p>Ative a sincronização iCloud nas Configurações para sincronizar seu progresso automaticamente em todos os dispositivos.</p></div>
-                <div class="faq-item"><strong>Posso fazer backup dos meus dados?</strong><p>Sim! Nas Configurações, exporte seus dados como arquivo JSON. Você pode importar depois para restaurar seu progresso.</p></div>
-                <div class="faq-item"><strong>Posso jogar offline?</strong><p>Sim! Bitwise funciona completamente offline. Internet só é necessário para compras, iCloud e rankings.</p></div>
-                <div class="faq-item"><strong>Como removo os anúncios?</strong><p>Compre "Remover anúncios" ou assine o Bitwise Pro na loja.</p></div>
-                <div class="faq-item"><strong>Perdi meu progresso. O que fazer?</strong><p>Se a sincronização iCloud estava ativa, seus dados serão restaurados automaticamente. Você também pode importar um backup JSON. Compras podem sempre ser restauradas pela Loja.</p></div>
-            </div>
-            <hr>
-            <div class="section">
-                <h2>Requisitos do sistema</h2>
-                <p>iOS 17.0 ou posterior. Compatível com iPhone e iPad.</p>
-            </div>
-        </div>
-
-        <!-- CHINESE SIMPLIFIED -->
-        <div id="zh" class="lang-content">
-            <h1>// 支持</h1>
-            <p class="date">Bitwise — 二进制逻辑谜题</p>
-            <div class="section">
-                <h2>联系我们</h2>
-                <p>有问题、发现bug或想分享反馈？</p>
-                <div class="contact-card">
-                    <p>邮箱:</p>
-                    <a href="mailto:aytuncsevren@gmail.com?subject=Bitwise%20Support">aytuncsevren@gmail.com</a>
-                </div>
-                <p>我们通常在24-48小时内回复。</p>
-            </div>
-            <hr>
-            <div class="section">
-                <h2>常见问题</h2>
-                <div class="faq-item"><strong>如何获得更多提示？</strong><p>每天提示余额低于3时会自动补充至3个免费提示。您也可以在商店购买提示包或升级到Bitwise Pro获取无限提示。</p></div>
-                <div class="faq-item"><strong>如何恢复购买？</strong><p>前往商店，点击底部的"恢复购买"。请确保使用相同的Apple ID登录。</p></div>
-                <div class="faq-item"><strong>什么是每日谜题？</strong><p>每天都有一个新谜题。完成它来建立你的连续记录！所有人收到相同的谜题。</p></div>
-                <div class="faq-item"><strong>什么是检查错误？</strong><p>检查错误功能可以让你立即验证当前操作是否正确。错误的格子会被高亮显示。</p></div>
-                <div class="faq-item"><strong>什么是Bitwise Pro？</strong><p>Bitwise Pro是高级订阅，提供无限提示和所有高级主题。您可以在应用内商店订阅。</p></div>
-                <div class="faq-item"><strong>有哪些难度级别？</strong><p>Bitwise提供4个难度级别：简单（6×6）、中等（6×6）、困难（6×6）和极限（8×8）。</p></div>
-                <div class="faq-item"><strong>iCloud同步如何工作？</strong><p>在设置中启用iCloud同步，您的进度将在所有设备上自动同步。</p></div>
-                <div class="faq-item"><strong>可以备份数据吗？</strong><p>可以！在设置中将数据导出为JSON文件。之后可以导入来恢复进度。</p></div>
-                <div class="faq-item"><strong>可以离线玩吗？</strong><p>可以！Bitwise完全支持离线。只有购买、iCloud同步和排行榜需要网络。</p></div>
-                <div class="faq-item"><strong>如何移除广告？</strong><p>在商店购买"移除广告"或升级到Bitwise Pro。</p></div>
-                <div class="faq-item"><strong>进度丢失了怎么办？</strong><p>如果启用了iCloud同步，数据会自动恢复。您也可以从设置导入JSON备份。购买可随时从商店恢复。</p></div>
-            </div>
-            <hr>
-            <div class="section">
-                <h2>系统要求</h2>
-                <p>iOS 17.0或更高版本。兼容iPhone和iPad。</p>
-            </div>
-        </div>
-
-        <!-- ITALIAN -->
-        <div id="it" class="lang-content">
-            <h1>// SUPPORTO</h1>
-            <p class="date">Bitwise — Puzzle di Logica Binaria</p>
-            <div class="section">
-                <h2>Contattaci</h2>
-                <p>Hai una domanda, trovato un bug o vuoi condividere un feedback?</p>
-                <div class="contact-card">
-                    <p>E-mail:</p>
-                    <a href="mailto:aytuncsevren@gmail.com?subject=Bitwise%20Supporto">aytuncsevren@gmail.com</a>
-                </div>
-                <p>Di solito rispondiamo entro 24-48 ore.</p>
-            </div>
-            <hr>
-            <div class="section">
-                <h2>Domande frequenti</h2>
-                <div class="faq-item"><strong>Come ottengo più suggerimenti?</strong><p>Ogni giorno i tuoi suggerimenti vengono ricaricati a 3 se il saldo è inferiore a 3. Puoi anche acquistare pacchetti o passare a Bitwise Pro per suggerimenti illimitati.</p></div>
-                <div class="faq-item"><strong>Come ripristino i miei acquisti?</strong><p>Vai allo Store e tocca "Ripristina acquisti" in basso. Assicurati di aver effettuato l'accesso con lo stesso Apple ID.</p></div>
-                <div class="faq-item"><strong>Cos'è il Puzzle giornaliero?</strong><p>Un nuovo puzzle è disponibile ogni giorno. Completalo per costruire la tua serie! Tutti ricevono lo stesso puzzle.</p></div>
-                <div class="faq-item"><strong>Cos'è il Controllo errori?</strong><p>Il Controllo errori ti permette di verificare istantaneamente se le tue mosse sono corrette. Le celle errate verranno evidenziate.</p></div>
-                <div class="faq-item"><strong>Cos'è Bitwise Pro?</strong><p>Bitwise Pro è un abbonamento premium che offre suggerimenti illimitati e accesso a tutti i temi premium. Puoi abbonarti dallo store in-app.</p></div>
-                <div class="faq-item"><strong>Quali sono i livelli di difficoltà?</strong><p>Bitwise offre 4 livelli: Facile (6×6), Medio (6×6), Difficile (6×6) ed Estremo (8×8). Ogni livello offre una sfida unica.</p></div>
-                <div class="faq-item"><strong>Come funziona la sincronizzazione iCloud?</strong><p>Attiva la sincronizzazione iCloud nelle Impostazioni per sincronizzare automaticamente i tuoi progressi su tutti i dispositivi.</p></div>
-                <div class="faq-item"><strong>Posso fare il backup dei miei dati?</strong><p>Sì! Nelle Impostazioni, esporta i tuoi dati come file JSON. Potrai importarli in seguito per ripristinare i progressi.</p></div>
-                <div class="faq-item"><strong>Posso giocare offline?</strong><p>Sì! Bitwise funziona completamente offline. Internet è necessario solo per acquisti, iCloud e classifiche.</p></div>
-                <div class="faq-item"><strong>Come rimuovo le pubblicità?</strong><p>Acquista "Rimuovi pubblicità" o passa a Bitwise Pro dallo store.</p></div>
-                <div class="faq-item"><strong>Ho perso i miei progressi. Cosa faccio?</strong><p>Se la sincronizzazione iCloud era attiva, i tuoi dati si ripristineranno automaticamente. Puoi anche importare un backup JSON. Gli acquisti possono sempre essere ripristinati dallo Store.</p></div>
-            </div>
-            <hr>
-            <div class="section">
-                <h2>Requisiti di sistema</h2>
-                <p>iOS 17.0 o successivo. Compatibile con iPhone e iPad.</p>
-            </div>
-        </div>
-
-        <!-- DUTCH -->
-        <div id="nl" class="lang-content">
-            <h1>// ONDERSTEUNING</h1>
-            <p class="date">Bitwise — Binair Logica Puzzel</p>
-            <div class="section">
-                <h2>Neem contact op</h2>
-                <p>Heeft u een vraag, een bug gevonden of wilt u feedback delen?</p>
-                <div class="contact-card">
-                    <p>E-mail:</p>
-                    <a href="mailto:aytuncsevren@gmail.com?subject=Bitwise%20Support">aytuncsevren@gmail.com</a>
-                </div>
-                <p>We reageren doorgaans binnen 24-48 uur.</p>
-            </div>
-            <hr>
-            <div class="section">
-                <h2>Veelgestelde vragen</h2>
-                <div class="faq-item"><strong>Hoe krijg ik meer hints?</strong><p>Elke dag worden uw hints aangevuld tot 3 als uw saldo lager is dan 3. U kunt ook pakketten kopen of upgraden naar Bitwise Pro voor onbeperkte hints.</p></div>
-                <div class="faq-item"><strong>Hoe herstel ik mijn aankopen?</strong><p>Ga naar de Store en tik op "Aankopen herstellen". Zorg ervoor dat u bent ingelogd met dezelfde Apple ID.</p></div>
-                <div class="faq-item"><strong>Wat is de Dagelijkse puzzel?</strong><p>Elke dag is er een nieuwe puzzel beschikbaar. Voltooi hem om uw reeks op te bouwen! Iedereen krijgt dezelfde puzzel.</p></div>
-                <div class="faq-item"><strong>Wat is Foutcontrole?</strong><p>Foutcontrole laat u direct controleren of uw huidige zetten correct zijn. Onjuiste cellen worden gemarkeerd.</p></div>
-                <div class="faq-item"><strong>Wat is Bitwise Pro?</strong><p>Bitwise Pro is een premium abonnement met onbeperkte hints en toegang tot alle premium thema's. U kunt abonneren vanuit de in-app store.</p></div>
-                <div class="faq-item"><strong>Welke moeilijkheidsniveaus zijn er?</strong><p>Bitwise biedt 4 niveaus: Makkelijk (6×6), Gemiddeld (6×6), Moeilijk (6×6) en Extreem (8×8).</p></div>
-                <div class="faq-item"><strong>Hoe werkt iCloud-synchronisatie?</strong><p>Schakel iCloud-synchronisatie in via Instellingen om uw voortgang automatisch te synchroniseren op al uw apparaten.</p></div>
-                <div class="faq-item"><strong>Kan ik mijn gegevens back-uppen?</strong><p>Ja! Ga naar Instellingen en exporteer uw gegevens als JSON-bestand. U kunt het later importeren om uw voortgang te herstellen.</p></div>
-                <div class="faq-item"><strong>Kan ik offline spelen?</strong><p>Ja! Bitwise werkt volledig offline. Internet is alleen nodig voor aankopen, iCloud-synchronisatie en ranglijsten.</p></div>
-                <div class="faq-item"><strong>Hoe verwijder ik advertenties?</strong><p>Koop "Advertenties verwijderen" of upgrade naar Bitwise Pro in de store.</p></div>
-                <div class="faq-item"><strong>Mijn voortgang is verdwenen. Wat nu?</strong><p>Als iCloud-synchronisatie was ingeschakeld, worden uw gegevens automatisch hersteld. U kunt ook een JSON-backup importeren. Aankopen kunnen altijd worden hersteld via de Store.</p></div>
-            </div>
-            <hr>
-            <div class="section">
-                <h2>Systeemvereisten</h2>
-                <p>iOS 17.0 of nieuwer. Compatibel met iPhone en iPad.</p>
-            </div>
-        </div>
-
-        <!-- RUSSIAN -->
-        <div id="ru" class="lang-content">
-            <h1>// ПОДДЕРЖКА</h1>
-            <p class="date">Bitwise — Головоломка на двоичной логике</p>
-            <div class="section">
-                <h2>Связаться с нами</h2>
-                <p>Есть вопрос, нашли ошибку или хотите поделиться отзывом?</p>
-                <div class="contact-card">
-                    <p>Электронная почта:</p>
-                    <a href="mailto:aytuncsevren@gmail.com?subject=Bitwise%20Support">aytuncsevren@gmail.com</a>
-                </div>
-                <p>Обычно мы отвечаем в течение 24-48 часов.</p>
-            </div>
-            <hr>
-            <div class="section">
-                <h2>Часто задаваемые вопросы</h2>
-                <div class="faq-item"><strong>Как получить больше подсказок?</strong><p>Каждый день ваш баланс подсказок пополняется до 3, если он ниже 3. Вы также можете купить пакеты или перейти на Bitwise Pro для неограниченных подсказок.</p></div>
-                <div class="faq-item"><strong>Как восстановить покупки?</strong><p>Перейдите в Магазин и нажмите "Восстановить покупки". Убедитесь, что вы вошли с тем же Apple ID.</p></div>
-                <div class="faq-item"><strong>Что такое ежедневная головоломка?</strong><p>Каждый день доступна новая головоломка. Решайте её, чтобы продлить серию! Все получают одинаковую головоломку.</p></div>
-                <div class="faq-item"><strong>Что такое проверка ошибок?</strong><p>Проверка ошибок позволяет мгновенно узнать, правильны ли ваши текущие ходы. Неправильные ячейки будут выделены.</p></div>
-                <div class="faq-item"><strong>Что такое Bitwise Pro?</strong><p>Bitwise Pro — это премиум-подписка с неограниченными подсказками и доступом ко всем премиум-темам. Подпишитесь в магазине приложения.</p></div>
-                <div class="faq-item"><strong>Какие уровни сложности есть?</strong><p>Bitwise предлагает 4 уровня сложности: Лёгкий (6×6), Средний (6×6), Сложный (6×6) и Экстремальный (8×8).</p></div>
-                <div class="faq-item"><strong>Как работает синхронизация iCloud?</strong><p>Включите синхронизацию iCloud в Настройках, чтобы автоматически синхронизировать прогресс на всех устройствах.</p></div>
-                <div class="faq-item"><strong>Можно ли сделать резервную копию данных?</strong><p>Да! В Настройках экспортируйте данные как JSON-файл. Позже вы можете импортировать его для восстановления прогресса.</p></div>
-                <div class="faq-item"><strong>Можно ли играть офлайн?</strong><p>Да! Bitwise полностью работает офлайн. Интернет нужен только для покупок, синхронизации iCloud и таблиц лидеров.</p></div>
-                <div class="faq-item"><strong>Как убрать рекламу?</strong><p>Купите "Убрать рекламу" или перейдите на Bitwise Pro в магазине.</p></div>
-                <div class="faq-item"><strong>Мой прогресс пропал. Что делать?</strong><p>Если синхронизация iCloud была включена, данные восстановятся автоматически. Вы также можете импортировать JSON-резервную копию. Покупки всегда можно восстановить через Магазин.</p></div>
-            </div>
-            <hr>
-            <div class="section">
-                <h2>Системные требования</h2>
-                <p>iOS 17.0 или новее. Совместим с iPhone и iPad.</p>
-            </div>
-        </div>
+    <div class="contact">
+      <p data-i18n="contact_p">Have a question, found a bug or want to share feedback? Write to us — it's a real person on the other end.</p>
+      <a class="btn" href="mailto:aytuncsevren@gmail.com?subject=Bitwise">aytuncsevren@gmail.com</a>
+      <small data-i18n="contact_s">We usually reply within 24–48 hours. Please mention your device and iOS/Android version.</small>
     </div>
 
-    <script>
-        const langs = ['en','tr','de','fr','ja','es','ko','pt','zh','it','nl','ru'];
-        function showLang(lang) {
-            langs.forEach(function(l) {
-                document.getElementById(l).className = l === lang ? 'lang-content visible' : 'lang-content';
-                document.getElementById('btn-' + l).className = l === lang ? 'active' : '';
-            });
-        }
-    </script>
+    <h2 data-i18n="faq_h">Frequently asked questions</h2>
+    <div id="faq">
+      <details><summary data-i18n="q_wink">How do I play with winks?</summary><p data-i18n="a_wink">On the difficulty screen, choose Wink in the Input section, then start a game. Hold the phone at arm's length with your face centered and well lit. Wink your right eye for 1, your left eye for 0, and raise your eyebrows to undo. The game picks the next cell for you.</p></details>
+      <details><summary data-i18n="q_winklock">Why is Wink greyed out?</summary><p data-i18n="a_winklock">On iPhone and iPad, Wink mode needs a TrueDepth camera — the one used by Face ID. On Android it works with the front camera. If you declined camera access, turn it on for Bitwise in your device settings.</p></details>
+      <details><summary data-i18n="q_voice">How does Voice mode work?</summary><p data-i18n="a_voice">Choose Voice in the Input section and allow microphone and speech recognition access. Say “one”, “zero” or “undo” (or the same words in your app language). The game picks the next cell for you.</p></details>
+      <details><summary data-i18n="q_types">What are the game types?</summary><p data-i18n="a_types">Classic uses 0s and 1s. Colors uses two opposite colors instead of digits. Flow adds a countdown to every move. Locked has no undo, and one mistake ends the game.</p></details>
+      <details><summary data-i18n="q_rules">What are the rules?</summary><p data-i18n="a_rules">Each cell is 0 or 1. No more than two identical digits can sit next to each other. Every row and column has as many 0s as 1s. An = between two cells means they are the same, a × means they are different.</p></details>
+      <details><summary data-i18n="q_diff">What are the difficulty levels?</summary><p data-i18n="a_diff">Easy, Medium and Hard are 6×6 grids; Extreme is an 8×8 grid.</p></details>
+      <details><summary data-i18n="q_daily">What is the Daily Puzzle?</summary><p data-i18n="a_daily">A new puzzle every day — the same one for every player, on iOS and Android. Solve it daily to build your streak.</p></details>
+      <details><summary data-i18n="q_hints">How do I get more hints?</summary><p data-i18n="a_hints">Each day your hints are topped up to 3. You can also watch a short video, buy hint packs, or get unlimited hints with Bitwise Pro.</p></details>
+      <details><summary data-i18n="q_check">What is Check Mistakes?</summary><p data-i18n="a_check">It checks your current grid and highlights incorrect cells so you can fix them before they cause more errors.</p></details>
+      <details><summary data-i18n="q_pro">What is Bitwise Pro?</summary><p data-i18n="a_pro">A one-time purchase — not a subscription. It includes unlimited hints, all premium themes and an ad-free experience.</p></details>
+      <details><summary data-i18n="q_ads">How do I remove ads?</summary><p data-i18n="a_ads">Buy Remove Ads or Bitwise Pro in the in-app Store.</p></details>
+      <details><summary data-i18n="q_restore">How do I restore my purchases?</summary><p data-i18n="a_restore">Open the Store and tap Restore Purchases. Use the same Apple ID (iOS) or Google account (Android) you bought with.</p></details>
+      <details><summary data-i18n="q_duel">How do duels work?</summary><p data-i18n="a_duel">Duels are available on iOS and use Game Center. Challenge a friend from the home screen; you both solve the same puzzle and the fastest time wins.</p></details>
+      <details><summary data-i18n="q_sync">How does cloud sync work?</summary><p data-i18n="a_sync">On iOS, turn on iCloud Sync in Settings. On Android, turn on Google Sync in Settings (you need to be signed in to Google Play Games); you can also use Restore from Google.</p></details>
+      <details><summary data-i18n="q_backup">Can I back up my data?</summary><p data-i18n="a_backup">Yes. In Settings, use Export Data to save your progress as a file, and Import Data to restore it later.</p></details>
+      <details><summary data-i18n="q_offline">Can I play offline?</summary><p data-i18n="a_offline">Yes. An internet connection is only needed for purchases, ads, cloud sync, leaderboards and duels.</p></details>
+      <details><summary data-i18n="q_lost">My progress is gone. What can I do?</summary><p data-i18n="a_lost">If cloud sync was on, sign in with the same account and your data will come back. You can also import a backup file from Settings. Purchases can always be restored from the Store.</p></details>
+    </div>
+
+    <h2 data-i18n="req_h">System requirements</h2>
+    <div class="req">
+      <div><b>iOS</b><span data-i18n="req_ios">iOS 17 or later · iPhone and iPad</span></div>
+      <div><b>Android</b><span data-i18n="req_android">Android 7.0 or later</span></div>
+    </div>
+  </main>
+
+  <footer>
+    <nav>
+      <a href="./" data-i18n="f_home">Home</a>
+      <a href="privacy-policy.html" data-i18n="f_priv_ios">Privacy Policy (iOS)</a>
+      <a href="android/privacy-policy.html" data-i18n="f_priv_android">Privacy Policy (Android)</a>
+    </nav>
+    <p>© 2026 Aytunç Sevren</p>
+  </footer>
+</div>
+
+<script>
+var I18N = {
+  en: {},
+  tr: {
+    _title: "Bitwise Destek",
+    h: "// DESTEK", lead: "Nasıl yardımcı olabiliriz?",
+    contact_p: "Sorun mu var, bir hata mı buldun ya da görüşünü mü paylaşmak istiyorsun? Bize yaz — karşıda gerçek bir insan var.",
+    contact_s: "Genellikle 24–48 saat içinde yanıt veriyoruz. Lütfen cihazını ve iOS/Android sürümünü belirt.",
+    faq_h: "Sıkça sorulan sorular",
+    q_wink: "Göz kırparak nasıl oynarım?", a_wink: "Zorluk ekranında Giriş Modu bölümünden “Göz” seçeneğini seç ve oyunu başlat. Telefonu kol mesafesinde, yüzün ortada ve iyi aydınlatılmış olacak şekilde tut. 1 için sağ gözünü, 0 için sol gözünü kırp; geri almak için kaşlarını kaldır. Sıradaki hücreyi oyun seçer.",
+    q_winklock: "“Göz” seçeneği neden soluk görünüyor?", a_winklock: "iPhone ve iPad'de Göz Kırpma modu TrueDepth kamerası (Face ID'nin kullandığı kamera) gerektirir. Android'de ön kamerayla çalışır. Kamera iznini reddettiysen cihaz ayarlarından Bitwise için aç.",
+    q_voice: "Ses modu nasıl çalışır?", a_voice: "Giriş Modu bölümünden “Sesli” seçeneğini seç, mikrofon ve konuşma tanıma iznini ver. “Bir”, “sıfır” ya da “geri” de (İngilizce “one”, “zero”, “undo” da olur). Sıradaki hücreyi oyun seçer.",
+    q_types: "Oyun tipleri neler?", a_types: "Klasik 0 ve 1 kullanır. Renk modu rakamlar yerine iki zıt renk kullanır. Akış her hamleye geri sayım ekler. Kilitli modda geri alma yoktur ve tek hata oyunu bitirir.",
+    q_rules: "Kurallar neler?", a_rules: "Her hücre 0 ya da 1'dir. Yan yana en fazla iki aynı rakam olabilir. Her satır ve sütunda 0 ve 1 sayısı eşittir. İki hücre arasındaki = aynı, × farklı olduklarını gösterir.",
+    q_diff: "Zorluk seviyeleri neler?", a_diff: "Kolay, Orta ve Zor 6×6; Ekstrem 8×8 tablodur.",
+    q_daily: "Günlük Bulmaca nedir?", a_daily: "Her gün yeni bir bulmaca — iOS ve Android'de tüm oyuncular için aynı. Her gün çözerek serini büyüt.",
+    q_hints: "Daha fazla ipucu nasıl alırım?", a_hints: "İpuçların her gün 3'e tamamlanır. Ayrıca kısa bir video izleyebilir, ipucu paketi alabilir ya da Bitwise Pro ile sınırsız ipucu kullanabilirsin.",
+    q_check: "Hata Kontrolü nedir?", a_check: "Mevcut tablonu kontrol eder ve yanlış hücreleri işaretler; böylece daha fazla hataya yol açmadan düzeltebilirsin.",
+    q_pro: "Bitwise Pro nedir?", a_pro: "Tek seferlik bir satın alma — abonelik değil. Sınırsız ipucu, tüm premium temalar ve reklamsız deneyim içerir.",
+    q_ads: "Reklamları nasıl kaldırırım?", a_ads: "Uygulama içi Mağaza'dan Reklamları Kaldır'ı ya da Bitwise Pro'yu satın al.",
+    q_restore: "Satın alımlarımı nasıl geri yüklerim?", a_restore: "Mağaza'yı aç ve Satın Alımları Geri Yükle'ye dokun. Satın aldığın Apple ID (iOS) veya Google hesabını (Android) kullan.",
+    q_duel: "Düellolar nasıl çalışır?", a_duel: "Düellolar iOS'ta vardır ve Game Center kullanır. Ana ekrandan bir arkadaşına meydan oku; ikiniz de aynı bulmacayı çözersiniz, en hızlı süre kazanır.",
+    q_sync: "Bulut senkronizasyonu nasıl çalışır?", a_sync: "iOS'ta Ayarlar'dan iCloud senkronizasyonunu aç. Android'de Ayarlar'dan Google senkronizasyonunu aç (Google Play Games'e giriş yapmış olmalısın); Google'dan Geri Yükle'yi de kullanabilirsin.",
+    q_backup: "Verilerimi yedekleyebilir miyim?", a_backup: "Evet. Ayarlar'da Verileri Dışa Aktar ile ilerlemeni dosya olarak kaydet, sonra Verileri İçe Aktar ile geri yükle.",
+    q_offline: "Çevrimdışı oynayabilir miyim?", a_offline: "Evet. İnternet yalnızca satın alma, reklamlar, bulut senkronizasyonu, liderlik tabloları ve düellolar için gerekir.",
+    q_lost: "İlerlemem kayboldu. Ne yapabilirim?", a_lost: "Bulut senkronizasyonu açıksa aynı hesapla giriş yaptığında verilerin geri gelir. Ayarlar'dan bir yedek dosyasını da içe aktarabilirsin. Satın alımlar her zaman Mağaza'dan geri yüklenebilir.",
+    req_h: "Sistem gereksinimleri", req_ios: "iOS 17 veya sonrası · iPhone ve iPad", req_android: "Android 7.0 veya sonrası",
+    f_home: "Ana sayfa", f_priv_ios: "Gizlilik Politikası (iOS)", f_priv_android: "Gizlilik Politikası (Android)"
+  },
+  de: {
+    _title: "Bitwise Support",
+    h: "// SUPPORT", lead: "Wie können wir helfen?",
+    contact_p: "Du hast eine Frage, einen Fehler gefunden oder möchtest Feedback geben? Schreib uns — am anderen Ende sitzt ein echter Mensch.",
+    contact_s: "Wir antworten meist innerhalb von 24–48 Stunden. Bitte nenne dein Gerät und deine iOS-/Android-Version.",
+    faq_h: "Häufige Fragen",
+    q_wink: "Wie spiele ich mit Zwinkern?", a_wink: "Wähle auf dem Schwierigkeitsbildschirm im Bereich Eingabe „Zwinkern“ und starte ein Spiel. Halte das Handy auf Armlänge, dein Gesicht mittig und gut beleuchtet. Zwinkere rechts für 1, links für 0 und hebe die Augenbrauen zum Rückgängigmachen. Das Spiel wählt die nächste Zelle für dich.",
+    q_winklock: "Warum ist Zwinkern ausgegraut?", a_winklock: "Auf iPhone und iPad braucht der Zwinker-Modus eine TrueDepth-Kamera — die Kamera, die Face ID nutzt. Auf Android funktioniert er mit der Frontkamera. Falls du den Kamerazugriff abgelehnt hast, aktiviere ihn in den Geräteeinstellungen für Bitwise.",
+    q_voice: "Wie funktioniert der Sprachmodus?", a_voice: "Wähle „Sprache“ im Bereich Eingabe und erlaube Mikrofon und Spracherkennung. Sag „eins“, „null“ oder „zurück“ (oder „one“, „zero“, „undo“). Das Spiel wählt die nächste Zelle für dich.",
+    q_types: "Welche Spieltypen gibt es?", a_types: "Klassisch nutzt 0en und 1en. Farben nutzt zwei gegensätzliche Farben statt Ziffern. Fluss fügt jedem Zug einen Countdown hinzu. Gesperrt hat kein Rückgängig, ein Fehler beendet das Spiel.",
+    q_rules: "Wie lauten die Regeln?", a_rules: "Jede Zelle ist 0 oder 1. Höchstens zwei gleiche Ziffern dürfen nebeneinander stehen. Jede Zeile und Spalte hat gleich viele 0en und 1en. Ein = zwischen zwei Zellen heißt gleich, ein × heißt verschieden.",
+    q_diff: "Welche Schwierigkeitsstufen gibt es?", a_diff: "Leicht, Mittel und Schwer sind 6×6-Gitter, Extrem ist ein 8×8-Gitter.",
+    q_daily: "Was ist das Tägliche Rätsel?", a_daily: "Jeden Tag ein neues Rätsel — für alle Spieler dasselbe, auf iOS und Android. Löse es täglich, um deine Serie auszubauen.",
+    q_hints: "Wie bekomme ich mehr Tipps?", a_hints: "Deine Tipps werden jeden Tag auf 3 aufgefüllt. Du kannst auch ein kurzes Video ansehen, Tipp-Pakete kaufen oder mit Bitwise Pro unbegrenzte Tipps erhalten.",
+    q_check: "Was ist „Fehler prüfen“?", a_check: "Es prüft dein aktuelles Gitter und markiert falsche Zellen, damit du sie korrigieren kannst, bevor weitere Fehler entstehen.",
+    q_pro: "Was ist Bitwise Pro?", a_pro: "Ein einmaliger Kauf — kein Abo. Enthält unbegrenzte Tipps, alle Premium-Designs und keine Werbung.",
+    q_ads: "Wie entferne ich Werbung?", a_ads: "Kaufe „Werbung entfernen“ oder Bitwise Pro im In-App-Store.",
+    q_restore: "Wie stelle ich Käufe wieder her?", a_restore: "Öffne den Store und tippe auf „Käufe wiederherstellen“. Nutze dieselbe Apple-ID (iOS) bzw. dasselbe Google-Konto (Android) wie beim Kauf.",
+    q_duel: "Wie funktionieren Duelle?", a_duel: "Duelle gibt es auf iOS über Game Center. Fordere einen Freund vom Startbildschirm heraus; ihr löst dasselbe Rätsel, die schnellste Zeit gewinnt.",
+    q_sync: "Wie funktioniert die Cloud-Synchronisierung?", a_sync: "Auf iOS aktivierst du iCloud-Sync in den Einstellungen. Auf Android aktivierst du Google-Sync in den Einstellungen (Anmeldung bei Google Play Games erforderlich); du kannst auch „Von Google wiederherstellen“ nutzen.",
+    q_backup: "Kann ich meine Daten sichern?", a_backup: "Ja. Speichere deinen Fortschritt in den Einstellungen mit „Daten exportieren“ als Datei und stelle ihn mit „Daten importieren“ wieder her.",
+    q_offline: "Kann ich offline spielen?", a_offline: "Ja. Internet brauchst du nur für Käufe, Werbung, Cloud-Sync, Bestenlisten und Duelle.",
+    q_lost: "Mein Fortschritt ist weg. Was tun?", a_lost: "War die Cloud-Synchronisierung aktiv, melde dich mit demselben Konto an und deine Daten kommen zurück. Du kannst auch eine Sicherungsdatei in den Einstellungen importieren. Käufe lassen sich jederzeit im Store wiederherstellen.",
+    req_h: "Systemanforderungen", req_ios: "iOS 17 oder neuer · iPhone und iPad", req_android: "Android 7.0 oder neuer",
+    f_home: "Startseite", f_priv_ios: "Datenschutz (iOS)", f_priv_android: "Datenschutz (Android)"
+  },
+  fr: {
+    _title: "Assistance Bitwise",
+    h: "// ASSISTANCE", lead: "Comment pouvons-nous vous aider ?",
+    contact_p: "Une question, un bug ou un avis à partager ? Écrivez-nous — une vraie personne vous répondra.",
+    contact_s: "Nous répondons généralement sous 24 à 48 heures. Indiquez votre appareil et votre version d'iOS/Android.",
+    faq_h: "Questions fréquentes",
+    q_wink: "Comment jouer avec des clins d'œil ?", a_wink: "Sur l'écran de difficulté, choisissez Clin d'œil dans la section Saisie, puis lancez une partie. Tenez le téléphone à bout de bras, le visage centré et bien éclairé. Clin d'œil droit pour 1, gauche pour 0, sourcils levés pour annuler. Le jeu choisit la case suivante pour vous.",
+    q_winklock: "Pourquoi Clin d'œil est-il grisé ?", a_winklock: "Sur iPhone et iPad, le mode Clin d'œil nécessite une caméra TrueDepth — celle utilisée par Face ID. Sur Android, il fonctionne avec la caméra frontale. Si vous avez refusé l'accès à la caméra, activez-le pour Bitwise dans les réglages de l'appareil.",
+    q_voice: "Comment fonctionne le mode Voix ?", a_voice: "Choisissez Voix dans la section Saisie et autorisez le micro et la reconnaissance vocale. Dites « un », « zéro » ou « retour » (ou « one », « zero », « undo »). Le jeu choisit la case suivante pour vous.",
+    q_types: "Quels sont les types de jeu ?", a_types: "Classique utilise des 0 et des 1. Couleurs utilise deux couleurs opposées au lieu des chiffres. Flux ajoute un compte à rebours à chaque coup. Verrouillé n'a pas d'annulation et une erreur termine la partie.",
+    q_rules: "Quelles sont les règles ?", a_rules: "Chaque case vaut 0 ou 1. Pas plus de deux chiffres identiques côte à côte. Chaque ligne et colonne a autant de 0 que de 1. Un = entre deux cases signifie qu'elles sont identiques, un × qu'elles sont différentes.",
+    q_diff: "Quels sont les niveaux de difficulté ?", a_diff: "Facile, Moyen et Difficile sont des grilles 6×6 ; Extrême est une grille 8×8.",
+    q_daily: "Qu'est-ce que le Puzzle du jour ?", a_daily: "Un nouveau puzzle chaque jour — le même pour tous les joueurs, sur iOS et Android. Résolvez-le chaque jour pour prolonger votre série.",
+    q_hints: "Comment obtenir plus d'indices ?", a_hints: "Vos indices sont remis à 3 chaque jour. Vous pouvez aussi regarder une courte vidéo, acheter des packs d'indices ou obtenir des indices illimités avec Bitwise Pro.",
+    q_check: "Qu'est-ce que « Vérifier les erreurs » ?", a_check: "Cela vérifie votre grille et met en évidence les cases incorrectes pour que vous les corrigiez avant qu'elles n'entraînent d'autres erreurs.",
+    q_pro: "Qu'est-ce que Bitwise Pro ?", a_pro: "Un achat unique — pas un abonnement. Il inclut des indices illimités, tous les thèmes premium et aucune publicité.",
+    q_ads: "Comment supprimer les publicités ?", a_ads: "Achetez « Supprimer les pubs » ou Bitwise Pro dans la boutique de l'app.",
+    q_restore: "Comment restaurer mes achats ?", a_restore: "Ouvrez la boutique et touchez « Restaurer les achats ». Utilisez le même identifiant Apple (iOS) ou compte Google (Android) que lors de l'achat.",
+    q_duel: "Comment fonctionnent les duels ?", a_duel: "Les duels sont disponibles sur iOS via Game Center. Défiez un ami depuis l'écran d'accueil ; vous résolvez le même puzzle et le temps le plus rapide gagne.",
+    q_sync: "Comment fonctionne la synchro cloud ?", a_sync: "Sur iOS, activez la synchro iCloud dans les Réglages. Sur Android, activez la synchro Google dans les Réglages (connexion à Google Play Jeux requise) ; vous pouvez aussi utiliser « Restaurer depuis Google ».",
+    q_backup: "Puis-je sauvegarder mes données ?", a_backup: "Oui. Dans les Réglages, « Exporter les données » enregistre votre progression dans un fichier et « Importer les données » la restaure.",
+    q_offline: "Puis-je jouer hors ligne ?", a_offline: "Oui. Internet n'est nécessaire que pour les achats, les publicités, la synchro cloud, les classements et les duels.",
+    q_lost: "Ma progression a disparu. Que faire ?", a_lost: "Si la synchro cloud était activée, connectez-vous avec le même compte et vos données reviendront. Vous pouvez aussi importer un fichier de sauvegarde depuis les Réglages. Les achats peuvent toujours être restaurés depuis la boutique.",
+    req_h: "Configuration requise", req_ios: "iOS 17 ou ultérieur · iPhone et iPad", req_android: "Android 7.0 ou ultérieur",
+    f_home: "Accueil", f_priv_ios: "Confidentialité (iOS)", f_priv_android: "Confidentialité (Android)"
+  },
+  ja: {
+    _title: "Bitwise サポート",
+    h: "// サポート", lead: "お困りですか?",
+    contact_p: "質問、不具合の報告、ご意見などがあればご連絡ください。実際の開発者がお返事します。",
+    contact_s: "通常24〜48時間以内にお返事します。端末名とiOS/Androidのバージョンをお書き添えください。",
+    faq_h: "よくある質問",
+    q_wink: "ウィンクで遊ぶには?", a_wink: "難易度画面の「入力方法」で「ウィンク」を選び、ゲームを開始します。スマホを腕の長さほど離し、顔を中央に明るい場所で持ってください。右目のウィンクで1、左目で0、眉を上げると取り消し。次のセルはゲームが選びます。",
+    q_winklock: "「ウィンク」がグレーで選べないのはなぜ?", a_winklock: "iPhone・iPadでは、Face IDと同じTrueDepthカメラが必要です。Androidではフロントカメラで動作します。カメラへのアクセスを拒否した場合は、端末の設定でBitwiseのカメラを許可してください。",
+    q_voice: "音声モードの使い方は?", a_voice: "「入力方法」で「音声」を選び、マイクと音声認識へのアクセスを許可します。「いち」「ぜろ」「もどる」(英語の “one” “zero” “undo” も可)と話してください。次のセルはゲームが選びます。",
+    q_types: "ゲームタイプの違いは?", a_types: "クラシックは0と1を使います。カラーは数字の代わりに2つの対照的な色を使います。フローは一手ごとにカウントダウンがあります。ロックは取り消しができず、1つのミスで終了します。",
+    q_rules: "ルールは?", a_rules: "各セルは0か1。同じ数字は最大2つまでしか並べられません。各行・各列の0と1の数は同じです。セル間の = は同じ値、× は異なる値を表します。",
+    q_diff: "難易度は?", a_diff: "イージー・ミディアム・ハードは6×6、エクストリームは8×8です。",
+    q_daily: "デイリーパズルとは?", a_daily: "毎日新しいパズルが登場し、iOSとAndroidの全プレイヤーが同じ問題に挑戦します。毎日解いて連続記録を伸ばしましょう。",
+    q_hints: "ヒントを増やすには?", a_hints: "ヒントは毎日3つまで補充されます。短い動画を見る、ヒントパックを購入する、またはBitwise Proでヒント無制限にできます。",
+    q_check: "ミスチェックとは?", a_check: "現在の盤面を確認し、間違ったセルをハイライトします。ミスが広がる前に修正できます。",
+    q_pro: "Bitwise Proとは?", a_pro: "買い切りの購入で、サブスクではありません。ヒント無制限、すべてのプレミアムテーマ、広告なしが含まれます。",
+    q_ads: "広告を消すには?", a_ads: "アプリ内ストアで「広告を削除」またはBitwise Proを購入してください。",
+    q_restore: "購入を復元するには?", a_restore: "ストアを開き「購入を復元」をタップします。購入時と同じApple ID(iOS)またはGoogleアカウント(Android)を使用してください。",
+    q_duel: "対戦の仕組みは?", a_duel: "対戦はiOSでGame Centerを使って利用できます。ホーム画面から友達に挑戦し、同じパズルを解いて最速タイムを競います。",
+    q_sync: "クラウド同期の仕組みは?", a_sync: "iOSでは設定でiCloud同期をオンにします。Androidでは設定でGoogle同期をオンにします(Google Play ゲームへのサインインが必要)。「Googleから復元」も使えます。",
+    q_backup: "データをバックアップできますか?", a_backup: "はい。設定の「データを書き出す」で進行状況をファイルに保存し、「データを読み込む」で復元できます。",
+    q_offline: "オフラインで遊べますか?", a_offline: "はい。インターネットが必要なのは購入、広告、クラウド同期、ランキング、対戦のときだけです。",
+    q_lost: "進行状況が消えました。どうすれば?", a_lost: "クラウド同期がオンだった場合、同じアカウントでサインインすればデータが戻ります。設定からバックアップファイルを読み込むこともできます。購入はいつでもストアから復元できます。",
+    req_h: "動作環境", req_ios: "iOS 17以降 · iPhone・iPad", req_android: "Android 7.0以降",
+    f_home: "ホーム", f_priv_ios: "プライバシーポリシー(iOS)", f_priv_android: "プライバシーポリシー(Android)"
+  },
+  es: {
+    _title: "Soporte de Bitwise",
+    h: "// SOPORTE", lead: "¿Cómo podemos ayudarte?",
+    contact_p: "¿Tienes una pregunta, encontraste un error o quieres darnos tu opinión? Escríbenos: al otro lado hay una persona real.",
+    contact_s: "Solemos responder en 24–48 horas. Indica tu dispositivo y tu versión de iOS/Android.",
+    faq_h: "Preguntas frecuentes",
+    q_wink: "¿Cómo juego con guiños?", a_wink: "En la pantalla de dificultad, elige Guiño en la sección Entrada y empieza una partida. Sostén el teléfono con el brazo extendido, con la cara centrada y bien iluminada. Guiña el ojo derecho para 1, el izquierdo para 0 y levanta las cejas para deshacer. El juego elige la siguiente celda por ti.",
+    q_winklock: "¿Por qué Guiño aparece en gris?", a_winklock: "En iPhone y iPad, el modo Guiño necesita una cámara TrueDepth, la que usa Face ID. En Android funciona con la cámara frontal. Si rechazaste el acceso a la cámara, actívalo para Bitwise en los ajustes del dispositivo.",
+    q_voice: "¿Cómo funciona el modo Voz?", a_voice: "Elige Voz en la sección Entrada y permite el acceso al micrófono y al reconocimiento de voz. Di «uno», «cero» o «atrás» (o «one», «zero», «undo»). El juego elige la siguiente celda por ti.",
+    q_types: "¿Qué tipos de juego hay?", a_types: "Clásico usa ceros y unos. Colores usa dos colores opuestos en lugar de dígitos. Flujo añade una cuenta atrás a cada jugada. Bloqueado no permite deshacer y un error termina la partida.",
+    q_rules: "¿Cuáles son las reglas?", a_rules: "Cada celda es 0 o 1. No puede haber más de dos dígitos iguales seguidos. Cada fila y columna tiene tantos 0 como 1. Un = entre dos celdas significa que son iguales; un ×, que son distintas.",
+    q_diff: "¿Qué niveles de dificultad hay?", a_diff: "Fácil, Medio y Difícil son cuadrículas de 6×6; Extremo es de 8×8.",
+    q_daily: "¿Qué es el rompecabezas diario?", a_daily: "Un rompecabezas nuevo cada día, el mismo para todos los jugadores en iOS y Android. Resuélvelo a diario para mantener tu racha.",
+    q_hints: "¿Cómo consigo más pistas?", a_hints: "Cada día tus pistas se recargan hasta 3. También puedes ver un vídeo corto, comprar paquetes de pistas o tener pistas ilimitadas con Bitwise Pro.",
+    q_check: "¿Qué es «Comprobar errores»?", a_check: "Revisa tu cuadrícula y resalta las celdas incorrectas para que las corrijas antes de que provoquen más errores.",
+    q_pro: "¿Qué es Bitwise Pro?", a_pro: "Una compra única, no una suscripción. Incluye pistas ilimitadas, todos los temas premium y una experiencia sin anuncios.",
+    q_ads: "¿Cómo quito los anuncios?", a_ads: "Compra «Quitar anuncios» o Bitwise Pro en la tienda de la app.",
+    q_restore: "¿Cómo restauro mis compras?", a_restore: "Abre la tienda y toca «Restaurar compras». Usa el mismo Apple ID (iOS) o la misma cuenta de Google (Android) con la que compraste.",
+    q_duel: "¿Cómo funcionan los duelos?", a_duel: "Los duelos están disponibles en iOS y usan Game Center. Reta a un amigo desde la pantalla de inicio; ambos resolvéis el mismo rompecabezas y gana el tiempo más rápido.",
+    q_sync: "¿Cómo funciona la sincronización en la nube?", a_sync: "En iOS, activa la sincronización de iCloud en Ajustes. En Android, activa la sincronización de Google en Ajustes (necesitas iniciar sesión en Google Play Juegos); también puedes usar «Restaurar desde Google».",
+    q_backup: "¿Puedo hacer una copia de seguridad?", a_backup: "Sí. En Ajustes, «Exportar datos» guarda tu progreso en un archivo e «Importar datos» lo restaura.",
+    q_offline: "¿Puedo jugar sin conexión?", a_offline: "Sí. Solo necesitas internet para compras, anuncios, sincronización en la nube, clasificaciones y duelos.",
+    q_lost: "He perdido mi progreso. ¿Qué hago?", a_lost: "Si la sincronización estaba activada, inicia sesión con la misma cuenta y tus datos volverán. También puedes importar un archivo de copia desde Ajustes. Las compras siempre pueden restaurarse desde la tienda.",
+    req_h: "Requisitos del sistema", req_ios: "iOS 17 o posterior · iPhone y iPad", req_android: "Android 7.0 o posterior",
+    f_home: "Inicio", f_priv_ios: "Privacidad (iOS)", f_priv_android: "Privacidad (Android)"
+  },
+  ko: {
+    _title: "Bitwise 지원",
+    h: "// 지원", lead: "무엇을 도와드릴까요?",
+    contact_p: "질문이나 버그, 의견이 있으신가요? 메일을 보내 주세요. 실제 개발자가 답장합니다.",
+    contact_s: "보통 24~48시간 이내에 답변합니다. 기기와 iOS/Android 버전을 함께 알려 주세요.",
+    faq_h: "자주 묻는 질문",
+    q_wink: "윙크로 어떻게 플레이하나요?", a_wink: "난이도 화면의 입력 방식에서 윙크를 선택하고 게임을 시작하세요. 휴대폰을 팔 길이만큼 떨어뜨려 얼굴이 가운데에 오고 밝게 보이도록 들어 주세요. 오른쪽 눈 윙크는 1, 왼쪽 눈은 0, 눈썹을 올리면 되돌리기입니다. 다음 칸은 게임이 골라 줍니다.",
+    q_winklock: "윙크가 회색으로 비활성화된 이유는?", a_winklock: "iPhone과 iPad에서는 Face ID가 사용하는 TrueDepth 카메라가 필요합니다. Android에서는 전면 카메라로 작동합니다. 카메라 접근을 거부했다면 기기 설정에서 Bitwise의 카메라 권한을 켜 주세요.",
+    q_voice: "음성 모드는 어떻게 작동하나요?", a_voice: "입력 방식에서 음성을 선택하고 마이크와 음성 인식 권한을 허용하세요. “하나”, “영”, “뒤로”(또는 영어 “one”, “zero”, “undo”)라고 말하면 됩니다. 다음 칸은 게임이 골라 줍니다.",
+    q_types: "게임 유형에는 무엇이 있나요?", a_types: "클래식은 0과 1을 사용합니다. 색상은 숫자 대신 두 가지 반대 색상을 사용합니다. 플로우는 매 수마다 카운트다운이 있습니다. 잠금 모드는 되돌리기가 없고 한 번의 실수로 게임이 끝납니다.",
+    q_rules: "규칙은 무엇인가요?", a_rules: "각 칸은 0 또는 1입니다. 같은 숫자는 최대 두 개까지만 연속할 수 있습니다. 모든 행과 열에 0과 1의 개수가 같습니다. 두 칸 사이의 = 는 같은 값, × 는 다른 값을 뜻합니다.",
+    q_diff: "난이도는 어떻게 되나요?", a_diff: "쉬움, 보통, 어려움은 6×6, 익스트림은 8×8입니다.",
+    q_daily: "데일리 퍼즐이란?", a_daily: "매일 새로운 퍼즐이 나오며, iOS와 Android의 모든 플레이어가 같은 문제를 풉니다. 매일 풀어 연속 기록을 이어가세요.",
+    q_hints: "힌트를 더 얻으려면?", a_hints: "힌트는 매일 3개까지 채워집니다. 짧은 영상을 보거나 힌트 팩을 구매하거나 Bitwise Pro로 무제한 힌트를 이용할 수 있습니다.",
+    q_check: "실수 확인이란?", a_check: "현재 퍼즐을 확인해 틀린 칸을 표시합니다. 실수가 번지기 전에 고칠 수 있습니다.",
+    q_pro: "Bitwise Pro란?", a_pro: "구독이 아닌 1회 구매입니다. 무제한 힌트, 모든 프리미엄 테마, 광고 없는 플레이가 포함됩니다.",
+    q_ads: "광고를 없애려면?", a_ads: "앱 내 스토어에서 광고 제거 또는 Bitwise Pro를 구매하세요.",
+    q_restore: "구매 내역을 복원하려면?", a_restore: "스토어를 열고 구매 복원을 탭하세요. 구매할 때 사용한 Apple ID(iOS) 또는 Google 계정(Android)을 사용해야 합니다.",
+    q_duel: "대결은 어떻게 하나요?", a_duel: "대결은 iOS에서 Game Center로 이용할 수 있습니다. 홈 화면에서 친구에게 도전하면 둘이 같은 퍼즐을 풀고 가장 빠른 기록이 승리합니다.",
+    q_sync: "클라우드 동기화는 어떻게 작동하나요?", a_sync: "iOS에서는 설정에서 iCloud 동기화를 켜세요. Android에서는 설정에서 Google 동기화를 켜세요(Google Play 게임즈 로그인 필요). Google에서 복원 기능도 사용할 수 있습니다.",
+    q_backup: "데이터를 백업할 수 있나요?", a_backup: "네. 설정의 데이터 내보내기로 진행 상황을 파일로 저장하고, 데이터 가져오기로 복원할 수 있습니다.",
+    q_offline: "오프라인으로 플레이할 수 있나요?", a_offline: "네. 인터넷은 구매, 광고, 클라우드 동기화, 리더보드, 대결에만 필요합니다.",
+    q_lost: "진행 상황이 사라졌어요. 어떻게 하나요?", a_lost: "클라우드 동기화가 켜져 있었다면 같은 계정으로 로그인하면 데이터가 돌아옵니다. 설정에서 백업 파일을 가져올 수도 있습니다. 구매는 언제든 스토어에서 복원할 수 있습니다.",
+    req_h: "시스템 요구 사항", req_ios: "iOS 17 이상 · iPhone 및 iPad", req_android: "Android 7.0 이상",
+    f_home: "홈", f_priv_ios: "개인정보 처리방침 (iOS)", f_priv_android: "개인정보 처리방침 (Android)"
+  },
+  pt: {
+    _title: "Suporte Bitwise",
+    h: "// SUPORTE", lead: "Como podemos ajudar?",
+    contact_p: "Tem uma dúvida, encontrou um bug ou quer dar sua opinião? Escreva para nós — do outro lado há uma pessoa de verdade.",
+    contact_s: "Normalmente respondemos em 24–48 horas. Informe seu aparelho e a versão do iOS/Android.",
+    faq_h: "Perguntas frequentes",
+    q_wink: "Como jogo piscando?", a_wink: "Na tela de dificuldade, escolha Piscada na seção Entrada e comece uma partida. Segure o celular com o braço estendido, com o rosto centralizado e bem iluminado. Pisque o olho direito para 1, o esquerdo para 0 e levante as sobrancelhas para desfazer. O jogo escolhe a próxima célula para você.",
+    q_winklock: "Por que Piscada está desativado?", a_winklock: "No iPhone e iPad, o modo Piscada precisa de uma câmera TrueDepth — a mesma do Face ID. No Android, funciona com a câmera frontal. Se você negou o acesso à câmera, ative-o para o Bitwise nos ajustes do aparelho.",
+    q_voice: "Como funciona o modo Voz?", a_voice: "Escolha Voz na seção Entrada e permita o acesso ao microfone e ao reconhecimento de fala. Diga “um”, “zero” ou “voltar” (ou “one”, “zero”, “undo”). O jogo escolhe a próxima célula para você.",
+    q_types: "Quais são os tipos de jogo?", a_types: "Clássico usa zeros e uns. Cores usa duas cores opostas no lugar dos dígitos. Fluxo adiciona uma contagem regressiva a cada jogada. Bloqueado não permite desfazer e um erro encerra o jogo.",
+    q_rules: "Quais são as regras?", a_rules: "Cada célula é 0 ou 1. No máximo dois dígitos iguais podem ficar lado a lado. Cada linha e coluna tem tantos 0 quanto 1. Um = entre duas células significa que são iguais; um ×, que são diferentes.",
+    q_diff: "Quais são os níveis de dificuldade?", a_diff: "Fácil, Médio e Difícil são grades 6×6; Extremo é uma grade 8×8.",
+    q_daily: "O que é o Desafio diário?", a_daily: "Um quebra-cabeça novo por dia — o mesmo para todos os jogadores, no iOS e no Android. Resolva todo dia para manter sua sequência.",
+    q_hints: "Como consigo mais dicas?", a_hints: "Suas dicas são completadas até 3 todos os dias. Você também pode assistir a um vídeo curto, comprar pacotes de dicas ou ter dicas ilimitadas com o Bitwise Pro.",
+    q_check: "O que é Verificar erros?", a_check: "Confere sua grade atual e destaca as células erradas para você corrigir antes que causem mais erros.",
+    q_pro: "O que é o Bitwise Pro?", a_pro: "Uma compra única — não é assinatura. Inclui dicas ilimitadas, todos os temas premium e uma experiência sem anúncios.",
+    q_ads: "Como removo os anúncios?", a_ads: "Compre Remover anúncios ou o Bitwise Pro na loja do app.",
+    q_restore: "Como restauro minhas compras?", a_restore: "Abra a loja e toque em Restaurar compras. Use o mesmo ID Apple (iOS) ou a mesma conta Google (Android) usada na compra.",
+    q_duel: "Como funcionam os duelos?", a_duel: "Os duelos estão disponíveis no iOS e usam o Game Center. Desafie um amigo pela tela inicial; vocês resolvem o mesmo quebra-cabeça e o tempo mais rápido vence.",
+    q_sync: "Como funciona a sincronização na nuvem?", a_sync: "No iOS, ative a sincronização do iCloud nos Ajustes. No Android, ative a sincronização do Google nos Ajustes (é preciso entrar no Google Play Games); você também pode usar Restaurar do Google.",
+    q_backup: "Posso fazer backup dos meus dados?", a_backup: "Sim. Nos Ajustes, Exportar dados salva seu progresso em um arquivo e Importar dados o restaura.",
+    q_offline: "Posso jogar offline?", a_offline: "Sim. A internet só é necessária para compras, anúncios, sincronização na nuvem, rankings e duelos.",
+    q_lost: "Meu progresso sumiu. O que faço?", a_lost: "Se a sincronização estava ativada, entre com a mesma conta e seus dados voltarão. Você também pode importar um arquivo de backup nos Ajustes. As compras sempre podem ser restauradas pela loja.",
+    req_h: "Requisitos do sistema", req_ios: "iOS 17 ou posterior · iPhone e iPad", req_android: "Android 7.0 ou posterior",
+    f_home: "Início", f_priv_ios: "Privacidade (iOS)", f_priv_android: "Privacidade (Android)"
+  },
+  zh: {
+    _title: "Bitwise 支持",
+    h: "// 支持", lead: "需要什么帮助?",
+    contact_p: "有问题、发现了错误或想分享反馈?给我们写信——回复你的是真人。",
+    contact_s: "我们通常在 24–48 小时内回复。请注明你的设备和 iOS/Android 版本。",
+    faq_h: "常见问题",
+    q_wink: "如何用眨眼来玩?", a_wink: "在难度界面的“输入方式”中选择“眨眼”,然后开始游戏。手臂伸直拿着手机,让脸位于画面中央并保持光线充足。右眼眨眼输入 1,左眼输入 0,扬起眉毛撤销。游戏会为你选择下一个格子。",
+    q_winklock: "为什么“眨眼”是灰色的?", a_winklock: "在 iPhone 和 iPad 上,眨眼模式需要 TrueDepth 摄像头(即 Face ID 使用的摄像头)。在 Android 上使用前置摄像头即可。如果你拒绝了相机权限,请在设备设置中为 Bitwise 开启。",
+    q_voice: "语音模式如何使用?", a_voice: "在“输入方式”中选择“语音”,并允许麦克风和语音识别权限。说出“一”、“零”或“撤销”(也可以说英文 “one”、“zero”、“undo”)。游戏会为你选择下一个格子。",
+    q_types: "有哪些游戏类型?", a_types: "经典使用 0 和 1。颜色用两种对立的颜色代替数字。心流为每一步加入倒计时。锁定模式不能撤销,一次失误即结束。",
+    q_rules: "规则是什么?", a_rules: "每个格子是 0 或 1。相邻的相同数字最多两个。每行每列的 0 和 1 数量相等。两个格子之间的 = 表示相同,× 表示不同。",
+    q_diff: "有哪些难度?", a_diff: "简单、中等和困难为 6×6,极限为 8×8。",
+    q_daily: "什么是每日谜题?", a_daily: "每天一道新谜题——iOS 和 Android 上所有玩家都相同。每天完成即可延续连续记录。",
+    q_hints: "如何获得更多提示?", a_hints: "每天提示会补充到 3 个。你也可以观看短视频、购买提示包,或通过 Bitwise Pro 获得无限提示。",
+    q_check: "什么是“检查错误”?", a_check: "它会检查当前盘面并标出错误的格子,让你在错误扩散前修正。",
+    q_pro: "什么是 Bitwise Pro?", a_pro: "一次性购买,不是订阅。包含无限提示、全部高级主题和无广告体验。",
+    q_ads: "如何去除广告?", a_ads: "在应用内商店购买“移除广告”或 Bitwise Pro。",
+    q_restore: "如何恢复购买?", a_restore: "打开商店并点按“恢复购买”。请使用购买时的 Apple ID(iOS)或 Google 账号(Android)。",
+    q_duel: "对战怎么玩?", a_duel: "对战在 iOS 上通过 Game Center 提供。在主屏幕向好友发起挑战,双方解同一道谜题,用时最短者胜。",
+    q_sync: "云同步如何工作?", a_sync: "在 iOS 上,于设置中开启 iCloud 同步。在 Android 上,于设置中开启 Google 同步(需登录 Google Play 游戏);也可以使用“从 Google 恢复”。",
+    q_backup: "可以备份数据吗?", a_backup: "可以。在设置中使用“导出数据”将进度保存为文件,之后用“导入数据”恢复。",
+    q_offline: "可以离线玩吗?", a_offline: "可以。只有购买、广告、云同步、排行榜和对战需要联网。",
+    q_lost: "我的进度丢失了怎么办?", a_lost: "如果开启过云同步,用同一账号登录即可恢复数据。你也可以在设置中导入备份文件。购买内容随时可以在商店中恢复。",
+    req_h: "系统要求", req_ios: "iOS 17 或更高版本 · iPhone 和 iPad", req_android: "Android 7.0 或更高版本",
+    f_home: "首页", f_priv_ios: "隐私政策(iOS)", f_priv_android: "隐私政策(Android)"
+  },
+  it: {
+    _title: "Assistenza Bitwise",
+    h: "// ASSISTENZA", lead: "Come possiamo aiutarti?",
+    contact_p: "Hai una domanda, hai trovato un bug o vuoi lasciare un commento? Scrivici: dall'altra parte c'è una persona vera.",
+    contact_s: "Di solito rispondiamo entro 24–48 ore. Indica il tuo dispositivo e la versione di iOS/Android.",
+    faq_h: "Domande frequenti",
+    q_wink: "Come si gioca con gli occhiolini?", a_wink: "Nella schermata della difficoltà, scegli Occhiolino nella sezione Input e avvia una partita. Tieni il telefono a distanza di braccio, con il viso centrato e ben illuminato. Occhiolino destro per 1, sinistro per 0, sopracciglia alzate per annullare. Il gioco sceglie la cella successiva per te.",
+    q_winklock: "Perché Occhiolino è disattivato?", a_winklock: "Su iPhone e iPad la modalità Occhiolino richiede una fotocamera TrueDepth, quella usata da Face ID. Su Android funziona con la fotocamera frontale. Se hai negato l'accesso alla fotocamera, attivalo per Bitwise nelle impostazioni del dispositivo.",
+    q_voice: "Come funziona la modalità Voce?", a_voice: "Scegli Voce nella sezione Input e consenti l'accesso al microfono e al riconoscimento vocale. Di' «uno», «zero» o «indietro» (oppure «one», «zero», «undo»). Il gioco sceglie la cella successiva per te.",
+    q_types: "Quali tipi di gioco ci sono?", a_types: "Classico usa 0 e 1. Colori usa due colori opposti al posto delle cifre. Flusso aggiunge un conto alla rovescia a ogni mossa. Bloccato non ha annulla e un errore chiude la partita.",
+    q_rules: "Quali sono le regole?", a_rules: "Ogni cella è 0 o 1. Non più di due cifre uguali possono stare una accanto all'altra. Ogni riga e colonna ha tanti 0 quanti 1. Un = tra due celle significa uguali, un × significa diverse.",
+    q_diff: "Quali sono i livelli di difficoltà?", a_diff: "Facile, Medio e Difficile sono griglie 6×6; Estremo è una griglia 8×8.",
+    q_daily: "Cos'è il Puzzle del giorno?", a_daily: "Un nuovo puzzle ogni giorno, uguale per tutti i giocatori su iOS e Android. Risolvilo ogni giorno per allungare la tua serie.",
+    q_hints: "Come ottengo più suggerimenti?", a_hints: "Ogni giorno i suggerimenti vengono riportati a 3. Puoi anche guardare un breve video, acquistare pacchetti di suggerimenti o avere suggerimenti illimitati con Bitwise Pro.",
+    q_check: "Cos'è Controlla errori?", a_check: "Controlla la griglia attuale ed evidenzia le celle sbagliate, così puoi correggerle prima che causino altri errori.",
+    q_pro: "Cos'è Bitwise Pro?", a_pro: "Un acquisto unico, non un abbonamento. Include suggerimenti illimitati, tutti i temi premium e nessuna pubblicità.",
+    q_ads: "Come rimuovo la pubblicità?", a_ads: "Acquista Rimuovi pubblicità o Bitwise Pro nello store dell'app.",
+    q_restore: "Come ripristino gli acquisti?", a_restore: "Apri lo store e tocca Ripristina acquisti. Usa lo stesso ID Apple (iOS) o account Google (Android) dell'acquisto.",
+    q_duel: "Come funzionano i duelli?", a_duel: "I duelli sono disponibili su iOS tramite Game Center. Sfida un amico dalla schermata principale: risolvete lo stesso puzzle e vince il tempo più veloce.",
+    q_sync: "Come funziona la sincronizzazione cloud?", a_sync: "Su iOS, attiva la sincronizzazione iCloud nelle Impostazioni. Su Android, attiva la sincronizzazione Google nelle Impostazioni (serve l'accesso a Google Play Giochi); puoi anche usare Ripristina da Google.",
+    q_backup: "Posso fare un backup dei dati?", a_backup: "Sì. Nelle Impostazioni, Esporta dati salva i progressi in un file e Importa dati li ripristina.",
+    q_offline: "Posso giocare offline?", a_offline: "Sì. Internet serve solo per acquisti, pubblicità, sincronizzazione cloud, classifiche e duelli.",
+    q_lost: "Ho perso i miei progressi. Cosa faccio?", a_lost: "Se la sincronizzazione cloud era attiva, accedi con lo stesso account e i dati torneranno. Puoi anche importare un file di backup dalle Impostazioni. Gli acquisti si possono sempre ripristinare dallo store.",
+    req_h: "Requisiti di sistema", req_ios: "iOS 17 o successivo · iPhone e iPad", req_android: "Android 7.0 o successivo",
+    f_home: "Home", f_priv_ios: "Privacy (iOS)", f_priv_android: "Privacy (Android)"
+  },
+  nl: {
+    _title: "Bitwise-ondersteuning",
+    h: "// ONDERSTEUNING", lead: "Waarmee kunnen we helpen?",
+    contact_p: "Een vraag, een bug gevonden of feedback? Stuur ons een bericht — er zit een echt mens aan de andere kant.",
+    contact_s: "We reageren meestal binnen 24–48 uur. Vermeld je toestel en je iOS-/Android-versie.",
+    faq_h: "Veelgestelde vragen",
+    q_wink: "Hoe speel ik met knipogen?", a_wink: "Kies op het moeilijkheidsscherm Knipoog bij Invoer en start een spel. Houd de telefoon op armlengte, met je gezicht in het midden en goed verlicht. Knipoog rechts voor 1, links voor 0 en trek je wenkbrauwen op om ongedaan te maken. Het spel kiest het volgende vakje voor je.",
+    q_winklock: "Waarom is Knipoog grijs?", a_winklock: "Op iPhone en iPad heeft de knipoogmodus een TrueDepth-camera nodig — de camera die Face ID gebruikt. Op Android werkt hij met de frontcamera. Heb je cameratoegang geweigerd, zet die dan aan voor Bitwise in de instellingen van je toestel.",
+    q_voice: "Hoe werkt de stemmodus?", a_voice: "Kies Stem bij Invoer en geef toegang tot microfoon en spraakherkenning. Zeg „één”, „nul” of „terug” (of „one”, „zero”, „undo”). Het spel kiest het volgende vakje voor je.",
+    q_types: "Welke speltypes zijn er?", a_types: "Klassiek gebruikt nullen en enen. Kleuren gebruikt twee tegengestelde kleuren in plaats van cijfers. Flow voegt een aftelklok toe aan elke zet. Vergrendeld heeft geen ongedaan maken en één fout beëindigt het spel.",
+    q_rules: "Wat zijn de regels?", a_rules: "Elk vakje is 0 of 1. Er mogen niet meer dan twee gelijke cijfers naast elkaar staan. Elke rij en kolom heeft evenveel nullen als enen. Een = tussen twee vakjes betekent gelijk, een × betekent verschillend.",
+    q_diff: "Welke moeilijkheidsgraden zijn er?", a_diff: "Makkelijk, Gemiddeld en Moeilijk zijn 6×6-rasters; Extreem is een 8×8-raster.",
+    q_daily: "Wat is de dagelijkse puzzel?", a_daily: "Elke dag een nieuwe puzzel — voor alle spelers dezelfde, op iOS en Android. Los hem dagelijks op om je reeks te verlengen.",
+    q_hints: "Hoe krijg ik meer hints?", a_hints: "Je hints worden elke dag aangevuld tot 3. Je kunt ook een korte video bekijken, hintpakketten kopen of onbeperkte hints krijgen met Bitwise Pro.",
+    q_check: "Wat is Fouten controleren?", a_check: "Het controleert je huidige raster en markeert foute vakjes, zodat je ze kunt herstellen voordat ze meer fouten veroorzaken.",
+    q_pro: "Wat is Bitwise Pro?", a_pro: "Een eenmalige aankoop — geen abonnement. Inclusief onbeperkte hints, alle premium thema's en geen advertenties.",
+    q_ads: "Hoe verwijder ik advertenties?", a_ads: "Koop Advertenties verwijderen of Bitwise Pro in de winkel in de app.",
+    q_restore: "Hoe herstel ik mijn aankopen?", a_restore: "Open de winkel en tik op Aankopen herstellen. Gebruik dezelfde Apple ID (iOS) of hetzelfde Google-account (Android) als bij de aankoop.",
+    q_duel: "Hoe werken duels?", a_duel: "Duels zijn beschikbaar op iOS via Game Center. Daag een vriend uit vanaf het startscherm; jullie lossen dezelfde puzzel op en de snelste tijd wint.",
+    q_sync: "Hoe werkt cloudsynchronisatie?", a_sync: "Zet op iOS iCloud-synchronisatie aan in Instellingen. Zet op Android Google-synchronisatie aan in Instellingen (je moet ingelogd zijn bij Google Play Games); je kunt ook Herstellen van Google gebruiken.",
+    q_backup: "Kan ik een back-up maken?", a_backup: "Ja. Met Gegevens exporteren in Instellingen sla je je voortgang op als bestand, met Gegevens importeren zet je hem terug.",
+    q_offline: "Kan ik offline spelen?", a_offline: "Ja. Internet is alleen nodig voor aankopen, advertenties, cloudsynchronisatie, ranglijsten en duels.",
+    q_lost: "Mijn voortgang is weg. Wat nu?", a_lost: "Als cloudsynchronisatie aan stond, log dan in met hetzelfde account en je gegevens komen terug. Je kunt ook een back-upbestand importeren via Instellingen. Aankopen kun je altijd herstellen in de winkel.",
+    req_h: "Systeemvereisten", req_ios: "iOS 17 of nieuwer · iPhone en iPad", req_android: "Android 7.0 of nieuwer",
+    f_home: "Home", f_priv_ios: "Privacybeleid (iOS)", f_priv_android: "Privacybeleid (Android)"
+  },
+  ru: {
+    _title: "Поддержка Bitwise",
+    h: "// ПОДДЕРЖКА", lead: "Чем мы можем помочь?",
+    contact_p: "Есть вопрос, нашли ошибку или хотите поделиться отзывом? Напишите нам — отвечает живой человек.",
+    contact_s: "Обычно мы отвечаем в течение 24–48 часов. Укажите устройство и версию iOS/Android.",
+    faq_h: "Частые вопросы",
+    q_wink: "Как играть подмигиванием?", a_wink: "На экране выбора сложности выберите «Подмигивание» в разделе «Ввод» и начните игру. Держите телефон на расстоянии вытянутой руки, лицо по центру и хорошо освещено. Подмигните правым глазом для 1, левым для 0, поднимите брови, чтобы отменить. Следующую клетку игра выбирает сама.",
+    q_winklock: "Почему «Подмигивание» недоступно?", a_winklock: "На iPhone и iPad режиму нужна камера TrueDepth — та, что используется для Face ID. На Android он работает с фронтальной камерой. Если вы запретили доступ к камере, разрешите его для Bitwise в настройках устройства.",
+    q_voice: "Как работает голосовой режим?", a_voice: "Выберите «Голос» в разделе «Ввод» и разрешите доступ к микрофону и распознаванию речи. Говорите «один», «ноль» или «назад» (или «one», «zero», «undo»). Следующую клетку игра выбирает сама.",
+    q_types: "Какие есть типы игры?", a_types: "Классика — нули и единицы. Цвета — два противоположных цвета вместо цифр. Поток добавляет обратный отсчёт к каждому ходу. В режиме «Замок» нельзя отменять ходы, и одна ошибка завершает игру.",
+    q_rules: "Какие правила?", a_rules: "Каждая клетка — 0 или 1. Рядом может стоять не больше двух одинаковых цифр. В каждой строке и столбце поровну 0 и 1. Знак = между клетками означает одинаковые значения, × — разные.",
+    q_diff: "Какие уровни сложности?", a_diff: "Лёгкий, средний и сложный — поля 6×6; экстрим — поле 8×8.",
+    q_daily: "Что такое головоломка дня?", a_daily: "Каждый день новая головоломка — одна и та же для всех игроков на iOS и Android. Решайте каждый день, чтобы продлить серию.",
+    q_hints: "Как получить больше подсказок?", a_hints: "Каждый день подсказки пополняются до 3. Также можно посмотреть короткое видео, купить набор подсказок или получить безлимитные подсказки с Bitwise Pro.",
+    q_check: "Что такое «Проверка ошибок»?", a_check: "Она проверяет текущее поле и подсвечивает неверные клетки, чтобы вы исправили их до новых ошибок.",
+    q_pro: "Что такое Bitwise Pro?", a_pro: "Разовая покупка, а не подписка. Включает безлимитные подсказки, все премиум-темы и отсутствие рекламы.",
+    q_ads: "Как убрать рекламу?", a_ads: "Купите «Убрать рекламу» или Bitwise Pro во встроенном магазине.",
+    q_restore: "Как восстановить покупки?", a_restore: "Откройте магазин и нажмите «Восстановить покупки». Используйте тот же Apple ID (iOS) или аккаунт Google (Android), что и при покупке.",
+    q_duel: "Как работают дуэли?", a_duel: "Дуэли доступны на iOS через Game Center. Бросьте вызов другу с главного экрана: вы решаете одну и ту же головоломку, побеждает самое быстрое время.",
+    q_sync: "Как работает облачная синхронизация?", a_sync: "На iOS включите синхронизацию iCloud в настройках. На Android включите синхронизацию Google в настройках (нужен вход в Google Play Игры); также можно использовать «Восстановить из Google».",
+    q_backup: "Можно ли сделать резервную копию?", a_backup: "Да. В настройках «Экспорт данных» сохраняет прогресс в файл, а «Импорт данных» восстанавливает его.",
+    q_offline: "Можно ли играть офлайн?", a_offline: "Да. Интернет нужен только для покупок, рекламы, облачной синхронизации, рейтингов и дуэлей.",
+    q_lost: "Прогресс пропал. Что делать?", a_lost: "Если синхронизация была включена, войдите в тот же аккаунт — данные вернутся. Также можно импортировать файл резервной копии в настройках. Покупки всегда можно восстановить в магазине.",
+    req_h: "Системные требования", req_ios: "iOS 17 или новее · iPhone и iPad", req_android: "Android 7.0 или новее",
+    f_home: "Главная", f_priv_ios: "Конфиденциальность (iOS)", f_priv_android: "Конфиденциальность (Android)"
+  }
+};
+var HTML_LANG = { pt: "pt-BR", zh: "zh-Hans" };
+var EN = {};
+document.querySelectorAll("[data-i18n]").forEach(function (el) { EN[el.getAttribute("data-i18n")] = el.textContent; });
+EN._title = document.title;
+function t(lang, key) { var d = I18N[lang] || {}; return d[key] != null ? d[key] : EN[key]; }
+function applyLang(lang) {
+  if (!I18N[lang]) lang = "en";
+  document.documentElement.lang = HTML_LANG[lang] || lang;
+  document.querySelectorAll("[data-i18n]").forEach(function (el) { el.textContent = t(lang, el.getAttribute("data-i18n")); });
+  document.title = t(lang, "_title");
+  document.getElementById("lang").value = lang;
+  try { localStorage.setItem("bitwise.lang", lang); } catch (e) {}
+}
+function initialLang() {
+  var q = new URLSearchParams(location.search).get("lang");
+  if (q && I18N[q]) return q;
+  try { var s = localStorage.getItem("bitwise.lang"); if (s && I18N[s]) return s; } catch (e) {}
+  var nav = (navigator.languages || [navigator.language || "en"]);
+  for (var i = 0; i < nav.length; i++) { var p = String(nav[i]).slice(0, 2).toLowerCase(); if (I18N[p]) return p; }
+  return "en";
+}
+document.getElementById("lang").addEventListener("change", function (e) { applyLang(e.target.value); });
+applyLang(initialLang());
+</script>
 </body>
 </html>

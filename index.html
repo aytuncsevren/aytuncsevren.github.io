@@ -1,1127 +1,824 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitwise - Binary Logic Puzzle Game for iOS</title>
-    <meta name="description" content="Bitwise is a binary logic puzzle game for iOS. Think binary. Solve with logic.">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e1a; color: #c8ccd4; line-height: 1.7; }
-        .hero { text-align: center; padding: 80px 20px 60px; }
-        .hero img { width: 120px; height: 120px; border-radius: 28px; margin-bottom: 24px; box-shadow: 0 0 40px rgba(0,255,128,0.2); }
-        h1 { color: #00ff80; font-size: 42px; font-family: monospace; margin-bottom: 8px; }
-        .tagline { color: #9ca3af; font-size: 18px; font-family: monospace; margin-bottom: 32px; }
-        .app-store-badge { display: inline-block; margin-top: 8px; }
-        .app-store-badge img { height: 54px; }
-        .binary-strip { color: #00ff80; opacity: 0.15; font-size: 11px; font-family: monospace; text-align: center; padding: 12px; overflow: hidden; white-space: nowrap; }
-        .features { max-width: 800px; margin: 0 auto; padding: 60px 20px; }
-        .features h2 { color: #00ff80; font-size: 22px; font-family: monospace; text-align: center; margin-bottom: 40px; }
-        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-        .feature-card { background: #111827; border: 1px solid #1f2937; border-radius: 16px; padding: 24px; text-align: center; }
-        .feature-card .icon { font-size: 36px; margin-bottom: 12px; }
-        .feature-card h3 { color: #e0e0e0; font-size: 16px; font-family: monospace; margin-bottom: 8px; }
-        .feature-card p { color: #9ca3af; font-size: 13px; }
-        .rules { max-width: 600px; margin: 0 auto; padding: 60px 20px; text-align: center; }
-        .rules h2 { color: #00ff80; font-size: 22px; font-family: monospace; margin-bottom: 24px; }
-        .rule-list { list-style: none; padding: 0; }
-        .rule-list li { background: #111827; border: 1px solid #1f2937; border-radius: 10px; padding: 14px 20px; margin-bottom: 10px; font-size: 14px; font-family: monospace; color: #c8ccd4; }
-        .rule-list li span { color: #00ff80; margin-right: 8px; }
-        .cta { text-align: center; padding: 60px 20px 40px; }
-        .cta h2 { color: #e0e0e0; font-size: 24px; font-family: monospace; margin-bottom: 16px; }
-        .cta p { color: #9ca3af; font-size: 15px; margin-bottom: 24px; }
-        footer { text-align: center; padding: 40px 20px; border-top: 1px solid #1a1f2e; }
-        footer a { color: #6ba3ff; text-decoration: none; font-size: 13px; font-family: monospace; margin: 0 12px; }
-        footer p { color: #4b5563; font-size: 12px; font-family: monospace; margin-top: 16px; }
-        .lang-switch { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; padding: 16px 20px 0; max-width: 840px; margin: 0 auto; }
-        .lang-switch a { cursor: pointer; padding: 4px 12px; border: 1px solid #333; border-radius: 8px; text-decoration: none; font-size: 12px; font-family: monospace; color: #c8ccd4; }
-        .lang-switch a.active { background: #00ff80; color: #0a0e1a; border-color: #00ff80; }
-        .lang-content { display: none; }
-        .lang-content.visible { display: block; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitwise — Binary Logic Puzzle for iOS &amp; Android</title>
+<meta name="description" content="A minimalist 0-and-1 logic puzzle you can play hands-free: wink for 1 or 0, raise your eyebrows to undo. Daily puzzle, leaderboards, 8 themes. iOS and Android.">
+<meta name="theme-color" content="#0a0e1a">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bitwise — the logic puzzle you play with a wink">
+<meta property="og:description" content="Right wink = 1, left wink = 0, raise your eyebrows to undo. A minimalist binary logic puzzle for iOS and Android.">
+<meta property="og:image" content="https://aytuncsevren.github.io/bitwise-pages/icon.png">
+<meta property="og:url" content="https://aytuncsevren.github.io/bitwise-pages/">
+<meta name="twitter:card" content="summary">
+<meta name="apple-itunes-app" content="app-id=6759831605">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"MobileApplication","name":"Bitwise: Binary Logic Puzzle","operatingSystem":"iOS 17+, Android 7+","applicationCategory":"GameApplication","image":"https://aytuncsevren.github.io/bitwise-pages/icon.png","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"sameAs":["https://apps.apple.com/app/id6759831605","https://play.google.com/store/apps/details?id=com.bitwise.puzzle.android"]}
+</script>
+<style>
+:root {
+  --bg: #0a0e1a;
+  --surface: #111827;
+  --surface-2: #0e1422;
+  --border: #1f2937;
+  --text: #c8ccd4;
+  --text-strong: #eef0f4;
+  --muted: #9ca3af;
+  --faint: #4b5563;
+  --accent: #00ff80;
+  --accent-2: #1a7cff;
+  --accent-ink: #0a0e1a;
+  --error: #ff4d6d;
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Roboto Mono", monospace;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+a { color: inherit; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+
+/* top bar */
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 0; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-weight: 700; color: var(--text-strong); letter-spacing: .08em; text-decoration: none; }
+.brand img { width: 32px; height: 32px; border-radius: 8px; }
+.lang select { background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px; font-family: var(--mono); font-size: 13px; }
+
+/* hero */
+.hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; padding: 48px 0 72px; }
+.hero h1 { font-family: var(--mono); font-size: clamp(32px, 4.4vw, 50px); line-height: 1.05; color: var(--text-strong); letter-spacing: -.01em; }
+.hero h1 em { font-style: normal; background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero .tag { font-family: var(--mono); color: var(--accent); font-size: 14px; letter-spacing: .06em; margin-bottom: 16px; }
+.hero .sub { color: var(--muted); font-size: 18px; margin: 20px 0 28px; max-width: 34em; }
+.stores { display: flex; flex-wrap: wrap; gap: 12px; }
+.store { display: inline-flex; align-items: center; gap: 10px; min-width: 190px; padding: 10px 18px; border-radius: 12px; border: 1px solid #2b3445; background: #000; color: #fff; text-decoration: none; transition: border-color .15s, transform .15s; }
+.store:hover { border-color: var(--accent); transform: translateY(-1px); }
+.store svg { width: 26px; height: 26px; flex: none; }
+.store span { display: flex; flex-direction: column; line-height: 1.15; }
+.store small { font-size: 11px; opacity: .8; }
+.store b { font-size: 18px; font-weight: 600; }
+.pricing { margin-top: 14px; font-size: 13px; color: var(--faint); font-family: var(--mono); }
+
+/* demo */
+.demo { background: linear-gradient(180deg, var(--surface), var(--surface-2)); border: 1px solid var(--border); border-radius: 24px; padding: 24px; }
+.demo-stage { display: grid; grid-template-columns: 120px 1fr; gap: 20px; align-items: center; }
+.face { width: 120px; height: 140px; }
+.face .skin { fill: none; stroke: #2e3a4f; stroke-width: 3; }
+.face .eye { fill: var(--text-strong); transform-box: fill-box; transform-origin: center; transition: transform .12s ease; }
+.face .eye.shut { transform: scaleY(.1); }
+.face .brow { stroke: var(--text-strong); stroke-width: 4; stroke-linecap: round; transition: transform .2s ease; }
+.face .brows.up .brow { transform: translateY(-9px); }
+.face .mouth { fill: none; stroke: #2e3a4f; stroke-width: 3; stroke-linecap: round; }
+.grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 5px; }
+.cell { aspect-ratio: 1; border-radius: 7px; background: #0b111d; border: 1px solid var(--border); display: grid; place-items: center; font-family: var(--mono); font-weight: 700; font-size: clamp(14px, 2.4vw, 20px); color: var(--muted); transition: background .2s, border-color .2s, color .2s; }
+.cell.given { color: var(--text-strong); background: #141c2b; }
+.cell.target { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(0,255,128,.18) inset; }
+.cell.placed { color: var(--accent); }
+.cell.wrong { color: var(--error); border-color: var(--error); }
+.grid.solved .cell { border-color: rgba(0,255,128,.45); }
+.legend { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.chip { font-family: var(--mono); font-size: 12px; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); transition: all .15s; }
+.chip.on { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); }
+
+/* sections */
+section.block { padding: 64px 0; border-top: 1px solid #141a28; }
+.block h2 { font-family: var(--mono); color: var(--accent); font-size: 15px; letter-spacing: .1em; margin-bottom: 8px; }
+.block .lead { color: var(--text-strong); font-size: clamp(22px, 3.2vw, 30px); font-weight: 600; margin-bottom: 32px; max-width: 30em; line-height: 1.3; }
+.cards { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 22px; position: relative; }
+.card h3 { font-family: var(--mono); color: var(--text-strong); font-size: 16px; margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+.card p { color: var(--muted); font-size: 14px; }
+.card .glyph { font-family: var(--mono); color: var(--accent); font-size: 13px; border: 1px solid #1d4b35; border-radius: 6px; padding: 1px 6px; }
+.card.feature-wink { border-color: #1d4b35; background: linear-gradient(160deg, #0f2019, var(--surface) 60%); }
+.req { display: block; margin-top: 12px; font-size: 12px; font-family: var(--mono); color: var(--faint); }
+.badge { display: inline-block; font-family: var(--mono); font-size: 10px; letter-spacing: .04em; color: var(--accent-2); border: 1px solid #1a3b6b; border-radius: 6px; padding: 1px 6px; margin-left: auto; }
+
+.rules { list-style: none; display: grid; gap: 10px; counter-reset: r; max-width: 640px; }
+.rules li { counter-increment: r; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 18px; font-family: var(--mono); font-size: 14px; color: var(--text); display: flex; gap: 12px; }
+.rules li::before { content: "0" counter(r); color: var(--accent); }
+
+.privacy { display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 28px; }
+.privacy .lock { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: #0f2019; border: 1px solid #1d4b35; color: var(--accent); }
+.privacy h3 { color: var(--text-strong); font-size: 20px; margin-bottom: 6px; }
+.privacy p { color: var(--muted); }
+
+.cta { text-align: center; padding: 72px 0 56px; border-top: 1px solid #141a28; }
+.cta h2 { font-family: var(--mono); color: var(--text-strong); font-size: clamp(24px, 4vw, 34px); }
+.cta p { color: var(--muted); margin: 8px 0 28px; font-family: var(--mono); }
+.cta .stores { justify-content: center; }
+
+footer { border-top: 1px solid #141a28; padding: 28px 0 40px; text-align: center; font-family: var(--mono); font-size: 13px; }
+footer nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; }
+footer a { color: #6ba3ff; text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+footer p { color: var(--faint); font-size: 12px; margin-top: 14px; }
+
+@media (max-width: 820px) {
+  .hero { grid-template-columns: 1fr; gap: 36px; padding-top: 24px; }
+}
+@media (max-width: 420px) {
+  .demo { padding: 16px; }
+  .demo-stage { grid-template-columns: 84px 1fr; gap: 12px; }
+  .face { width: 84px; height: 100px; }
+  .store { min-width: 0; flex: 1 1 100%; justify-content: center; }
+  .privacy { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+</style>
 </head>
 <body>
 
-<nav class="lang-switch">
-    <a id="btn-en" class="active" onclick="showLang('en')">English</a>
-    <a id="btn-tr" onclick="showLang('tr')">T&#252;rk&#231;e</a>
-    <a id="btn-de" onclick="showLang('de')">Deutsch</a>
-    <a id="btn-fr" onclick="showLang('fr')">Fran&#231;ais</a>
-    <a id="btn-ja" onclick="showLang('ja')">&#26085;&#26412;&#35486;</a>
-    <a id="btn-es" onclick="showLang('es')">Espa&#241;ol</a>
-    <a id="btn-ko" onclick="showLang('ko')">&#54620;&#44397;&#50612;</a>
-    <a id="btn-pt" onclick="showLang('pt')">Portugu&#234;s</a>
-    <a id="btn-zh" onclick="showLang('zh')">&#20013;&#25991;</a>
-    <a id="btn-it" onclick="showLang('it')">Italiano</a>
-    <a id="btn-nl" onclick="showLang('nl')">Nederlands</a>
-    <a id="btn-ru" onclick="showLang('ru')">&#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081;</a>
-</nav>
+<div class="wrap">
+  <header class="topbar">
+    <a class="brand" href="./"><img src="icon.png" alt="" width="32" height="32">BITWISE</a>
+    <label class="lang"><span class="visually-hidden" hidden data-i18n="lang">Language</span>
+      <select id="lang" aria-label="Language">
+        <option value="en">English</option>
+        <option value="tr">Türkçe</option>
+        <option value="de">Deutsch</option>
+        <option value="fr">Français</option>
+        <option value="ja">日本語</option>
+        <option value="es">Español</option>
+        <option value="ko">한국어</option>
+        <option value="pt">Português</option>
+        <option value="zh">中文</option>
+        <option value="it">Italiano</option>
+        <option value="nl">Nederlands</option>
+        <option value="ru">Русский</option>
+      </select>
+    </label>
+  </header>
 
-<!-- ==================== ENGLISH ==================== -->
-<div id="en" class="lang-content visible">
+  <main>
     <section class="hero">
-        <img src="../app-icon.png" alt="Bitwise App Icon" onerror="this.style.display='none'">
-        <h1>BITWISE</h1>
-        <p class="tagline">Think binary. Solve with logic.</p>
-    </section>
-
-    <div class="binary-strip">01001010 11010010 00101101 01010011 10010110 01101001 00110100 10101010 01010101 11001100 00110011 10101010 01010101 11001100 00110011 10101010 01010101</div>
-
-    <section class="features">
-        <h2>// FEATURES</h2>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="icon">&#129513;</div>
-                <h3>4 Difficulty Levels</h3>
-                <p>Easy (6&#215;6), Medium (6&#215;6), Hard (6&#215;6), Extreme (8&#215;8) &#8212; challenge yourself at your own pace.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#128197;</div>
-                <h3>Daily Puzzle</h3>
-                <p>A fresh challenge every day. Build your streak!</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#128161;</div>
-                <h3>Smart Hints</h3>
-                <p>3 free hints daily. Need more? Grab packs or go unlimited with Bitwise Pro.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9876;&#65039;</div>
-                <h3>Challenge Mode</h3>
-                <p>Challenge friends to the same puzzle. Compare times!</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9989;</div>
-                <h3>Check Mistakes</h3>
-                <p>Instantly see if your moves are correct.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9729;&#65039;</div>
-                <h3>iCloud Sync</h3>
-                <p>Your progress syncs across all your devices automatically.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127941;</div>
-                <h3>Leaderboards</h3>
-                <p>Compete globally with Game Center leaderboards.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127942;</div>
-                <h3>Achievements</h3>
-                <p>Unlock achievements and track your statistics.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127912;</div>
-                <h3>8 Themes</h3>
-                <p>Personalize your experience with premium visual styles.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9992;&#65039;</div>
-                <h3>Offline Play</h3>
-                <p>No internet needed. Play anywhere, anytime.</p>
-            </div>
+      <div>
+        <p class="tag" data-i18n="tag">Think binary. Solve with logic.</p>
+        <h1><span data-i18n="h1a">The logic puzzle you play</span> <em data-i18n="h1b">with a wink.</em></h1>
+        <p class="sub" data-i18n="sub">A minimalist 0-and-1 puzzle you can solve without touching the screen. Wink your right eye for 1, your left eye for 0, raise your eyebrows to undo.</p>
+        <div class="stores">
+          <a class="store" href="https://apps.apple.com/app/id6759831605" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.76 2.28-1.6 2.78-.41 6.9 1.15 9.15.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.66zM14.1 5.84c.63-.77 1.06-1.83.94-2.89-.91.04-2.01.61-2.66 1.37-.58.67-1.1 1.76-.96 2.8 1.02.08 2.05-.51 2.68-1.28z"/></svg>
+            <span><small data-i18n="as_small">Download on the</small><b>App Store</b></span>
+          </a>
+          <a class="store" data-play href="https://play.google.com/store/apps/details?id=com.bitwise.puzzle.android" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#00d7fe" d="M3.6 2.3 13.4 12l-9.8 9.7c-.35-.2-.6-.6-.6-1.1V3.4c0-.5.25-.9.6-1.1z"/><path fill="#ffce00" d="m16.8 8.6 3.3 1.9c.9.5.9 2.5 0 3l-3.3 1.9-3.4-3.4 3.4-3.4z"/><path fill="#ff3a44" d="M13.4 12 3.6 21.7c.35.2.8.2 1.2-.02l12-6.9-3.4-2.78z"/><path fill="#00f076" d="M13.4 12 16.8 8.6l-12-6.9C4.4 1.5 4 1.5 3.6 1.7L13.4 12z"/></svg>
+            <span><small data-i18n="gp_small">Get it on</small><b>Google Play</b></span>
+          </a>
         </div>
+        <p class="pricing" data-i18n="pricing">Ad-supported · optional one-time Pro upgrade · no subscription</p>
+      </div>
+
+      <div class="demo" role="img" aria-label="Hands-free demo" data-i18n-aria="demo_label">
+        <div class="demo-stage">
+          <svg class="face" viewBox="0 0 120 140" aria-hidden="true">
+            <ellipse class="skin" cx="60" cy="72" rx="52" ry="64"/>
+            <g class="brows" id="brows">
+              <line class="brow" x1="28" y1="46" x2="48" y2="42"/>
+              <line class="brow" x1="72" y1="42" x2="92" y2="46"/>
+            </g>
+            <ellipse class="eye" id="eyeL" cx="39" cy="62" rx="8" ry="9"/>
+            <ellipse class="eye" id="eyeR" cx="81" cy="62" rx="8" ry="9"/>
+            <path class="mouth" d="M44 100 Q60 110 76 100"/>
+          </svg>
+          <div class="grid" id="grid"></div>
+        </div>
+        <div class="legend">
+          <span class="chip" id="chipR" data-i18n="demo_r">Right wink → 1</span>
+          <span class="chip" id="chipL" data-i18n="demo_l">Left wink → 0</span>
+          <span class="chip" id="chipB" data-i18n="demo_b">Raise brows → undo</span>
+        </div>
+      </div>
     </section>
 
-    <section class="rules">
-        <h2>// RULES</h2>
-        <ul class="rule-list">
-            <li><span>01</span> Each cell must be 0 or 1</li>
-            <li><span>02</span> No more than two consecutive same digits</li>
-            <li><span>03</span> Equal number of 0s and 1s in each row/column</li>
-            <li><span>04</span> No two rows or columns can be identical</li>
-        </ul>
+    <section class="block">
+      <h2 data-i18n="modes_h">// PLAY YOUR WAY</h2>
+      <p class="lead" data-i18n="modes_lead">Four ways to play. Two of them don't need your hands.</p>
+      <div class="cards">
+        <div class="card"><h3><span class="glyph">01</span><span data-i18n="m_tap_t">Standard</span></h3><p data-i18n="m_tap_d">Tap a cell to cycle through 1, 0 and empty.</p></div>
+        <div class="card"><h3><span class="glyph">10</span><span data-i18n="m_fast_t">Smart</span></h3><p data-i18n="m_fast_d">The game picks the next cell for you. Just press 1 or 0.</p></div>
+        <div class="card"><h3><span class="glyph">))</span><span data-i18n="m_voice_t">Voice</span></h3><p data-i18n="m_voice_d">Say “one”, “zero” or “undo”. Your hands stay free.</p></div>
+        <div class="card feature-wink"><h3><span class="glyph">;)</span><span data-i18n="m_wink_t">Wink</span></h3><p data-i18n="m_wink_d">Right eye for 1, left eye for 0, raise your eyebrows to undo.</p><span class="req" data-i18n="m_wink_req">iPhone/iPad with Face ID · Android with a front camera</span></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2 data-i18n="rules_h">// RULES</h2>
+      <p class="lead" data-i18n="rules_lead">Four rules. Pure logic, no guessing.</p>
+      <ol class="rules">
+        <li data-i18n="r1">Each cell is either 0 or 1</li>
+        <li data-i18n="r2">No more than two identical digits next to each other</li>
+        <li data-i18n="r3">Every row and column has as many 0s as 1s</li>
+        <li data-i18n="r4">= means the same value, × means different</li>
+      </ol>
+    </section>
+
+    <section class="block">
+      <h2 data-i18n="types_h">// GAME TYPES</h2>
+      <p class="lead" data-i18n="types_lead">Same puzzle, four different kinds of pressure.</p>
+      <div class="cards">
+        <div class="card"><h3 data-i18n="t_classic_t">Classic</h3><p data-i18n="t_classic_d">The original: 0s and 1s.</p></div>
+        <div class="card"><h3 data-i18n="t_colors_t">Colors</h3><p data-i18n="t_colors_d">Two opposite colors instead of digits.</p></div>
+        <div class="card"><h3 data-i18n="t_flow_t">Flow</h3><p data-i18n="t_flow_d">A countdown on every move. Keep going before time runs out.</p></div>
+        <div class="card"><h3 data-i18n="t_locked_t">Locked</h3><p data-i18n="t_locked_d">No undo. One mistake ends the game.</p></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2 data-i18n="feat_h">// FEATURES</h2>
+      <p class="lead" data-i18n="feat_lead">Everything you need for a daily brain break.</p>
+      <div class="cards">
+        <div class="card"><h3 data-i18n="f_daily_t">Daily Puzzle</h3><p data-i18n="f_daily_d">A fresh grid every day, the same one for everyone.</p></div>
+        <div class="card"><h3 data-i18n="f_diff_t">4 Difficulty Levels</h3><p data-i18n="f_diff_d">Easy, Medium and Hard (6×6), Extreme (8×8).</p></div>
+        <div class="card"><h3 data-i18n="f_hints_t">Smart Hints</h3><p data-i18n="f_hints_d">3 hints every day for when you're stuck.</p></div>
+        <div class="card"><h3 data-i18n="f_check_t">Check Mistakes</h3><p data-i18n="f_check_d">Verify your progress and fix errors before they spread.</p></div>
+        <div class="card"><h3 data-i18n="f_lb_t">Leaderboards &amp; Achievements</h3><p data-i18n="f_lb_d">Game Center on iOS, Google Play Games on Android.</p></div>
+        <div class="card"><h3 data-i18n="f_xp_t">XP &amp; Levels</h3><p data-i18n="f_xp_d">Earn XP from every game and level up.</p></div>
+        <div class="card"><h3 data-i18n="f_themes_t">8 Themes</h3><p data-i18n="f_themes_d">Personalize the look with eight visual styles.</p></div>
+        <div class="card"><h3 data-i18n="f_offline_t">Offline Play</h3><p data-i18n="f_offline_d">No internet needed. Play anywhere.</p></div>
+        <div class="card"><h3><span data-i18n="f_duel_t">Duels</span><span class="badge" data-i18n="ios_only">iOS only</span></h3><p data-i18n="f_duel_d">Challenge friends to the same puzzle. Fastest time wins.</p></div>
+        <div class="card"><h3 data-i18n="f_sync_t">Cloud Sync</h3><p data-i18n="f_sync_d">Keep your progress safe: iCloud on iOS, your Google account on Android.</p></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="privacy">
+        <div class="lock" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+        <div>
+          <h3 data-i18n="priv_h">Your face stays on your phone.</h3>
+          <p data-i18n="priv_d">Wink detection runs entirely on your device. No camera frames or face data are recorded or sent anywhere, and you don't need an account.</p>
+        </div>
+      </div>
     </section>
 
     <section class="cta">
-        <h2>Sharpen your logic.</h2>
-        <p>One bit at a time.</p>
+      <h2 data-i18n="cta_h">Sharpen your logic.</h2>
+      <p data-i18n="cta_p">One bit at a time.</p>
+      <div class="stores" id="stores2"></div>
     </section>
-
-    <footer>
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="support.html">Support</a>
-        <p>&#169; 2026 Aytunc Sevren. All rights reserved.</p>
-    </footer>
-</div>
-
-<!-- ==================== TURKISH ==================== -->
-<div id="tr" class="lang-content">
-    <section class="hero">
-        <img src="../app-icon.png" alt="Bitwise Uygulama Simgesi" onerror="this.style.display='none'">
-        <h1>BITWISE</h1>
-        <p class="tagline">&#304;kilik d&#252;&#351;&#252;n. Mant&#305;kla &#231;&#246;z.</p>
-    </section>
-
-    <div class="binary-strip">01001010 11010010 00101101 01010011 10010110 01101001 00110100 10101010 01010101 11001100 00110011 10101010 01010101 11001100 00110011 10101010 01010101</div>
-
-    <section class="features">
-        <h2>// &#214;ZELL&#304;KLER</h2>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="icon">&#129513;</div>
-                <h3>4 Zorluk Seviyesi</h3>
-                <p>Kolay (6&#215;6), Orta (6&#215;6), Zor (6&#215;6), Ekstrem (8&#215;8) &#8212; kendi h&#305;z&#305;nda kendini zorla.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#128197;</div>
-                <h3>G&#252;nl&#252;k Bulmaca</h3>
-                <p>Her g&#252;n yeni bir meydan okuma. Serini olu&#351;tur!</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#128161;</div>
-                <h3>Ak&#305;ll&#305; &#304;pu&#231;lar&#305;</h3>
-                <p>Her g&#252;n 3 &#252;cretsiz ipucu. Daha fazlas&#305; i&#231;in paket al veya Bitwise Pro ile s&#305;n&#305;rs&#305;z kullan.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9876;&#65039;</div>
-                <h3>Meydan Okuma Modu</h3>
-                <p>Arkada&#351;lar&#305;n&#305; ayn&#305; bulmacay&#305; &#231;&#246;zmeye davet et. S&#252;releri kar&#351;&#305;la&#351;t&#305;r!</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9989;</div>
-                <h3>Hata Kontrol&#252;</h3>
-                <p>Hamlelerinin do&#287;ru olup olmad&#305;&#287;&#305;n&#305; an&#305;nda g&#246;r.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9729;&#65039;</div>
-                <h3>iCloud Senkronizasyon</h3>
-                <p>&#304;lerlemeniz t&#252;m cihazlar&#305;n&#305;zda otomatik senkronize edilir.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127941;</div>
-                <h3>Liderlik Tablolar&#305;</h3>
-                <p>Game Center ile d&#252;nya genelinde yar&#305;&#351;.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127942;</div>
-                <h3>Ba&#351;ar&#305;mlar</h3>
-                <p>Ba&#351;ar&#305;mlar&#305;n kilidini a&#231; ve istatistiklerini takip et.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127912;</div>
-                <h3>8 Tema</h3>
-                <p>Premium temalarla deneyimini ki&#351;iselle&#351;tir.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9992;&#65039;</div>
-                <h3>&#199;evrimd&#305;&#351;&#305; Oyun</h3>
-                <p>&#304;nternet gerekmez. Her yerde, her zaman oyna.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="rules">
-        <h2>// KURALLAR</h2>
-        <ul class="rule-list">
-            <li><span>01</span> Her h&#252;cre 0 veya 1 olmal&#305;</li>
-            <li><span>02</span> &#304;kiden fazla ard&#305;&#351;&#305;k ayn&#305; rakam olamaz</li>
-            <li><span>03</span> Her sat&#305;r ve s&#252;tunda e&#351;it say&#305;da 0 ve 1</li>
-            <li><span>04</span> Hi&#231;bir iki sat&#305;r veya s&#252;tun ayn&#305; olamaz</li>
-        </ul>
-    </section>
-
-    <section class="cta">
-        <h2>Mant&#305;&#287;&#305;n&#305; keskinle&#351;tir.</h2>
-        <p>Her seferinde bir bit.</p>
-    </section>
-
-    <footer>
-        <a href="privacy-policy.html">Gizlilik Politikas&#305;</a>
-        <a href="support.html">Destek</a>
-        <p>&#169; 2026 Aytun&#231; Sevren. T&#252;m haklar&#305; sakl&#305;d&#305;r.</p>
-    </footer>
-</div>
-
-<!-- ==================== GERMAN ==================== -->
-<div id="de" class="lang-content">
-    <section class="hero">
-        <img src="../app-icon.png" alt="Bitwise App-Symbol" onerror="this.style.display='none'">
-        <h1>BITWISE</h1>
-        <p class="tagline">Denke bin&#228;r. L&#246;se mit Logik.</p>
-    </section>
-
-    <div class="binary-strip">01001010 11010010 00101101 01010011 10010110 01101001 00110100 10101010 01010101 11001100 00110011 10101010 01010101 11001100 00110011 10101010 01010101</div>
-
-    <section class="features">
-        <h2>// FUNKTIONEN</h2>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="icon">&#129513;</div>
-                <h3>4 Schwierigkeitsstufen</h3>
-                <p>Einfach (6&#215;6), Mittel (6&#215;6), Schwer (6&#215;6), Extrem (8&#215;8) &#8212; fordere dich in deinem eigenen Tempo heraus.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#128197;</div>
-                <h3>T&#228;gliches R&#228;tsel</h3>
-                <p>Jeden Tag eine neue Herausforderung. Baue deine Serie auf!</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#128161;</div>
-                <h3>Smarte Hinweise</h3>
-                <p>3 kostenlose Hinweise t&#228;glich. Mehr ben&#246;tigt? Pakete kaufen oder unbegrenzt mit Bitwise Pro.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9876;&#65039;</div>
-                <h3>Herausforderungsmodus</h3>
-                <p>Fordere Freunde zum gleichen R&#228;tsel heraus. Vergleiche Zeiten!</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9989;</div>
-                <h3>Fehlerpr&#252;fung</h3>
-                <p>Sieh sofort, ob deine Z&#252;ge korrekt sind.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9729;&#65039;</div>
-                <h3>iCloud-Synchronisierung</h3>
-                <p>Dein Fortschritt wird automatisch auf allen Ger&#228;ten synchronisiert.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127941;</div>
-                <h3>Bestenlisten</h3>
-                <p>Tritt weltweit mit Game Center Bestenlisten an.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127942;</div>
-                <h3>Erfolge</h3>
-                <p>Schalte Erfolge frei und verfolge deine Statistiken.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127912;</div>
-                <h3>8 Themen</h3>
-                <p>Personalisiere dein Erlebnis mit Premium-Designs.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9992;&#65039;</div>
-                <h3>Offline spielen</h3>
-                <p>Kein Internet n&#246;tig. Spiele &#252;berall und jederzeit.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="rules">
-        <h2>// REGELN</h2>
-        <ul class="rule-list">
-            <li><span>01</span> Jede Zelle muss 0 oder 1 sein</li>
-            <li><span>02</span> Nicht mehr als zwei aufeinanderfolgende gleiche Ziffern</li>
-            <li><span>03</span> Gleiche Anzahl von 0en und 1en in jeder Zeile/Spalte</li>
-            <li><span>04</span> Keine zwei Zeilen oder Spalten d&#252;rfen identisch sein</li>
-        </ul>
-    </section>
-
-    <section class="cta">
-        <h2>Sch&#228;rfe deine Logik.</h2>
-        <p>Ein Bit nach dem anderen.</p>
-    </section>
-
-    <footer>
-        <a href="privacy-policy.html">Datenschutzrichtlinie</a>
-        <a href="support.html">Support</a>
-        <p>&#169; 2026 Aytunc Sevren. Alle Rechte vorbehalten.</p>
-    </footer>
-</div>
-
-<!-- ==================== FRENCH ==================== -->
-<div id="fr" class="lang-content">
-    <section class="hero">
-        <img src="../app-icon.png" alt="Ic&#244;ne Bitwise" onerror="this.style.display='none'">
-        <h1>BITWISE</h1>
-        <p class="tagline">Pensez en binaire. R&#233;solvez avec logique.</p>
-    </section>
-
-    <div class="binary-strip">01001010 11010010 00101101 01010011 10010110 01101001 00110100 10101010 01010101 11001100 00110011 10101010 01010101 11001100 00110011 10101010 01010101</div>
-
-    <section class="features">
-        <h2>// FONCTIONNALIT&#201;S</h2>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="icon">&#129513;</div>
-                <h3>4 Niveaux de difficult&#233;</h3>
-                <p>Facile (6&#215;6), Moyen (6&#215;6), Difficile (6&#215;6), Extr&#234;me (8&#215;8) &#8212; relevez le d&#233;fi &#224; votre rythme.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#128197;</div>
-                <h3>Puzzle quotidien</h3>
-                <p>Un nouveau d&#233;fi chaque jour. Construisez votre s&#233;rie !</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#128161;</div>
-                <h3>Indices intelligents</h3>
-                <p>3 indices gratuits par jour. Besoin de plus ? Achetez des packs ou passez en illimit&#233; avec Bitwise Pro.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9876;&#65039;</div>
-                <h3>Mode D&#233;fi</h3>
-                <p>D&#233;fiez vos amis sur le m&#234;me puzzle. Comparez les temps !</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9989;</div>
-                <h3>V&#233;rification d&#8217;erreurs</h3>
-                <p>Voyez instantan&#233;ment si vos coups sont corrects.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9729;&#65039;</div>
-                <h3>Synchronisation iCloud</h3>
-                <p>Votre progression se synchronise automatiquement sur tous vos appareils.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127941;</div>
-                <h3>Classements</h3>
-                <p>Affrontez le monde entier avec les classements Game Center.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127942;</div>
-                <h3>Succ&#232;s</h3>
-                <p>D&#233;bloquez des succ&#232;s et suivez vos statistiques.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127912;</div>
-                <h3>8 Th&#232;mes</h3>
-                <p>Personnalisez votre exp&#233;rience avec des styles visuels premium.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9992;&#65039;</div>
-                <h3>Jeu hors ligne</h3>
-                <p>Pas besoin d&#8217;internet. Jouez partout, &#224; tout moment.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="rules">
-        <h2>// R&#200;GLES</h2>
-        <ul class="rule-list">
-            <li><span>01</span> Chaque cellule doit &#234;tre 0 ou 1</li>
-            <li><span>02</span> Pas plus de deux chiffres cons&#233;cutifs identiques</li>
-            <li><span>03</span> Nombre &#233;gal de 0 et de 1 dans chaque ligne/colonne</li>
-            <li><span>04</span> Aucune ligne ou colonne ne peut &#234;tre identique</li>
-        </ul>
-    </section>
-
-    <section class="cta">
-        <h2>Aiguisez votre logique.</h2>
-        <p>Un bit &#224; la fois.</p>
-    </section>
-
-    <footer>
-        <a href="privacy-policy.html">Politique de confidentialit&#233;</a>
-        <a href="support.html">Assistance</a>
-        <p>&#169; 2026 Aytunc Sevren. Tous droits r&#233;serv&#233;s.</p>
-    </footer>
-</div>
-
-<!-- ==================== JAPANESE ==================== -->
-<div id="ja" class="lang-content">
-    <section class="hero">
-        <img src="../app-icon.png" alt="Bitwise&#12450;&#12503;&#12522;&#12450;&#12452;&#12467;&#12531;" onerror="this.style.display='none'">
-        <h1>BITWISE</h1>
-        <p class="tagline">&#12496;&#12452;&#12490;&#12522;&#12540;&#12391;&#32771;&#12360;&#12427;&#12290;&#35542;&#29702;&#12391;&#35299;&#12367;&#12290;</p>
-    </section>
-
-    <div class="binary-strip">01001010 11010010 00101101 01010011 10010110 01101001 00110100 10101010 01010101 11001100 00110011 10101010 01010101 11001100 00110011 10101010 01010101</div>
-
-    <section class="features">
-        <h2>// &#27231;&#33021;</h2>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="icon">&#129513;</div>
-                <h3>4&#12388;&#12398;&#38627;&#26131;&#24230;</h3>
-                <p>&#12452;&#12540;&#12472;&#12540; (6&#215;6)&#12289;&#12511;&#12487;&#12451;&#12450;&#12512; (6&#215;6)&#12289;&#12495;&#12540;&#12489; (6&#215;6)&#12289;&#12456;&#12463;&#12473;&#12488;&#12522;&#12540;&#12512; (8&#215;8) &#8212; &#33258;&#20998;&#12398;&#12506;&#12540;&#12473;&#12391;&#25361;&#25126;&#12375;&#12424;&#12358;&#12290;</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#128197;</div>
-                <h3>&#12487;&#12452;&#12522;&#12540;&#12497;&#12474;&#12523;</h3>
-                <p>&#27598;&#26085;&#26032;&#12375;&#12356;&#12481;&#12515;&#12524;&#12531;&#12472;&#12290;&#36899;&#32154;&#35352;&#37682;&#12434;&#20316;&#12429;&#12358;&#65281;</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#128161;</div>
-                <h3>&#12473;&#12510;&#12540;&#12488;&#12498;&#12531;&#12488;</h3>
-                <p>&#27598;&#26085;3&#12388;&#12398;&#28961;&#26009;&#12498;&#12531;&#12488;&#12290;&#12418;&#12387;&#12392;&#24517;&#35201;&#65311;&#12497;&#12483;&#12463;&#12434;&#36092;&#20837;&#12377;&#12427;&#12363;&#12289;Bitwise Pro&#12391;&#28961;&#21046;&#38480;&#12395;&#12290;</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9876;&#65039;</div>
-                <h3>&#12481;&#12515;&#12524;&#12531;&#12472;&#12514;&#12540;&#12489;</h3>
-                <p>&#21451;&#36948;&#12434;&#21516;&#12376;&#12497;&#12474;&#12523;&#12395;&#25361;&#25126;&#12373;&#12379;&#12424;&#12358;&#12290;&#12479;&#12452;&#12512;&#12434;&#27604;&#36611;&#65281;</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9989;</div>
-                <h3>&#12511;&#12473;&#12481;&#12455;&#12483;&#12463;</h3>
-                <p>&#12354;&#12394;&#12383;&#12398;&#25163;&#12364;&#27491;&#12375;&#12356;&#12363;&#30636;&#26178;&#12395;&#30906;&#35469;&#12290;</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9729;&#65039;</div>
-                <h3>iCloud&#21516;&#26399;</h3>
-                <p>&#36914;&#34892;&#29366;&#27841;&#12364;&#12377;&#12409;&#12390;&#12398;&#12487;&#12496;&#12452;&#12473;&#12391;&#33258;&#21205;&#21516;&#26399;&#12290;</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127941;</div>
-                <h3>&#12522;&#12540;&#12480;&#12540;&#12508;&#12540;&#12489;</h3>
-                <p>Game Center&#12398;&#12522;&#12540;&#12480;&#12540;&#12508;&#12540;&#12489;&#12391;&#19990;&#30028;&#20013;&#12392;&#31478;&#20105;&#12290;</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127942;</div>
-                <h3>&#23455;&#32318;</h3>
-                <p>&#23455;&#32318;&#12434;&#12450;&#12531;&#12525;&#12483;&#12463;&#12375;&#12289;&#32113;&#35336;&#12434;&#36861;&#36321;&#12375;&#12424;&#12358;&#12290;</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127912;</div>
-                <h3>8&#12388;&#12398;&#12486;&#12540;&#12510;</h3>
-                <p>&#12503;&#12524;&#12511;&#12450;&#12512;&#12394;&#12499;&#12472;&#12517;&#12450;&#12523;&#12473;&#12479;&#12452;&#12523;&#12391;&#20307;&#39443;&#12434;&#12459;&#12473;&#12479;&#12510;&#12452;&#12474;&#12290;</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9992;&#65039;</div>
-                <h3>&#12458;&#12501;&#12521;&#12452;&#12531;&#12503;&#12524;&#12452;</h3>
-                <p>&#12452;&#12531;&#12479;&#12540;&#12493;&#12483;&#12488;&#19981;&#35201;&#12290;&#12356;&#12388;&#12391;&#12418;&#12289;&#12393;&#12371;&#12391;&#12418;&#12503;&#12524;&#12452;&#12290;</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="rules">
-        <h2>// &#12523;&#12540;&#12523;</h2>
-        <ul class="rule-list">
-            <li><span>01</span> &#21508;&#12475;&#12523;&#12399;0&#12414;&#12383;&#12399;1</li>
-            <li><span>02</span> &#21516;&#12376;&#25968;&#23383;&#12399;2&#12388;&#12414;&#12391;&#36899;&#32154;</li>
-            <li><span>03</span> &#21508;&#34892;&#12539;&#21015;&#12395;0&#12392;1&#12364;&#21516;&#25968;</li>
-            <li><span>04</span> &#21516;&#12376;&#34892;&#12420;&#21015;&#12399;&#19981;&#21487;</li>
-        </ul>
-    </section>
-
-    <section class="cta">
-        <h2>&#35542;&#29702;&#12434;&#30740;&#12366;&#28548;&#12414;&#12379;&#12290;</h2>
-        <p>&#19968;&#24230;&#12395;1&#12499;&#12483;&#12488;&#12378;&#12388;&#12290;</p>
-    </section>
-
-    <footer>
-        <a href="privacy-policy.html">&#12503;&#12521;&#12452;&#12496;&#12471;&#12540;&#12509;&#12522;&#12471;&#12540;</a>
-        <a href="support.html">&#12469;&#12509;&#12540;&#12488;</a>
-        <p>&#169; 2026 Aytunc Sevren. All rights reserved.</p>
-    </footer>
-</div>
-
-<!-- ==================== SPANISH ==================== -->
-<div id="es" class="lang-content">
-    <section class="hero">
-        <img src="../app-icon.png" alt="Icono de Bitwise" onerror="this.style.display='none'">
-        <h1>BITWISE</h1>
-        <p class="tagline">Piensa en binario. Resuelve con l&#243;gica.</p>
-    </section>
-
-    <div class="binary-strip">01001010 11010010 00101101 01010011 10010110 01101001 00110100 10101010 01010101 11001100 00110011 10101010 01010101 11001100 00110011 10101010 01010101</div>
-
-    <section class="features">
-        <h2>// CARACTER&#205;STICAS</h2>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="icon">&#129513;</div>
-                <h3>4 Niveles de dificultad</h3>
-                <p>F&#225;cil (6&#215;6), Medio (6&#215;6), Dif&#237;cil (6&#215;6), Extremo (8&#215;8) &#8212; des&#225;f&#237;ate a tu propio ritmo.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#128197;</div>
-                <h3>Puzzle Diario</h3>
-                <p>Un nuevo desaf&#237;o cada d&#237;a. &#161;Construye tu racha!</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#128161;</div>
-                <h3>Pistas inteligentes</h3>
-                <p>3 pistas gratuitas al d&#237;a. &#191;Necesitas m&#225;s? Compra paquetes o hazlo ilimitado con Bitwise Pro.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9876;&#65039;</div>
-                <h3>Modo Desaf&#237;o</h3>
-                <p>Desaf&#237;a a tus amigos al mismo puzzle. &#161;Compara tiempos!</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9989;</div>
-                <h3>Verificar errores</h3>
-                <p>Ve instant&#225;neamente si tus movimientos son correctos.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9729;&#65039;</div>
-                <h3>Sincronizaci&#243;n iCloud</h3>
-                <p>Tu progreso se sincroniza autom&#225;ticamente en todos tus dispositivos.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127941;</div>
-                <h3>Clasificaciones</h3>
-                <p>Compite globalmente con las clasificaciones de Game Center.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127942;</div>
-                <h3>Logros</h3>
-                <p>Desbloquea logros y sigue tus estad&#237;sticas.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127912;</div>
-                <h3>8 Temas</h3>
-                <p>Personaliza tu experiencia con estilos visuales premium.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9992;&#65039;</div>
-                <h3>Juego sin conexi&#243;n</h3>
-                <p>Sin internet necesario. Juega donde quieras, cuando quieras.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="rules">
-        <h2>// REGLAS</h2>
-        <ul class="rule-list">
-            <li><span>01</span> Cada celda debe ser 0 o 1</li>
-            <li><span>02</span> No m&#225;s de dos d&#237;gitos consecutivos iguales</li>
-            <li><span>03</span> Igual n&#250;mero de 0s y 1s en cada fila/columna</li>
-            <li><span>04</span> Ninguna fila o columna puede ser id&#233;ntica</li>
-        </ul>
-    </section>
-
-    <section class="cta">
-        <h2>Agudiza tu l&#243;gica.</h2>
-        <p>Un bit a la vez.</p>
-    </section>
-
-    <footer>
-        <a href="privacy-policy.html">Pol&#237;tica de privacidad</a>
-        <a href="support.html">Soporte</a>
-        <p>&#169; 2026 Aytunc Sevren. Todos los derechos reservados.</p>
-    </footer>
-</div>
-
-<!-- ==================== KOREAN ==================== -->
-<div id="ko" class="lang-content">
-    <section class="hero">
-        <img src="../app-icon.png" alt="Bitwise &#50545; &#50500;&#51060;&#53080;" onerror="this.style.display='none'">
-        <h1>BITWISE</h1>
-        <p class="tagline">&#51060;&#51652;&#48277;&#51004;&#47196; &#49373;&#44033;&#54616;&#44256;, &#45436;&#47532;&#47196; &#54400;&#50612;&#48372;&#49464;&#50836;.</p>
-    </section>
-
-    <div class="binary-strip">01001010 11010010 00101101 01010011 10010110 01101001 00110100 10101010 01010101 11001100 00110011 10101010 01010101 11001100 00110011 10101010 01010101</div>
-
-    <section class="features">
-        <h2>// &#44592;&#45733;</h2>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="icon">&#129513;</div>
-                <h3>4&#44032;&#51648; &#45212;&#51060;&#46020;</h3>
-                <p>&#49772;&#50880; (6&#215;6), &#48372;&#53685; (6&#215;6), &#50612;&#47140;&#50880; (6&#215;6), &#44537;&#54620; (8&#215;8) &#8212; &#51088;&#49888;&#51032; &#49549;&#46020;&#47196; &#46020;&#51204;&#54616;&#49464;&#50836;.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#128197;</div>
-                <h3>&#51068;&#51068; &#54140;&#51600;</h3>
-                <p>&#47588;&#51068; &#49352;&#47196;&#50868; &#46020;&#51204;. &#50672;&#49549; &#44592;&#47197;&#51012; &#49464;&#50892;&#48372;&#49464;&#50836;!</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#128161;</div>
-                <h3>&#49828;&#47560;&#53944; &#55180;&#53944;</h3>
-                <p>&#47588;&#51068; 3&#44060;&#51032; &#47924;&#47308; &#55180;&#53944;. &#45908; &#54596;&#50836;&#54616;&#49888;&#44032;&#50836;? &#54057;&#51012; &#44396;&#47588;&#54616;&#44144;&#45208; Bitwise Pro&#47196; &#47924;&#51228;&#54620;&#51004;&#47196;.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9876;&#65039;</div>
-                <h3>&#46020;&#51204; &#47784;&#46300;</h3>
-                <p>&#52828;&#44396;&#50640;&#44172; &#44057;&#51008; &#54140;&#51600;&#51012; &#46020;&#51204;&#54616;&#49464;&#50836;. &#49884;&#44036;&#51012; &#48708;&#44368;&#54616;&#49464;&#50836;!</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9989;</div>
-                <h3>&#49892;&#49688; &#54869;&#51064;</h3>
-                <p>&#45817;&#49888;&#51032; &#49688;&#44032; &#47582;&#45716;&#51648; &#51593;&#49884; &#54869;&#51064;&#54616;&#49464;&#50836;.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9729;&#65039;</div>
-                <h3>iCloud &#46041;&#44592;&#54868;</h3>
-                <p>&#51652;&#54665; &#49345;&#54889;&#51060; &#47784;&#46304; &#44592;&#44592;&#50640;&#49436; &#51088;&#46041; &#46041;&#44592;&#54868;&#46121;&#45768;&#45796;.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127941;</div>
-                <h3>&#47532;&#45908;&#48372;&#46300;</h3>
-                <p>Game Center &#47532;&#45908;&#48372;&#46300;&#47196; &#51204; &#49464;&#44228;&#50752; &#44221;&#51137;&#54616;&#49464;&#50836;.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127942;</div>
-                <h3>&#50629;&#51201;</h3>
-                <p>&#50629;&#51201;&#51012; &#45804;&#49457;&#54616;&#44256; &#53685;&#44228;&#47484; &#52628;&#51201;&#54616;&#49464;&#50836;.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127912;</div>
-                <h3>8&#44032;&#51648; &#53580;&#47560;</h3>
-                <p>&#54532;&#47532;&#48120;&#50628; &#48708;&#51452;&#50620; &#49828;&#53440;&#51068;&#47196; &#44221;&#54744;&#51012; &#44060;&#51064;&#54868;&#54616;&#49464;&#50836;.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9992;&#65039;</div>
-                <h3>&#50724;&#54532;&#46972;&#51064; &#54540;&#47112;&#51060;</h3>
-                <p>&#51064;&#53552;&#45367; &#48520;&#54596;&#50836;. &#50616;&#51228; &#50612;&#46356;&#49436;&#45208; &#54540;&#47112;&#51060;&#54616;&#49464;&#50836;.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="rules">
-        <h2>// &#44508;&#52825;</h2>
-        <ul class="rule-list">
-            <li><span>01</span> &#44033; &#49472;&#51008; 0 &#46608;&#45716; 1</li>
-            <li><span>02</span> &#44057;&#51008; &#49707;&#51088; &#50672;&#49549; 2&#44060;&#44620;&#51648;</li>
-            <li><span>03</span> &#44033; &#54665;/&#50676;&#50640; 0&#44284; 1&#51060; &#44057;&#51008; &#49688;</li>
-            <li><span>04</span> &#44057;&#51008; &#54665;&#51060;&#45208; &#50676;&#51008; &#48520;&#44032;</li>
-        </ul>
-    </section>
-
-    <section class="cta">
-        <h2>&#45436;&#47532;&#47484; &#45216;&#52852;&#47213;&#44172; &#54616;&#49464;&#50836;.</h2>
-        <p>&#54620; &#48264;&#50640; &#54620; &#48708;&#53944;&#50473;.</p>
-    </section>
-
-    <footer>
-        <a href="privacy-policy.html">&#44060;&#51064;&#51221;&#48372; &#52376;&#47532;&#48169;&#52840;</a>
-        <a href="support.html">&#51648;&#50896;</a>
-        <p>&#169; 2026 Aytunc Sevren. All rights reserved.</p>
-    </footer>
-</div>
-
-<!-- ==================== PORTUGUESE ==================== -->
-<div id="pt" class="lang-content">
-    <section class="hero">
-        <img src="../app-icon.png" alt="&#205;cone do Bitwise" onerror="this.style.display='none'">
-        <h1>BITWISE</h1>
-        <p class="tagline">Pense em bin&#225;rio. Resolva com l&#243;gica.</p>
-    </section>
-
-    <div class="binary-strip">01001010 11010010 00101101 01010011 10010110 01101001 00110100 10101010 01010101 11001100 00110011 10101010 01010101 11001100 00110011 10101010 01010101</div>
-
-    <section class="features">
-        <h2>// RECURSOS</h2>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="icon">&#129513;</div>
-                <h3>4 N&#237;veis de dificuldade</h3>
-                <p>F&#225;cil (6&#215;6), M&#233;dio (6&#215;6), Dif&#237;cil (6&#215;6), Extremo (8&#215;8) &#8212; desafie-se no seu pr&#243;prio ritmo.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#128197;</div>
-                <h3>Puzzle Di&#225;rio</h3>
-                <p>Um novo desafio todos os dias. Construa sua sequ&#234;ncia!</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#128161;</div>
-                <h3>Dicas inteligentes</h3>
-                <p>3 dicas gratuitas por dia. Precisa de mais? Compre pacotes ou v&#225; ilimitado com Bitwise Pro.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9876;&#65039;</div>
-                <h3>Modo Desafio</h3>
-                <p>Desafie amigos para o mesmo puzzle. Compare tempos!</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9989;</div>
-                <h3>Verifica&#231;&#227;o de erros</h3>
-                <p>Veja instantaneamente se seus movimentos est&#227;o corretos.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9729;&#65039;</div>
-                <h3>Sincroniza&#231;&#227;o iCloud</h3>
-                <p>Seu progresso sincroniza automaticamente em todos os seus dispositivos.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127941;</div>
-                <h3>Classifica&#231;&#245;es</h3>
-                <p>Compita globalmente com as classifica&#231;&#245;es do Game Center.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127942;</div>
-                <h3>Conquistas</h3>
-                <p>Desbloqueie conquistas e acompanhe suas estat&#237;sticas.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127912;</div>
-                <h3>8 Temas</h3>
-                <p>Personalize sua experi&#234;ncia com estilos visuais premium.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9992;&#65039;</div>
-                <h3>Jogue offline</h3>
-                <p>Sem internet necess&#225;ria. Jogue em qualquer lugar, a qualquer hora.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="rules">
-        <h2>// REGRAS</h2>
-        <ul class="rule-list">
-            <li><span>01</span> Cada c&#233;lula deve ser 0 ou 1</li>
-            <li><span>02</span> No m&#225;ximo dois d&#237;gitos consecutivos iguais</li>
-            <li><span>03</span> N&#250;mero igual de 0s e 1s em cada linha/coluna</li>
-            <li><span>04</span> Nenhuma linha ou coluna pode ser id&#234;ntica</li>
-        </ul>
-    </section>
-
-    <section class="cta">
-        <h2>Afie sua l&#243;gica.</h2>
-        <p>Um bit de cada vez.</p>
-    </section>
-
-    <footer>
-        <a href="privacy-policy.html">Pol&#237;tica de Privacidade</a>
-        <a href="support.html">Suporte</a>
-        <p>&#169; 2026 Aytunc Sevren. Todos os direitos reservados.</p>
-    </footer>
-</div>
-
-<!-- ==================== CHINESE ==================== -->
-<div id="zh" class="lang-content">
-    <section class="hero">
-        <img src="../app-icon.png" alt="Bitwise &#24212;&#29992;&#22270;&#26631;" onerror="this.style.display='none'">
-        <h1>BITWISE</h1>
-        <p class="tagline">&#20108;&#36827;&#21046;&#24605;&#32500;&#12290;&#36923;&#36753;&#27714;&#35299;&#12290;</p>
-    </section>
-
-    <div class="binary-strip">01001010 11010010 00101101 01010011 10010110 01101001 00110100 10101010 01010101 11001100 00110011 10101010 01010101 11001100 00110011 10101010 01010101</div>
-
-    <section class="features">
-        <h2>// &#21151;&#33021;</h2>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="icon">&#129513;</div>
-                <h3>4&#20010;&#38590;&#24230;&#31561;&#32423;</h3>
-                <p>&#31616;&#21333; (6&#215;6)&#12289;&#20013;&#31561; (6&#215;6)&#12289;&#22256;&#38590; (6&#215;6)&#12289;&#26497;&#38480; (8&#215;8) &#8212; &#25353;&#29031;&#33258;&#24049;&#30340;&#33410;&#22863;&#25361;&#25112;&#12290;</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#128197;</div>
-                <h3>&#27599;&#26085;&#35868;&#39064;</h3>
-                <p>&#27599;&#22825;&#19968;&#20010;&#26032;&#25361;&#25112;&#12290;&#24314;&#31435;&#20320;&#30340;&#36830;&#32988;&#32426;&#24405;&#65281;</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#128161;</div>
-                <h3>&#26234;&#33021;&#25552;&#31034;</h3>
-                <p>&#27599;&#22825;3&#20010;&#20813;&#36153;&#25552;&#31034;&#12290;&#38656;&#35201;&#26356;&#22810;&#65311;&#36141;&#20080;&#22871;&#39184;&#25110;&#36890;&#36807;Bitwise Pro&#26080;&#38480;&#20351;&#29992;&#12290;</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9876;&#65039;</div>
-                <h3>&#25361;&#25112;&#27169;&#24335;</h3>
-                <p>&#21521;&#26379;&#21451;&#21457;&#36215;&#21516;&#19968;&#35868;&#39064;&#30340;&#25361;&#25112;&#12290;&#27604;&#36739;&#26102;&#38388;&#65281;</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9989;</div>
-                <h3>&#26816;&#26597;&#38169;&#35823;</h3>
-                <p>&#21363;&#26102;&#26597;&#30475;&#20320;&#30340;&#25805;&#20316;&#26159;&#21542;&#27491;&#30830;&#12290;</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9729;&#65039;</div>
-                <h3>iCloud &#21516;&#27493;</h3>
-                <p>&#36827;&#24230;&#22312;&#25152;&#26377;&#35774;&#22791;&#19978;&#33258;&#21160;&#21516;&#27493;&#12290;</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127941;</div>
-                <h3>&#25490;&#34892;&#27036;</h3>
-                <p>&#36890;&#36807;Game Center&#25490;&#34892;&#27036;&#19982;&#20840;&#29699;&#29609;&#23478;&#31454;&#20105;&#12290;</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127942;</div>
-                <h3>&#25104;&#23601;</h3>
-                <p>&#35299;&#38145;&#25104;&#23601;&#24182;&#36861;&#36394;&#20320;&#30340;&#32479;&#35745;&#25968;&#25454;&#12290;</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127912;</div>
-                <h3>8&#20010;&#20027;&#39064;</h3>
-                <p>&#29992;&#39640;&#32423;&#35270;&#35273;&#39118;&#26684;&#20010;&#24615;&#21270;&#20320;&#30340;&#20307;&#39564;&#12290;</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9992;&#65039;</div>
-                <h3>&#31163;&#32447;&#28216;&#29609;</h3>
-                <p>&#26080;&#38656;&#32852;&#32593;&#12290;&#38543;&#26102;&#38543;&#22320;&#30021;&#29609;&#12290;</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="rules">
-        <h2>// &#35268;&#21017;</h2>
-        <ul class="rule-list">
-            <li><span>01</span> &#27599;&#20010;&#21333;&#20803;&#26684;&#24517;&#39035;&#26159;0&#25110;1</li>
-            <li><span>02</span> &#21516;&#19968;&#25968;&#23383;&#26368;&#22810;&#36830;&#32493;&#20004;&#20010;</li>
-            <li><span>03</span> &#27599;&#34892;/&#21015;&#20013;0&#21644;1&#30340;&#25968;&#37327;&#30456;&#31561;</li>
-            <li><span>04</span> &#20219;&#20309;&#20004;&#34892;&#25110;&#20004;&#21015;&#19981;&#33021;&#30456;&#21516;</li>
-        </ul>
-    </section>
-
-    <section class="cta">
-        <h2>&#30952;&#30778;&#20320;&#30340;&#36923;&#36753;&#12290;</h2>
-        <p>&#19968;&#27425;&#19968;&#20010;&#27604;&#29305;&#12290;</p>
-    </section>
-
-    <footer>
-        <a href="privacy-policy.html">&#38544;&#31169;&#25919;&#31574;</a>
-        <a href="support.html">&#25903;&#25345;</a>
-        <p>&#169; 2026 Aytunc Sevren. All rights reserved.</p>
-    </footer>
-</div>
-
-<!-- ==================== ITALIAN ==================== -->
-<div id="it" class="lang-content">
-    <section class="hero">
-        <img src="../app-icon.png" alt="Icona Bitwise" onerror="this.style.display='none'">
-        <h1>BITWISE</h1>
-        <p class="tagline">Pensa in binario. Risolvi con la logica.</p>
-    </section>
-
-    <div class="binary-strip">01001010 11010010 00101101 01010011 10010110 01101001 00110100 10101010 01010101 11001100 00110011 10101010 01010101 11001100 00110011 10101010 01010101</div>
-
-    <section class="features">
-        <h2>// FUNZIONALIT&#192;</h2>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="icon">&#129513;</div>
-                <h3>4 Livelli di difficolt&#224;</h3>
-                <p>Facile (6&#215;6), Medio (6&#215;6), Difficile (6&#215;6), Estremo (8&#215;8) &#8212; sfida te stesso al tuo ritmo.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#128197;</div>
-                <h3>Puzzle giornaliero</h3>
-                <p>Una nuova sfida ogni giorno. Costruisci la tua serie!</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#128161;</div>
-                <h3>Suggerimenti intelligenti</h3>
-                <p>3 suggerimenti gratuiti al giorno. Ne servono di pi&#249;? Acquista pacchetti o vai illimitato con Bitwise Pro.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9876;&#65039;</div>
-                <h3>Modalit&#224; Sfida</h3>
-                <p>Sfida gli amici allo stesso puzzle. Confronta i tempi!</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9989;</div>
-                <h3>Controllo errori</h3>
-                <p>Vedi istantaneamente se le tue mosse sono corrette.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9729;&#65039;</div>
-                <h3>Sincronizzazione iCloud</h3>
-                <p>I tuoi progressi si sincronizzano automaticamente su tutti i tuoi dispositivi.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127941;</div>
-                <h3>Classifiche</h3>
-                <p>Competi a livello globale con le classifiche di Game Center.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127942;</div>
-                <h3>Obiettivi</h3>
-                <p>Sblocca obiettivi e monitora le tue statistiche.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127912;</div>
-                <h3>8 Temi</h3>
-                <p>Personalizza la tua esperienza con stili visivi premium.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9992;&#65039;</div>
-                <h3>Gioco offline</h3>
-                <p>Nessuna connessione necessaria. Gioca ovunque, in qualsiasi momento.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="rules">
-        <h2>// REGOLE</h2>
-        <ul class="rule-list">
-            <li><span>01</span> Ogni cella deve essere 0 o 1</li>
-            <li><span>02</span> Non pi&#249; di due cifre consecutive uguali</li>
-            <li><span>03</span> Numero uguale di 0 e 1 in ogni riga/colonna</li>
-            <li><span>04</span> Nessuna riga o colonna pu&#242; essere identica</li>
-        </ul>
-    </section>
-
-    <section class="cta">
-        <h2>Affina la tua logica.</h2>
-        <p>Un bit alla volta.</p>
-    </section>
-
-    <footer>
-        <a href="privacy-policy.html">Informativa sulla privacy</a>
-        <a href="support.html">Supporto</a>
-        <p>&#169; 2026 Aytunc Sevren. Tutti i diritti riservati.</p>
-    </footer>
-</div>
-
-<!-- ==================== DUTCH ==================== -->
-<div id="nl" class="lang-content">
-    <section class="hero">
-        <img src="../app-icon.png" alt="Bitwise App-icoon" onerror="this.style.display='none'">
-        <h1>BITWISE</h1>
-        <p class="tagline">Denk binair. Los op met logica.</p>
-    </section>
-
-    <div class="binary-strip">01001010 11010010 00101101 01010011 10010110 01101001 00110100 10101010 01010101 11001100 00110011 10101010 01010101 11001100 00110011 10101010 01010101</div>
-
-    <section class="features">
-        <h2>// FUNCTIES</h2>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="icon">&#129513;</div>
-                <h3>4 Moeilijkheidsniveaus</h3>
-                <p>Makkelijk (6&#215;6), Gemiddeld (6&#215;6), Moeilijk (6&#215;6), Extreem (8&#215;8) &#8212; daag jezelf uit op je eigen tempo.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#128197;</div>
-                <h3>Dagelijkse puzzel</h3>
-                <p>Elke dag een nieuwe uitdaging. Bouw je reeks op!</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#128161;</div>
-                <h3>Slimme hints</h3>
-                <p>3 gratis hints per dag. Meer nodig? Koop pakketten of ga onbeperkt met Bitwise Pro.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9876;&#65039;</div>
-                <h3>Uitdagingsmodus</h3>
-                <p>Daag vrienden uit voor dezelfde puzzel. Vergelijk tijden!</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9989;</div>
-                <h3>Foutcontrole</h3>
-                <p>Zie direct of je zetten correct zijn.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9729;&#65039;</div>
-                <h3>iCloud-synchronisatie</h3>
-                <p>Je voortgang synchroniseert automatisch op al je apparaten.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127941;</div>
-                <h3>Ranglijsten</h3>
-                <p>Concurreer wereldwijd met Game Center ranglijsten.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127942;</div>
-                <h3>Prestaties</h3>
-                <p>Ontgrendel prestaties en volg je statistieken.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127912;</div>
-                <h3>8 Thema&#8217;s</h3>
-                <p>Personaliseer je ervaring met premium visuele stijlen.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9992;&#65039;</div>
-                <h3>Offline spelen</h3>
-                <p>Geen internet nodig. Speel overal, altijd.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="rules">
-        <h2>// REGELS</h2>
-        <ul class="rule-list">
-            <li><span>01</span> Elke cel moet 0 of 1 zijn</li>
-            <li><span>02</span> Niet meer dan twee opeenvolgende dezelfde cijfers</li>
-            <li><span>03</span> Gelijk aantal 0&#8217;s en 1&#8217;s in elke rij/kolom</li>
-            <li><span>04</span> Geen twee rijen of kolommen mogen identiek zijn</li>
-        </ul>
-    </section>
-
-    <section class="cta">
-        <h2>Verscherp je logica.</h2>
-        <p>E&#233;n bit per keer.</p>
-    </section>
-
-    <footer>
-        <a href="privacy-policy.html">Privacybeleid</a>
-        <a href="support.html">Ondersteuning</a>
-        <p>&#169; 2026 Aytunc Sevren. Alle rechten voorbehouden.</p>
-    </footer>
-</div>
-
-<!-- ==================== RUSSIAN ==================== -->
-<div id="ru" class="lang-content">
-    <section class="hero">
-        <img src="../app-icon.png" alt="&#1047;&#1085;&#1072;&#1095;&#1086;&#1082; Bitwise" onerror="this.style.display='none'">
-        <h1>BITWISE</h1>
-        <p class="tagline">&#1052;&#1099;&#1089;&#1083;&#1080;&#1090;&#1077; &#1076;&#1074;&#1086;&#1080;&#1095;&#1085;&#1086;. &#1056;&#1077;&#1096;&#1072;&#1081;&#1090;&#1077; &#1083;&#1086;&#1075;&#1080;&#1095;&#1077;&#1089;&#1082;&#1080;.</p>
-    </section>
-
-    <div class="binary-strip">01001010 11010010 00101101 01010011 10010110 01101001 00110100 10101010 01010101 11001100 00110011 10101010 01010101 11001100 00110011 10101010 01010101</div>
-
-    <section class="features">
-        <h2>// &#1042;&#1054;&#1047;&#1052;&#1054;&#1046;&#1053;&#1054;&#1057;&#1058;&#1048;</h2>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="icon">&#129513;</div>
-                <h3>4 &#1091;&#1088;&#1086;&#1074;&#1085;&#1103; &#1089;&#1083;&#1086;&#1078;&#1085;&#1086;&#1089;&#1090;&#1080;</h3>
-                <p>&#1051;&#1105;&#1075;&#1082;&#1080;&#1081; (6&#215;6), &#1057;&#1088;&#1077;&#1076;&#1085;&#1080;&#1081; (6&#215;6), &#1057;&#1083;&#1086;&#1078;&#1085;&#1099;&#1081; (6&#215;6), &#1069;&#1082;&#1089;&#1090;&#1088;&#1077;&#1084;&#1072;&#1083;&#1100;&#1085;&#1099;&#1081; (8&#215;8) &#8212; &#1073;&#1088;&#1086;&#1089;&#1100;&#1090;&#1077; &#1089;&#1077;&#1073;&#1077; &#1074;&#1099;&#1079;&#1086;&#1074; &#1074; &#1089;&#1074;&#1086;&#1105;&#1084; &#1090;&#1077;&#1084;&#1087;&#1077;.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#128197;</div>
-                <h3>&#1045;&#1078;&#1077;&#1076;&#1085;&#1077;&#1074;&#1085;&#1072;&#1103; &#1075;&#1086;&#1083;&#1086;&#1074;&#1086;&#1083;&#1086;&#1084;&#1082;&#1072;</h3>
-                <p>&#1053;&#1086;&#1074;&#1086;&#1077; &#1080;&#1089;&#1087;&#1099;&#1090;&#1072;&#1085;&#1080;&#1077; &#1082;&#1072;&#1078;&#1076;&#1099;&#1081; &#1076;&#1077;&#1085;&#1100;. &#1057;&#1090;&#1088;&#1086;&#1081;&#1090;&#1077; &#1089;&#1074;&#1086;&#1102; &#1089;&#1077;&#1088;&#1080;&#1102;!</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#128161;</div>
-                <h3>&#1059;&#1084;&#1085;&#1099;&#1077; &#1087;&#1086;&#1076;&#1089;&#1082;&#1072;&#1079;&#1082;&#1080;</h3>
-                <p>3 &#1073;&#1077;&#1089;&#1087;&#1083;&#1072;&#1090;&#1085;&#1099;&#1077; &#1087;&#1086;&#1076;&#1089;&#1082;&#1072;&#1079;&#1082;&#1080; &#1074; &#1076;&#1077;&#1085;&#1100;. &#1053;&#1091;&#1078;&#1085;&#1086; &#1073;&#1086;&#1083;&#1100;&#1096;&#1077;? &#1050;&#1091;&#1087;&#1080;&#1090;&#1077; &#1087;&#1072;&#1082;&#1077;&#1090;&#1099; &#1080;&#1083;&#1080; &#1087;&#1086;&#1083;&#1091;&#1095;&#1080;&#1090;&#1077; &#1073;&#1077;&#1079;&#1083;&#1080;&#1084;&#1080;&#1090; &#1089; Bitwise Pro.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9876;&#65039;</div>
-                <h3>&#1056;&#1077;&#1078;&#1080;&#1084; &#1074;&#1099;&#1079;&#1086;&#1074;&#1072;</h3>
-                <p>&#1041;&#1088;&#1086;&#1089;&#1100;&#1090;&#1077; &#1076;&#1088;&#1091;&#1079;&#1100;&#1103;&#1084; &#1074;&#1099;&#1079;&#1086;&#1074; &#1085;&#1072; &#1090;&#1091; &#1078;&#1077; &#1075;&#1086;&#1083;&#1086;&#1074;&#1086;&#1083;&#1086;&#1084;&#1082;&#1091;. &#1057;&#1088;&#1072;&#1074;&#1085;&#1080;&#1090;&#1077; &#1074;&#1088;&#1077;&#1084;&#1103;!</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9989;</div>
-                <h3>&#1055;&#1088;&#1086;&#1074;&#1077;&#1088;&#1082;&#1072; &#1086;&#1096;&#1080;&#1073;&#1086;&#1082;</h3>
-                <p>&#1052;&#1075;&#1085;&#1086;&#1074;&#1077;&#1085;&#1085;&#1086; &#1091;&#1079;&#1085;&#1072;&#1081;&#1090;&#1077;, &#1087;&#1088;&#1072;&#1074;&#1080;&#1083;&#1100;&#1085;&#1099; &#1083;&#1080; &#1074;&#1072;&#1096;&#1080; &#1093;&#1086;&#1076;&#1099;.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9729;&#65039;</div>
-                <h3>&#1057;&#1080;&#1085;&#1093;&#1088;&#1086;&#1085;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; iCloud</h3>
-                <p>&#1042;&#1072;&#1096; &#1087;&#1088;&#1086;&#1075;&#1088;&#1077;&#1089;&#1089; &#1072;&#1074;&#1090;&#1086;&#1084;&#1072;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1080; &#1089;&#1080;&#1085;&#1093;&#1088;&#1086;&#1085;&#1080;&#1079;&#1080;&#1088;&#1091;&#1077;&#1090;&#1089;&#1103; &#1085;&#1072; &#1074;&#1089;&#1077;&#1093; &#1091;&#1089;&#1090;&#1088;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072;&#1093;.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127941;</div>
-                <h3>&#1058;&#1072;&#1073;&#1083;&#1080;&#1094;&#1099; &#1083;&#1080;&#1076;&#1077;&#1088;&#1086;&#1074;</h3>
-                <p>&#1057;&#1086;&#1088;&#1077;&#1074;&#1085;&#1091;&#1081;&#1090;&#1077;&#1089;&#1100; &#1089;&#1086; &#1074;&#1089;&#1077;&#1084; &#1084;&#1080;&#1088;&#1086;&#1084; &#1095;&#1077;&#1088;&#1077;&#1079; &#1090;&#1072;&#1073;&#1083;&#1080;&#1094;&#1099; &#1083;&#1080;&#1076;&#1077;&#1088;&#1086;&#1074; Game Center.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127942;</div>
-                <h3>&#1044;&#1086;&#1089;&#1090;&#1080;&#1078;&#1077;&#1085;&#1080;&#1103;</h3>
-                <p>&#1054;&#1090;&#1082;&#1088;&#1099;&#1074;&#1072;&#1081;&#1090;&#1077; &#1076;&#1086;&#1089;&#1090;&#1080;&#1078;&#1077;&#1085;&#1080;&#1103; &#1080; &#1086;&#1090;&#1089;&#1083;&#1077;&#1078;&#1080;&#1074;&#1072;&#1081;&#1090;&#1077; &#1089;&#1074;&#1086;&#1102; &#1089;&#1090;&#1072;&#1090;&#1080;&#1089;&#1090;&#1080;&#1082;&#1091;.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#127912;</div>
-                <h3>8 &#1090;&#1077;&#1084;</h3>
-                <p>&#1055;&#1077;&#1088;&#1089;&#1086;&#1085;&#1072;&#1083;&#1080;&#1079;&#1080;&#1088;&#1091;&#1081;&#1090;&#1077; &#1074;&#1087;&#1077;&#1095;&#1072;&#1090;&#1083;&#1077;&#1085;&#1080;&#1077; &#1089; &#1087;&#1086;&#1084;&#1086;&#1097;&#1100;&#1102; &#1087;&#1088;&#1077;&#1084;&#1080;&#1072;&#1083;&#1100;&#1085;&#1099;&#1093; &#1074;&#1080;&#1079;&#1091;&#1072;&#1083;&#1100;&#1085;&#1099;&#1093; &#1089;&#1090;&#1080;&#1083;&#1077;&#1081;.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">&#9992;&#65039;</div>
-                <h3>&#1054;&#1092;&#1083;&#1072;&#1081;&#1085;-&#1080;&#1075;&#1088;&#1072;</h3>
-                <p>&#1048;&#1085;&#1090;&#1077;&#1088;&#1085;&#1077;&#1090; &#1085;&#1077; &#1085;&#1091;&#1078;&#1077;&#1085;. &#1048;&#1075;&#1088;&#1072;&#1081;&#1090;&#1077; &#1075;&#1076;&#1077; &#1091;&#1075;&#1086;&#1076;&#1085;&#1086;, &#1082;&#1086;&#1075;&#1076;&#1072; &#1091;&#1075;&#1086;&#1076;&#1085;&#1086;.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="rules">
-        <h2>// &#1055;&#1056;&#1040;&#1042;&#1048;&#1051;&#1040;</h2>
-        <ul class="rule-list">
-            <li><span>01</span> &#1050;&#1072;&#1078;&#1076;&#1072;&#1103; &#1103;&#1095;&#1077;&#1081;&#1082;&#1072; &#1076;&#1086;&#1083;&#1078;&#1085;&#1072; &#1073;&#1099;&#1090;&#1100; 0 &#1080;&#1083;&#1080; 1</li>
-            <li><span>02</span> &#1053;&#1077; &#1073;&#1086;&#1083;&#1077;&#1077; &#1076;&#1074;&#1091;&#1093; &#1086;&#1076;&#1080;&#1085;&#1072;&#1082;&#1086;&#1074;&#1099;&#1093; &#1094;&#1080;&#1092;&#1088; &#1087;&#1086;&#1076;&#1088;&#1103;&#1076;</li>
-            <li><span>03</span> &#1056;&#1072;&#1074;&#1085;&#1086;&#1077; &#1082;&#1086;&#1083;&#1080;&#1095;&#1077;&#1089;&#1090;&#1074;&#1086; 0 &#1080; 1 &#1074; &#1082;&#1072;&#1078;&#1076;&#1086;&#1081; &#1089;&#1090;&#1088;&#1086;&#1082;&#1077;/&#1089;&#1090;&#1086;&#1083;&#1073;&#1094;&#1077;</li>
-            <li><span>04</span> &#1053;&#1080;&#1082;&#1072;&#1082;&#1080;&#1077; &#1076;&#1074;&#1077; &#1089;&#1090;&#1088;&#1086;&#1082;&#1080; &#1080;&#1083;&#1080; &#1089;&#1090;&#1086;&#1083;&#1073;&#1094;&#1072; &#1085;&#1077; &#1084;&#1086;&#1075;&#1091;&#1090; &#1073;&#1099;&#1090;&#1100; &#1086;&#1076;&#1080;&#1085;&#1072;&#1082;&#1086;&#1074;&#1099;&#1084;&#1080;</li>
-        </ul>
-    </section>
-
-    <section class="cta">
-        <h2>&#1054;&#1090;&#1090;&#1086;&#1095;&#1080;&#1090;&#1077; &#1089;&#1074;&#1086;&#1102; &#1083;&#1086;&#1075;&#1080;&#1082;&#1091;.</h2>
-        <p>&#1055;&#1086; &#1086;&#1076;&#1085;&#1086;&#1084;&#1091; &#1073;&#1080;&#1090;&#1091; &#1079;&#1072; &#1088;&#1072;&#1079;.</p>
-    </section>
-
-    <footer>
-        <a href="privacy-policy.html">&#1055;&#1086;&#1083;&#1080;&#1090;&#1080;&#1082;&#1072; &#1082;&#1086;&#1085;&#1092;&#1080;&#1076;&#1077;&#1085;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1086;&#1089;&#1090;&#1080;</a>
-        <a href="support.html">&#1055;&#1086;&#1076;&#1076;&#1077;&#1088;&#1078;&#1082;&#1072;</a>
-        <p>&#169; 2026 Aytunc Sevren. &#1042;&#1089;&#1077; &#1087;&#1088;&#1072;&#1074;&#1072; &#1079;&#1072;&#1097;&#1080;&#1097;&#1077;&#1085;&#1099;.</p>
-    </footer>
+  </main>
+
+  <footer>
+    <nav>
+      <a href="support.html" data-i18n="f_support">Support</a>
+      <a href="privacy-policy.html" data-i18n="f_priv_ios">Privacy Policy (iOS)</a>
+      <a href="android/privacy-policy.html" data-i18n="f_priv_android">Privacy Policy (Android)</a>
+    </nav>
+    <p>© 2026 Aytunç Sevren</p>
+  </footer>
 </div>
 
 <script>
-var langs = ['en','tr','de','fr','ja','es','ko','pt','zh','it','nl','ru'];
-function showLang(lang) {
-    langs.forEach(function(l) {
-        document.getElementById(l).className = l === lang ? 'lang-content visible' : 'lang-content';
-        document.getElementById('btn-' + l).className = l === lang ? 'active' : '';
-    });
-}
-</script>
+var I18N = {
+  en: {},
+  tr: {
+    _title: "Bitwise — iOS ve Android için İkili Mantık Bulmacası",
+    _desc: "Ekrana dokunmadan oynayabileceğin minimalist 0-1 mantık bulmacası: 1 ya da 0 için göz kırp, geri almak için kaşlarını kaldır.",
+    tag: "İkili düşün. Mantıkla çöz.",
+    h1a: "Göz kırparak oynanan", h1b: "mantık bulmacası.",
+    sub: "Ekrana dokunmadan çözebileceğin minimalist bir 0-1 bulmacası. 1 için sağ gözünü, 0 için sol gözünü kırp; geri almak için kaşlarını kaldır.",
+    as_small: "Hemen indirin", gp_small: "Hemen alın",
+    pricing: "Reklamlı · isteğe bağlı tek seferlik Pro · abonelik yok",
+    demo_label: "Ellerini kullanmadan oynama demosu",
+    demo_r: "Sağ göz → 1", demo_l: "Sol göz → 0", demo_b: "Kaş kaldır → geri al",
+    modes_h: "// NASIL İSTERSEN OYNA", modes_lead: "Dört oynama yolu. İkisinde ellerine hiç gerek yok.",
+    m_tap_t: "Standart", m_tap_d: "Hücreye dokunarak 1, 0 ve boş arasında geçiş yap.",
+    m_fast_t: "Akıllı", m_fast_d: "Sıradaki hücreyi oyun seçer. Sen sadece 1 ya da 0'a bas.",
+    m_voice_t: "Sesli", m_voice_d: "“Bir”, “sıfır” ya da “geri” de. Ellerin serbest kalır.",
+    m_wink_t: "Göz", m_wink_d: "1 için sağ göz, 0 için sol göz; geri almak için kaşlarını kaldır.",
+    m_wink_req: "Face ID'li iPhone/iPad · ön kameralı Android",
+    rules_h: "// KURALLAR", rules_lead: "Dört kural. Tahmin yok, saf mantık.",
+    r1: "Her hücre ya 0 ya da 1'dir", r2: "Yan yana en fazla iki aynı rakam olabilir", r3: "Her satır ve sütunda 0 ve 1 sayısı eşittir", r4: "= aynı değer, × farklı değer demektir",
+    types_h: "// OYUN TİPLERİ", types_lead: "Aynı bulmaca, dört farklı baskı.",
+    t_classic_t: "Klasik", t_classic_d: "Orijinali: 0'lar ve 1'ler.",
+    t_colors_t: "Renk", t_colors_d: "Rakamlar yerine iki zıt renk.",
+    t_flow_t: "Akış", t_flow_d: "Her hamlede geri sayım. Süre bitmeden devam et.",
+    t_locked_t: "Kilitli", t_locked_d: "Geri alma yok. Tek hata oyunu bitirir.",
+    feat_h: "// ÖZELLİKLER", feat_lead: "Günlük beyin molası için gereken her şey.",
+    f_daily_t: "Günlük Bulmaca", f_daily_d: "Her gün yeni bir tablo, herkes için aynı.",
+    f_diff_t: "4 Zorluk Seviyesi", f_diff_d: "Kolay, Orta ve Zor (6×6), Ekstrem (8×8).",
+    f_hints_t: "Akıllı İpuçları", f_hints_d: "Takıldığında kullanmak için her gün 3 ipucu.",
+    f_check_t: "Hata Kontrolü", f_check_d: "İlerlemeni doğrula, hatalar yayılmadan düzelt.",
+    f_lb_t: "Liderlik Tabloları ve Başarımlar", f_lb_d: "iOS'ta Game Center, Android'de Google Play Games.",
+    f_xp_t: "XP ve Seviyeler", f_xp_d: "Her oyundan XP kazan, seviye atla.",
+    f_themes_t: "8 Tema", f_themes_d: "Görünümü sekiz farklı stille kişiselleştir.",
+    f_offline_t: "Çevrimdışı Oyun", f_offline_d: "İnternet gerekmez. Her yerde oyna.",
+    f_duel_t: "Düellolar", f_duel_d: "Arkadaşlarına aynı bulmacayla meydan oku. En hızlı kazanır.",
+    f_sync_t: "Bulut Senkronizasyonu", f_sync_d: "İlerlemen güvende: iOS'ta iCloud, Android'de Google hesabın.",
+    ios_only: "Sadece iOS",
+    priv_h: "Yüzün telefonunda kalır.", priv_d: "Göz kırpma algılama tamamen cihazında çalışır. Hiçbir kamera görüntüsü ya da yüz verisi kaydedilmez veya bir yere gönderilmez; hesap da gerekmez.",
+    cta_h: "Mantığını keskinleştir.", cta_p: "Her seferinde bir bit.",
+    f_support: "Destek", f_priv_ios: "Gizlilik Politikası (iOS)", f_priv_android: "Gizlilik Politikası (Android)"
+  },
+  de: {
+    _title: "Bitwise — Binäres Logikrätsel für iOS & Android",
+    _desc: "Ein minimalistisches 0-und-1-Logikrätsel, das du freihändig spielen kannst: Zwinkern für 1 oder 0, Augenbrauen heben zum Rückgängigmachen.",
+    tag: "Denke binär. Löse mit Logik.",
+    h1a: "Das Logikrätsel, das du", h1b: "mit einem Zwinkern spielst.",
+    sub: "Ein minimalistisches 0-und-1-Rätsel, das du lösen kannst, ohne den Bildschirm zu berühren. Rechts zwinkern für 1, links für 0, Augenbrauen heben zum Rückgängigmachen.",
+    as_small: "Laden im", gp_small: "Jetzt bei",
+    pricing: "Mit Werbung · optionales einmaliges Pro-Upgrade · kein Abo",
+    demo_label: "Freihändig-Demo",
+    demo_r: "Rechts zwinkern → 1", demo_l: "Links zwinkern → 0", demo_b: "Brauen heben → zurück",
+    modes_h: "// SPIEL, WIE DU WILLST", modes_lead: "Vier Spielweisen. Zwei davon brauchen keine Hände.",
+    m_tap_t: "Standard", m_tap_d: "Tippe auf eine Zelle, um zwischen 1, 0 und leer zu wechseln.",
+    m_fast_t: "Smart", m_fast_d: "Das Spiel wählt die nächste Zelle. Du drückst nur 1 oder 0.",
+    m_voice_t: "Sprache", m_voice_d: "Sag „eins“, „null“ oder „zurück“. Deine Hände bleiben frei.",
+    m_wink_t: "Zwinkern", m_wink_d: "Rechtes Auge für 1, linkes für 0, Augenbrauen heben zum Rückgängigmachen.",
+    m_wink_req: "iPhone/iPad mit Face ID · Android mit Frontkamera",
+    rules_h: "// REGELN", rules_lead: "Vier Regeln. Reine Logik, kein Raten.",
+    r1: "Jede Zelle ist entweder 0 oder 1", r2: "Höchstens zwei gleiche Ziffern nebeneinander", r3: "Jede Zeile und Spalte hat gleich viele 0en und 1en", r4: "= bedeutet gleicher Wert, × bedeutet verschieden",
+    types_h: "// SPIELTYPEN", types_lead: "Dasselbe Rätsel, vier Arten von Druck.",
+    t_classic_t: "Klassisch", t_classic_d: "Das Original: 0en und 1en.",
+    t_colors_t: "Farben", t_colors_d: "Zwei gegensätzliche Farben statt Ziffern.",
+    t_flow_t: "Fluss", t_flow_d: "Ein Countdown bei jedem Zug. Bleib dran, bevor die Zeit abläuft.",
+    t_locked_t: "Gesperrt", t_locked_d: "Kein Rückgängig. Ein Fehler beendet das Spiel.",
+    feat_h: "// FUNKTIONEN", feat_lead: "Alles für die tägliche Denkpause.",
+    f_daily_t: "Tägliches Rätsel", f_daily_d: "Jeden Tag ein neues Gitter, für alle dasselbe.",
+    f_diff_t: "4 Schwierigkeitsstufen", f_diff_d: "Leicht, Mittel und Schwer (6×6), Extrem (8×8).",
+    f_hints_t: "Clevere Tipps", f_hints_d: "Jeden Tag 3 Tipps, wenn du feststeckst.",
+    f_check_t: "Fehler prüfen", f_check_d: "Prüfe deinen Fortschritt und korrigiere Fehler früh.",
+    f_lb_t: "Bestenlisten & Erfolge", f_lb_d: "Game Center auf iOS, Google Play Games auf Android.",
+    f_xp_t: "XP & Level", f_xp_d: "Sammle XP in jedem Spiel und steige auf.",
+    f_themes_t: "8 Designs", f_themes_d: "Passe das Aussehen mit acht Stilen an.",
+    f_offline_t: "Offline spielen", f_offline_d: "Kein Internet nötig. Spiel überall.",
+    f_duel_t: "Duelle", f_duel_d: "Fordere Freunde mit demselben Rätsel heraus. Die schnellste Zeit gewinnt.",
+    f_sync_t: "Cloud-Sync", f_sync_d: "Dein Fortschritt ist sicher: iCloud auf iOS, dein Google-Konto auf Android.",
+    ios_only: "Nur iOS",
+    priv_h: "Dein Gesicht bleibt auf deinem Handy.", priv_d: "Die Zwinker-Erkennung läuft komplett auf deinem Gerät. Es werden keine Kamerabilder oder Gesichtsdaten gespeichert oder gesendet, und du brauchst kein Konto.",
+    cta_h: "Schärfe deine Logik.", cta_p: "Ein Bit nach dem anderen.",
+    f_support: "Support", f_priv_ios: "Datenschutz (iOS)", f_priv_android: "Datenschutz (Android)"
+  },
+  fr: {
+    _title: "Bitwise — Puzzle logique binaire pour iOS et Android",
+    _desc: "Un puzzle logique minimaliste en 0 et 1 qui se joue sans les mains : un clin d'œil pour 1 ou 0, levez les sourcils pour annuler.",
+    tag: "Pensez binaire. Résolvez avec logique.",
+    h1a: "Le puzzle logique qui se joue", h1b: "d'un clin d'œil.",
+    sub: "Un puzzle minimaliste en 0 et 1 que vous pouvez résoudre sans toucher l'écran. Clin d'œil droit pour 1, gauche pour 0, sourcils levés pour annuler.",
+    as_small: "Télécharger dans l'", gp_small: "Disponible sur",
+    pricing: "Avec publicités · Pro optionnel en achat unique · sans abonnement",
+    demo_label: "Démo mains libres",
+    demo_r: "Œil droit → 1", demo_l: "Œil gauche → 0", demo_b: "Sourcils levés → annuler",
+    modes_h: "// JOUEZ À VOTRE FAÇON", modes_lead: "Quatre façons de jouer. Deux d'entre elles se passent de vos mains.",
+    m_tap_t: "Standard", m_tap_d: "Touchez une case pour alterner entre 1, 0 et vide.",
+    m_fast_t: "Intelligent", m_fast_d: "Le jeu choisit la case suivante. Appuyez juste sur 1 ou 0.",
+    m_voice_t: "Voix", m_voice_d: "Dites « un », « zéro » ou « retour ». Vos mains restent libres.",
+    m_wink_t: "Clin d'œil", m_wink_d: "Œil droit pour 1, œil gauche pour 0, sourcils levés pour annuler.",
+    m_wink_req: "iPhone/iPad avec Face ID · Android avec caméra frontale",
+    rules_h: "// RÈGLES", rules_lead: "Quatre règles. De la logique pure, sans deviner.",
+    r1: "Chaque case vaut 0 ou 1", r2: "Pas plus de deux chiffres identiques côte à côte", r3: "Chaque ligne et colonne a autant de 0 que de 1", r4: "= signifie même valeur, × signifie différente",
+    types_h: "// TYPES DE JEU", types_lead: "Le même puzzle, quatre façons de mettre la pression.",
+    t_classic_t: "Classique", t_classic_d: "L'original : des 0 et des 1.",
+    t_colors_t: "Couleurs", t_colors_d: "Deux couleurs opposées au lieu des chiffres.",
+    t_flow_t: "Flux", t_flow_d: "Un compte à rebours à chaque coup. Continuez avant la fin du temps.",
+    t_locked_t: "Verrouillé", t_locked_d: "Pas d'annulation. Une erreur termine la partie.",
+    feat_h: "// FONCTIONNALITÉS", feat_lead: "Tout pour votre pause cérébrale quotidienne.",
+    f_daily_t: "Puzzle du jour", f_daily_d: "Une nouvelle grille chaque jour, la même pour tous.",
+    f_diff_t: "4 niveaux de difficulté", f_diff_d: "Facile, Moyen et Difficile (6×6), Extrême (8×8).",
+    f_hints_t: "Indices intelligents", f_hints_d: "3 indices chaque jour quand vous bloquez.",
+    f_check_t: "Vérifier les erreurs", f_check_d: "Vérifiez votre progression et corrigez tôt.",
+    f_lb_t: "Classements et succès", f_lb_d: "Game Center sur iOS, Google Play Jeux sur Android.",
+    f_xp_t: "XP et niveaux", f_xp_d: "Gagnez de l'XP à chaque partie et montez de niveau.",
+    f_themes_t: "8 thèmes", f_themes_d: "Personnalisez l'apparence avec huit styles.",
+    f_offline_t: "Jeu hors ligne", f_offline_d: "Pas besoin d'internet. Jouez partout.",
+    f_duel_t: "Duels", f_duel_d: "Défiez vos amis sur le même puzzle. Le plus rapide gagne.",
+    f_sync_t: "Synchro cloud", f_sync_d: "Votre progression en sécurité : iCloud sur iOS, votre compte Google sur Android.",
+    ios_only: "iOS uniquement",
+    priv_h: "Votre visage reste sur votre téléphone.", priv_d: "La détection des clins d'œil fonctionne entièrement sur votre appareil. Aucune image de la caméra ni donnée faciale n'est enregistrée ou envoyée, et aucun compte n'est nécessaire.",
+    cta_h: "Aiguisez votre logique.", cta_p: "Un bit à la fois.",
+    f_support: "Assistance", f_priv_ios: "Confidentialité (iOS)", f_priv_android: "Confidentialité (Android)"
+  },
+  ja: {
+    _title: "Bitwise — iOS・Android対応 バイナリロジックパズル",
+    _desc: "ウィンクで遊べるミニマルな0と1のロジックパズル。ウィンクで1か0を入力、眉を上げて取り消し。",
+    tag: "バイナリで考え、ロジックで解く。",
+    h1a: "ウィンクで遊ぶ", h1b: "ロジックパズル。",
+    sub: "画面に触れずに解けるミニマルな0と1のパズル。右目のウィンクで1、左目で0、眉を上げると取り消し。",
+    as_small: "ダウンロード", gp_small: "今すぐ手に入れよう",
+    pricing: "広告あり · 買い切りのPro(任意) · サブスクなし",
+    demo_label: "ハンズフリーのデモ",
+    demo_r: "右目ウィンク → 1", demo_l: "左目ウィンク → 0", demo_b: "眉を上げる → 取り消し",
+    modes_h: "// 好きな方法で遊ぶ", modes_lead: "4つの遊び方。そのうち2つは手を使いません。",
+    m_tap_t: "標準", m_tap_d: "セルをタップして1・0・空白を切り替え。",
+    m_fast_t: "スマート", m_fast_d: "次のセルはゲームが選択。1か0を押すだけ。",
+    m_voice_t: "音声", m_voice_d: "「いち」「ぜろ」「もどる」と話すだけ。手は自由なまま。",
+    m_wink_t: "ウィンク", m_wink_d: "右目で1、左目で0、眉を上げると取り消し。",
+    m_wink_req: "Face ID搭載のiPhone/iPad · フロントカメラ付きAndroid",
+    rules_h: "// ルール", rules_lead: "ルールは4つ。推測なし、純粋なロジック。",
+    r1: "各セルは0か1", r2: "同じ数字は横・縦に最大2つまで連続", r3: "各行・各列の0と1の数は同じ", r4: "= は同じ値、× は異なる値",
+    types_h: "// ゲームタイプ", types_lead: "同じパズル、4種類のプレッシャー。",
+    t_classic_t: "クラシック", t_classic_d: "オリジナル:0と1。",
+    t_colors_t: "カラー", t_colors_d: "数字の代わりに2つの対照的な色。",
+    t_flow_t: "フロー", t_flow_d: "一手ごとにカウントダウン。時間切れ前に進もう。",
+    t_locked_t: "ロック", t_locked_d: "取り消しなし。1つのミスでゲーム終了。",
+    feat_h: "// 機能", feat_lead: "毎日の脳トレに必要なものすべて。",
+    f_daily_t: "デイリーパズル", f_daily_d: "毎日新しい盤面。全員が同じ問題に挑戦。",
+    f_diff_t: "4つの難易度", f_diff_d: "イージー・ミディアム・ハード(6×6)、エクストリーム(8×8)。",
+    f_hints_t: "スマートヒント", f_hints_d: "行き詰まったときのために毎日3つのヒント。",
+    f_check_t: "ミスチェック", f_check_d: "進行状況を確認して、ミスを早めに修正。",
+    f_lb_t: "ランキングと実績", f_lb_d: "iOSはGame Center、AndroidはGoogle Play ゲーム。",
+    f_xp_t: "XPとレベル", f_xp_d: "毎ゲームでXPを獲得してレベルアップ。",
+    f_themes_t: "8つのテーマ", f_themes_d: "8種類のスタイルで見た目をカスタマイズ。",
+    f_offline_t: "オフラインプレイ", f_offline_d: "ネット不要。どこでも遊べます。",
+    f_duel_t: "対戦", f_duel_d: "友達と同じパズルで勝負。最速タイムが勝利。",
+    f_sync_t: "クラウド同期", f_sync_d: "進行状況を安全に保存:iOSはiCloud、AndroidはGoogleアカウント。",
+    ios_only: "iOSのみ",
+    priv_h: "あなたの顔はスマホの中だけに。", priv_d: "ウィンク検出はすべて端末上で動作します。カメラ映像や顔データが記録・送信されることはなく、アカウントも不要です。",
+    cta_h: "ロジックを磨こう。", cta_p: "1ビットずつ。",
+    f_support: "サポート", f_priv_ios: "プライバシーポリシー(iOS)", f_priv_android: "プライバシーポリシー(Android)"
+  },
+  es: {
+    _title: "Bitwise — Rompecabezas lógico binario para iOS y Android",
+    _desc: "Un rompecabezas lógico minimalista de 0 y 1 que se juega sin manos: guiña para 1 o 0, levanta las cejas para deshacer.",
+    tag: "Piensa en binario. Resuelve con lógica.",
+    h1a: "El rompecabezas lógico que", h1b: "juegas guiñando un ojo.",
+    sub: "Un rompecabezas minimalista de 0 y 1 que puedes resolver sin tocar la pantalla. Guiña el ojo derecho para 1, el izquierdo para 0 y levanta las cejas para deshacer.",
+    as_small: "Descárgalo en el", gp_small: "Disponible en",
+    pricing: "Con anuncios · Pro opcional de pago único · sin suscripción",
+    demo_label: "Demostración sin manos",
+    demo_r: "Ojo derecho → 1", demo_l: "Ojo izquierdo → 0", demo_b: "Cejas arriba → deshacer",
+    modes_h: "// JUEGA A TU MANERA", modes_lead: "Cuatro formas de jugar. Dos no necesitan tus manos.",
+    m_tap_t: "Estándar", m_tap_d: "Toca una celda para alternar entre 1, 0 y vacío.",
+    m_fast_t: "Inteligente", m_fast_d: "El juego elige la siguiente celda. Solo pulsa 1 o 0.",
+    m_voice_t: "Voz", m_voice_d: "Di «uno», «cero» o «atrás». Tus manos quedan libres.",
+    m_wink_t: "Guiño", m_wink_d: "Ojo derecho para 1, ojo izquierdo para 0, levanta las cejas para deshacer.",
+    m_wink_req: "iPhone/iPad con Face ID · Android con cámara frontal",
+    rules_h: "// REGLAS", rules_lead: "Cuatro reglas. Pura lógica, sin adivinar.",
+    r1: "Cada celda es 0 o 1", r2: "No más de dos dígitos iguales seguidos", r3: "Cada fila y columna tiene tantos 0 como 1", r4: "= significa mismo valor, × significa distinto",
+    types_h: "// TIPOS DE JUEGO", types_lead: "El mismo rompecabezas, cuatro tipos de presión.",
+    t_classic_t: "Clásico", t_classic_d: "El original: ceros y unos.",
+    t_colors_t: "Colores", t_colors_d: "Dos colores opuestos en lugar de dígitos.",
+    t_flow_t: "Flujo", t_flow_d: "Una cuenta atrás en cada jugada. Sigue antes de que se acabe el tiempo.",
+    t_locked_t: "Bloqueado", t_locked_d: "Sin deshacer. Un error termina la partida.",
+    feat_h: "// FUNCIONES", feat_lead: "Todo para tu pausa mental diaria.",
+    f_daily_t: "Rompecabezas diario", f_daily_d: "Una cuadrícula nueva cada día, la misma para todos.",
+    f_diff_t: "4 niveles de dificultad", f_diff_d: "Fácil, Medio y Difícil (6×6), Extremo (8×8).",
+    f_hints_t: "Pistas inteligentes", f_hints_d: "3 pistas cada día para cuando te atasques.",
+    f_check_t: "Comprobar errores", f_check_d: "Verifica tu progreso y corrige errores a tiempo.",
+    f_lb_t: "Clasificaciones y logros", f_lb_d: "Game Center en iOS, Google Play Juegos en Android.",
+    f_xp_t: "XP y niveles", f_xp_d: "Gana XP en cada partida y sube de nivel.",
+    f_themes_t: "8 temas", f_themes_d: "Personaliza el aspecto con ocho estilos.",
+    f_offline_t: "Juego sin conexión", f_offline_d: "No necesitas internet. Juega en cualquier lugar.",
+    f_duel_t: "Duelos", f_duel_d: "Reta a tus amigos con el mismo rompecabezas. Gana el más rápido.",
+    f_sync_t: "Sincronización en la nube", f_sync_d: "Tu progreso a salvo: iCloud en iOS, tu cuenta de Google en Android.",
+    ios_only: "Solo iOS",
+    priv_h: "Tu cara se queda en tu teléfono.", priv_d: "La detección de guiños funciona por completo en tu dispositivo. No se graban ni se envían imágenes de la cámara ni datos faciales, y no necesitas cuenta.",
+    cta_h: "Afila tu lógica.", cta_p: "Un bit a la vez.",
+    f_support: "Soporte", f_priv_ios: "Privacidad (iOS)", f_priv_android: "Privacidad (Android)"
+  },
+  ko: {
+    _title: "Bitwise — iOS·Android 바이너리 논리 퍼즐",
+    _desc: "손 없이 즐기는 미니멀 0·1 논리 퍼즐. 윙크로 1 또는 0을 입력하고, 눈썹을 올려 되돌리세요.",
+    tag: "이진수로 생각하고, 논리로 푸세요.",
+    h1a: "윙크로 즐기는", h1b: "논리 퍼즐.",
+    sub: "화면을 만지지 않고도 풀 수 있는 미니멀 0·1 퍼즐. 오른쪽 눈 윙크는 1, 왼쪽 눈은 0, 눈썹을 올리면 되돌리기.",
+    as_small: "다운로드하기", gp_small: "다운로드하기",
+    pricing: "광고 포함 · 선택형 1회 구매 Pro · 구독 없음",
+    demo_label: "핸즈프리 데모",
+    demo_r: "오른쪽 윙크 → 1", demo_l: "왼쪽 윙크 → 0", demo_b: "눈썹 올리기 → 되돌리기",
+    modes_h: "// 원하는 방식으로", modes_lead: "네 가지 플레이 방식. 그중 두 가지는 손이 필요 없습니다.",
+    m_tap_t: "표준", m_tap_d: "칸을 탭해 1, 0, 빈칸을 전환하세요.",
+    m_fast_t: "스마트", m_fast_d: "다음 칸은 게임이 골라 줍니다. 1이나 0만 누르세요.",
+    m_voice_t: "음성", m_voice_d: "“하나”, “영”, “뒤로”라고 말하세요. 손은 자유롭게.",
+    m_wink_t: "윙크", m_wink_d: "오른쪽 눈은 1, 왼쪽 눈은 0, 눈썹을 올리면 되돌리기.",
+    m_wink_req: "Face ID 지원 iPhone/iPad · 전면 카메라가 있는 Android",
+    rules_h: "// 규칙", rules_lead: "규칙은 네 가지. 추측 없이 순수한 논리.",
+    r1: "각 칸은 0 또는 1", r2: "같은 숫자는 최대 두 개까지만 연속", r3: "모든 행과 열에 0과 1의 개수가 같음", r4: "= 는 같은 값, × 는 다른 값",
+    types_h: "// 게임 유형", types_lead: "같은 퍼즐, 네 가지 긴장감.",
+    t_classic_t: "클래식", t_classic_d: "오리지널: 0과 1.",
+    t_colors_t: "색상", t_colors_d: "숫자 대신 두 가지 반대 색상.",
+    t_flow_t: "플로우", t_flow_d: "매 수마다 카운트다운. 시간이 끝나기 전에 계속하세요.",
+    t_locked_t: "잠금", t_locked_d: "되돌리기 없음. 한 번의 실수로 게임 종료.",
+    feat_h: "// 기능", feat_lead: "매일의 두뇌 휴식에 필요한 모든 것.",
+    f_daily_t: "데일리 퍼즐", f_daily_d: "매일 새로운 퍼즐, 모두에게 같은 문제.",
+    f_diff_t: "4가지 난이도", f_diff_d: "쉬움, 보통, 어려움(6×6), 익스트림(8×8).",
+    f_hints_t: "스마트 힌트", f_hints_d: "막힐 때를 위한 매일 3개의 힌트.",
+    f_check_t: "실수 확인", f_check_d: "진행 상황을 확인하고 실수를 빨리 고치세요.",
+    f_lb_t: "리더보드와 업적", f_lb_d: "iOS는 Game Center, Android는 Google Play 게임즈.",
+    f_xp_t: "XP와 레벨", f_xp_d: "게임마다 XP를 얻고 레벨업하세요.",
+    f_themes_t: "8가지 테마", f_themes_d: "여덟 가지 스타일로 화면을 꾸미세요.",
+    f_offline_t: "오프라인 플레이", f_offline_d: "인터넷 없이 어디서나 플레이.",
+    f_duel_t: "대결", f_duel_d: "친구와 같은 퍼즐로 대결하세요. 가장 빠른 기록이 승리.",
+    f_sync_t: "클라우드 동기화", f_sync_d: "진행 상황을 안전하게: iOS는 iCloud, Android는 Google 계정.",
+    ios_only: "iOS 전용",
+    priv_h: "얼굴 데이터는 휴대폰에만 머뭅니다.", priv_d: "윙크 감지는 전적으로 기기에서 실행됩니다. 카메라 영상이나 얼굴 데이터는 저장되거나 전송되지 않으며, 계정도 필요 없습니다.",
+    cta_h: "논리를 날카롭게.", cta_p: "한 번에 한 비트씩.",
+    f_support: "지원", f_priv_ios: "개인정보 처리방침 (iOS)", f_priv_android: "개인정보 처리방침 (Android)"
+  },
+  pt: {
+    _title: "Bitwise — Quebra-cabeça lógico binário para iOS e Android",
+    _desc: "Um quebra-cabeça lógico minimalista de 0 e 1 que você joga sem as mãos: pisque para 1 ou 0, levante as sobrancelhas para desfazer.",
+    tag: "Pense em binário. Resolva com lógica.",
+    h1a: "O quebra-cabeça lógico que", h1b: "você joga com uma piscadela.",
+    sub: "Um quebra-cabeça minimalista de 0 e 1 que você resolve sem tocar na tela. Pisque o olho direito para 1, o esquerdo para 0 e levante as sobrancelhas para desfazer.",
+    as_small: "Baixar na", gp_small: "Disponível no",
+    pricing: "Com anúncios · Pro opcional em compra única · sem assinatura",
+    demo_label: "Demonstração sem as mãos",
+    demo_r: "Olho direito → 1", demo_l: "Olho esquerdo → 0", demo_b: "Sobrancelhas → desfazer",
+    modes_h: "// JOGUE DO SEU JEITO", modes_lead: "Quatro formas de jogar. Duas delas dispensam as mãos.",
+    m_tap_t: "Padrão", m_tap_d: "Toque numa célula para alternar entre 1, 0 e vazio.",
+    m_fast_t: "Inteligente", m_fast_d: "O jogo escolhe a próxima célula. Basta tocar em 1 ou 0.",
+    m_voice_t: "Voz", m_voice_d: "Diga “um”, “zero” ou “voltar”. Suas mãos ficam livres.",
+    m_wink_t: "Piscada", m_wink_d: "Olho direito para 1, olho esquerdo para 0, levante as sobrancelhas para desfazer.",
+    m_wink_req: "iPhone/iPad com Face ID · Android com câmera frontal",
+    rules_h: "// REGRAS", rules_lead: "Quatro regras. Lógica pura, sem chute.",
+    r1: "Cada célula é 0 ou 1", r2: "No máximo dois dígitos iguais lado a lado", r3: "Cada linha e coluna tem tantos 0 quanto 1", r4: "= significa mesmo valor, × significa diferente",
+    types_h: "// TIPOS DE JOGO", types_lead: "O mesmo quebra-cabeça, quatro tipos de pressão.",
+    t_classic_t: "Clássico", t_classic_d: "O original: zeros e uns.",
+    t_colors_t: "Cores", t_colors_d: "Duas cores opostas no lugar dos dígitos.",
+    t_flow_t: "Fluxo", t_flow_d: "Uma contagem regressiva a cada jogada. Continue antes que o tempo acabe.",
+    t_locked_t: "Bloqueado", t_locked_d: "Sem desfazer. Um erro encerra o jogo.",
+    feat_h: "// RECURSOS", feat_lead: "Tudo para a sua pausa mental diária.",
+    f_daily_t: "Desafio diário", f_daily_d: "Uma grade nova todo dia, a mesma para todos.",
+    f_diff_t: "4 níveis de dificuldade", f_diff_d: "Fácil, Médio e Difícil (6×6), Extremo (8×8).",
+    f_hints_t: "Dicas inteligentes", f_hints_d: "3 dicas por dia para quando você travar.",
+    f_check_t: "Verificar erros", f_check_d: "Confira seu progresso e corrija erros cedo.",
+    f_lb_t: "Rankings e conquistas", f_lb_d: "Game Center no iOS, Google Play Games no Android.",
+    f_xp_t: "XP e níveis", f_xp_d: "Ganhe XP em cada partida e suba de nível.",
+    f_themes_t: "8 temas", f_themes_d: "Personalize o visual com oito estilos.",
+    f_offline_t: "Jogue offline", f_offline_d: "Sem internet. Jogue em qualquer lugar.",
+    f_duel_t: "Duelos", f_duel_d: "Desafie amigos no mesmo quebra-cabeça. O mais rápido vence.",
+    f_sync_t: "Sincronização na nuvem", f_sync_d: "Seu progresso protegido: iCloud no iOS, sua conta Google no Android.",
+    ios_only: "Só iOS",
+    priv_h: "Seu rosto fica no seu celular.", priv_d: "A detecção de piscadas roda inteiramente no seu aparelho. Nenhuma imagem da câmera ou dado facial é gravado ou enviado, e você não precisa de conta.",
+    cta_h: "Afie sua lógica.", cta_p: "Um bit de cada vez.",
+    f_support: "Suporte", f_priv_ios: "Privacidade (iOS)", f_priv_android: "Privacidade (Android)"
+  },
+  zh: {
+    _title: "Bitwise — 适用于 iOS 和 Android 的二进制逻辑谜题",
+    _desc: "一款可免手操作的极简 0/1 逻辑谜题:眨眼输入 1 或 0,扬眉撤销。",
+    tag: "用二进制思考,用逻辑解题。",
+    h1a: "眨眨眼就能玩的", h1b: "逻辑谜题。",
+    sub: "一款无需触碰屏幕即可解答的极简 0/1 谜题。右眼眨眼输入 1,左眼输入 0,扬起眉毛即可撤销。",
+    as_small: "下载于", gp_small: "立即获取",
+    pricing: "含广告 · 可选一次性 Pro 升级 · 无订阅",
+    demo_label: "免手操作演示",
+    demo_r: "右眼眨眼 → 1", demo_l: "左眼眨眼 → 0", demo_b: "扬眉 → 撤销",
+    modes_h: "// 随心而玩", modes_lead: "四种玩法,其中两种完全不用动手。",
+    m_tap_t: "标准", m_tap_d: "点按格子,在 1、0 和空白之间切换。",
+    m_fast_t: "智能", m_fast_d: "游戏自动选择下一个格子,你只需按 1 或 0。",
+    m_voice_t: "语音", m_voice_d: "说出“一”、“零”或“撤销”,双手自由。",
+    m_wink_t: "眨眼", m_wink_d: "右眼输入 1,左眼输入 0,扬起眉毛撤销。",
+    m_wink_req: "支持 Face ID 的 iPhone/iPad · 带前置摄像头的 Android",
+    rules_h: "// 规则", rules_lead: "四条规则。纯粹逻辑,无需猜测。",
+    r1: "每个格子是 0 或 1", r2: "相邻的相同数字最多两个", r3: "每行每列的 0 和 1 数量相等", r4: "= 表示相同,× 表示不同",
+    types_h: "// 游戏类型", types_lead: "同一个谜题,四种不同的压力。",
+    t_classic_t: "经典", t_classic_d: "原汁原味:0 和 1。",
+    t_colors_t: "颜色", t_colors_d: "用两种对立的颜色代替数字。",
+    t_flow_t: "心流", t_flow_d: "每一步都有倒计时,在时间耗尽前继续。",
+    t_locked_t: "锁定", t_locked_d: "不能撤销,一次失误即结束。",
+    feat_h: "// 功能", feat_lead: "每日脑力小憩所需的一切。",
+    f_daily_t: "每日谜题", f_daily_d: "每天一个新盘面,所有人都一样。",
+    f_diff_t: "4 种难度", f_diff_d: "简单、中等、困难(6×6),极限(8×8)。",
+    f_hints_t: "智能提示", f_hints_d: "每天 3 次提示,卡住时使用。",
+    f_check_t: "检查错误", f_check_d: "核对进度,尽早修正错误。",
+    f_lb_t: "排行榜与成就", f_lb_d: "iOS 使用 Game Center,Android 使用 Google Play 游戏。",
+    f_xp_t: "经验与等级", f_xp_d: "每局获得经验值,不断升级。",
+    f_themes_t: "8 款主题", f_themes_d: "用八种风格打造你的界面。",
+    f_offline_t: "离线游玩", f_offline_d: "无需联网,随时随地畅玩。",
+    f_duel_t: "对战", f_duel_d: "与好友挑战同一道谜题,用时最短者胜。",
+    f_sync_t: "云同步", f_sync_d: "进度安全保存:iOS 使用 iCloud,Android 使用你的 Google 账号。",
+    ios_only: "仅限 iOS",
+    priv_h: "你的面部数据只留在手机上。", priv_d: "眨眼检测完全在设备本地运行。不会录制或发送任何摄像头画面或面部数据,也无需注册账号。",
+    cta_h: "磨砺你的逻辑。", cta_p: "一次一个比特。",
+    f_support: "支持", f_priv_ios: "隐私政策(iOS)", f_priv_android: "隐私政策(Android)"
+  },
+  it: {
+    _title: "Bitwise — Puzzle logico binario per iOS e Android",
+    _desc: "Un puzzle logico minimalista di 0 e 1 che si gioca senza mani: fai l'occhiolino per 1 o 0, alza le sopracciglia per annullare.",
+    tag: "Pensa in binario. Risolvi con la logica.",
+    h1a: "Il puzzle logico che giochi", h1b: "con un occhiolino.",
+    sub: "Un puzzle minimalista di 0 e 1 che puoi risolvere senza toccare lo schermo. Occhiolino destro per 1, sinistro per 0, sopracciglia alzate per annullare.",
+    as_small: "Scarica su", gp_small: "Disponibile su",
+    pricing: "Con pubblicità · Pro opzionale con acquisto unico · nessun abbonamento",
+    demo_label: "Demo a mani libere",
+    demo_r: "Occhio destro → 1", demo_l: "Occhio sinistro → 0", demo_b: "Sopracciglia su → annulla",
+    modes_h: "// GIOCA COME VUOI", modes_lead: "Quattro modi di giocare. Due non richiedono le mani.",
+    m_tap_t: "Standard", m_tap_d: "Tocca una cella per passare tra 1, 0 e vuoto.",
+    m_fast_t: "Intelligente", m_fast_d: "Il gioco sceglie la cella successiva. Premi solo 1 o 0.",
+    m_voice_t: "Voce", m_voice_d: "Di' «uno», «zero» o «indietro». Le mani restano libere.",
+    m_wink_t: "Occhiolino", m_wink_d: "Occhio destro per 1, sinistro per 0, alza le sopracciglia per annullare.",
+    m_wink_req: "iPhone/iPad con Face ID · Android con fotocamera frontale",
+    rules_h: "// REGOLE", rules_lead: "Quattro regole. Pura logica, niente tentativi.",
+    r1: "Ogni cella è 0 oppure 1", r2: "Non più di due cifre uguali una accanto all'altra", r3: "Ogni riga e colonna ha tanti 0 quanti 1", r4: "= significa stesso valore, × significa diverso",
+    types_h: "// TIPI DI GIOCO", types_lead: "Lo stesso puzzle, quattro tipi di pressione.",
+    t_classic_t: "Classico", t_classic_d: "L'originale: 0 e 1.",
+    t_colors_t: "Colori", t_colors_d: "Due colori opposti al posto delle cifre.",
+    t_flow_t: "Flusso", t_flow_d: "Un conto alla rovescia a ogni mossa. Continua prima che scada.",
+    t_locked_t: "Bloccato", t_locked_d: "Niente annulla. Un errore chiude la partita.",
+    feat_h: "// FUNZIONI", feat_lead: "Tutto per la tua pausa mentale quotidiana.",
+    f_daily_t: "Puzzle del giorno", f_daily_d: "Una griglia nuova ogni giorno, uguale per tutti.",
+    f_diff_t: "4 livelli di difficoltà", f_diff_d: "Facile, Medio e Difficile (6×6), Estremo (8×8).",
+    f_hints_t: "Suggerimenti intelligenti", f_hints_d: "3 suggerimenti al giorno per quando sei bloccato.",
+    f_check_t: "Controlla errori", f_check_d: "Verifica i progressi e correggi gli errori presto.",
+    f_lb_t: "Classifiche e obiettivi", f_lb_d: "Game Center su iOS, Google Play Giochi su Android.",
+    f_xp_t: "XP e livelli", f_xp_d: "Guadagna XP a ogni partita e sali di livello.",
+    f_themes_t: "8 temi", f_themes_d: "Personalizza l'aspetto con otto stili.",
+    f_offline_t: "Gioco offline", f_offline_d: "Nessuna connessione necessaria. Gioca ovunque.",
+    f_duel_t: "Duelli", f_duel_d: "Sfida gli amici sullo stesso puzzle. Vince il più veloce.",
+    f_sync_t: "Sincronizzazione cloud", f_sync_d: "I tuoi progressi al sicuro: iCloud su iOS, il tuo account Google su Android.",
+    ios_only: "Solo iOS",
+    priv_h: "Il tuo volto resta sul tuo telefono.", priv_d: "Il rilevamento degli occhiolini avviene interamente sul dispositivo. Nessuna immagine della fotocamera o dato del volto viene registrato o inviato, e non serve un account.",
+    cta_h: "Affina la tua logica.", cta_p: "Un bit alla volta.",
+    f_support: "Assistenza", f_priv_ios: "Privacy (iOS)", f_priv_android: "Privacy (Android)"
+  },
+  nl: {
+    _title: "Bitwise — Binaire logische puzzel voor iOS en Android",
+    _desc: "Een minimalistische logische puzzel met 0 en 1 die je handsfree speelt: knipoog voor 1 of 0, trek je wenkbrauwen op om ongedaan te maken.",
+    tag: "Denk binair. Los op met logica.",
+    h1a: "De logische puzzel die je", h1b: "met een knipoog speelt.",
+    sub: "Een minimalistische puzzel met 0 en 1 die je oplost zonder het scherm aan te raken. Rechts knipogen voor 1, links voor 0, wenkbrauwen optrekken om ongedaan te maken.",
+    as_small: "Download in de", gp_small: "Ontdek het op",
+    pricing: "Met advertenties · optionele eenmalige Pro-upgrade · geen abonnement",
+    demo_label: "Handsfree demo",
+    demo_r: "Rechts knipogen → 1", demo_l: "Links knipogen → 0", demo_b: "Wenkbrauwen op → terug",
+    modes_h: "// SPEEL ZOALS JIJ WILT", modes_lead: "Vier manieren om te spelen. Twee ervan zonder handen.",
+    m_tap_t: "Standaard", m_tap_d: "Tik op een vakje om te wisselen tussen 1, 0 en leeg.",
+    m_fast_t: "Slim", m_fast_d: "Het spel kiest het volgende vakje. Druk alleen op 1 of 0.",
+    m_voice_t: "Stem", m_voice_d: "Zeg „één”, „nul” of „terug”. Je handen blijven vrij.",
+    m_wink_t: "Knipoog", m_wink_d: "Rechteroog voor 1, linkeroog voor 0, wenkbrauwen optrekken om ongedaan te maken.",
+    m_wink_req: "iPhone/iPad met Face ID · Android met frontcamera",
+    rules_h: "// REGELS", rules_lead: "Vier regels. Pure logica, geen gokwerk.",
+    r1: "Elk vakje is 0 of 1", r2: "Niet meer dan twee gelijke cijfers naast elkaar", r3: "Elke rij en kolom heeft evenveel nullen als enen", r4: "= betekent dezelfde waarde, × betekent verschillend",
+    types_h: "// SPELTYPES", types_lead: "Dezelfde puzzel, vier soorten druk.",
+    t_classic_t: "Klassiek", t_classic_d: "Het origineel: nullen en enen.",
+    t_colors_t: "Kleuren", t_colors_d: "Twee tegengestelde kleuren in plaats van cijfers.",
+    t_flow_t: "Flow", t_flow_d: "Een aftelklok bij elke zet. Ga door voordat de tijd op is.",
+    t_locked_t: "Vergrendeld", t_locked_d: "Geen ongedaan maken. Eén fout beëindigt het spel.",
+    feat_h: "// FUNCTIES", feat_lead: "Alles voor je dagelijkse denkpauze.",
+    f_daily_t: "Dagelijkse puzzel", f_daily_d: "Elke dag een nieuw raster, voor iedereen hetzelfde.",
+    f_diff_t: "4 moeilijkheidsgraden", f_diff_d: "Makkelijk, Gemiddeld en Moeilijk (6×6), Extreem (8×8).",
+    f_hints_t: "Slimme hints", f_hints_d: "Elke dag 3 hints voor als je vastzit.",
+    f_check_t: "Fouten controleren", f_check_d: "Controleer je voortgang en herstel fouten op tijd.",
+    f_lb_t: "Ranglijsten en prestaties", f_lb_d: "Game Center op iOS, Google Play Games op Android.",
+    f_xp_t: "XP en levels", f_xp_d: "Verdien XP met elk spel en stijg in level.",
+    f_themes_t: "8 thema's", f_themes_d: "Pas het uiterlijk aan met acht stijlen.",
+    f_offline_t: "Offline spelen", f_offline_d: "Geen internet nodig. Speel overal.",
+    f_duel_t: "Duels", f_duel_d: "Daag vrienden uit met dezelfde puzzel. De snelste tijd wint.",
+    f_sync_t: "Cloudsynchronisatie", f_sync_d: "Je voortgang veilig: iCloud op iOS, je Google-account op Android.",
+    ios_only: "Alleen iOS",
+    priv_h: "Je gezicht blijft op je telefoon.", priv_d: "Knipoogdetectie draait volledig op je toestel. Er worden geen camerabeelden of gezichtsgegevens opgeslagen of verzonden, en je hebt geen account nodig.",
+    cta_h: "Scherp je logica aan.", cta_p: "Eén bit tegelijk.",
+    f_support: "Ondersteuning", f_priv_ios: "Privacybeleid (iOS)", f_priv_android: "Privacybeleid (Android)"
+  },
+  ru: {
+    _title: "Bitwise — бинарная логическая головоломка для iOS и Android",
+    _desc: "Минималистичная логическая головоломка из 0 и 1, в которую можно играть без рук: подмигните для 1 или 0, поднимите брови, чтобы отменить.",
+    tag: "Думай в двоичном коде. Решай логикой.",
+    h1a: "Логическая головоломка,", h1b: "в которую играют подмигиванием.",
+    sub: "Минималистичная головоломка из 0 и 1, которую можно решить, не касаясь экрана. Подмигните правым глазом для 1, левым для 0, поднимите брови, чтобы отменить.",
+    as_small: "Загрузите в", gp_small: "Доступно в",
+    pricing: "С рекламой · необязательный разовый Pro · без подписки",
+    demo_label: "Демонстрация без рук",
+    demo_r: "Правый глаз → 1", demo_l: "Левый глаз → 0", demo_b: "Брови вверх → отмена",
+    modes_h: "// ИГРАЙ ПО-СВОЕМУ", modes_lead: "Четыре способа играть. Для двух из них руки не нужны.",
+    m_tap_t: "Обычный", m_tap_d: "Коснитесь клетки, чтобы переключать 1, 0 и пусто.",
+    m_fast_t: "Умный", m_fast_d: "Игра сама выбирает следующую клетку. Нажимайте 1 или 0.",
+    m_voice_t: "Голос", m_voice_d: "Скажите «один», «ноль» или «назад». Руки свободны.",
+    m_wink_t: "Подмигивание", m_wink_d: "Правый глаз — 1, левый — 0, поднимите брови, чтобы отменить.",
+    m_wink_req: "iPhone/iPad с Face ID · Android с фронтальной камерой",
+    rules_h: "// ПРАВИЛА", rules_lead: "Четыре правила. Чистая логика, никаких догадок.",
+    r1: "Каждая клетка — 0 или 1", r2: "Не больше двух одинаковых цифр подряд", r3: "В каждой строке и столбце поровну 0 и 1", r4: "= значит одинаковое значение, × — разное",
+    types_h: "// ТИПЫ ИГРЫ", types_lead: "Одна головоломка, четыре вида давления.",
+    t_classic_t: "Классика", t_classic_d: "Оригинал: нули и единицы.",
+    t_colors_t: "Цвета", t_colors_d: "Два противоположных цвета вместо цифр.",
+    t_flow_t: "Поток", t_flow_d: "Обратный отсчёт на каждом ходу. Успейте до конца времени.",
+    t_locked_t: "Замок", t_locked_d: "Отмены нет. Одна ошибка завершает игру.",
+    feat_h: "// ВОЗМОЖНОСТИ", feat_lead: "Всё для ежедневной разминки ума.",
+    f_daily_t: "Головоломка дня", f_daily_d: "Каждый день новое поле, одинаковое для всех.",
+    f_diff_t: "4 уровня сложности", f_diff_d: "Лёгкий, средний и сложный (6×6), экстрим (8×8).",
+    f_hints_t: "Умные подсказки", f_hints_d: "3 подсказки каждый день, если застряли.",
+    f_check_t: "Проверка ошибок", f_check_d: "Проверяйте прогресс и исправляйте ошибки вовремя.",
+    f_lb_t: "Рейтинги и достижения", f_lb_d: "Game Center на iOS, Google Play Игры на Android.",
+    f_xp_t: "Опыт и уровни", f_xp_d: "Получайте опыт за каждую игру и повышайте уровень.",
+    f_themes_t: "8 тем", f_themes_d: "Настройте внешний вид с помощью восьми стилей.",
+    f_offline_t: "Игра офлайн", f_offline_d: "Интернет не нужен. Играйте где угодно.",
+    f_duel_t: "Дуэли", f_duel_d: "Бросьте вызов друзьям на одной головоломке. Побеждает самый быстрый.",
+    f_sync_t: "Облачная синхронизация", f_sync_d: "Прогресс в сохранности: iCloud на iOS, аккаунт Google на Android.",
+    ios_only: "Только iOS",
+    priv_h: "Ваше лицо остаётся на телефоне.", priv_d: "Распознавание подмигиваний работает полностью на устройстве. Изображения с камеры и данные лица не записываются и никуда не отправляются, аккаунт не нужен.",
+    cta_h: "Оттачивайте логику.", cta_p: "По одному биту за раз.",
+    f_support: "Поддержка", f_priv_ios: "Конфиденциальность (iOS)", f_priv_android: "Конфиденциальность (Android)"
+  }
+};
+var HL = { en: "en", tr: "tr", de: "de", fr: "fr", ja: "ja", es: "es", ko: "ko", pt: "pt-BR", zh: "zh-CN", it: "it", nl: "nl", ru: "ru" };
+var HTML_LANG = { pt: "pt-BR", zh: "zh-Hans" };
 
+// capture English defaults from the markup
+var EN = {};
+document.querySelectorAll("[data-i18n]").forEach(function (el) { EN[el.getAttribute("data-i18n")] = el.textContent; });
+document.querySelectorAll("[data-i18n-aria]").forEach(function (el) { EN[el.getAttribute("data-i18n-aria")] = el.getAttribute("aria-label"); });
+EN._title = document.title;
+EN._desc = document.querySelector('meta[name="description"]').content;
+
+function t(lang, key) { var d = I18N[lang] || {}; return d[key] != null ? d[key] : EN[key]; }
+
+function applyLang(lang) {
+  if (!I18N[lang]) lang = "en";
+  document.documentElement.lang = HTML_LANG[lang] || lang;
+  document.querySelectorAll("[data-i18n]").forEach(function (el) { el.textContent = t(lang, el.getAttribute("data-i18n")); });
+  document.querySelectorAll("[data-i18n-aria]").forEach(function (el) { el.setAttribute("aria-label", t(lang, el.getAttribute("data-i18n-aria"))); });
+  document.title = t(lang, "_title");
+  document.querySelector('meta[name="description"]').content = t(lang, "_desc");
+  document.querySelectorAll("[data-play]").forEach(function (a) {
+    a.href = "https://play.google.com/store/apps/details?id=com.bitwise.puzzle.android&hl=" + HL[lang];
+  });
+  document.getElementById("lang").value = lang;
+  try { localStorage.setItem("bitwise.lang", lang); } catch (e) {}
+}
+
+function initialLang() {
+  var q = new URLSearchParams(location.search).get("lang");
+  if (q && I18N[q]) return q;
+  try { var s = localStorage.getItem("bitwise.lang"); if (s && I18N[s]) return s; } catch (e) {}
+  var nav = (navigator.languages || [navigator.language || "en"]);
+  for (var i = 0; i < nav.length; i++) { var p = String(nav[i]).slice(0, 2).toLowerCase(); if (I18N[p]) return p; }
+  return "en";
+}
+
+// second set of store buttons in the CTA
+document.getElementById("stores2").innerHTML = document.querySelector(".hero .stores").innerHTML;
+
+document.getElementById("lang").addEventListener("change", function (e) { applyLang(e.target.value); });
+applyLang(initialLang());
+
+// ---- hands-free demo ----
+(function () {
+  var S = [[0,1,0,1,0,1],[1,0,1,0,1,0],[0,1,1,0,0,1],[1,1,0,1,0,0],[0,0,1,0,1,1],[1,0,0,1,1,0]];
+  // [row, col, action]  R → 1, L → 0, B → undo
+  var STEPS = [[0,2,"L"],[1,4,"R"],[2,1,"L"],[2,1,"B"],[2,1,"R"],[3,3,"R"],[3,5,"L"],[4,0,"L"],[5,2,"L"]];
+  var blanks = {};
+  STEPS.forEach(function (s) { blanks[s[0] + "," + s[1]] = true; });
+
+  var grid = document.getElementById("grid");
+  var cells = [];
+  for (var r = 0; r < 6; r++) for (var c = 0; c < 6; c++) {
+    var d = document.createElement("div");
+    d.className = "cell";
+    grid.appendChild(d);
+    cells.push(d);
+  }
+  function cell(r, c) { return cells[r * 6 + c]; }
+  function reset() {
+    grid.classList.remove("solved");
+    for (var r = 0; r < 6; r++) for (var c = 0; c < 6; c++) {
+      var el = cell(r, c);
+      var blank = blanks[r + "," + c];
+      el.className = "cell" + (blank ? "" : " given");
+      el.textContent = blank ? "" : S[r][c];
+    }
+  }
+
+  var eyeL = document.getElementById("eyeL"), eyeR = document.getElementById("eyeR"), brows = document.getElementById("brows");
+  var chips = { R: document.getElementById("chipR"), L: document.getElementById("chipL"), B: document.getElementById("chipB") };
+
+  reset();
+  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    STEPS.forEach(function (s) { if (s[2] !== "B") { var el = cell(s[0], s[1]); el.textContent = S[s[0]][s[1]]; el.classList.add("placed"); } });
+    grid.classList.add("solved");
+    return;
+  }
+
+  var i = 0;
+  function wait(ms, fn) { setTimeout(fn, ms); }
+  function step() {
+    if (i >= STEPS.length) {
+      grid.classList.add("solved");
+      wait(2200, function () { reset(); i = 0; wait(700, step); });
+      return;
+    }
+    var s = STEPS[i], el = cell(s[0], s[1]), a = s[2];
+    el.classList.add("target");
+    wait(650, function () {
+      chips[a].classList.add("on");
+      // the preview is mirrored like a selfie camera: your right eye appears on the right
+      if (a === "R") eyeR.classList.add("shut");
+      if (a === "L") eyeL.classList.add("shut");
+      if (a === "B") brows.classList.add("up");
+      wait(380, function () {
+        eyeR.classList.remove("shut"); eyeL.classList.remove("shut"); brows.classList.remove("up");
+        if (a === "B") {
+          el.textContent = ""; el.className = "cell target";
+        } else {
+          var v = a === "R" ? 1 : 0;
+          el.textContent = v;
+          el.className = "cell " + (v === S[s[0]][s[1]] ? "placed" : "wrong target");
+        }
+        wait(500, function () {
+          chips[a].classList.remove("on");
+          if (!el.classList.contains("wrong") && a !== "B") el.classList.remove("target");
+          i++;
+          step();
+        });
+      });
+    });
+  }
+  wait(900, step);
+})();
+</script>
 </body>
 </html>

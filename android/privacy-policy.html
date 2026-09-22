@@ -4,46 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bitwise (Android) - Privacy Policy</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e1a; color: #c8ccd4; line-height: 1.7; padding: 40px 20px; }
-        .container { max-width: 720px; margin: 0 auto; }
-        h1 { color: #00ff80; font-size: 28px; margin-bottom: 8px; font-family: monospace; }
-        h2 { color: #00ff80; font-size: 18px; margin-top: 32px; margin-bottom: 12px; font-family: monospace; }
-        p, li { font-size: 15px; margin-bottom: 10px; }
-        ul { padding-left: 24px; }
-        .date { color: #666; font-size: 13px; margin-bottom: 32px; font-family: monospace; }
-        a { color: #6ba3ff; }
-        .lang-switch { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; margin-bottom: 24px; }
-        .lang-switch a { cursor: pointer; padding: 4px 12px; border: 1px solid #333; border-radius: 8px; text-decoration: none; font-size: 12px; font-family: monospace; color: #c8ccd4; }
-        .lang-switch a.active { background: #00ff80; color: #0a0e1a; border-color: #00ff80; }
-        .section { margin-bottom: 24px; }
-        hr { border: none; border-top: 1px solid #1a1f2e; margin: 32px 0; }
-        .lang-content { display: none; }
-        .lang-content.visible { display: block; }
-    </style>
+    <meta name="theme-color" content="#0a0e1a">
+<link rel="icon" type="image/png" href="../favicon.png">
+<style>
+:root {
+  --bg: #0a0e1a; --surface: #111827; --border: #1f2937;
+  --text: #c8ccd4; --text-strong: #eef0f4; --muted: #9ca3af; --faint: #4b5563;
+  --accent: #00ff80; --accent-2: #1a7cff; --accent-ink: #0a0e1a;
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Roboto Mono", monospace;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.7; overflow-x: hidden; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 0; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-weight: 700; color: var(--text-strong); letter-spacing: .08em; text-decoration: none; }
+.brand img { width: 32px; height: 32px; border-radius: 8px; }
+select { background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px; font-family: var(--mono); font-size: 13px; }
+main { padding-top: 24px; }
+h1 { color: var(--text-strong); font-size: clamp(24px, 4.4vw, 32px); line-height: 1.25; margin-bottom: 8px; }
+.date { display: inline-block; font-family: var(--mono); font-size: 12px; color: var(--accent); border: 1px solid #1d4b35; border-radius: 999px; padding: 2px 10px; margin-bottom: 28px; }
+h2 { font-family: var(--mono); color: var(--accent); font-size: 15px; letter-spacing: .02em; margin: 36px 0 12px; padding-top: 24px; border-top: 1px solid #141a28; }
+.section { margin-bottom: 8px; }
+.section:first-of-type { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; }
+.section:first-of-type p:last-child { margin-bottom: 0; }
+p, li { font-size: 15px; margin-bottom: 10px; color: var(--muted); }
+strong { color: var(--text-strong); font-weight: 600; }
+ul { padding-left: 22px; margin-bottom: 10px; }
+li::marker { color: var(--accent); }
+a { color: #6ba3ff; }
+hr { border: none; border-top: 1px solid #141a28; margin: 32px 0; }
+.lang-content { display: none; }
+.lang-content.visible { display: block; }
+footer { border-top: 1px solid #141a28; margin-top: 56px; padding: 28px 0 40px; text-align: center; font-family: var(--mono); font-size: 13px; }
+footer nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; }
+footer a { text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+footer p { color: var(--faint); font-size: 12px; margin-top: 14px; }
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="lang-switch">
-            <a id="btn-en" class="active" onclick="showLang('en')">English</a>
-            <a id="btn-tr" onclick="showLang('tr')">Türkçe</a>
-            <a id="btn-de" onclick="showLang('de')">Deutsch</a>
-            <a id="btn-fr" onclick="showLang('fr')">Français</a>
-            <a id="btn-ja" onclick="showLang('ja')">日本語</a>
-            <a id="btn-es" onclick="showLang('es')">Español</a>
-            <a id="btn-ko" onclick="showLang('ko')">한국어</a>
-            <a id="btn-pt" onclick="showLang('pt')">Português</a>
-            <a id="btn-zh" onclick="showLang('zh')">中文</a>
-            <a id="btn-it" onclick="showLang('it')">Italiano</a>
-            <a id="btn-nl" onclick="showLang('nl')">Nederlands</a>
-            <a id="btn-ru" onclick="showLang('ru')">Русский</a>
-        </div>
+<div class="wrap">
+    <header class="topbar">
+        <a class="brand" href=".././"><img src="../icon.png" alt="" width="32" height="32">BITWISE</a>
+        <select id="lang" aria-label="Language">
+            <option value="en">English</option><option value="tr">Türkçe</option><option value="de">Deutsch</option>
+            <option value="fr">Français</option><option value="ja">日本語</option><option value="es">Español</option>
+            <option value="ko">한국어</option><option value="pt">Português</option><option value="zh">中文</option>
+            <option value="it">Italiano</option><option value="nl">Nederlands</option><option value="ru">Русский</option>
+        </select>
+    </header>
+    <main>
 
-        <!-- ENGLISH -->
+<!-- ENGLISH -->
         <div id="en" class="lang-content visible">
             <h1>Bitwise (Android) — Privacy Policy</h1>
-            <p class="date">Effective Date: June 1, 2026</p>
+            <p class="date">Effective Date: September 22, 2026</p>
             <div class="section">
                 <p>Bitwise ("the App") is a binary logic puzzle game for Android developed by Aytunc Sevren ("we", "us", "our"). We are committed to protecting your privacy. This Privacy Policy explains what information we collect, how we use it, and your rights regarding your data.</p>
             </div>
@@ -71,21 +88,28 @@
                 <p><strong>Google Play (Crash & ANR Reporting)</strong></p>
                 <p>Google Play automatically collects crash logs, ANRs, and basic diagnostic data when the App is installed via Play. This is governed by Google Play's standard policy and is not configured or customized by us.</p>
             </div>
-            <h2>3. Data Storage</h2>
+            <h2>3. Camera, Face Detection &amp; Microphone</h2>
             <div class="section">
-                <p>All game data (statistics, settings, achievements, hint balance) is stored locally on your device using Android's Room database and DataStore. <strong>We do not operate any servers, databases, or cloud sync.</strong> Game data does not roam across your devices.</p>
-                <p>If you uninstall the App, all locally stored data is permanently removed.</p>
-                <p>Data associated with Google Play Games (player profile, leaderboard scores, achievement unlocks) is managed by Google in your Play Games account and persists even after uninstalling the App. You can delete it from your Play Games account at any time via the <a href="https://play.google.com/games/profile/" target="_blank">Play Games profile page</a>.</p>
+                <p><strong>Wink mode (camera).</strong> If you turn on Wink mode, the App asks for Camera permission and analyzes front-camera frames with Google ML Kit Face Detection, which runs entirely on your device. The App reads only eye-open probabilities and facial contour points in memory to detect winks (right eye → 1, left eye → 0) and eyebrow raises (undo). Camera frames, face images and face data are never recorded, saved, sent to us or shared with anyone. The camera runs only while a Wink mode game is on screen, and face detection is never used to identify you. As part of the ML Kit SDK, Google may receive anonymous performance and usage metrics about the API; these never include camera images or face data.</p>
+                <p><strong>Voice mode (microphone).</strong> If you turn on Voice mode, the App asks for Microphone permission and uses the speech recognition service on your device (usually provided by Google). Depending on your device and settings, audio may be processed on the device or by that provider under its own privacy policy. The App only receives the recognized words to enter 1, 0 or undo; it does not record, store or send audio to us.</p>
+                <p>Both permissions are optional. You can revoke them at any time in <strong>Android Settings → Apps → Bitwise → Permissions</strong>; the other input modes keep working.</p>
             </div>
-            <h2>4. Children's Privacy</h2>
+            <h2>4. Data Storage</h2>
+            <div class="section">
+                <p>Game data (statistics, settings, achievements, hint balance) is stored locally on your device using Android's Room database and DataStore. <strong>We do not operate any servers or databases.</strong></p>
+                <p><strong>Google Sync (optional).</strong> If you turn on Google Sync in Settings while signed in to Google Play Games, a copy of your game data is saved to your Google account using Play Games Saved Games, so you can restore it on another device or after reinstalling. This backup is stored and managed by Google; we cannot access it. You can turn Google Sync off at any time.</p>
+                <p>You can also save your data to a file with <strong>Export Data</strong> in Settings and restore it later with Import Data. Exported files stay wherever you save them.</p>
+                <p>If you uninstall the App, all locally stored data is permanently removed. Data associated with Google Play Games (player profile, leaderboard scores, achievements, saved games) is managed by Google and persists after uninstalling; you can delete it at any time via the <a href="https://play.google.com/games/profile/" target="_blank">Play Games profile page</a>.</p>
+            </div>
+            <h2>5. Children's Privacy</h2>
             <div class="section">
                 <p>The App is rated for ages 13 and above. We do not knowingly collect personal information from children under 13. Since we do not collect any personally identifiable data, the App complies with COPPA, GDPR-K and similar regulations. If you believe a child under 13 has provided data through our third-party services, please contact us so we can take appropriate action.</p>
             </div>
-            <h2>5. Notifications</h2>
+            <h2>6. Notifications</h2>
             <div class="section">
                 <p>The App may request permission to send local push notifications to remind you about daily puzzles. These notifications are generated entirely on your device and no data is sent to any server. You can disable notifications at any time through <strong>Android Settings → Apps → Bitwise → Notifications</strong>.</p>
             </div>
-            <h2>6. Your Rights</h2>
+            <h2>7. Your Rights</h2>
             <div class="section">
                 <ul>
                     <li>You can delete all locally stored app data by uninstalling the App</li>
@@ -97,11 +121,11 @@
                     <li>California residents have CCPA rights — we do not sell personal information</li>
                 </ul>
             </div>
-            <h2>7. Changes to This Policy</h2>
+            <h2>8. Changes to This Policy</h2>
             <div class="section">
                 <p>We may update this Privacy Policy from time to time. Any changes will be reflected on this page with an updated effective date.</p>
             </div>
-            <h2>8. Contact Us</h2>
+            <h2>9. Contact Us</h2>
             <div class="section">
                 <p>If you have any questions, please contact us at:</p>
                 <p><strong>Email:</strong> <a href="mailto:aytuncsevren@gmail.com">aytuncsevren@gmail.com</a></p>
@@ -111,7 +135,7 @@
         <!-- TURKISH -->
         <div id="tr" class="lang-content">
             <h1>Bitwise (Android) — Gizlilik Politikası</h1>
-            <p class="date">Yürürlük Tarihi: 1 Haziran 2026</p>
+            <p class="date">Yürürlük Tarihi: 22 Eylül 2026</p>
             <div class="section">
                 <p>Bitwise ("Uygulama"), Aytunç Sevren ("biz") tarafından geliştirilen Android için bir ikili mantık bulmaca oyunudur. Gizliliğinizi korumaya kararlıyız. Bu Gizlilik Politikası, hangi bilgileri topladığımızı, bunları nasıl kullandığımızı ve verilerinizle ilgili haklarınızı açıklar.</p>
             </div>
@@ -138,21 +162,28 @@
                 <p><strong>Google Play (Çökme ve ANR Raporlama)</strong></p>
                 <p>Uygulama Play üzerinden yüklendiğinde Google Play otomatik olarak çökme logları, ANR ve temel tanılama verilerini toplar. Bu, Google Play'in standart politikasına tabidir ve bizim tarafımızdan yapılandırılmaz.</p>
             </div>
-            <h2>3. Veri Depolama</h2>
+            <h2>3. Kamera, Yüz Algılama ve Mikrofon</h2>
             <div class="section">
-                <p>Tüm oyun verileri (istatistikler, ayarlar, başarımlar, ipucu bakiyesi) Android'in Room veritabanı ve DataStore'u kullanılarak cihazınızda yerel olarak saklanır. <strong>Sunucu, veritabanı veya bulut senkronizasyonu işletmiyoruz.</strong> Oyun verileri cihazlar arasında dolaşmaz.</p>
-                <p>Uygulamayı kaldırırsanız, yerel olarak saklanan tüm veriler kalıcı olarak silinir.</p>
-                <p>Google Play Games ile ilişkili veriler (oyuncu profili, lider tablosu skorları, başarım açılışları) Google tarafından Play Games hesabınızda yönetilir ve Uygulamayı kaldırdıktan sonra bile kalır. <a href="https://play.google.com/games/profile/" target="_blank">Play Games profil sayfasından</a> istediğiniz zaman silebilirsiniz.</p>
+                <p><strong>Göz modu (kamera).</strong> Göz modunu açarsanız Uygulama kamera izni ister ve ön kamera görüntülerini tamamen cihazınızda çalışan Google ML Kit Yüz Algılama ile analiz eder. Uygulama göz kırpmaları (sağ göz → 1, sol göz → 0) ve kaş kaldırmayı (geri al) algılamak için bellekte yalnızca göz açıklık olasılıklarını ve yüz kontur noktalarını okur. Kamera görüntüleri, yüz resimleri ve yüz verileri asla kaydedilmez, saklanmaz, bize gönderilmez veya kimseyle paylaşılmaz. Kamera yalnızca Göz modunda bir oyun ekrandayken çalışır ve yüz algılama sizi tanımlamak için asla kullanılmaz. ML Kit SDK'sının bir parçası olarak Google, API hakkında anonim performans ve kullanım ölçümleri alabilir; bunlar hiçbir zaman kamera görüntüsü veya yüz verisi içermez.</p>
+                <p><strong>Sesli mod (mikrofon).</strong> Sesli modu açarsanız Uygulama mikrofon izni ister ve cihazınızdaki konuşma tanıma hizmetini (genellikle Google tarafından sağlanır) kullanır. Cihazınıza ve ayarlarınıza bağlı olarak ses, cihazda veya bu sağlayıcı tarafından kendi gizlilik politikası kapsamında işlenebilir. Uygulama yalnızca 1, 0 veya geri al girmek için tanınan kelimeleri alır; sesi kaydetmez, saklamaz veya bize göndermez.</p>
+                <p>Her iki izin de isteğe bağlıdır. Bunları istediğiniz zaman <strong>Android Ayarları → Uygulamalar → Bitwise → İzinler</strong> bölümünden geri alabilirsiniz; diğer giriş modları çalışmaya devam eder.</p>
             </div>
-            <h2>4. Çocukların Gizliliği</h2>
+            <h2>4. Veri Depolama</h2>
+            <div class="section">
+                <p>Oyun verileri (istatistikler, ayarlar, başarımlar, ipucu bakiyesi) Android'in Room veritabanı ve DataStore'u kullanılarak cihazınızda yerel olarak saklanır. <strong>Herhangi bir sunucu veya veritabanı işletmiyoruz.</strong></p>
+                <p><strong>Google Senkronizasyonu (isteğe bağlı).</strong> Google Play Games'e giriş yapmışken Ayarlar'dan Google Senkronizasyonu'nu açarsanız oyun verilerinizin bir kopyası Play Games Kayıtlı Oyunlar ile Google hesabınıza kaydedilir; böylece başka bir cihazda veya yeniden yükledikten sonra geri yükleyebilirsiniz. Bu yedek Google tarafından saklanır ve yönetilir; bizim erişimimiz yoktur. Google Senkronizasyonu'nu istediğiniz zaman kapatabilirsiniz.</p>
+                <p>Ayrıca Ayarlar'daki <strong>Verileri Dışa Aktar</strong> ile verilerinizi bir dosyaya kaydedip daha sonra İçe Aktar ile geri yükleyebilirsiniz. Dışa aktarılan dosyalar nereye kaydettiyseniz orada kalır.</p>
+                <p>Uygulamayı kaldırırsanız yerel olarak saklanan tüm veriler kalıcı olarak silinir. Google Play Games ile ilişkili veriler (oyuncu profili, lider tablosu skorları, başarımlar, kayıtlı oyunlar) Google tarafından yönetilir ve kaldırmadan sonra da kalır; bunları istediğiniz zaman <a href="https://play.google.com/games/profile/" target="_blank">Play Games profil sayfasından</a> silebilirsiniz.</p>
+            </div>
+            <h2>5. Çocukların Gizliliği</h2>
             <div class="section">
                 <p>Uygulama 13 yaş ve üstü için derecelendirilmiştir. 13 yaş altı çocuklardan bilerek kişisel bilgi toplamıyoruz. Kişisel tanımlayıcı veri toplamadığımız için Uygulama COPPA, GDPR-K ve benzeri düzenlemelere uygundur.</p>
             </div>
-            <h2>5. Bildirimler</h2>
+            <h2>6. Bildirimler</h2>
             <div class="section">
                 <p>Uygulama, günlük bulmacaları hatırlatmak için yerel bildirim gönderme izni isteyebilir. Bu bildirimler tamamen cihazınızda oluşturulur ve hiçbir veri sunucuya gönderilmez. Bildirimleri <strong>Android Ayarlar → Uygulamalar → Bitwise → Bildirimler</strong> yolundan istediğiniz zaman devre dışı bırakabilirsiniz.</p>
             </div>
-            <h2>6. Haklarınız</h2>
+            <h2>7. Haklarınız</h2>
             <div class="section">
                 <ul>
                     <li>Uygulamayı kaldırarak tüm yerel verileri silebilirsiniz</li>
@@ -164,11 +195,11 @@
                     <li>Kaliforniya sakinleri CCPA haklarına sahiptir — kişisel bilgi satmıyoruz</li>
                 </ul>
             </div>
-            <h2>7. Politika Değişiklikleri</h2>
+            <h2>8. Politika Değişiklikleri</h2>
             <div class="section">
                 <p>Bu Gizlilik Politikası'nı zaman zaman güncelleyebiliriz. Değişiklikler bu sayfada güncellenmiş yürürlük tarihi ile yansıtılacaktır.</p>
             </div>
-            <h2>8. İletişim</h2>
+            <h2>9. İletişim</h2>
             <div class="section">
                 <p>Sorularınız için: <a href="mailto:aytuncsevren@gmail.com">aytuncsevren@gmail.com</a></p>
             </div>
@@ -177,7 +208,7 @@
         <!-- GERMAN -->
         <div id="de" class="lang-content">
             <h1>Bitwise (Android) — Datenschutzrichtlinie</h1>
-            <p class="date">Gültig ab: 1. Juni 2026</p>
+            <p class="date">Gültig ab: 22. September 2026</p>
             <div class="section">
                 <p>Bitwise ("die App") ist ein binäres Logikrätselspiel für Android, entwickelt von Aytunc Sevren ("wir"). Wir verpflichten uns, Ihre Privatsphäre zu schützen.</p>
             </div>
@@ -200,15 +231,24 @@
                 <p><strong>Google Play Billing (In-App-Käufe)</strong> — Käufe werden von Google Play Billing abgewickelt. <strong>Wir sehen, erhalten oder speichern keine Zahlungsdetails.</strong></p>
                 <p><strong>Google Play (Absturz- und ANR-Berichte)</strong> — Google Play erfasst automatisch Absturzprotokolle und Diagnosedaten gemäß Googles Standardrichtlinie.</p>
             </div>
-            <h2>3. Datenspeicherung</h2>
+            <h2>3. Kamera, Gesichtserkennung und Mikrofon</h2>
             <div class="section">
-                <p>Alle Spieldaten werden lokal mit Room und DataStore gespeichert. <strong>Wir betreiben keine Server, Datenbanken oder Cloud-Synchronisierung.</strong> Beim Deinstallieren werden lokale Daten dauerhaft gelöscht. Play Games-Daten werden von Google verwaltet und können über die <a href="https://play.google.com/games/profile/" target="_blank">Play Games-Profilseite</a> gelöscht werden.</p>
+                <p><strong>Zwinker-Modus (Kamera).</strong> Wenn Sie den Zwinker-Modus aktivieren, fragt die App nach der Kameraberechtigung und analysiert Bilder der Frontkamera mit der Gesichtserkennung von Google ML Kit, die vollständig auf Ihrem Gerät läuft. Die App liest im Arbeitsspeicher nur Wahrscheinlichkeiten für geöffnete Augen und Gesichtskonturpunkte, um Zwinkern (rechtes Auge → 1, linkes Auge → 0) und Augenbrauenheben (Rückgängig) zu erkennen. Kamerabilder, Gesichtsbilder und Gesichtsdaten werden niemals aufgezeichnet, gespeichert, an uns gesendet oder weitergegeben. Die Kamera läuft nur, während ein Spiel im Zwinker-Modus angezeigt wird, und die Gesichtserkennung wird nie zu Ihrer Identifizierung verwendet. Als Teil des ML-Kit-SDK kann Google anonyme Leistungs- und Nutzungsmetriken zur API erhalten; diese enthalten niemals Kamerabilder oder Gesichtsdaten.</p>
+                <p><strong>Sprachmodus (Mikrofon).</strong> Wenn Sie den Sprachmodus aktivieren, fragt die App nach der Mikrofonberechtigung und nutzt den Spracherkennungsdienst Ihres Geräts (meist von Google bereitgestellt). Je nach Gerät und Einstellungen kann das Audio auf dem Gerät oder vom jeweiligen Anbieter gemäß dessen eigener Datenschutzerklärung verarbeitet werden. Die App erhält nur die erkannten Wörter, um 1, 0 oder Rückgängig einzugeben; sie zeichnet kein Audio auf, speichert es nicht und sendet es nicht an uns.</p>
+                <p>Beide Berechtigungen sind optional. Sie können sie jederzeit unter <strong>Android-Einstellungen → Apps → Bitwise → Berechtigungen</strong> widerrufen; die anderen Eingabemodi funktionieren weiterhin.</p>
             </div>
-            <h2>4. Datenschutz für Kinder</h2>
+            <h2>4. Datenspeicherung</h2>
+            <div class="section">
+                <p>Spieldaten (Statistiken, Einstellungen, Erfolge, Tipp-Guthaben) werden lokal auf Ihrem Gerät mit Room und DataStore gespeichert. <strong>Wir betreiben keine Server oder Datenbanken.</strong></p>
+                <p><strong>Google-Synchronisierung (optional).</strong> Wenn Sie in den Einstellungen die Google-Synchronisierung aktivieren und bei Google Play Games angemeldet sind, wird eine Kopie Ihrer Spieldaten über Play Games Saved Games in Ihrem Google-Konto gespeichert, damit Sie sie auf einem anderen Gerät oder nach einer Neuinstallation wiederherstellen können. Diese Sicherung wird von Google gespeichert und verwaltet; wir haben keinen Zugriff darauf. Sie können die Google-Synchronisierung jederzeit deaktivieren.</p>
+                <p>Sie können Ihre Daten außerdem in den Einstellungen mit <strong>Daten exportieren</strong> in einer Datei sichern und später wieder importieren. Exportierte Dateien bleiben dort, wo Sie sie speichern.</p>
+                <p>Beim Deinstallieren der App werden alle lokal gespeicherten Daten dauerhaft gelöscht. Daten von Google Play Games (Spielerprofil, Bestenlisten, Erfolge, gespeicherte Spiele) werden von Google verwaltet und bleiben nach der Deinstallation erhalten; Sie können sie jederzeit über die <a href="https://play.google.com/games/profile/" target="_blank">Play Games-Profilseite</a> löschen.</p>
+            </div>
+            <h2>5. Datenschutz für Kinder</h2>
             <div class="section"><p>Die App ist für Nutzer ab 13 Jahren geeignet. Wir erheben wissentlich keine Daten von Kindern unter 13. Die App erfüllt COPPA und GDPR-K.</p></div>
-            <h2>5. Benachrichtigungen</h2>
+            <h2>6. Benachrichtigungen</h2>
             <div class="section"><p>Die App kann lokale Benachrichtigungen senden. Diese werden vollständig auf Ihrem Gerät erstellt. Deaktivieren über <strong>Android-Einstellungen → Apps → Bitwise → Benachrichtigungen</strong>.</p></div>
-            <h2>6. Ihre Rechte</h2>
+            <h2>7. Ihre Rechte</h2>
             <div class="section">
                 <ul>
                     <li>App deinstallieren, um alle lokalen Daten zu löschen</li>
@@ -219,16 +259,16 @@
                     <li>EU/UK-Nutzer haben DSGVO-Rechte — kontaktieren Sie uns per E-Mail</li>
                 </ul>
             </div>
-            <h2>7. Änderungen</h2>
+            <h2>8. Änderungen</h2>
             <div class="section"><p>Diese Richtlinie kann aktualisiert werden. Änderungen werden auf dieser Seite angezeigt.</p></div>
-            <h2>8. Kontakt</h2>
+            <h2>9. Kontakt</h2>
             <div class="section"><p>Fragen: <a href="mailto:aytuncsevren@gmail.com">aytuncsevren@gmail.com</a></p></div>
         </div>
 
         <!-- FRENCH -->
         <div id="fr" class="lang-content">
             <h1>Bitwise (Android) — Politique de confidentialité</h1>
-            <p class="date">Date d'effet : 1 juin 2026</p>
+            <p class="date">Date d'effet : 22 septembre 2026</p>
             <div class="section">
                 <p>Bitwise ("l'Application") est un jeu de puzzle logique binaire pour Android développé par Aytunc Sevren ("nous"). Nous nous engageons à protéger votre vie privée.</p>
             </div>
@@ -251,15 +291,24 @@
                 <p><strong>Google Play Billing</strong> — Les achats sont traités par Google. <strong>Nous ne voyons ni ne stockons aucune information de paiement.</strong></p>
                 <p><strong>Google Play (rapports de plantage)</strong> — Google Play collecte automatiquement les rapports de plantage et de diagnostic.</p>
             </div>
-            <h2>3. Stockage des données</h2>
+            <h2>3. Caméra, détection du visage et micro</h2>
             <div class="section">
-                <p>Toutes les données sont stockées localement avec Room et DataStore. <strong>Nous n'exploitons aucun serveur, base de données ou synchronisation cloud.</strong> La désinstallation supprime toutes les données locales. Les données Play Games sont gérées par Google et peuvent être supprimées via la <a href="https://play.google.com/games/profile/" target="_blank">page de profil Play Games</a>.</p>
+                <p><strong>Mode Clin d'œil (caméra).</strong> Si vous activez le mode Clin d'œil, l'App demande l'autorisation d'accès à la caméra et analyse les images de la caméra frontale avec la détection de visage Google ML Kit, qui fonctionne entièrement sur votre appareil. L'App lit uniquement en mémoire les probabilités d'ouverture des yeux et les points de contour du visage pour détecter les clins d'œil (œil droit → 1, œil gauche → 0) et les haussements de sourcils (annuler). Les images de la caméra, images du visage et données faciales ne sont jamais enregistrées, stockées, envoyées ni partagées. La caméra ne fonctionne que pendant une partie en mode Clin d'œil, et la détection du visage n'est jamais utilisée pour vous identifier. Dans le cadre du SDK ML Kit, Google peut recevoir des mesures anonymes de performance et d'utilisation de l'API ; elles ne contiennent jamais d'images de la caméra ni de données faciales.</p>
+                <p><strong>Mode Voix (micro).</strong> Si vous activez le mode Voix, l'App demande l'autorisation d'accès au micro et utilise le service de reconnaissance vocale de votre appareil (généralement fourni par Google). Selon votre appareil et vos réglages, l'audio peut être traité sur l'appareil ou par ce fournisseur selon sa propre politique de confidentialité. L'App reçoit uniquement les mots reconnus pour saisir 1, 0 ou annuler ; elle n'enregistre, ne stocke ni ne nous envoie aucun audio.</p>
+                <p>Ces deux autorisations sont facultatives. Vous pouvez les retirer à tout moment dans <strong>Paramètres Android → Applications → Bitwise → Autorisations</strong> ; les autres modes de saisie continuent de fonctionner.</p>
             </div>
-            <h2>4. Protection des enfants</h2>
+            <h2>4. Stockage des données</h2>
+            <div class="section">
+                <p>Les données de jeu (statistiques, réglages, succès, solde d'indices) sont stockées localement sur votre appareil avec Room et DataStore. <strong>Nous n'exploitons aucun serveur ni base de données.</strong></p>
+                <p><strong>Synchronisation Google (facultative).</strong> Si vous activez la synchronisation Google dans les Réglages en étant connecté à Google Play Jeux, une copie de vos données de jeu est enregistrée dans votre compte Google via les sauvegardes de Play Jeux, pour la restaurer sur un autre appareil ou après réinstallation. Cette sauvegarde est stockée et gérée par Google ; nous n'y avons pas accès. Vous pouvez désactiver la synchronisation Google à tout moment.</p>
+                <p>Vous pouvez aussi enregistrer vos données dans un fichier avec <strong>Exporter les données</strong> dans les Réglages et les importer plus tard. Les fichiers exportés restent là où vous les enregistrez.</p>
+                <p>La désinstallation de l'App supprime définitivement toutes les données locales. Les données liées à Google Play Jeux (profil, classements, succès, sauvegardes) sont gérées par Google et persistent après la désinstallation ; vous pouvez les supprimer à tout moment via la <a href="https://play.google.com/games/profile/" target="_blank">page de profil Play Jeux</a>.</p>
+            </div>
+            <h2>5. Protection des enfants</h2>
             <div class="section"><p>L'Application est destinée aux 13 ans et plus. Nous ne collectons pas sciemment de données d'enfants de moins de 13 ans. Conforme à COPPA et RGPD-K.</p></div>
-            <h2>5. Notifications</h2>
+            <h2>6. Notifications</h2>
             <div class="section"><p>L'Application peut envoyer des notifications locales. Aucune donnée n'est envoyée à un serveur. Désactivation via <strong>Paramètres Android → Applications → Bitwise → Notifications</strong>.</p></div>
-            <h2>6. Vos droits</h2>
+            <h2>7. Vos droits</h2>
             <div class="section">
                 <ul>
                     <li>Supprimer l'app pour effacer toutes les données locales</li>
@@ -270,16 +319,16 @@
                     <li>Les résidents UE/Royaume-Uni ont des droits RGPD — contactez-nous par e-mail</li>
                 </ul>
             </div>
-            <h2>7. Modifications</h2>
+            <h2>8. Modifications</h2>
             <div class="section"><p>Cette politique peut être mise à jour. Les modifications seront reflétées sur cette page.</p></div>
-            <h2>8. Contact</h2>
+            <h2>9. Contact</h2>
             <div class="section"><p>Questions : <a href="mailto:aytuncsevren@gmail.com">aytuncsevren@gmail.com</a></p></div>
         </div>
 
         <!-- JAPANESE -->
         <div id="ja" class="lang-content">
             <h1>Bitwise (Android) — プライバシーポリシー</h1>
-            <p class="date">施行日: 2026年6月1日</p>
+            <p class="date">施行日: 2026年9月22日</p>
             <div class="section"><p>Bitwise（「本アプリ」）は、Aytunc Sevren（「当社」）が開発したAndroid向けバイナリロジックパズルゲームです。お客様のプライバシーを保護します。</p></div>
             <h2>1. 収集する情報</h2>
             <div class="section">
@@ -300,15 +349,24 @@
                 <p><strong>Google Play Billing（アプリ内課金）</strong> — 購入はGoogle Play Billingが処理します。<strong>当社は支払情報を一切見ない、受け取らない、保存しません。</strong></p>
                 <p><strong>Google Play（クラッシュレポート）</strong> — Google Playが自動的にクラッシュログと診断データを収集します。</p>
             </div>
-            <h2>3. データ保存</h2>
+            <h2>3. カメラ、顔検出、マイク</h2>
             <div class="section">
-                <p>すべてのゲームデータはRoomとDataStoreを使用して端末にローカル保存されます。<strong>サーバー、データベース、クラウド同期は運用していません。</strong>アプリを削除するとローカルデータは完全に削除されます。Play GamesデータはGoogleが管理し、<a href="https://play.google.com/games/profile/" target="_blank">Play Gamesプロフィールページ</a>から削除できます。</p>
+                <p><strong>ウィンクモード(カメラ)。</strong>ウィンクモードをオンにすると、アプリはカメラの許可を求め、端末上で完全に動作する Google ML Kit の顔検出でフロントカメラの映像を解析します。アプリはウィンク(右目 → 1、左目 → 0)と眉上げ(取り消し)を検出するため、目が開いている確率と顔の輪郭点のみをメモリ上で読み取ります。カメラ映像、顔画像、顔データが記録・保存・送信・共有されることは一切ありません。カメラはウィンクモードのゲーム画面表示中のみ動作し、顔検出があなたの識別に使われることはありません。ML Kit SDK の仕組みとして、Google が API の匿名のパフォーマンス・利用状況の指標を受け取る場合がありますが、カメラ映像や顔データが含まれることはありません。</p>
+                <p><strong>音声モード(マイク)。</strong>音声モードをオンにすると、アプリはマイクの許可を求め、端末の音声認識サービス(通常は Google が提供)を使用します。端末や設定によっては、音声は端末上で、またはそのプロバイダによって同社のプライバシーポリシーに従って処理される場合があります。アプリは 1・0・取り消しを入力するために認識された単語のみを受け取り、音声を録音・保存したり当方へ送信したりすることはありません。</p>
+                <p>どちらの許可も任意です。<strong>Android の設定 → アプリ → Bitwise → 権限</strong>からいつでも取り消せます。その他の入力方法は引き続き使用できます。</p>
             </div>
-            <h2>4. 児童のプライバシー</h2>
+            <h2>4. データ保存</h2>
+            <div class="section">
+                <p>ゲームデータ(統計、設定、実績、ヒント残数)は Room と DataStore を使用して端末にローカル保存されます。<strong>当方はサーバーやデータベースを運用していません。</strong></p>
+                <p><strong>Google同期(任意)。</strong>Google Play ゲームにサインインした状態で設定の Google同期をオンにすると、ゲームデータのコピーが Play ゲームの保存済みゲーム機能で Google アカウントに保存され、別の端末や再インストール後に復元できます。このバックアップは Google が保存・管理しており、当方はアクセスできません。Google同期はいつでもオフにできます。</p>
+                <p>設定の<strong>データをエクスポート</strong>でデータをファイルに保存し、後でインポートすることもできます。エクスポートしたファイルは保存した場所に残ります。</p>
+                <p>アプリを削除すると、ローカルに保存されたデータはすべて完全に削除されます。Google Play ゲームに関連するデータ(プロフィール、ランキングスコア、実績、保存済みゲーム)は Google が管理し、削除後も残ります。<a href="https://play.google.com/games/profile/" target="_blank">Play ゲームのプロフィールページ</a>からいつでも削除できます。</p>
+            </div>
+            <h2>5. 児童のプライバシー</h2>
             <div class="section"><p>本アプリは13歳以上が対象です。13歳未満の児童から意図的に個人情報を収集することはありません。COPPAおよびGDPR-Kに準拠しています。</p></div>
-            <h2>5. 通知</h2>
+            <h2>6. 通知</h2>
             <div class="section"><p>ローカル通知を送信する場合があります。データはサーバーに送信されません。<strong>Android設定 → アプリ → Bitwise → 通知</strong>から無効化できます。</p></div>
-            <h2>6. お客様の権利</h2>
+            <h2>7. お客様の権利</h2>
             <div class="section">
                 <ul>
                     <li>アプリを削除して全ローカルデータを消去</li>
@@ -319,16 +377,16 @@
                     <li>EU/英国居住者はGDPR権利あり — メールでお問い合わせください</li>
                 </ul>
             </div>
-            <h2>7. ポリシーの変更</h2>
+            <h2>8. ポリシーの変更</h2>
             <div class="section"><p>本ポリシーは随時更新される場合があります。</p></div>
-            <h2>8. お問い合わせ</h2>
+            <h2>9. お問い合わせ</h2>
             <div class="section"><p>ご質問: <a href="mailto:aytuncsevren@gmail.com">aytuncsevren@gmail.com</a></p></div>
         </div>
 
         <!-- SPANISH -->
         <div id="es" class="lang-content">
             <h1>Bitwise (Android) — Política de Privacidad</h1>
-            <p class="date">Fecha de vigencia: 1 de junio de 2026</p>
+            <p class="date">Fecha de vigencia: 22 de septiembre de 2026</p>
             <div class="section"><p>Bitwise ("la App") es un juego de lógica binaria para Android desarrollado por Aytunc Sevren ("nosotros"). Nos comprometemos a proteger su privacidad.</p></div>
             <h2>1. Información recopilada</h2>
             <div class="section">
@@ -349,15 +407,24 @@
                 <p><strong>Google Play Billing</strong> — Las compras son procesadas por Google. <strong>No vemos ni almacenamos ninguna información de pago.</strong></p>
                 <p><strong>Google Play (informes de bloqueo)</strong> — Google Play recopila automáticamente registros de bloqueo y diagnóstico.</p>
             </div>
-            <h2>3. Almacenamiento de datos</h2>
+            <h2>3. Cámara, detección facial y micrófono</h2>
             <div class="section">
-                <p>Todos los datos se almacenan localmente con Room y DataStore. <strong>No operamos servidores, bases de datos ni sincronización en la nube.</strong> Al desinstalar la app, los datos locales se eliminan permanentemente. Los datos de Play Games son gestionados por Google y pueden eliminarse desde la <a href="https://play.google.com/games/profile/" target="_blank">página de perfil de Play Games</a>.</p>
+                <p><strong>Modo Guiño (cámara).</strong> Si activas el modo Guiño, la App solicita permiso de cámara y analiza las imágenes de la cámara frontal con la detección facial de Google ML Kit, que funciona por completo en tu dispositivo. La App solo lee en memoria las probabilidades de ojo abierto y los puntos de contorno facial para detectar guiños (ojo derecho → 1, ojo izquierdo → 0) y cejas levantadas (deshacer). Las imágenes de la cámara, imágenes faciales y datos faciales nunca se graban, guardan, envían ni comparten. La cámara solo funciona mientras hay una partida en modo Guiño en pantalla, y la detección facial nunca se usa para identificarte. Como parte del SDK de ML Kit, Google puede recibir métricas anónimas de rendimiento y uso de la API; nunca incluyen imágenes de la cámara ni datos faciales.</p>
+                <p><strong>Modo Voz (micrófono).</strong> Si activas el modo Voz, la App solicita permiso de micrófono y usa el servicio de reconocimiento de voz de tu dispositivo (normalmente proporcionado por Google). Según tu dispositivo y ajustes, el audio puede procesarse en el dispositivo o por ese proveedor conforme a su propia política de privacidad. La App solo recibe las palabras reconocidas para introducir 1, 0 o deshacer; no graba, guarda ni nos envía audio.</p>
+                <p>Ambos permisos son opcionales. Puedes revocarlos en cualquier momento en <strong>Ajustes de Android → Aplicaciones → Bitwise → Permisos</strong>; los demás modos de entrada siguen funcionando.</p>
             </div>
-            <h2>4. Privacidad infantil</h2>
+            <h2>4. Almacenamiento de datos</h2>
+            <div class="section">
+                <p>Los datos del juego (estadísticas, ajustes, logros, saldo de pistas) se guardan localmente en tu dispositivo con Room y DataStore. <strong>No operamos servidores ni bases de datos.</strong></p>
+                <p><strong>Sincronización Google (opcional).</strong> Si activas la Sincronización Google en Ajustes con la sesión iniciada en Google Play Juegos, se guarda una copia de tus datos de juego en tu cuenta de Google mediante los juegos guardados de Play Juegos, para que puedas restaurarlos en otro dispositivo o tras reinstalar. Esta copia la almacena y gestiona Google; nosotros no podemos acceder a ella. Puedes desactivar la Sincronización Google en cualquier momento.</p>
+                <p>También puedes guardar tus datos en un archivo con <strong>Exportar datos</strong> en Ajustes e importarlos más tarde. Los archivos exportados permanecen donde los guardes.</p>
+                <p>Si desinstalas la App, todos los datos locales se eliminan de forma permanente. Los datos asociados a Google Play Juegos (perfil, puntuaciones, logros, juegos guardados) los gestiona Google y se conservan tras desinstalar; puedes eliminarlos en cualquier momento desde la <a href="https://play.google.com/games/profile/" target="_blank">página de perfil de Play Juegos</a>.</p>
+            </div>
+            <h2>5. Privacidad infantil</h2>
             <div class="section"><p>La App está clasificada para mayores de 13 años. No recopilamos conscientemente datos de menores de 13 años. Cumple con COPPA y RGPD-K.</p></div>
-            <h2>5. Notificaciones</h2>
+            <h2>6. Notificaciones</h2>
             <div class="section"><p>La App puede enviar notificaciones locales. Ningún dato se envía a servidores. Desactivar en <strong>Ajustes de Android → Apps → Bitwise → Notificaciones</strong>.</p></div>
-            <h2>6. Sus derechos</h2>
+            <h2>7. Sus derechos</h2>
             <div class="section">
                 <ul>
                     <li>Desinstalar la app para borrar todos los datos locales</li>
@@ -368,16 +435,16 @@
                     <li>Residentes de UE/Reino Unido tienen derechos RGPD — contáctenos por correo</li>
                 </ul>
             </div>
-            <h2>7. Cambios</h2>
+            <h2>8. Cambios</h2>
             <div class="section"><p>Esta política puede actualizarse. Los cambios se reflejarán en esta página.</p></div>
-            <h2>8. Contacto</h2>
+            <h2>9. Contacto</h2>
             <div class="section"><p>Preguntas: <a href="mailto:aytuncsevren@gmail.com">aytuncsevren@gmail.com</a></p></div>
         </div>
 
         <!-- KOREAN -->
         <div id="ko" class="lang-content">
             <h1>Bitwise (Android) — 개인정보 처리방침</h1>
-            <p class="date">시행일: 2026년 6월 1일</p>
+            <p class="date">시행일: 2026년 9월 22일</p>
             <div class="section"><p>Bitwise("앱")는 Aytunc Sevren("당사")이 개발한 Android용 바이너리 로직 퍼즐 게임입니다. 당사는 귀하의 개인정보를 보호합니다.</p></div>
             <h2>1. 수집하는 정보</h2>
             <div class="section">
@@ -398,15 +465,24 @@
                 <p><strong>Google Play Billing(인앱 구매)</strong> — 구매는 Google Play Billing이 처리합니다. <strong>당사는 결제 정보를 보거나 저장하지 않습니다.</strong></p>
                 <p><strong>Google Play(크래시 보고)</strong> — Google Play가 자동으로 크래시 로그와 진단 데이터를 수집합니다.</p>
             </div>
-            <h2>3. 데이터 저장</h2>
+            <h2>3. 카메라, 얼굴 감지 및 마이크</h2>
             <div class="section">
-                <p>모든 게임 데이터는 Room과 DataStore를 사용하여 기기에 로컬 저장됩니다. <strong>당사는 서버, 데이터베이스 또는 클라우드 동기화를 운영하지 않습니다.</strong> 앱을 삭제하면 로컬 데이터가 영구 삭제됩니다. Play Games 데이터는 Google이 관리하며 <a href="https://play.google.com/games/profile/" target="_blank">Play Games 프로필 페이지</a>에서 삭제할 수 있습니다.</p>
+                <p><strong>윙크 모드(카메라).</strong> 윙크 모드를 켜면 앱이 카메라 권한을 요청하고, 기기에서만 실행되는 Google ML Kit 얼굴 감지로 전면 카메라 영상을 분석합니다. 앱은 윙크(오른쪽 눈 → 1, 왼쪽 눈 → 0)와 눈썹 올리기(되돌리기)를 감지하기 위해 눈을 뜬 확률과 얼굴 윤곽점만 메모리에서 읽습니다. 카메라 영상, 얼굴 이미지, 얼굴 데이터는 절대 녹화·저장·전송·공유되지 않습니다. 카메라는 윙크 모드 게임 화면에서만 작동하며, 얼굴 감지는 사용자를 식별하는 데 사용되지 않습니다. ML Kit SDK의 일부로 Google이 API에 대한 익명 성능 및 사용 지표를 수집할 수 있으나, 여기에는 카메라 영상이나 얼굴 데이터가 포함되지 않습니다.</p>
+                <p><strong>음성 모드(마이크).</strong> 음성 모드를 켜면 앱이 마이크 권한을 요청하고 기기의 음성 인식 서비스(보통 Google 제공)를 사용합니다. 기기와 설정에 따라 음성은 기기에서 또는 해당 제공업체의 개인정보 처리방침에 따라 처리될 수 있습니다. 앱은 1, 0, 되돌리기를 입력하기 위해 인식된 단어만 받으며, 음성을 녹음·저장하거나 당사로 전송하지 않습니다.</p>
+                <p>두 권한 모두 선택 사항입니다. <strong>Android 설정 → 앱 → Bitwise → 권한</strong>에서 언제든지 해제할 수 있으며, 다른 입력 방식은 계속 사용할 수 있습니다.</p>
             </div>
-            <h2>4. 아동 개인정보</h2>
+            <h2>4. 데이터 저장</h2>
+            <div class="section">
+                <p>게임 데이터(통계, 설정, 업적, 힌트 잔액)는 Room과 DataStore를 사용해 기기에 로컬로 저장됩니다. <strong>당사는 서버나 데이터베이스를 운영하지 않습니다.</strong></p>
+                <p><strong>Google 동기화(선택).</strong> Google Play 게임즈에 로그인한 상태에서 설정의 Google 동기화를 켜면 게임 데이터 사본이 Play 게임즈 저장된 게임 기능을 통해 Google 계정에 저장되어 다른 기기나 재설치 후에 복원할 수 있습니다. 이 백업은 Google이 저장·관리하며 당사는 접근할 수 없습니다. Google 동기화는 언제든지 끌 수 있습니다.</p>
+                <p>설정의 <strong>데이터 내보내기</strong>로 데이터를 파일로 저장하고 나중에 가져올 수도 있습니다. 내보낸 파일은 저장한 위치에 그대로 남습니다.</p>
+                <p>앱을 삭제하면 로컬에 저장된 모든 데이터가 영구 삭제됩니다. Google Play 게임즈 관련 데이터(프로필, 리더보드 점수, 업적, 저장된 게임)는 Google이 관리하며 앱 삭제 후에도 유지됩니다. <a href="https://play.google.com/games/profile/" target="_blank">Play 게임즈 프로필 페이지</a>에서 언제든지 삭제할 수 있습니다.</p>
+            </div>
+            <h2>5. 아동 개인정보</h2>
             <div class="section"><p>앱은 13세 이상을 대상으로 합니다. 13세 미만 아동의 개인정보를 의도적으로 수집하지 않습니다. COPPA 및 GDPR-K를 준수합니다.</p></div>
-            <h2>5. 알림</h2>
+            <h2>6. 알림</h2>
             <div class="section"><p>앱은 로컬 알림을 보낼 수 있습니다. 서버로 데이터가 전송되지 않습니다. <strong>Android 설정 → 앱 → Bitwise → 알림</strong>에서 비활성화하세요.</p></div>
-            <h2>6. 귀하의 권리</h2>
+            <h2>7. 귀하의 권리</h2>
             <div class="section">
                 <ul>
                     <li>앱 삭제로 모든 로컬 데이터 제거</li>
@@ -417,16 +493,16 @@
                     <li>EU/영국 거주자는 GDPR 권리 보유 — 이메일로 문의</li>
                 </ul>
             </div>
-            <h2>7. 변경사항</h2>
+            <h2>8. 변경사항</h2>
             <div class="section"><p>본 방침은 수시로 업데이트될 수 있습니다.</p></div>
-            <h2>8. 문의</h2>
+            <h2>9. 문의</h2>
             <div class="section"><p>문의: <a href="mailto:aytuncsevren@gmail.com">aytuncsevren@gmail.com</a></p></div>
         </div>
 
         <!-- PORTUGUESE (BRAZIL) -->
         <div id="pt" class="lang-content">
             <h1>Bitwise (Android) — Política de Privacidade</h1>
-            <p class="date">Data de vigência: 1 de junho de 2026</p>
+            <p class="date">Data de vigência: 22 de setembro de 2026</p>
             <div class="section"><p>Bitwise ("o App") é um jogo de lógica binária para Android desenvolvido por Aytunc Sevren ("nós"). Estamos comprometidos em proteger sua privacidade.</p></div>
             <h2>1. Informações coletadas</h2>
             <div class="section">
@@ -447,15 +523,24 @@
                 <p><strong>Google Play Billing</strong> — Compras processadas pelo Google. <strong>Não vemos nem armazenamos informações de pagamento.</strong></p>
                 <p><strong>Google Play (relatórios de falha)</strong> — Google Play coleta automaticamente logs de falha e diagnóstico.</p>
             </div>
-            <h2>3. Armazenamento de dados</h2>
+            <h2>3. Câmera, detecção facial e microfone</h2>
             <div class="section">
-                <p>Todos os dados são armazenados localmente com Room e DataStore. <strong>Não operamos servidores, bancos de dados ou sincronização em nuvem.</strong> Ao desinstalar, dados locais são removidos permanentemente. Dados do Play Games são gerenciados pelo Google e podem ser excluídos via <a href="https://play.google.com/games/profile/" target="_blank">página de perfil do Play Games</a>.</p>
+                <p><strong>Modo Piscada (câmera).</strong> Se você ativar o modo Piscada, o App pede permissão de câmera e analisa as imagens da câmera frontal com a detecção facial do Google ML Kit, que roda inteiramente no seu aparelho. O App lê na memória apenas as probabilidades de olho aberto e os pontos de contorno do rosto para detectar piscadas (olho direito → 1, olho esquerdo → 0) e sobrancelhas levantadas (desfazer). Imagens da câmera, imagens do rosto e dados faciais nunca são gravados, salvos, enviados ou compartilhados. A câmera só funciona enquanto uma partida no modo Piscada está na tela, e a detecção facial nunca é usada para identificar você. Como parte do SDK do ML Kit, o Google pode receber métricas anônimas de desempenho e uso da API; elas nunca incluem imagens da câmera ou dados faciais.</p>
+                <p><strong>Modo Voz (microfone).</strong> Se você ativar o modo Voz, o App pede permissão de microfone e usa o serviço de reconhecimento de fala do seu aparelho (normalmente fornecido pelo Google). Dependendo do aparelho e das configurações, o áudio pode ser processado no aparelho ou por esse provedor, conforme a política de privacidade dele. O App recebe apenas as palavras reconhecidas para inserir 1, 0 ou desfazer; ele não grava, armazena nem nos envia áudio.</p>
+                <p>As duas permissões são opcionais. Você pode revogá-las a qualquer momento em <strong>Configurações do Android → Apps → Bitwise → Permissões</strong>; os outros modos de entrada continuam funcionando.</p>
             </div>
-            <h2>4. Privacidade infantil</h2>
+            <h2>4. Armazenamento de dados</h2>
+            <div class="section">
+                <p>Os dados do jogo (estatísticas, configurações, conquistas, saldo de dicas) são armazenados localmente no seu aparelho com Room e DataStore. <strong>Não operamos servidores nem bancos de dados.</strong></p>
+                <p><strong>Sincronização Google (opcional).</strong> Se você ativar a Sincronização Google nas Configurações estando conectado ao Google Play Games, uma cópia dos seus dados de jogo é salva na sua conta Google pelos jogos salvos do Play Games, para que você possa restaurá-los em outro aparelho ou após reinstalar. Esse backup é armazenado e gerenciado pelo Google; nós não temos acesso a ele. Você pode desativar a Sincronização Google a qualquer momento.</p>
+                <p>Você também pode salvar seus dados em um arquivo com <strong>Exportar dados</strong> nas Configurações e importá-los depois. Os arquivos exportados ficam onde você os salvar.</p>
+                <p>Ao desinstalar o App, todos os dados locais são removidos permanentemente. Os dados do Google Play Games (perfil, pontuações, conquistas, jogos salvos) são gerenciados pelo Google e permanecem após a desinstalação; você pode excluí-los a qualquer momento pela <a href="https://play.google.com/games/profile/" target="_blank">página de perfil do Play Games</a>.</p>
+            </div>
+            <h2>5. Privacidade infantil</h2>
             <div class="section"><p>O App é classificado para 13 anos ou mais. Não coletamos conscientemente dados de menores de 13 anos. Conforme COPPA e RGPD-K.</p></div>
-            <h2>5. Notificações</h2>
+            <h2>6. Notificações</h2>
             <div class="section"><p>O App pode enviar notificações locais. Nenhum dado é enviado a servidores. Desative em <strong>Configurações do Android → Apps → Bitwise → Notificações</strong>.</p></div>
-            <h2>6. Seus direitos</h2>
+            <h2>7. Seus direitos</h2>
             <div class="section">
                 <ul>
                     <li>Desinstalar o app para remover todos os dados locais</li>
@@ -466,16 +551,16 @@
                     <li>Residentes da UE/Reino Unido têm direitos RGPD — entre em contato por e-mail</li>
                 </ul>
             </div>
-            <h2>7. Alterações</h2>
+            <h2>8. Alterações</h2>
             <div class="section"><p>Esta política pode ser atualizada. Alterações serão refletidas nesta página.</p></div>
-            <h2>8. Contato</h2>
+            <h2>9. Contato</h2>
             <div class="section"><p>Dúvidas: <a href="mailto:aytuncsevren@gmail.com">aytuncsevren@gmail.com</a></p></div>
         </div>
 
         <!-- CHINESE SIMPLIFIED -->
         <div id="zh" class="lang-content">
             <h1>Bitwise (Android) — 隐私政策</h1>
-            <p class="date">生效日期: 2026年6月1日</p>
+            <p class="date">生效日期: 2026年9月22日</p>
             <div class="section"><p>Bitwise（"本应用"）是由Aytunc Sevren（"我们"）开发的Android二进制逻辑益智游戏。我们致力于保护您的隐私。</p></div>
             <h2>1. 收集的信息</h2>
             <div class="section">
@@ -496,15 +581,24 @@
                 <p><strong>Google Play Billing（应用内购买）</strong> — 购买由Google Play Billing处理。<strong>我们不会看到或存储任何付款信息。</strong></p>
                 <p><strong>Google Play（崩溃报告）</strong> — Google Play自动收集崩溃日志和诊断数据。</p>
             </div>
-            <h2>3. 数据存储</h2>
+            <h2>3. 相机、面部检测和麦克风</h2>
             <div class="section">
-                <p>所有游戏数据使用Room和DataStore本地存储。<strong>我们不运营任何服务器、数据库或云同步。</strong>卸载应用后本地数据将永久删除。Play Games数据由Google管理，可通过<a href="https://play.google.com/games/profile/" target="_blank">Play Games个人资料页面</a>删除。</p>
+                <p><strong>眨眼模式(相机)。</strong>如果你开启眨眼模式,本应用会请求相机权限,并使用完全在设备上运行的 Google ML Kit 面部检测分析前置摄像头画面。本应用仅在内存中读取睁眼概率和面部轮廓点,用于检测眨眼(右眼 → 1,左眼 → 0)和扬眉(撤销)。相机画面、面部图像和面部数据绝不会被录制、保存、发送给我们或与任何人共享。相机仅在眨眼模式的游戏界面显示时运行,面部检测绝不会用于识别你的身份。作为 ML Kit SDK 的一部分,Google 可能会收到有关该 API 的匿名性能和使用指标;其中绝不包含相机画面或面部数据。</p>
+                <p><strong>语音模式(麦克风)。</strong>如果你开启语音模式,本应用会请求麦克风权限,并使用设备上的语音识别服务(通常由 Google 提供)。根据你的设备和设置,音频可能在设备上处理,或由该服务提供商依据其隐私政策处理。本应用只接收识别出的词语,用于输入 1、0 或撤销;不会录制、存储或向我们发送音频。</p>
+                <p>这两项权限均为可选。你可以随时在 <strong>Android 设置 → 应用 → Bitwise → 权限</strong>中撤销;其他输入方式仍可正常使用。</p>
             </div>
-            <h2>4. 儿童隐私</h2>
+            <h2>4. 数据存储</h2>
+            <div class="section">
+                <p>游戏数据(统计、设置、成就、提示余额)使用 Room 和 DataStore 保存在你的设备本地。<strong>我们不运营任何服务器或数据库。</strong></p>
+                <p><strong>Google 同步(可选)。</strong>如果你在登录 Google Play 游戏的情况下于设置中开启 Google 同步,游戏数据的副本会通过 Play 游戏的已保存游戏功能保存到你的 Google 账号,方便你在其他设备上或重新安装后恢复。该备份由 Google 存储和管理,我们无法访问。你可以随时关闭 Google 同步。</p>
+                <p>你也可以在设置中使用<strong>导出数据</strong>将数据保存为文件,之后再导入。导出的文件保存在你选择的位置。</p>
+                <p>卸载本应用后,所有本地数据将被永久删除。与 Google Play 游戏相关的数据(玩家资料、排行榜成绩、成就、已保存游戏)由 Google 管理,卸载后仍会保留;你可以随时通过<a href="https://play.google.com/games/profile/" target="_blank">Play 游戏个人资料页面</a>删除。</p>
+            </div>
+            <h2>5. 儿童隐私</h2>
             <div class="section"><p>本应用面向13岁及以上用户。我们不会有意收集13岁以下儿童的个人信息。符合COPPA和GDPR-K。</p></div>
-            <h2>5. 通知</h2>
+            <h2>6. 通知</h2>
             <div class="section"><p>本应用可能发送本地通知。不会向服务器发送数据。在<strong>Android设置 → 应用 → Bitwise → 通知</strong>中关闭。</p></div>
-            <h2>6. 您的权利</h2>
+            <h2>7. 您的权利</h2>
             <div class="section">
                 <ul>
                     <li>卸载应用清除所有本地数据</li>
@@ -515,16 +609,16 @@
                     <li>欧盟/英国居民拥有GDPR权利 — 通过电子邮件联系我们</li>
                 </ul>
             </div>
-            <h2>7. 政策变更</h2>
+            <h2>8. 政策变更</h2>
             <div class="section"><p>本政策可能会不时更新。变更将在此页面反映。</p></div>
-            <h2>8. 联系我们</h2>
+            <h2>9. 联系我们</h2>
             <div class="section"><p>问题请联系: <a href="mailto:aytuncsevren@gmail.com">aytuncsevren@gmail.com</a></p></div>
         </div>
 
         <!-- ITALIAN -->
         <div id="it" class="lang-content">
             <h1>Bitwise (Android) — Informativa sulla Privacy</h1>
-            <p class="date">Data di entrata in vigore: 1 giugno 2026</p>
+            <p class="date">Data di entrata in vigore: 22 settembre 2026</p>
             <div class="section"><p>Bitwise ("l'App") è un gioco di puzzle logico binario per Android sviluppato da Aytunc Sevren ("noi"). Ci impegniamo a proteggere la tua privacy.</p></div>
             <h2>1. Informazioni raccolte</h2>
             <div class="section">
@@ -545,15 +639,24 @@
                 <p><strong>Google Play Billing</strong> — Gli acquisti sono gestiti da Google. <strong>Non vediamo né memorizziamo informazioni di pagamento.</strong></p>
                 <p><strong>Google Play (rapporti di crash)</strong> — Google Play raccoglie automaticamente log di crash e dati diagnostici.</p>
             </div>
-            <h2>3. Archiviazione dati</h2>
+            <h2>3. Fotocamera, rilevamento del volto e microfono</h2>
             <div class="section">
-                <p>Tutti i dati sono memorizzati localmente con Room e DataStore. <strong>Non gestiamo server, database o sincronizzazione cloud.</strong> Disinstallando l'app, i dati locali vengono rimossi permanentemente. I dati Play Games sono gestiti da Google ed eliminabili tramite la <a href="https://play.google.com/games/profile/" target="_blank">pagina del profilo Play Games</a>.</p>
+                <p><strong>Modalità Occhiolino (fotocamera).</strong> Se attivi la modalità Occhiolino, l'App chiede l'autorizzazione alla fotocamera e analizza le immagini della fotocamera frontale con il rilevamento del volto di Google ML Kit, che funziona interamente sul dispositivo. L'App legge in memoria solo le probabilità di occhio aperto e i punti di contorno del volto per rilevare gli occhiolini (occhio destro → 1, occhio sinistro → 0) e le sopracciglia alzate (annulla). Immagini della fotocamera, immagini del volto e dati del volto non vengono mai registrati, salvati, inviati o condivisi. La fotocamera funziona solo mentre è sullo schermo una partita in modalità Occhiolino, e il rilevamento del volto non viene mai usato per identificarti. Come parte dell'SDK ML Kit, Google può ricevere metriche anonime sulle prestazioni e sull'uso dell'API; non includono mai immagini della fotocamera o dati del volto.</p>
+                <p><strong>Modalità Voce (microfono).</strong> Se attivi la modalità Voce, l'App chiede l'autorizzazione al microfono e usa il servizio di riconoscimento vocale del dispositivo (di solito fornito da Google). A seconda del dispositivo e delle impostazioni, l'audio può essere elaborato sul dispositivo o da quel fornitore secondo la sua informativa sulla privacy. L'App riceve solo le parole riconosciute per inserire 1, 0 o annulla; non registra, salva né ci invia audio.</p>
+                <p>Entrambe le autorizzazioni sono facoltative. Puoi revocarle in qualsiasi momento in <strong>Impostazioni Android → App → Bitwise → Autorizzazioni</strong>; le altre modalità di input continuano a funzionare.</p>
             </div>
-            <h2>4. Privacy dei minori</h2>
+            <h2>4. Archiviazione dati</h2>
+            <div class="section">
+                <p>I dati di gioco (statistiche, impostazioni, obiettivi, saldo suggerimenti) sono memorizzati localmente sul dispositivo con Room e DataStore. <strong>Non gestiamo server né database.</strong></p>
+                <p><strong>Sincronizzazione Google (facoltativa).</strong> Se attivi la Sincronizzazione Google nelle Impostazioni dopo aver effettuato l'accesso a Google Play Giochi, una copia dei dati di gioco viene salvata nel tuo account Google tramite i giochi salvati di Play Giochi, così puoi ripristinarla su un altro dispositivo o dopo una reinstallazione. Questo backup è archiviato e gestito da Google; noi non possiamo accedervi. Puoi disattivare la Sincronizzazione Google in qualsiasi momento.</p>
+                <p>Puoi anche salvare i dati in un file con <strong>Esporta Dati</strong> nelle Impostazioni e importarli in seguito. I file esportati restano dove li salvi.</p>
+                <p>Disinstallando l'App, tutti i dati locali vengono eliminati definitivamente. I dati associati a Google Play Giochi (profilo, punteggi, obiettivi, giochi salvati) sono gestiti da Google e restano dopo la disinstallazione; puoi eliminarli in qualsiasi momento dalla <a href="https://play.google.com/games/profile/" target="_blank">pagina del profilo Play Giochi</a>.</p>
+            </div>
+            <h2>5. Privacy dei minori</h2>
             <div class="section"><p>L'App è classificata per 13+ anni. Non raccogliamo consapevolmente dati di minori di 13 anni. Conforme a COPPA e GDPR-K.</p></div>
-            <h2>5. Notifiche</h2>
+            <h2>6. Notifiche</h2>
             <div class="section"><p>L'App può inviare notifiche locali. Nessun dato viene inviato a server. Disattivare in <strong>Impostazioni Android → App → Bitwise → Notifiche</strong>.</p></div>
-            <h2>6. I tuoi diritti</h2>
+            <h2>7. I tuoi diritti</h2>
             <div class="section">
                 <ul>
                     <li>Disinstallare l'app per rimuovere tutti i dati locali</li>
@@ -564,16 +667,16 @@
                     <li>I residenti UE/Regno Unito hanno diritti GDPR — contattaci via email</li>
                 </ul>
             </div>
-            <h2>7. Modifiche</h2>
+            <h2>8. Modifiche</h2>
             <div class="section"><p>Questa informativa può essere aggiornata. Le modifiche saranno riportate su questa pagina.</p></div>
-            <h2>8. Contatti</h2>
+            <h2>9. Contatti</h2>
             <div class="section"><p>Domande: <a href="mailto:aytuncsevren@gmail.com">aytuncsevren@gmail.com</a></p></div>
         </div>
 
         <!-- DUTCH -->
         <div id="nl" class="lang-content">
             <h1>Bitwise (Android) — Privacybeleid</h1>
-            <p class="date">Ingangsdatum: 1 juni 2026</p>
+            <p class="date">Ingangsdatum: 22 september 2026</p>
             <div class="section"><p>Bitwise ("de App") is een binair logica-puzzelspel voor Android, ontwikkeld door Aytunc Sevren ("wij"). Wij zetten ons in om uw privacy te beschermen.</p></div>
             <h2>1. Verzamelde gegevens</h2>
             <div class="section">
@@ -594,15 +697,24 @@
                 <p><strong>Google Play Billing</strong> — Aankopen worden verwerkt door Google. <strong>Wij zien of bewaren geen betalingsgegevens.</strong></p>
                 <p><strong>Google Play (crashrapporten)</strong> — Google Play verzamelt automatisch crashlogs en diagnostische gegevens.</p>
             </div>
-            <h2>3. Gegevensopslag</h2>
+            <h2>3. Camera, gezichtsdetectie en microfoon</h2>
             <div class="section">
-                <p>Alle gegevens worden lokaal opgeslagen met Room en DataStore. <strong>Wij beheren geen servers, databases of cloud-synchronisatie.</strong> Bij het verwijderen van de app worden lokale gegevens permanent verwijderd. Play Games-gegevens worden door Google beheerd en kunnen worden verwijderd via de <a href="https://play.google.com/games/profile/" target="_blank">Play Games-profielpagina</a>.</p>
+                <p><strong>Knipoogmodus (camera).</strong> Als je de knipoogmodus inschakelt, vraagt de App om cameratoestemming en analyseert ze beelden van de frontcamera met Google ML Kit-gezichtsdetectie, die volledig op je toestel draait. De App leest in het geheugen alleen de kans dat een oog open is en contourpunten van het gezicht om knipogen (rechteroog → 1, linkeroog → 0) en opgetrokken wenkbrauwen (ongedaan maken) te herkennen. Camerabeelden, gezichtsafbeeldingen en gezichtsgegevens worden nooit opgenomen, opgeslagen, naar ons verzonden of gedeeld. De camera draait alleen terwijl er een spel in knipoogmodus op het scherm staat, en gezichtsdetectie wordt nooit gebruikt om je te identificeren. Als onderdeel van de ML Kit-SDK kan Google anonieme prestatie- en gebruiksstatistieken over de API ontvangen; deze bevatten nooit camerabeelden of gezichtsgegevens.</p>
+                <p><strong>Stemmodus (microfoon).</strong> Als je de stemmodus inschakelt, vraagt de App om microfoontoestemming en gebruikt ze de spraakherkenningsdienst van je toestel (meestal geleverd door Google). Afhankelijk van je toestel en instellingen kan audio op het toestel worden verwerkt of door die aanbieder volgens diens eigen privacybeleid. De App ontvangt alleen de herkende woorden om 1, 0 of ongedaan maken in te voeren; ze neemt geen audio op, slaat die niet op en stuurt die niet naar ons.</p>
+                <p>Beide toestemmingen zijn optioneel. Je kunt ze op elk moment intrekken via <strong>Android-instellingen → Apps → Bitwise → Rechten</strong>; de andere invoermodi blijven werken.</p>
             </div>
-            <h2>4. Privacy van kinderen</h2>
+            <h2>4. Gegevensopslag</h2>
+            <div class="section">
+                <p>Spelgegevens (statistieken, instellingen, prestaties, hintsaldo) worden lokaal op je toestel opgeslagen met Room en DataStore. <strong>Wij beheren geen servers of databases.</strong></p>
+                <p><strong>Google Synchronisatie (optioneel).</strong> Als je Google Synchronisatie inschakelt in Instellingen terwijl je bent ingelogd bij Google Play Games, wordt een kopie van je spelgegevens via Play Games Opgeslagen games in je Google-account bewaard, zodat je die op een ander toestel of na herinstallatie kunt terugzetten. Deze back-up wordt door Google opgeslagen en beheerd; wij hebben er geen toegang toe. Je kunt Google Synchronisatie op elk moment uitschakelen.</p>
+                <p>Je kunt je gegevens ook in een bestand opslaan met <strong>Gegevens Exporteren</strong> in Instellingen en later weer importeren. Geëxporteerde bestanden blijven waar je ze opslaat.</p>
+                <p>Als je de App verwijdert, worden alle lokaal opgeslagen gegevens definitief gewist. Gegevens van Google Play Games (profiel, scores, prestaties, opgeslagen games) worden door Google beheerd en blijven na verwijdering bestaan; je kunt ze op elk moment wissen via de <a href="https://play.google.com/games/profile/" target="_blank">Play Games-profielpagina</a>.</p>
+            </div>
+            <h2>5. Privacy van kinderen</h2>
             <div class="section"><p>De App is geclassificeerd voor 13+ jaar. Wij verzamelen niet bewust gegevens van kinderen onder de 13. Conform COPPA en AVG-K.</p></div>
-            <h2>5. Meldingen</h2>
+            <h2>6. Meldingen</h2>
             <div class="section"><p>De App kan lokale meldingen versturen. Er worden geen gegevens naar servers verzonden. Uitschakelen via <strong>Android-instellingen → Apps → Bitwise → Meldingen</strong>.</p></div>
-            <h2>6. Uw rechten</h2>
+            <h2>7. Uw rechten</h2>
             <div class="section">
                 <ul>
                     <li>App verwijderen om alle lokale gegevens te wissen</li>
@@ -613,16 +725,16 @@
                     <li>EU/VK-bewoners hebben AVG-rechten — neem contact op per e-mail</li>
                 </ul>
             </div>
-            <h2>7. Wijzigingen</h2>
+            <h2>8. Wijzigingen</h2>
             <div class="section"><p>Dit beleid kan worden bijgewerkt. Wijzigingen worden op deze pagina weergegeven.</p></div>
-            <h2>8. Contact</h2>
+            <h2>9. Contact</h2>
             <div class="section"><p>Vragen: <a href="mailto:aytuncsevren@gmail.com">aytuncsevren@gmail.com</a></p></div>
         </div>
 
         <!-- RUSSIAN -->
         <div id="ru" class="lang-content">
             <h1>Bitwise (Android) — Политика конфиденциальности</h1>
-            <p class="date">Дата вступления в силу: 1 июня 2026 г.</p>
+            <p class="date">Дата вступления в силу: 22 сентября 2026 г.</p>
             <div class="section"><p>Bitwise ("Приложение") — это игра-головоломка на двоичной логике для Android, разработанная Aytunc Sevren ("мы"). Мы стремимся защитить вашу конфиденциальность.</p></div>
             <h2>1. Собираемая информация</h2>
             <div class="section">
@@ -643,15 +755,24 @@
                 <p><strong>Google Play Billing</strong> — Покупки обрабатываются Google. <strong>Мы не видим и не храним платежную информацию.</strong></p>
                 <p><strong>Google Play (отчёты о сбоях)</strong> — Google Play автоматически собирает журналы сбоев и диагностические данные.</p>
             </div>
-            <h2>3. Хранение данных</h2>
+            <h2>3. Камера, распознавание лица и микрофон</h2>
             <div class="section">
-                <p>Все данные хранятся локально с использованием Room и DataStore. <strong>Мы не управляем серверами, базами данных или облачной синхронизацией.</strong> При удалении приложения локальные данные удаляются навсегда. Данные Play Games управляются Google и могут быть удалены через <a href="https://play.google.com/games/profile/" target="_blank">страницу профиля Play Games</a>.</p>
+                <p><strong>Режим подмигивания (камера).</strong> Если вы включите режим подмигивания, Приложение запросит доступ к камере и будет анализировать кадры фронтальной камеры с помощью распознавания лиц Google ML Kit, которое работает полностью на вашем устройстве. Приложение считывает в памяти только вероятность открытых глаз и точки контура лица, чтобы распознавать подмигивания (правый глаз → 1, левый глаз → 0) и поднятие бровей (отмена). Кадры с камеры, изображения лица и данные лица никогда не записываются, не сохраняются, не отправляются нам и никому не передаются. Камера работает только пока на экране игра в режиме подмигивания, и распознавание лица никогда не используется для вашей идентификации. В рамках SDK ML Kit Google может получать анонимные метрики производительности и использования API; они никогда не содержат изображений с камеры или данных лица.</p>
+                <p><strong>Голосовой режим (микрофон).</strong> Если вы включите голосовой режим, Приложение запросит доступ к микрофону и будет использовать службу распознавания речи вашего устройства (обычно предоставляемую Google). В зависимости от устройства и настроек звук может обрабатываться на устройстве или этим поставщиком в соответствии с его политикой конфиденциальности. Приложение получает только распознанные слова для ввода 1, 0 или отмены; оно не записывает, не хранит и не отправляет нам звук.</p>
+                <p>Оба разрешения необязательны. Их можно отозвать в любой момент в разделе <strong>Настройки Android → Приложения → Bitwise → Разрешения</strong>; остальные способы ввода продолжат работать.</p>
             </div>
-            <h2>4. Конфиденциальность детей</h2>
+            <h2>4. Хранение данных</h2>
+            <div class="section">
+                <p>Игровые данные (статистика, настройки, достижения, баланс подсказок) хранятся локально на вашем устройстве с помощью Room и DataStore. <strong>Мы не используем никаких серверов или баз данных.</strong></p>
+                <p><strong>Синхронизация Google (необязательно).</strong> Если вы включите синхронизацию Google в настройках, войдя в Google Play Игры, копия ваших игровых данных сохраняется в вашем аккаунте Google через сохранённые игры Play Игр, чтобы вы могли восстановить их на другом устройстве или после переустановки. Эта копия хранится и управляется Google; у нас нет к ней доступа. Синхронизацию Google можно отключить в любой момент.</p>
+                <p>Вы также можете сохранить данные в файл через <strong>Экспорт Данных</strong> в настройках и позже импортировать их. Экспортированные файлы остаются там, где вы их сохранили.</p>
+                <p>При удалении Приложения все локальные данные удаляются безвозвратно. Данные Google Play Игр (профиль, результаты в рейтингах, достижения, сохранённые игры) управляются Google и сохраняются после удаления; удалить их можно в любой момент на <a href="https://play.google.com/games/profile/" target="_blank">странице профиля Play Игр</a>.</p>
+            </div>
+            <h2>5. Конфиденциальность детей</h2>
             <div class="section"><p>Приложение предназначено для лиц 13 лет и старше. Мы сознательно не собираем данные детей младше 13 лет. Соответствует COPPA и GDPR-K.</p></div>
-            <h2>5. Уведомления</h2>
+            <h2>6. Уведомления</h2>
             <div class="section"><p>Приложение может отправлять локальные уведомления. Данные не отправляются на серверы. Отключите в <strong>Настройках Android → Приложения → Bitwise → Уведомления</strong>.</p></div>
-            <h2>6. Ваши права</h2>
+            <h2>7. Ваши права</h2>
             <div class="section">
                 <ul>
                     <li>Удалить приложение для очистки всех локальных данных</li>
@@ -662,21 +783,50 @@
                     <li>Жители ЕС/Великобритании имеют права GDPR — свяжитесь с нами по электронной почте</li>
                 </ul>
             </div>
-            <h2>7. Изменения</h2>
+            <h2>8. Изменения</h2>
             <div class="section"><p>Эта политика может обновляться. Изменения будут отражены на этой странице.</p></div>
-            <h2>8. Контакты</h2>
+            <h2>9. Контакты</h2>
             <div class="section"><p>Вопросы: <a href="mailto:aytuncsevren@gmail.com">aytuncsevren@gmail.com</a></p></div>
         </div>
-    </div>
+        </main>
+    <footer>
+        <nav>
+            <a href=".././" data-f="0">Home</a>
+            <a href="../support.html" data-f="1">Support</a>
+            <a href="../privacy-policy.html" data-f="2">Privacy Policy (iOS)</a>
+            <a href="../android/privacy-policy.html" data-f="3">Privacy Policy (Android)</a>
+        </nav>
+        <p>© 2026 Aytunç Sevren</p>
+    </footer>
+</div>
+
 
     <script>
-        const langs = ['en','tr','de','fr','ja','es','ko','pt','zh','it','nl','ru'];
-        function showLang(lang) {
-            langs.forEach(function(l) {
-                document.getElementById(l).className = l === lang ? 'lang-content visible' : 'lang-content';
-                document.getElementById('btn-' + l).className = l === lang ? 'active' : '';
-            });
-        }
-    </script>
+var LANGS = ['en','tr','de','fr','ja','es','ko','pt','zh','it','nl','ru'];
+var HTML_LANG = { pt: 'pt-BR', zh: 'zh-Hans' };
+var FOOT = {"en": ["Home", "Support", "Privacy Policy (iOS)", "Privacy Policy (Android)"], "tr": ["Ana sayfa", "Destek", "Gizlilik Politikası (iOS)", "Gizlilik Politikası (Android)"], "de": ["Startseite", "Support", "Datenschutz (iOS)", "Datenschutz (Android)"], "fr": ["Accueil", "Assistance", "Confidentialité (iOS)", "Confidentialité (Android)"], "ja": ["ホーム", "サポート", "プライバシーポリシー(iOS)", "プライバシーポリシー(Android)"], "es": ["Inicio", "Soporte", "Privacidad (iOS)", "Privacidad (Android)"], "ko": ["홈", "지원", "개인정보 처리방침 (iOS)", "개인정보 처리방침 (Android)"], "pt": ["Início", "Suporte", "Privacidade (iOS)", "Privacidade (Android)"], "zh": ["首页", "支持", "隐私政策(iOS)", "隐私政策(Android)"], "it": ["Home", "Assistenza", "Privacy (iOS)", "Privacy (Android)"], "nl": ["Home", "Ondersteuning", "Privacybeleid (iOS)", "Privacybeleid (Android)"], "ru": ["Главная", "Поддержка", "Конфиденциальность (iOS)", "Конфиденциальность (Android)"]};
+function showLang(lang) {
+    if (LANGS.indexOf(lang) < 0) lang = 'en';
+    LANGS.forEach(function (l) {
+        document.getElementById(l).className = l === lang ? 'lang-content visible' : 'lang-content';
+    });
+    document.documentElement.lang = HTML_LANG[lang] || lang;
+    document.querySelectorAll('[data-f]').forEach(function (a) { a.textContent = FOOT[lang][+a.getAttribute('data-f')]; });
+    var h1 = document.querySelector('#' + lang + ' h1');
+    if (h1) document.title = h1.textContent;
+    document.getElementById('lang').value = lang;
+    try { localStorage.setItem('bitwise.lang', lang); } catch (e) {}
+}
+function initialLang() {
+    var q = new URLSearchParams(location.search).get('lang');
+    if (q && LANGS.indexOf(q) >= 0) return q;
+    try { var s = localStorage.getItem('bitwise.lang'); if (s && LANGS.indexOf(s) >= 0) return s; } catch (e) {}
+    var nav = navigator.languages || [navigator.language || 'en'];
+    for (var i = 0; i < nav.length; i++) { var p = String(nav[i]).slice(0, 2).toLowerCase(); if (LANGS.indexOf(p) >= 0) return p; }
+    return 'en';
+}
+document.getElementById('lang').addEventListener('change', function (e) { showLang(e.target.value); });
+showLang(initialLang());
+</script>
 </body>
 </html>
