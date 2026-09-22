@@ -728,20 +728,19 @@ function applyLang(lang) {
     a.href = "https://play.google.com/store/apps/details?id=com.bitwise.puzzle.android&hl=" + HL[lang];
   });
   document.getElementById("lang").value = lang;
-  try { localStorage.setItem("bitwise.lang", lang); } catch (e) {}
 }
 
 function initialLang() {
   var q = new URLSearchParams(location.search).get("lang");
   if (q && I18N[q]) return q;
-  try { var s = localStorage.getItem("bitwise.lang"); if (s && I18N[s]) return s; } catch (e) {}
+  try { var s = localStorage.getItem("bitwise.lang.v2"); if (s && I18N[s]) return s; } catch (e) {}
   return "en";
 }
 
 // second set of store buttons in the CTA
 document.getElementById("stores2").innerHTML = document.querySelector(".hero .stores").innerHTML;
 
-document.getElementById("lang").addEventListener("change", function (e) { applyLang(e.target.value); });
+document.getElementById("lang").addEventListener("change", function (e) { applyLang(e.target.value); try { localStorage.setItem("bitwise.lang.v2", e.target.value); } catch (err) {} });
 applyLang(initialLang());
 
 // ---- hands-free demo ----

@@ -815,15 +815,14 @@ function showLang(lang) {
     var h1 = document.querySelector('#' + lang + ' h1');
     if (h1) document.title = h1.textContent;
     document.getElementById('lang').value = lang;
-    try { localStorage.setItem('bitwise.lang', lang); } catch (e) {}
 }
 function initialLang() {
     var q = new URLSearchParams(location.search).get('lang');
     if (q && LANGS.indexOf(q) >= 0) return q;
-    try { var s = localStorage.getItem('bitwise.lang'); if (s && LANGS.indexOf(s) >= 0) return s; } catch (e) {}
+    try { var s = localStorage.getItem('bitwise.lang.v2'); if (s && LANGS.indexOf(s) >= 0) return s; } catch (e) {}
     return 'en';
 }
-document.getElementById('lang').addEventListener('change', function (e) { showLang(e.target.value); });
+document.getElementById('lang').addEventListener('change', function (e) { showLang(e.target.value); try { localStorage.setItem('bitwise.lang.v2', e.target.value); } catch (err) {} });
 showLang(initialLang());
 </script>
 </body>
