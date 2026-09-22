@@ -821,8 +821,6 @@ function initialLang() {
     var q = new URLSearchParams(location.search).get('lang');
     if (q && LANGS.indexOf(q) >= 0) return q;
     try { var s = localStorage.getItem('bitwise.lang'); if (s && LANGS.indexOf(s) >= 0) return s; } catch (e) {}
-    var nav = navigator.languages || [navigator.language || 'en'];
-    for (var i = 0; i < nav.length; i++) { var p = String(nav[i]).slice(0, 2).toLowerCase(); if (LANGS.indexOf(p) >= 0) return p; }
     return 'en';
 }
 document.getElementById('lang').addEventListener('change', function (e) { showLang(e.target.value); });

@@ -735,8 +735,6 @@ function initialLang() {
   var q = new URLSearchParams(location.search).get("lang");
   if (q && I18N[q]) return q;
   try { var s = localStorage.getItem("bitwise.lang"); if (s && I18N[s]) return s; } catch (e) {}
-  var nav = (navigator.languages || [navigator.language || "en"]);
-  for (var i = 0; i < nav.length; i++) { var p = String(nav[i]).slice(0, 2).toLowerCase(); if (I18N[p]) return p; }
   return "en";
 }
 
